@@ -1,23 +1,18 @@
 <?php
-
 namespace CG\Tests\Proxy\Fixture;
 
-class Entity
-{
-    public function getName()
-    {
-        return 'foo';
-    }
+class Entity {
 
-    final public function getBaz()
-    {
-    }
+	public function getName() {
+		return 'foo';
+	}
 
-    protected function getFoo()
-    {
-    }
+	final public function getBaz() {
+	}
 
-    private function getBar()
-    {
-    }
+	protected function getFoo() {
+	}
+
+	private function getBar() {
+	}
 }

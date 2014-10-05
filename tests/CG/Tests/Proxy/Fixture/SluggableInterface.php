@@ -1,8 +1,7 @@
 <?php
-
 namespace CG\Tests\Proxy\Fixture;
 
-interface SluggableInterface
-{
-    public function getSlug();
+interface SluggableInterface {
+
+	public function getSlug();
 }

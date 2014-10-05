@@ -1,4 +1,2 @@
-public function foo(callable $bar)
-{
-}
+public function foo(callable $bar) { }
 
