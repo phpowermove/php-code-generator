@@ -17,6 +17,11 @@
 namespace gossi\codegen\strategy;
 
 
+use gossi\codegen\visitor\GeneratorVisitorInterface;
+use gossi\codegen\visitor\DefaultNavigator;
+use gossi\codegen\visitor\DefaultVisitor;
+use gossi\codegen\model\GenerateableInterface;
+
 /**
  * The default generator strategy.
  *

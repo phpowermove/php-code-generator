@@ -3,8 +3,14 @@ namespace gossi\codegen\model;
 
 use Doctrine\Common\Annotations\PhpParser;
 use gossi\docblock\DocBlock;
+use gossi\codegen\model\parts\InterfacesTrait;
+use gossi\codegen\model\parts\AbstractTrait;
+use gossi\codegen\model\parts\FinalTrait;
+use gossi\codegen\model\parts\ConstantsTrait;
+use gossi\codegen\model\parts\PropertiesTrait;
+use gossi\codegen\model\parts\TraitsTrait;
 
-class PhpClass extends AbstractPhpStruct implements GenerateableInterface, TraitsInterface {
+class PhpClass extends AbstractPhpStruct implements GenerateableInterface, TraitsInterface, ConstantsInterface {
 	
 	use InterfacesTrait;
 	use AbstractTrait;
@@ -76,4 +82,5 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 		
 		return $docblock;
 	}
+
 }

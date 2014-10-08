@@ -16,6 +16,8 @@
  */
 namespace gossi\codegen\generator;
 
+use gossi\codegen\strategy\GeneratorStrategyInterface;
+
 /**
  * Interface for class generators.
  *

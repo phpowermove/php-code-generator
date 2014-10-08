@@ -16,6 +16,11 @@
  */
 namespace gossi\codegen\model;
 
+use gossi\codegen\model\parts\DocblockTrait;
+use gossi\codegen\model\parts\NameTrait;
+use gossi\codegen\model\parts\LongDescriptionTrait;
+use gossi\codegen\model\parts\TypeTrait;
+
 /**
  * Abstract PHP member class.
  *

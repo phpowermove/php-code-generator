@@ -1,6 +1,8 @@
 <?php
 namespace gossi\codegen\generator;
 
+use gossi\codegen\model\GenerateableInterface;
+
 class CodeGenerator extends AbstractCodeGenerator {
 
 	private $generateDocblock = true;

@@ -19,6 +19,13 @@ namespace gossi\codegen\visitor;
 
 use gossi\codegen\model\GenerateableInterface;
 use gossi\codegen\model\AbstractPhpStruct;
+use gossi\codegen\model\PhpFunction;
+use gossi\codegen\model\PhpInterface;
+use gossi\codegen\model\PhpTrait;
+use gossi\codegen\model\PhpClass;
+use gossi\codegen\model\ConstantsInterface;
+use gossi\codegen\model\TraitsInterface;
+
 /**
  * The default navigator.
  *
@@ -78,28 +85,40 @@ class DefaultNavigator {
 	}
 
 	private function visitStruct(GeneratorVisitorInterface $visitor, AbstractPhpStruct $struct) {
-		$visitor->startVisitingClass($struct);
-		
-		$constants = $struct->getConstants(true);
-		if (!empty($constants)) {
-			uksort($constants, $this->getConstantSortFunc());
-			
-			$visitor->startVisitingStructConstants();
-			foreach ($constants as $constant) {
-				$visitor->visitStructConstant($constant);
-			}
-			$visitor->endVisitingStructConstants();
+		// start struct
+		if ($struct instanceof PhpInterface) {
+			$visitor->startVisitingInterface($struct);
+		} else if ($struct instanceof PhpTrait) {
+			$visitor->startVisitingTrait($struct);
+		} else if ($struct instanceof PhpClass) {
+			$visitor->startVisitingClass($struct);
 		}
 		
-		$properties = $struct->getProperties();
-		if (!empty($properties)) {
-			usort($properties, $this->getPropertySortFunc());
-			
-			$visitor->startVisitingProperties();
-			foreach ($properties as $property) {
-				$visitor->visitProperty($property);
+		// contents
+		if ($struct instanceof ConstantsInterface) {
+			$constants = $struct->getConstants(true);
+			if (!empty($constants)) {
+				uksort($constants, $this->getConstantSortFunc());
+				
+				$visitor->startVisitingStructConstants();
+				foreach ($constants as $constant) {
+					$visitor->visitStructConstant($constant);
+				}
+				$visitor->endVisitingStructConstants();
 			}
-			$visitor->endVisitingProperties();
+		}
+		
+		if ($struct instanceof TraitsInterface) {
+			$properties = $struct->getProperties();
+			if (!empty($properties)) {
+				usort($properties, $this->getPropertySortFunc());
+				
+				$visitor->startVisitingProperties();
+				foreach ($properties as $property) {
+					$visitor->visitProperty($property);
+				}
+				$visitor->endVisitingProperties();
+			}
 		}
 		
 		$methods = $struct->getMethods();
@@ -113,7 +132,14 @@ class DefaultNavigator {
 			$visitor->endVisitingMethods();
 		}
 		
-		$visitor->endVisitingClass($struct);
+		// end struct
+		if ($struct instanceof PhpInterface) {
+			$visitor->endVisitingInterface($struct);
+		} else if ($struct instanceof PhpTrait) {
+			$visitor->endVisitingTrait($struct);
+		} else if ($struct instanceof PhpClass) {
+			$visitor->endVisitingClass($struct);
+		}
 	}
 
 	private function getConstantSortFunc() {

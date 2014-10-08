@@ -17,7 +17,7 @@
  */
 namespace gossi\codegen\utils;
 
-abstract class ReflectionUtils {
+class ReflectionUtils {
 
 	/**
 	 *

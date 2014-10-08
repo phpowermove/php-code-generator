@@ -16,7 +16,7 @@ trait ConstantsTrait {
 		foreach ($constants as $name => $value) {
 			if (!$value instanceof PhpConstant) {
 				$constValue = $value;
-				$value = new PhpConstant()($name);
+				$value = new PhpConstant($name);
 				$value->setValue($constValue);
 			}
 			

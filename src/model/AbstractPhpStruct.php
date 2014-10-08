@@ -17,6 +17,9 @@
 namespace gossi\codegen\model;
 
 use gossi\docblock\DocBlock;
+use gossi\codegen\model\parts\QualifiedNameTrait;
+use gossi\codegen\model\parts\DocblockTrait;
+use gossi\codegen\model\parts\LongDescriptionTrait;
 
 /**
  * Represents an abstract php struct.

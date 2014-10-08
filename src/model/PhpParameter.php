@@ -18,6 +18,9 @@
 namespace gossi\codegen\model;
 
 use gossi\docblock\tags\ParamTag;
+use gossi\codegen\model\parts\NameTrait;
+use gossi\codegen\model\parts\DefaultValueTrait;
+use gossi\codegen\model\parts\TypeTrait;
 
 /**
  * Represents a PHP parameter.
@@ -25,6 +28,7 @@ use gossi\docblock\tags\ParamTag;
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
 class PhpParameter extends AbstractModel {
+	
 	use NameTrait;
 	use DefaultValueTrait;
 	use TypeTrait;

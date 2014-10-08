@@ -16,6 +16,10 @@
  */
 namespace gossi\codegen\generator;
 
+use gossi\codegen\strategy\GeneratorStrategyInterface;
+use gossi\codegen\model\GenerateableInterface;
+use gossi\codegen\strategy\DefaultGeneratorStrategy;
+
 /**
  * Abstract base class for all class generators.
  *

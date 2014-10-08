@@ -19,6 +19,14 @@ namespace gossi\codegen\model;
 
 use gossi\docblock\DocBlock;
 use gossi\docblock\tags\ReturnTag;
+use gossi\codegen\model\parts\QualifiedNameTrait;
+use gossi\codegen\model\parts\DocblockTrait;
+use gossi\codegen\model\parts\ParametersTrait;
+use gossi\codegen\model\parts\BodyTrait;
+use gossi\codegen\model\parts\ReferenceReturnTrait;
+use gossi\codegen\model\parts\TypeTrait;
+use gossi\codegen\model\parts\LongDescriptionTrait;
+use gossi\codegen\utils\ReflectionUtils;
 
 /**
  * Represents a PHP function.
@@ -36,7 +44,9 @@ class PhpFunction extends AbstractModel implements GenerateableInterface, Namesp
 	use LongDescriptionTrait;
 
 	public static function fromReflection(\ReflectionFunction $ref) {
-		$function = PhpFunction::create($ref->name)->setReferenceReturned($ref->returnsReference())->setBody(ReflectionUtils::getFunctionBody($ref));
+		$function = PhpFunction::create($ref->name)
+			->setReferenceReturned($ref->returnsReference())
+			->setBody(ReflectionUtils::getFunctionBody($ref));
 		
 		$docblock = new DocBlock($ref);
 		$function->setDocblock($docblock);
@@ -74,7 +84,9 @@ class PhpFunction extends AbstractModel implements GenerateableInterface, Namesp
 		$docblock->setLongDescription($this->getLongDescription());
 		
 		if ($this->getType()) {
-			$docblock->appendTag(ReturnTag::create()->setType($this->getType())->setDescription($this->getTypeDescription()));
+			$docblock->appendTag(ReturnTag::create()
+				->setType($this->getType())
+				->setDescription($this->getTypeDescription()));
 		}
 		
 		foreach ($this->parameters as $param) {

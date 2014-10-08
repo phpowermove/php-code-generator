@@ -3,8 +3,11 @@ namespace gossi\codegen\model;
 
 use Doctrine\Common\Annotations\PhpParser;
 use gossi\docblock\DocBlock;
+use gossi\codegen\model\parts\PropertiesTrait;
+use gossi\codegen\model\parts\TraitsTrait;
 
 class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, TraitsInterface {
+	
 	use PropertiesTrait;
 	use TraitsTrait;
 

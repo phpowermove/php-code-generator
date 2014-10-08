@@ -17,6 +17,19 @@
  */
 namespace gossi\codegen\visitor;
 
+use gossi\codegen\model\NamespaceInterface;
+use gossi\codegen\model\AbstractPhpStruct;
+use gossi\codegen\model\DocblockInterface;
+use gossi\codegen\model\TraitsInterface;
+use gossi\codegen\model\PhpClass;
+use gossi\codegen\model\PhpInterface;
+use gossi\codegen\model\PhpTrait;
+use gossi\codegen\model\PhpConstant;
+use gossi\codegen\model\PhpProperty;
+use gossi\codegen\model\PhpMethod;
+use gossi\codegen\model\PhpFunction;
+use gossi\codegen\utils\Writer;
+
 /**
  * The default code generation visitor.
  *
@@ -130,7 +143,7 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 		}
 		
 		// body
-		$this->writer->write("\n{\n")->indent();
+		$this->writer->writeln(" {\n")->indent();
 		
 		$this->visitTraits($class);
 	}
@@ -151,7 +164,7 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 		}
 		
 		// body
-		$this->writer->write("\n{\n")->indent();
+		$this->writer->writeln(" {\n")->indent();
 	}
 
 	public function startVisitingTrait(PhpTrait $trait) {
@@ -165,7 +178,7 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 		$this->writer->write($trait->getName());
 		
 		// body
-		$this->writer->write("\n{\n")->indent();
+		$this->writer->writeln(" {\n")->indent();
 		
 		$this->visitTraits($trait);
 	}
@@ -234,7 +247,7 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 			return;
 		}
 		
-		$this->writer->writeln(")")->writeln('{')->indent()->writeln($method->getBody())->outdent()->rtrim()->write("}\n\n");
+		$this->writer->writeln(') {')->indent()->writeln($method->getBody())->outdent()->rtrim()->write("}\n\n");
 	}
 
 	public function endVisitingMethods() {
@@ -267,7 +280,7 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 		
 		$this->writer->write("function {$function->getName()}(");
 		$this->writeParameters($function->getParameters());
-		$this->writer->write(")\n{\n")->indent()->writeln($function->getBody())->outdent()->rtrim()->write('}');
+		$this->writer->write(") {\n")->indent()->writeln($function->getBody())->outdent()->rtrim()->write('}');
 	}
 
 	public function getContent() {

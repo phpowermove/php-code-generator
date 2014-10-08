@@ -3,8 +3,13 @@ namespace gossi\codegen\model;
 
 use gossi\docblock\DocBlock;
 use gossi\docblock\tags\VarTag;
+use gossi\codegen\model\parts\NameTrait;
+use gossi\codegen\model\parts\LongDescriptionTrait;
+use gossi\codegen\model\parts\DocblockTrait;
+use gossi\codegen\model\parts\TypeTrait;
 
 class PhpConstant extends AbstractModel implements GenerateableInterface, DocblockInterface {
+	
 	use NameTrait;
 	use LongDescriptionTrait;
 	use DocblockTrait;

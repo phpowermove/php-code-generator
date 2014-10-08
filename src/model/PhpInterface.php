@@ -2,8 +2,11 @@
 namespace gossi\codegen\model;
 
 use gossi\docblock\DocBlock;
+use gossi\codegen\model\parts\InterfacesTrait;
+use gossi\codegen\model\parts\ConstantsTrait;
 
-class PhpInterface extends AbstractPhpStruct implements GenerateableInterface {
+class PhpInterface extends AbstractPhpStruct implements GenerateableInterface, ConstantsInterface {
+	
 	use InterfacesTrait;
 	use ConstantsTrait;
 

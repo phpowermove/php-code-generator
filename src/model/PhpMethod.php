@@ -19,6 +19,12 @@ namespace gossi\codegen\model;
 
 use gossi\docblock\tags\ReturnTag;
 use gossi\docblock\DocBlock;
+use gossi\codegen\model\parts\AbstractTrait;
+use gossi\codegen\model\parts\FinalTrait;
+use gossi\codegen\model\parts\ReferenceReturnTrait;
+use gossi\codegen\model\parts\BodyTrait;
+use gossi\codegen\model\parts\ParametersTrait;
+use gossi\codegen\utils\ReflectionUtils;
 
 /**
  * Represents a PHP method.
@@ -26,6 +32,7 @@ use gossi\docblock\DocBlock;
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
 class PhpMethod extends AbstractPhpMember {
+	
 	use AbstractTrait;
 	use FinalTrait;
 	use ParametersTrait;

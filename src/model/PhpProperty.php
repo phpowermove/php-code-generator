@@ -19,6 +19,7 @@ namespace gossi\codegen\model;
 
 use gossi\docblock\tags\VarTag;
 use gossi\docblock\DocBlock;
+use gossi\codegen\model\parts\DefaultValueTrait;
 
 /**
  * Represents a PHP property.
@@ -26,6 +27,7 @@ use gossi\docblock\DocBlock;
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
 class PhpProperty extends AbstractPhpMember {
+	
 	use DefaultValueTrait;
 
 	/**

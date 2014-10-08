@@ -12,8 +12,8 @@
          bootstrap="tests/bootstrap.php"
 >
     <testsuites>
-        <testsuite name="CG Test Suite">
-            <directory>tests/CG/</directory>
+        <testsuite name="Code Generator Test Suite">
+            <directory>tests/</directory>
         </testsuite>
     </testsuites>
     
