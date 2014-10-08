@@ -1,7 +1,6 @@
 .project
 .buildpath
 .settings/
-composer.lock
 phpunit.xml
 vendor/
 api/

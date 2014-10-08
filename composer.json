@@ -1,5 +1,5 @@
 {
-	"name" : "jms/cg",
+	"name" : "gossi/php-code-generator",
 	"description" : "Toolset for generating PHP code",
 	"keywords" : [
 		"code generation"
@@ -17,8 +17,7 @@
 	"require" : {
 		"php" : ">=5.4.0",
 		"doctrine/annotations" : "~1",
-		"gossi/docblock" : "~1",
-		"gossi/php-code-formatter" : "dev-master"
+		"gossi/docblock" : "~1"
 	},
 	"autoload" : {
 		"psr-4" : {
