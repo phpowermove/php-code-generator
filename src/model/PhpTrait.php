@@ -28,12 +28,19 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
 			$trait->setLongDescription($docblock->getLongDescription());
 		}
 		
+		// methods
 		foreach ($ref->getMethods() as $method) {
 			$trait->setMethod(static::createMethod($method));
 		}
 		
+		// properties
 		foreach ($ref->getProperties() as $property) {
 			$trait->setProperty(static::createProperty($property));
+		}
+		
+		// traits
+		foreach ($ref->getTraits() as $trait) {
+			$trait->addTrait(PhpTrait::fromReflection($trait));
 		}
 		
 		return $trait;

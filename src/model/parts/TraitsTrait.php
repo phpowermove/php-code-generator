@@ -50,11 +50,11 @@ trait TraitsTrait {
 	 * @param PhpTrait|string $interface        	
 	 * @return boolean
 	 */
-	public function hasTrait($interface) {
-		if (!$interface instanceof PhpTrait) {
-			$interface = new PhpTrait($interface);
+	public function hasTrait($trait) {
+		if (!$trait instanceof PhpTrait) {
+			$trait = new PhpTrait($trait);
 		}
-		$name = $interface->getName();
+		$name = $trait->getName();
 		return in_array($name, $this->traits);
 	}
 

@@ -17,6 +17,7 @@ class PhpClassTest extends \PHPUnit_Framework_TestCase {
 		// they are not explicitely instantiated through new WhatEver(); and such not
 		// required through composer's autoload
 		require_once __DIR__ . '/../fixture/Entity.php';
+		require_once __DIR__ . '/../fixture/ClassWithTraits.php';
 	}
 
 	public function testFromReflection() {
@@ -256,5 +257,11 @@ class PhpClassTest extends \PHPUnit_Framework_TestCase {
 		
 		$this->assertSame($class, $class->setLongDescription('very long description'));
 		$this->assertEquals('very long description', $class->getLongDescription());
+	}
+	
+	public function testClassWithTraitsFromReflection() {
+		$class = PhpClass::fromReflection(new \ReflectionClass('gossi\codegen\tests\fixture\ClassWithTraits'));
+		
+		$this->assertTrue($class->hasTrait('DummyTrait'));
 	}
 }
