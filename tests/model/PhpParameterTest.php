@@ -1,5 +1,5 @@
 <?php
-namespace CG\Tests\Model;
+namespace gossi\codegen\tests\model;
 
 use gossi\codegen\model\PhpParameter;
 

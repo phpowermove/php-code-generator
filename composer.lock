@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e5b06ca6955bd4d1c98361bd49c7b62d",
+    "hash": "3bbee4860ba2ec4cf41a29c3ad22cc48",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -695,16 +695,16 @@
         },
         {
             "name": "pimple/pimple",
-            "version": "v1.0.2",
+            "version": "v2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Pimple.git",
-                "reference": "ae11e57e8c2bb414b2ff93396dbbfc0eb92feb94"
+                "reference": "ea22fb2880faf7b7b0e17c9809c6fe25b071fd76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Pimple/zipball/ae11e57e8c2bb414b2ff93396dbbfc0eb92feb94",
-                "reference": "ae11e57e8c2bb414b2ff93396dbbfc0eb92feb94",
+                "url": "https://api.github.com/repos/fabpot/Pimple/zipball/ea22fb2880faf7b7b0e17c9809c6fe25b071fd76",
+                "reference": "ea22fb2880faf7b7b0e17c9809c6fe25b071fd76",
                 "shasum": ""
             },
             "require": {
@@ -713,12 +713,12 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "2.1.x-dev"
                 }
             },
             "autoload": {
                 "psr-0": {
-                    "Pimple": "lib/"
+                    "Pimple": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -728,9 +728,7 @@
             "authors": [
                 {
                     "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com",
-                    "homepage": "http://fabien.potencier.org",
-                    "role": "Lead Developer"
+                    "email": "fabien@symfony.com"
                 }
             ],
             "description": "Pimple is a simple Dependency Injection Container for PHP 5.3",
@@ -739,27 +737,27 @@
                 "container",
                 "dependency injection"
             ],
-            "time": "2013-03-08 08:21:40"
+            "time": "2014-07-24 07:10:08"
         },
         {
             "name": "sami/sami",
-            "version": "v1.4",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Sami.git",
-                "reference": "70f29c781f7bef30181c814b9471b2ceac694454"
+                "reference": "fa58b324f41aa2aefe21dac4f22d8c98965fc012"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Sami/zipball/70f29c781f7bef30181c814b9471b2ceac694454",
-                "reference": "70f29c781f7bef30181c814b9471b2ceac694454",
+                "url": "https://api.github.com/repos/fabpot/Sami/zipball/fa58b324f41aa2aefe21dac4f22d8c98965fc012",
+                "reference": "fa58b324f41aa2aefe21dac4f22d8c98965fc012",
                 "shasum": ""
             },
             "require": {
                 "michelf/php-markdown": "~1.3",
                 "nikic/php-parser": "0.9.*",
                 "php": ">=5.3.0",
-                "pimple/pimple": "1.0.*",
+                "pimple/pimple": "2.*",
                 "symfony/console": "~2.1",
                 "symfony/filesystem": "~2.1",
                 "symfony/finder": "~2.1",
@@ -773,7 +771,7 @@
             "type": "application",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4-dev"
+                    "dev-master": "2.0-dev"
                 }
             },
             "autoload": {
@@ -798,7 +796,7 @@
             "keywords": [
                 "phpdoc"
             ],
-            "time": "2014-06-25 11:24:03"
+            "time": "2014-06-25 12:05:18"
         },
         {
             "name": "sebastian/comparator",
