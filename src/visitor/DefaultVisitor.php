@@ -84,9 +84,20 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 		if ($useStatements = $struct->getUseStatements()) {
 			$this->ensureBlankLine();
 			foreach ($useStatements as $alias => $namespace) {
+				if (false === strpos($namespace, '\\')) {
+					$commonName = $namespace;
+				} else {
+					$commonName = substr($namespace, strrpos($namespace, '\\') + 1);
+				}
+
+				if (false === strpos($namespace, '\\') && !$struct->getNamespace()) {
+					//avoid fatal 'The use statement with non-compound name '$commonName' has no effect'
+					continue;
+				}
+
 				$this->writer->write('use ' . $namespace);
-				
-				if (substr($namespace, strrpos($namespace, '\\') + 1) !== $alias) {
+
+				if ($commonName !== $alias) {
 					$this->writer->write(' as ' . $alias);
 				}
 				
@@ -187,7 +198,7 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 	}
 
 	public function visitStructConstant(PhpConstant $constant) {
-		$this->writer->writeln('const ' . $constant->getName() . ' = ' . var_export($constant->getValue(), true) . ';');
+		$this->writer->writeln('const ' . $constant->getName() . ' = ' . $this->getPhpExport($constant->getValue()) . ';');
 	}
 
 	public function endVisitingStructConstants() {
@@ -203,10 +214,26 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 		$this->writer->write($property->getVisibility() . ' ' . ($property->isStatic() ? 'static ' : '') . '$' . $property->getName());
 		
 		if ($property->hasDefaultValue()) {
-			$this->writer->write(' = ' . var_export($property->getDefaultValue(), true));
+			$this->writer->write(' = ' . $this->getPhpExport($property->getDefaultValue()));
 		}
 		
 		$this->writer->writeln(';');
+	}
+
+	protected function getPhpExport($value) {
+		if (is_bool($value)) {
+			return $value ? 'true' : 'false';
+		}
+
+		if (null === $value) {
+			return 'null';
+		}
+
+		if (is_array($value)) {
+			return 'array()';
+		}
+
+		return var_export($value, true);
 	}
 
 	public function endVisitingProperties() {
@@ -247,7 +274,7 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 			return;
 		}
 		
-		$this->writer->writeln(') {')->indent()->writeln($method->getBody())->outdent()->rtrim()->write("}\n\n");
+		$this->writer->writeln(') {')->indent()->writeln(trim($method->getBody()))->outdent()->rtrim()->write("}\n\n");
 	}
 
 	public function endVisitingMethods() {
@@ -280,7 +307,7 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 		
 		$this->writer->write("function {$function->getName()}(");
 		$this->writeParameters($function->getParameters());
-		$this->writer->write(") {\n")->indent()->writeln($function->getBody())->outdent()->rtrim()->write('}');
+		$this->writer->write(") {\n")->indent()->writeln(trim($function->getBody()))->outdent()->rtrim()->write('}');
 	}
 
 	public function getContent() {
@@ -308,11 +335,17 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 			if ($parameter->hasDefaultValue()) {
 				$this->writer->write(' = ');
 				$defaultValue = $parameter->getDefaultValue();
-				
-				if (is_array($defaultValue) && empty($defaultValue)) {
-					$this->writer->write('array()');
-				} else {
-					$this->writer->write(var_export($defaultValue, true));
+
+				switch (true) {
+					case is_array($defaultValue) && empty($defaultValue):
+						$this->writer->write('array()');
+						break;
+					case ($defaultValue instanceof PhpConstant):
+						$this->writer->write($defaultValue->getName());
+						break;
+					default:
+					$this->writer->write($this->getPhpExport($defaultValue));
+
 				}
 			}
 		}

@@ -9,17 +9,21 @@ trait TypeTrait {
 
 	/**
 	 *
-	 * @param string $type        	
+	 * @param string      $type
+	 * @param null|string $description
 	 */
-	public function setType($type, $description = '') {
+	public function setType($type, $description = null) {
 		$this->type = $type;
-		$this->setTypeDescription($description);
+		if (null !== $description) {
+			$this->setTypeDescription($description);
+		}
 		
 		return $this;
 	}
 
-	protected function setTypeDescription($description) {
+	public function setTypeDescription($description) {
 		$this->typeDescription = $description;
+		return $this;
 	}
 
 	public function getType() {

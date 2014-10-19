@@ -92,12 +92,17 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 
 	/**
 	 *
-	 * @param string $qualifiedName        	
-	 * @param string $alias        	
+	 * @param string $qualifiedName
+	 * @param null|string $alias
+	 * @return $this
 	 */
 	public function addUseStatement($qualifiedName, $alias = null) {
 		if (null === $alias) {
-			$alias = substr($qualifiedName, strrpos($qualifiedName, '\\') + 1);
+			if (false === strpos($qualifiedName, '\\')) {
+				$alias = $qualifiedName;
+			} else {
+				$alias = substr($qualifiedName, strrpos($qualifiedName, '\\') + 1);
+			}
 		}
 		
 		$this->useStatements[$alias] = $qualifiedName;
@@ -112,7 +117,40 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 	 * @return boolean
 	 */
 	public function hasUseStatement($qualifiedName) {
-		return in_array($qualifiedName, $this->useStatements);
+		$flipped = array_flip($this->useStatements);
+		return isset($flipped[$qualifiedName]);
+	}
+
+	public function declareUses()
+	{
+		foreach (func_get_args() as $name) {
+			$this->declareUse($name);
+		}
+	}
+
+	/**
+	 * @param string      $fullClassName
+	 * @param null|string $alias
+	 *
+	 * @return string
+	 */
+	public function declareUse($fullClassName, $alias = null)
+	{
+		$fullClassName = trim($fullClassName, '\\');
+		if (!$this->hasUseStatement($fullClassName)) {
+			$this->addUseStatement($fullClassName, $alias);
+		}
+
+		return $this->getUseAlias($fullClassName);
+	}
+
+	/**
+	 * @param string $qualifiedName
+	 * @return string
+	 */
+	public function getUseAlias($qualifiedName) {
+		$flipped = array_flip($this->useStatements);
+		return $flipped[$qualifiedName];
 	}
 
 	public function removeUseStatement($qualifiedName) {
