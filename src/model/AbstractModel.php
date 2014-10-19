@@ -63,9 +63,13 @@ abstract class AbstractModel {
 
 	/**
 	 *
-	 * @param string $description        	
+	 * @param string|array $description
+	 * @return $this
 	 */
 	public function setDescription($description) {
+		if (is_array($description)) {
+			$description = implode("\n", $description);
+		}
 		$this->description = $description;
 		return $this;
 	}

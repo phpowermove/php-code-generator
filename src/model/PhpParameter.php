@@ -93,7 +93,7 @@ class PhpParameter extends AbstractModel {
 	 * @see #setDescription
 	 * @param string $description        	
 	 */
-	protected function setTypeDescription($description) {
+	public function setTypeDescription($description) {
 		$this->setDescription($description);
 	}
 
