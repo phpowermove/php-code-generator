@@ -48,7 +48,8 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 		'float',
 		'double',
 		'object',
-		'mixed'
+		'mixed',
+		'resource'
 	];
 
 	public function __construct() {
@@ -121,8 +122,8 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 
 	private function visitTraits(TraitsInterface $struct) {
 		foreach ($struct->getTraits() as $trait) {
-			$this->writer->write('uses ');
-			$this->writer->writeln($trait);
+			$this->writer->write('use ');
+			$this->writer->writeln($trait . ';');
 		}
 	}
 
@@ -322,7 +323,7 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 			}
 			$first = false;
 			
-			if (($type = $parameter->getType()) && !in_array($type, self::$noTypeHints)) {
+			if (false === strpos($parameter->getType(), '|') && ($type = $parameter->getType()) && !in_array($type, self::$noTypeHints)) {
 				$this->writer->write($type . ' ');
 			}
 			

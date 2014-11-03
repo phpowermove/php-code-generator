@@ -44,6 +44,28 @@ trait ParametersTrait {
 	}
 
 	/**
+	 * @param string      $name
+	 * @param null|string $type
+	 * @param null|string $typeDescription
+	 * @param mixed       $defaultValue omit the argument to define now default value
+	 *
+	 * @return $this
+	 */
+	public function addSimpleDescParameter($name, $type = null, $typeDescription = null, $defaultValue = null)
+	{
+		$parameter = new PhpParameter($name);
+		$parameter->setType($type);
+		$parameter->setTypeDescription($typeDescription);
+
+		if (3 < func_num_args()) {
+			$parameter->setDefaultValue($defaultValue);
+		}
+
+		$this->addParameter($parameter);
+		return $this;
+	}
+
+	/**
 	 *
 	 * @param string|integer $nameOrIndex
 	 *
