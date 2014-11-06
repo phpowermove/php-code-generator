@@ -13,19 +13,18 @@ class PhpInterface extends AbstractPhpStruct implements GenerateableInterface, C
 	public static function fromReflection(\ReflectionClass $ref) {
 		$interface = new static();
 		$interface->setQualifiedName($ref->name)
-			->setConstants($ref->getConstants());
+			->setConstants($ref->getConstants())
+			->setUseStatements(static::getUseStatementsFromReflection($ref));
 		
-		$interface->setUseStatements(self::$phpParser->parseClass($ref));
-		
-		if ($ref->getDocComment()) {
-			$docblock = new Docblock($ref);
-			$interface->setDocblock($docblock);
-			$interface->setDescription($docblock->getShortDescription());
-			$interface->setLongDescription($docblock->getLongDescription());
-		}
+		$docblock = new Docblock($ref);
+		$interface->setDocblock($docblock);
+		$interface->setDescription($docblock->getShortDescription());
+		$interface->setLongDescription($docblock->getLongDescription());
 		
 		foreach ($ref->getMethods() as $method) {
-			$interface->setMethod(static::createMethod($method));
+			$method = static::createMethod($method);
+			$method->setAbstract(false);
+			$interface->setMethod($method);
 		}
 		
 		return $interface;
@@ -41,9 +40,5 @@ class PhpInterface extends AbstractPhpStruct implements GenerateableInterface, C
 		foreach ($this->constants as $constant) {
 			$constant->generateDocblock();
 		}
-		
-// 		$this->setDocblock($docblock);
-		
-// 		return $docblock;
 	}
 }

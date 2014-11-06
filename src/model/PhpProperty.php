@@ -39,13 +39,12 @@ class PhpProperty extends AbstractPhpMember {
 
 	public static function fromReflection(\ReflectionProperty $ref) {
 		$property = new static($ref->name);
-		$property->setStatic($ref->isStatic())->setVisibility($ref->isPublic() ? self::VISIBILITY_PUBLIC : ($ref->isProtected() ? self::VISIBILITY_PROTECTED : self::VISIBILITY_PRIVATE));
-		
-		if ($ref->getDocComment()) {
-			$docblock = new Docblock($ref);
-			$property->setDocblock($docblock);
-			$property->setDescription($docblock->getShortDescription());
-		}
+		$property->setStatic($ref->isStatic())
+			->setVisibility($ref->isPublic() ? self::VISIBILITY_PUBLIC : ($ref->isProtected() ? self::VISIBILITY_PROTECTED : self::VISIBILITY_PRIVATE));
+
+		$docblock = new Docblock($ref);
+		$property->setDocblock($docblock);
+		$property->setDescription($docblock->getShortDescription());
 		
 		$defaultProperties = $ref->getDeclaringClass()->getDefaultProperties();
 		if (isset($defaultProperties[$ref->name])) {

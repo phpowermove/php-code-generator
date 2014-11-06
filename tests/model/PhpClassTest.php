@@ -18,6 +18,7 @@ class PhpClassTest extends \PHPUnit_Framework_TestCase {
 		// required through composer's autoload
 		require_once __DIR__ . '/../fixture/Entity.php';
 		require_once __DIR__ . '/../fixture/ClassWithTraits.php';
+		require_once __DIR__ . '/../fixture/ClassWithConstants.php';
 	}
 
 	public function testFromReflection() {
@@ -77,6 +78,10 @@ class PhpClassTest extends \PHPUnit_Framework_TestCase {
 		$class->setMethod(PhpMethod::create('bar')->setStatic(true)->setVisibility('private'));
 		
 		$this->assertEquals($class, PhpClass::fromReflection(new \ReflectionClass('gossi\codegen\tests\fixture\Entity')));
+		
+		$class = new PhpClass('gossi\codegen\tests\fixture\ClassWithConstants');
+		$class->setConstant('FOO', 'bar');
+		$this->assertEquals($class, PhpClass::fromReflection(new \ReflectionClass('gossi\codegen\tests\fixture\ClassWithConstants')));
 	}
 
 	public function testConstants() {
@@ -263,4 +268,26 @@ class PhpClassTest extends \PHPUnit_Framework_TestCase {
 		
 		$this->assertTrue($class->hasTrait('DummyTrait'));
 	}
+	
+	public function testUseStatements() {
+		$class = new PhpClass();
+		$class->addUseStatement('Symfony\\Component\\Console\\Application', 'Console');
+		
+		$this->assertEquals(['Console' => 'Symfony\\Component\\Console\\Application'], $class->getUseStatements());
+		$this->assertEquals('Console', $class->getUseAlias('Symfony\\Component\\Console\\Application'));
+		
+		$class->addUseStatement('Logger');
+		$this->assertEquals([
+			'Console' => 'Symfony\\Component\\Console\\Application',
+			'Logger' => 'Logger'
+		], $class->getUseStatements());
+		$this->assertEquals('Logger', $class->getUseAlias('Logger'));
+	}
+	
+	public function testDescripion() {
+		$class = new PhpClass();
+		$class->setDescription(['multiline', 'description']);
+		$this->assertEquals("multiline\ndescription", $class->getDescription());
+	}
+	
 }

@@ -21,8 +21,13 @@ class PhpFunctionTest extends \PHPUnit_Framework_TestCase {
  * @return string
  */');
 		$function = new PhpFunction('wurst');
-		$function->addParameter(PhpParameter::create('baz')->setDefaultValue(null))->setBody('return \'wurst\';')->setDocblock($doc)->setDescription($doc->getShortDescription())->setLongDescription($doc->getLongDescription());
-		
+		$function->addParameter(PhpParameter::create('baz')
+			->setDefaultValue(null))
+			->setBody('return \'wurst\';')
+			->setDocblock($doc)
+			->setDescription($doc->getShortDescription())
+			->setLongDescription($doc->getLongDescription());
+
 		$this->assertEquals($function, PhpFunction::fromReflection(new \ReflectionFunction('wurst')));
 	}
 }

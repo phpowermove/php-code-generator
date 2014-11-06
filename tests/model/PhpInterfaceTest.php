@@ -3,6 +3,7 @@ namespace gossi\codegen\tests\model;
 
 use gossi\codegen\model\PhpInterface;
 use gossi\codegen\generator\CodeGenerator;
+use gossi\codegen\model\PhpMethod;
 
 class PhpInterfaceTest extends \PHPUnit_Framework_TestCase {
 
@@ -17,7 +18,8 @@ class PhpInterfaceTest extends \PHPUnit_Framework_TestCase {
 	public function testFromReflection() {
 		$interface = PhpInterface::create('DummyInterface')
 			->setNamespace('gossi\codegen\tests\fixture')
-			->setDescription('Dummy docblock');
+			->setDescription('Dummy docblock')
+			->setMethod(PhpMethod::create('foo'));
 		$interface->generateDocblock();
 		$this->assertEquals($interface, PhpInterface::fromReflection(new \ReflectionClass('gossi\codegen\tests\fixture\DummyInterface')));
 	}

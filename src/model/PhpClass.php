@@ -26,12 +26,8 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 		$class->setQualifiedName($ref->name)
 			->setAbstract($ref->isAbstract())
 			->setFinal($ref->isFinal())
-			->setConstants($ref->getConstants());
-
-		if (null === self::$phpParser) {
-			self::$phpParser = new PhpParser();
-		}
-		$class->setUseStatements(self::$phpParser->parseClass($ref));
+			->setConstants($ref->getConstants())
+			->setUseStatements(static::getUseStatementsFromReflection($ref));
 
 		if ($ref->getDocComment()) {
 			$docblock = new Docblock($ref);
@@ -54,6 +50,9 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 		foreach ($ref->getTraits() as $trait) {
 			$class->addTrait(PhpTrait::fromReflection($trait));
 		}
+		
+		// constants
+		$class->setConstants($ref->getConstants());
 
 		return $class;
 	}
@@ -78,7 +77,6 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 
 	public function generateDocblock() {
 		parent::generateDocblock();
-// 		$docblock = $this->getDocblock();
 		
 		foreach ($this->constants as $constant) {
 			$constant->generateDocblock();
@@ -87,10 +85,6 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 		foreach ($this->properties as $prop) {
 			$prop->generateDocblock();
 		}
-		
-// 		$this->setDocblock($docblock);
-		
-// 		return $docblock;
 	}
 
 }

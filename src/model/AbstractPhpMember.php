@@ -20,6 +20,7 @@ use gossi\codegen\model\parts\DocblockTrait;
 use gossi\codegen\model\parts\NameTrait;
 use gossi\codegen\model\parts\LongDescriptionTrait;
 use gossi\codegen\model\parts\TypeTrait;
+use gossi\docblock\Docblock;
 
 /**
  * Abstract PHP member class.
@@ -47,6 +48,7 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
 
 	public function __construct($name) {
 		$this->setName($name);
+		$this->docblock = new Docblock();
 	}
 
 	/**

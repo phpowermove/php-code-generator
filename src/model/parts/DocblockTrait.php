@@ -6,7 +6,6 @@ use gossi\docblock\Docblock;
 trait DocblockTrait {
 
 	/**
-	 *
 	 * @var Docblock
 	 */
 	private $docblock;
@@ -27,13 +26,10 @@ trait DocblockTrait {
 	}
 
 	/**
-	 *
 	 * @return Docblock
 	 */
 	public function getDocblock() {
-		if ($this->docblock === null) {
-			$this->docblock = new Docblock();
-		}
 		return $this->docblock;
 	}
+
 }

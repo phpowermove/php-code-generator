@@ -49,14 +49,21 @@ class PhpMethod extends AbstractPhpMember {
 
 	public static function fromReflection(\ReflectionMethod $ref) {
 		$method = new static($ref->name);
-		$method->setFinal($ref->isFinal())->setAbstract($ref->isAbstract())->setStatic($ref->isStatic())->setVisibility($ref->isPublic() ? self::VISIBILITY_PUBLIC : ($ref->isProtected() ? self::VISIBILITY_PROTECTED : self::VISIBILITY_PRIVATE))->setReferenceReturned($ref->returnsReference())->setBody(ReflectionUtils::getFunctionBody($ref));
-		
-		if ($ref->getDocComment()) {
-			$docblock = new Docblock($ref);
-			$method->setDocblock($docblock);
-			$method->setDescription($docblock->getShortDescription());
-			$method->setLongDescription($docblock->getLongDescription());
-		}
+		$method->setFinal($ref->isFinal())
+			->setAbstract($ref->isAbstract())
+			->setStatic($ref->isStatic())
+			->setVisibility($ref->isPublic() 
+				? self::VISIBILITY_PUBLIC 
+				: ($ref->isProtected() 
+					? self::VISIBILITY_PROTECTED 
+					: self::VISIBILITY_PRIVATE))
+			->setReferenceReturned($ref->returnsReference())
+			->setBody(ReflectionUtils::getFunctionBody($ref));
+
+		$docblock = new Docblock($ref);
+		$method->setDocblock($docblock);
+		$method->setDescription($docblock->getShortDescription());
+		$method->setLongDescription($docblock->getLongDescription());
 		
 		foreach ($ref->getParameters() as $param) {
 			$method->addParameter(static::createParameter($param));
@@ -85,9 +92,5 @@ class PhpMethod extends AbstractPhpMember {
 		foreach ($this->parameters as $param) {
 			$docblock->appendTag($param->getDocblockTag());
 		}
-		
-// 		$this->setDocblock($docblock);
-		
-// 		return $docblock;
 	}
 }

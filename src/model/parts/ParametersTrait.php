@@ -22,6 +22,15 @@ trait ParametersTrait {
 
 		return $this;
 	}
+	
+	public function hasParameter($name) {
+		foreach ($this->parameters as $parameter) {
+			if ($parameter->getName() === $name) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	/**
 	 * @param string      $name

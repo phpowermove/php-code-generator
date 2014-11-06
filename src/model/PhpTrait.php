@@ -14,22 +14,16 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
 	public static function fromReflection(\ReflectionClass $ref) {
 		$trait = new static();
 		$trait->setQualifiedName($ref->name);
-		
-		if (null === self::$phpParser) {
-			self::$phpParser = new PhpParser();
-		}
-		$trait->setUseStatements(self::$phpParser->parseClass($ref));
+		$trait->setUseStatements(static::getUseStatementsFromReflection($ref));
 
-		if ($ref->getDocComment()) {
-			$docblock = new Docblock($ref);
-			$trait->setDocblock($docblock);
-			$trait->setDescription($docblock->getShortDescription());
-			$trait->setLongDescription($docblock->getLongDescription());
-		}
+		$docblock = new Docblock($ref);
+		$trait->setDocblock($docblock);
+		$trait->setDescription($docblock->getShortDescription());
+		$trait->setLongDescription($docblock->getLongDescription());
 		
 		// traits
-		foreach ($ref->getTraits() as $trait) {
-			$trait->addTrait(PhpTrait::fromReflection($trait));
+		foreach ($ref->getTraits() as $reflectionTrait) {
+			$trait->addTrait(PhpTrait::fromReflection($reflectionTrait));
 		}
 		
 		// properties
@@ -55,9 +49,5 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
 		foreach ($this->properties as $prop) {
 			$prop->generateDocblock();
 		}
-		
-// 		$this->setDocblock($docblock);
-		
-// 		return $docblock;
 	}
 }

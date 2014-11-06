@@ -24,20 +24,10 @@ class PhpConstant extends AbstractModel implements GenerateableInterface, Docblo
 		return $constant;
 	}
 
-	public static function fromReflection(\Reflection $ref) {
-		$constant = new static($ref->name);
-		$constant->setStatic($ref->isStatic())->setVisibility($ref->isPublic() ? self::VISIBILITY_PUBLIC : ($ref->isProtected() ? self::VISIBILITY_PROTECTED : self::VISIBILITY_PRIVATE));
-		
-		$docblock = new Docblock($ref);
-		$constant->setDocblock($docblock);
-		$constant->setDescription($docblock->getShortDescription());
-		
-		return $constant;
-	}
-
 	public function __construct($name = null, $value = null) {
 		$this->setName($name);
 		$this->setValue($value);
+		$this->docblock = new Docblock();
 	}
 
 	public function setValue($value) {

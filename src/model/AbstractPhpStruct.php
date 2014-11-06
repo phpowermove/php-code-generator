@@ -16,10 +16,11 @@
  */
 namespace gossi\codegen\model;
 
-use gossi\docblock\DocBlock;
+use gossi\docblock\Docblock;
 use gossi\codegen\model\parts\QualifiedNameTrait;
 use gossi\codegen\model\parts\DocblockTrait;
 use gossi\codegen\model\parts\LongDescriptionTrait;
+use Doctrine\Common\Annotations\PhpParser;
 
 /**
  * Represents an abstract php struct.
@@ -63,9 +64,17 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 	protected static function createProperty(\ReflectionProperty $property) {
 		return PhpProperty::fromReflection($property);
 	}
+	
+	protected static function getUseStatementsFromReflection(\ReflectionClass $ref) {
+		if (null === self::$phpParser) {
+			self::$phpParser = new PhpParser();
+		}
+		return self::$phpParser->parseClass($ref);
+	}
 
 	public function __construct($name = null) {
 		$this->setQualifiedName($name);
+		$this->docblock = new Docblock();
 	}
 
 	public function setRequiredFiles(array $files) {
@@ -86,7 +95,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 
 	public function setUseStatements(array $useStatements) {
 		$this->useStatements = $useStatements;
-		
+
 		return $this;
 	}
 
@@ -121,28 +130,28 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 		return isset($flipped[$qualifiedName]);
 	}
 
-	public function declareUses()
-	{
-		foreach (func_get_args() as $name) {
-			$this->declareUse($name);
-		}
-	}
+// 	public function declareUses()
+// 	{
+// 		foreach (func_get_args() as $name) {
+// 			$this->declareUse($name);
+// 		}
+// 	}
 
-	/**
-	 * @param string      $fullClassName
-	 * @param null|string $alias
-	 *
-	 * @return string
-	 */
-	public function declareUse($fullClassName, $alias = null)
-	{
-		$fullClassName = trim($fullClassName, '\\');
-		if (!$this->hasUseStatement($fullClassName)) {
-			$this->addUseStatement($fullClassName, $alias);
-		}
+// 	/**
+// 	 * @param string      $fullClassName
+// 	 * @param null|string $alias
+// 	 *
+// 	 * @return string
+// 	 */
+// 	public function declareUse($fullClassName, $alias = null)
+// 	{
+// 		$fullClassName = trim($fullClassName, '\\');
+// 		if (!$this->hasUseStatement($fullClassName)) {
+// 			$this->addUseStatement($fullClassName, $alias);
+// 		}
 
-		return $this->getUseAlias($fullClassName);
-	}
+// 		return $this->getUseAlias($fullClassName);
+// 	}
 
 	/**
 	 * @param string $qualifiedName
