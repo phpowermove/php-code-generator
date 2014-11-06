@@ -13,7 +13,7 @@ Install via Composer:
 ```json
 {
 	"require": {
-		"gossi/php-code-generator": "~1"
+		"gossi/php-code-generator": "dev-master"
 	}
 }
 ```
@@ -70,9 +70,14 @@ $code = $generator->generate($class);
 
 ### Code Generators
 
+The package ships with two generators, which are configurable with an associative array as constructor parameter. Alternatively if you have a project that uses the same configuration over and over again, extend the respective config object and pass it instead of the configuration array.
+
 **CodeGenerator**
 
 Creates code for a given model
+
+Config: `gossi\codegen\config\CodeGeneratorConfig` <br>
+Options:
 
 | Key | Type | Default Value | Description |
 | --- | ---- | ------------- | ----------- |
@@ -83,7 +88,8 @@ Creates code for a given model
 
 Creates a complete php file with the given model inside.
 
-Same options as `CodeGenerator` plus:
+Config: `gossi\codegen\config\CodeFileGeneratorConfig` <br>
+Options: Same options as `CodeGenerator` plus:
 
 | Key | Type | Default Value | Description |
 | --- | ---- | ------------- | ----------- |
