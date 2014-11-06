@@ -1,7 +1,7 @@
 <?php
 namespace gossi\codegen\model;
 
-use gossi\docblock\DocBlock;
+use gossi\docblock\Docblock;
 use gossi\codegen\model\parts\InterfacesTrait;
 use gossi\codegen\model\parts\ConstantsTrait;
 
@@ -12,12 +12,13 @@ class PhpInterface extends AbstractPhpStruct implements GenerateableInterface, C
 
 	public static function fromReflection(\ReflectionClass $ref) {
 		$interface = new static();
-		$interface->setQualifiedName($ref->name)->setAbstract($ref->isAbstract())->setFinal($ref->isFinal())->setConstants($ref->getConstants());
+		$interface->setQualifiedName($ref->name)
+			->setConstants($ref->getConstants());
 		
 		$interface->setUseStatements(self::$phpParser->parseClass($ref));
 		
 		if ($ref->getDocComment()) {
-			$docblock = new DocBlock($ref);
+			$docblock = new Docblock($ref);
 			$interface->setDocblock($docblock);
 			$interface->setDescription($docblock->getShortDescription());
 			$interface->setLongDescription($docblock->getLongDescription());
@@ -34,19 +35,15 @@ class PhpInterface extends AbstractPhpStruct implements GenerateableInterface, C
 		parent::__construct($name);
 	}
 
-	/*
-	 * (non-PHPdoc)
-	 * @see \CG\Model\AbstractModel::generateDocblock()
-	 */
 	public function generateDocblock() {
-		$docblock = parent::generateDocblock();
+		parent::generateDocblock();
 		
 		foreach ($this->constants as $constant) {
 			$constant->generateDocblock();
 		}
 		
-		$this->setDocblock($docblock);
+// 		$this->setDocblock($docblock);
 		
-		return $docblock;
+// 		return $docblock;
 	}
 }

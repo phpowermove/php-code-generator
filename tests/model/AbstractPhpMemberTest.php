@@ -40,7 +40,7 @@ class AbstractPhpMemberTest extends \PHPUnit_Framework_TestCase {
 	public function testSetGetDocblock() {
 		$member = $this->getMember();
 		
-		$this->assertNull($member->getDocblock());
+		$this->assertNotNull($member->getDocblock());
 		$this->assertSame($member, $member->setDocblock('foo'));
 		$this->assertEquals('foo', $member->getDocblock()->getShortDescription());
 	}

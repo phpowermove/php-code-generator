@@ -1,6 +1,8 @@
 <?php
 namespace gossi\codegen\model;
 
+use gossi\docblock\Docblock;
+
 interface DocblockInterface {
 
 	/**
@@ -12,7 +14,7 @@ interface DocblockInterface {
 
 	/**
 	 *
-	 * @return Docblock|string
+	 * @return Docblock
 	 */
 	public function getDocblock();
 }

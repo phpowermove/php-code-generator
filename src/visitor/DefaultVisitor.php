@@ -1,5 +1,4 @@
 <?php
-
 /*
  * Copyright 2011 Johannes M. Schmitt <schmittjoh@gmail.com>
  *
@@ -29,6 +28,7 @@ use gossi\codegen\model\PhpProperty;
 use gossi\codegen\model\PhpMethod;
 use gossi\codegen\model\PhpFunction;
 use gossi\codegen\utils\Writer;
+use gossi\docblock\Docblock;
 
 /**
  * The default code generation visitor.
@@ -66,13 +66,13 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 		}
 	}
 
-	private function visitNamespace(NamespaceInterface $model) {
+	protected function visitNamespace(NamespaceInterface $model) {
 		if ($namespace = $model->getNamespace()) {
 			$this->writer->writeln('namespace ' . $namespace . ';');
 		}
 	}
 
-	private function visitRequiredFiles(AbstractPhpStruct $struct) {
+	protected function visitRequiredFiles(AbstractPhpStruct $struct) {
 		if ($files = $struct->getRequiredFiles()) {
 			$this->ensureBlankLine();
 			foreach ($files as $file) {
@@ -81,7 +81,7 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 		}
 	}
 
-	private function visitUseStatements(AbstractPhpStruct $struct) {
+	protected function visitUseStatements(AbstractPhpStruct $struct) {
 		if ($useStatements = $struct->getUseStatements()) {
 			$this->ensureBlankLine();
 			foreach ($useStatements as $alias => $namespace) {
@@ -107,20 +107,21 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 		}
 	}
 
-	private function visitDocblock(DocblockInterface $model) {
-		if ($docblock = $model->getDocblock()) {
-			if ($docblock instanceof Docblock) {
-				$docblock = $docblock->build();
-			}
-			
-			if (!empty($docblock)) {
-				$this->ensureBlankLine();
-				$this->writer->writeln($docblock);
-			}
+	protected function visitDocblock(Docblock $docblock) {
+		if (!$docblock->isEmpty()) {
+			$this->writeDocblock($docblock);
+		}
+	}
+	
+	protected function writeDocblock(Docblock $docblock) {
+		$docblock = $docblock->toString();
+		if (!empty($docblock)) {
+			$this->ensureBlankLine();
+			$this->writer->writeln($docblock);
 		}
 	}
 
-	private function visitTraits(TraitsInterface $struct) {
+	protected function visitTraits(TraitsInterface $struct) {
 		foreach ($struct->getTraits() as $trait) {
 			$this->writer->write('use ');
 			$this->writer->writeln($trait . ';');
@@ -131,7 +132,7 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 		$this->visitNamespace($class);
 		$this->visitRequiredFiles($class);
 		$this->visitUseStatements($class);
-		$this->visitDocblock($class);
+		$this->visitDocblock($class->getDocblock());
 		
 		// signature
 		if ($class->isAbstract()) {
@@ -164,7 +165,7 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 		$this->visitNamespace($interface);
 		$this->visitRequiredFiles($interface);
 		$this->visitUseStatements($interface);
-		$this->visitDocblock($interface);
+		$this->visitDocblock($interface->getDocblock());
 		
 		// signature
 		$this->writer->write('interface ');
@@ -183,7 +184,7 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 		$this->visitNamespace($trait);
 		$this->visitRequiredFiles($trait);
 		$this->visitUseStatements($trait);
-		$this->visitDocblock($trait);
+		$this->visitDocblock($trait->getDocblock());
 		
 		// signature
 		$this->writer->write('trait ');
@@ -210,7 +211,7 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 	}
 
 	public function visitProperty(PhpProperty $property) {
-		$this->visitDocblock($property);
+		$this->visitDocblock($property->getDocblock());
 		
 		$this->writer->write($property->getVisibility() . ' ' . ($property->isStatic() ? 'static ' : '') . '$' . $property->getName());
 		
@@ -245,9 +246,7 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 	}
 
 	public function visitMethod(PhpMethod $method) {
-		if ($docblock = $method->getDocblock()) {
-			$this->writer->writeln($docblock)->rtrim();
-		}
+		$this->visitDocblock($method->getDocblock());
 		
 		if ($method->isAbstract()) {
 			$this->writer->write('abstract ');
@@ -281,7 +280,7 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 	public function endVisitingMethods() {
 	}
 
-	private function endVisitingStruct(AbstractPhpStruct $struct) {
+	protected function endVisitingStruct(AbstractPhpStruct $struct) {
 		$this->writer->outdent()->rtrim()->write('}');
 	}
 
@@ -302,9 +301,7 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 			$this->writer->write("namespace $namespace;\n\n");
 		}
 		
-		if ($docblock = $function->getDocblock()) {
-			$this->writer->write($docblock)->rtrim();
-		}
+		$this->visitDocblock($function->getDocblock());
 		
 		$this->writer->write("function {$function->getName()}(");
 		$this->writeParameters($function->getParameters());
@@ -315,7 +312,7 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 		return $this->writer->getContent();
 	}
 
-	private function writeParameters(array $parameters) {
+	protected function writeParameters(array $parameters) {
 		$first = true;
 		foreach ($parameters as $parameter) {
 			if (!$first) {

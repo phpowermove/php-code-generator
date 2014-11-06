@@ -12,22 +12,24 @@ class PhpTraitTest extends \PHPUnit_Framework_TestCase {
 		require_once __DIR__ . '/../fixture/DummyTrait.php';
 	}
 	
+	public function testFromReflection() {
+		$trait = new PhpTrait('DummyTrait');
+		$trait->setNamespace('gossi\codegen\tests\fixture');
+		$trait->setDescription('Dummy docblock');
+		$trait->generateDocblock();
+		$this->assertEquals($trait, PhpTrait::fromReflection(new \ReflectionClass('gossi\codegen\tests\fixture\DummyTrait')));
+	}
+	
 	public function testSignature() {
-		$expected = 'trait MyTrait {
-}';
+		$expected = 'trait MyTrait {'."\n". '}';
 		
 		$trait = PhpTrait::create('MyTrait');
 		
-		$codegen = new CodeGenerator();
-		$codegen->setGenerateDocblock(false);
-		$code = $codegen->generateCode($trait);
+		$codegen = new CodeGenerator(['generateDocblock' => false, 'generateEmptyDocblock' => false]);
+		$code = $codegen->generate($trait);
 		
 		$this->assertEquals($expected, $code);
 	}
 	
-	public function fromReflection() {
-		$trait = new PhpTrait('DummyTrait');
-		$trait->setNamespace('gossi\codegen\tests\fixture');
-		$this->assertEquals($trait, PhpTrait::fromReflection(new \ReflectionClass('gossi\codegen\tests\fixture\DummyTrait')));
-	}
+	
 }

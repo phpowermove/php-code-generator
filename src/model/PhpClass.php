@@ -2,7 +2,7 @@
 namespace gossi\codegen\model;
 
 use Doctrine\Common\Annotations\PhpParser;
-use gossi\docblock\DocBlock;
+use gossi\docblock\Docblock;
 use gossi\codegen\model\parts\InterfacesTrait;
 use gossi\codegen\model\parts\AbstractTrait;
 use gossi\codegen\model\parts\FinalTrait;
@@ -23,36 +23,38 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 
 	public static function fromReflection(\ReflectionClass $ref) {
 		$class = new static();
-		$class->setQualifiedName($ref->name)->setAbstract($ref->isAbstract())->setFinal($ref->isFinal())->setConstants($ref->getConstants());
-		
+		$class->setQualifiedName($ref->name)
+			->setAbstract($ref->isAbstract())
+			->setFinal($ref->isFinal())
+			->setConstants($ref->getConstants());
+
 		if (null === self::$phpParser) {
 			self::$phpParser = new PhpParser();
 		}
-		
 		$class->setUseStatements(self::$phpParser->parseClass($ref));
-		
+
 		if ($ref->getDocComment()) {
-			$docblock = new DocBlock($ref);
+			$docblock = new Docblock($ref);
 			$class->setDocblock($docblock);
 			$class->setDescription($docblock->getShortDescription());
 			$class->setLongDescription($docblock->getLongDescription());
 		}
-		
+
 		// methods
 		foreach ($ref->getMethods() as $method) {
 			$class->setMethod(static::createMethod($method));
 		}
-		
+
 		// properties
 		foreach ($ref->getProperties() as $property) {
 			$class->setProperty(static::createProperty($property));
 		}
-		
+
 		// traits
 		foreach ($ref->getTraits() as $trait) {
 			$class->addTrait(PhpTrait::fromReflection($trait));
 		}
-		
+
 		return $class;
 	}
 
@@ -75,7 +77,8 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 	}
 
 	public function generateDocblock() {
-		$docblock = parent::generateDocblock();
+		parent::generateDocblock();
+// 		$docblock = $this->getDocblock();
 		
 		foreach ($this->constants as $constant) {
 			$constant->generateDocblock();
@@ -85,9 +88,9 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 			$prop->generateDocblock();
 		}
 		
-		$this->setDocblock($docblock);
+// 		$this->setDocblock($docblock);
 		
-		return $docblock;
+// 		return $docblock;
 	}
 
 }

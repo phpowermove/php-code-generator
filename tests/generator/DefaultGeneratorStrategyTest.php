@@ -1,7 +1,7 @@
 <?php
 namespace gossi\codegen\tests\generator;
 
-use gossi\codegen\strategy\DefaultGeneratorStrategy;
+use gossi\codegen\generator\DefaultGeneratorStrategy;
 use gossi\codegen\model\PhpClass;
 use gossi\codegen\model\PhpMethod;
 use gossi\codegen\model\PhpProperty;

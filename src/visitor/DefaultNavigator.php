@@ -165,13 +165,6 @@ class DefaultNavigator {
 				}
 				
 				return strcasecmp($a->getName(), $b->getName());
-				
-				// $rs = strcasecmp($a->getName(), $b->getName());
-				// if (0 === $rs) {
-				// return 0;
-				// }
-				
-				// return $rs > 0 ? -1 : 1;
 			};
 		}
 		
@@ -193,13 +186,6 @@ class DefaultNavigator {
 				}
 				
 				return strcasecmp($a->getName(), $b->getName());
-				
-				// $rs = strcasecmp($a->getName(), $b->getName());
-				// if (0 === $rs) {
-				// return 0;
-				// }
-				
-				// return $rs > 0 ? -1 : 1;
 			};
 		}
 		

@@ -12,17 +12,16 @@ class CodeGeneratorTest extends \PHPUnit_Framework_TestCase {
 
 	public function testGeneratorWithComments() {
 		$codegen = new CodeGenerator();
-		$code = $codegen->generateCode($this->getClass());
+		$code = $codegen->generate($this->getClass());
 		
-		$this->assertEquals($code, $this->getContent('CommentedGenerationTestClass.php'));
+		$this->assertEquals($this->getContent('CommentedGenerationTestClass.php'), $code);
 	}
 
 	public function testGenerator() {
-		$codegen = new CodeGenerator();
-		$codegen->setGenerateDocblock(false);
-		$code = $codegen->generateCode($this->getClass());
+		$codegen = new CodeGenerator(['generateDocblock' => false, 'generateEmptyDocblock' => false]);
+		$code = $codegen->generate($this->getClass());
 		
-		$this->assertEquals($code, $this->getContent('GenerationTestClass_A.php'));
+		$this->assertEquals($this->getContent('GenerationTestClass_A.php'), $code);
 	}
 
 	/**
@@ -55,9 +54,8 @@ class CodeGeneratorTest extends \PHPUnit_Framework_TestCase {
 }';
 		$fn = PhpFunction::create('fn')->addParameter(PhpParameter::create('a')->setType('int'));
 		
-		$codegen = new CodeGenerator();
-		$codegen->setGenerateDocblock(false);
-		$code = $codegen->generateCode($fn);
+		$codegen = new CodeGenerator(['generateDocblock' => false, 'generateEmptyDocblock' => false]);
+		$code = $codegen->generate($fn);
 		
 		$this->assertEquals($expected, $code);
 	}
@@ -67,9 +65,8 @@ class CodeGeneratorTest extends \PHPUnit_Framework_TestCase {
 }';
 		$fn = PhpFunction::create('fn')->addParameter(PhpParameter::create('a')->setType('Response'));
 		
-		$codegen = new CodeGenerator();
-		$codegen->setGenerateDocblock(false);
-		$code = $codegen->generateCode($fn);
+		$codegen = new CodeGenerator(['generateDocblock' => false, 'generateEmptyDocblock' => false]);
+		$code = $codegen->generate($fn);
 		
 		$this->assertEquals($expected, $code);
 	}

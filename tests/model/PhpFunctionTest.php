@@ -1,7 +1,7 @@
 <?php
 namespace gossi\codegen\tests\model;
 
-use gossi\docblock\DocBlock;
+use gossi\docblock\Docblock;
 use gossi\codegen\model\PhpFunction;
 use gossi\codegen\model\PhpParameter;
 
@@ -14,7 +14,7 @@ class PhpFunctionTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testFromReflection() {
-		$doc = new DocBlock('/**
+		$doc = new Docblock('/**
  * Makes foo with bar
  * 
  * @param string $baz

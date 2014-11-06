@@ -2,7 +2,7 @@
 namespace gossi\codegen\tests\model;
 
 // use gossi\codegen\tests\model\fixture\Entity;
-use gossi\docblock\DocBlock;
+use gossi\docblock\Docblock;
 use gossi\codegen\model\PhpClass;
 use gossi\codegen\model\PhpMethod;
 use gossi\codegen\model\PhpProperty;
@@ -21,12 +21,12 @@ class PhpClassTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testFromReflection() {
-		$classDoc = new DocBlock('/**
+		$classDoc = new Docblock('/**
  * Doc Comment.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */');
-		$propDoc = new DocBlock('/**
+		$propDoc = new Docblock('/**
  * @var integer
  */');
 		$class = new PhpClass();
@@ -43,7 +43,7 @@ class PhpClassTest extends \PHPUnit_Framework_TestCase {
 				->setVisibility('private')
 				->setDefaultValue(false));
 		
-		$methodDoc = new DocBlock('/**
+		$methodDoc = new Docblock('/**
  * Another doc comment.
  *
  * @param unknown_type $a
@@ -52,8 +52,7 @@ class PhpClassTest extends \PHPUnit_Framework_TestCase {
  * @param string       $d
  * @param callable     $e
  */');
-		$method = PhpMethod::create()
-			->setName('__construct')
+		$method = PhpMethod::create('__construct')
 			->setFinal(true)
 			->addParameter(new PhpParameter('a'))
 			->addParameter(PhpParameter::create()
@@ -74,8 +73,8 @@ class PhpClassTest extends \PHPUnit_Framework_TestCase {
 			->setLongDescription($methodDoc->getLongDescription());
 
 		$class->setMethod($method);
-		$class->setMethod(PhpMethod::create()->setName('foo')->setAbstract(true)->setVisibility('protected'));
-		$class->setMethod(PhpMethod::create()->setName('bar')->setStatic(true)->setVisibility('private'));
+		$class->setMethod(PhpMethod::create('foo')->setAbstract(true)->setVisibility('protected'));
+		$class->setMethod(PhpMethod::create('bar')->setStatic(true)->setVisibility('private'));
 		
 		$this->assertEquals($class, PhpClass::fromReflection(new \ReflectionClass('gossi\codegen\tests\fixture\Entity')));
 	}

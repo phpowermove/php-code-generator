@@ -18,7 +18,7 @@
 namespace gossi\codegen\model;
 
 use gossi\docblock\tags\ReturnTag;
-use gossi\docblock\DocBlock;
+use gossi\docblock\Docblock;
 use gossi\codegen\model\parts\AbstractTrait;
 use gossi\codegen\model\parts\FinalTrait;
 use gossi\codegen\model\parts\ReferenceReturnTrait;
@@ -43,7 +43,7 @@ class PhpMethod extends AbstractPhpMember {
 	 *
 	 * @param string|null $name        	
 	 */
-	public static function create($name = null) {
+	public static function create($name) {
 		return new static($name);
 	}
 
@@ -52,7 +52,7 @@ class PhpMethod extends AbstractPhpMember {
 		$method->setFinal($ref->isFinal())->setAbstract($ref->isAbstract())->setStatic($ref->isStatic())->setVisibility($ref->isPublic() ? self::VISIBILITY_PUBLIC : ($ref->isProtected() ? self::VISIBILITY_PROTECTED : self::VISIBILITY_PRIVATE))->setReferenceReturned($ref->returnsReference())->setBody(ReflectionUtils::getFunctionBody($ref));
 		
 		if ($ref->getDocComment()) {
-			$docblock = new DocBlock($ref);
+			$docblock = new Docblock($ref);
 			$method->setDocblock($docblock);
 			$method->setDescription($docblock->getShortDescription());
 			$method->setLongDescription($docblock->getLongDescription());
@@ -73,15 +73,8 @@ class PhpMethod extends AbstractPhpMember {
 		return PhpParameter::fromReflection($parameter);
 	}
 
-	/*
-	 * (non-PHPdoc)
-	 * @see \CG\Model\AbstractModel::generateDocblock()
-	 */
 	public function generateDocblock() {
 		$docblock = $this->getDocblock();
-		if (!$docblock instanceof Docblock) {
-			$docblock = new DocBlock();
-		}
 		$docblock->setShortDescription($this->getDescription());
 		$docblock->setLongDescription($this->getLongDescription());
 		
@@ -93,8 +86,8 @@ class PhpMethod extends AbstractPhpMember {
 			$docblock->appendTag($param->getDocblockTag());
 		}
 		
-		$this->setDocblock($docblock);
+// 		$this->setDocblock($docblock);
 		
-		return $docblock;
+// 		return $docblock;
 	}
 }

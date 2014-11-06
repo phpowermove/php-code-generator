@@ -1,7 +1,7 @@
 <?php
 namespace gossi\codegen\model;
 
-use gossi\docblock\DocBlock;
+use gossi\docblock\Docblock;
 use gossi\docblock\tags\VarTag;
 use gossi\codegen\model\parts\NameTrait;
 use gossi\codegen\model\parts\LongDescriptionTrait;
@@ -28,7 +28,7 @@ class PhpConstant extends AbstractModel implements GenerateableInterface, Docblo
 		$constant = new static($ref->name);
 		$constant->setStatic($ref->isStatic())->setVisibility($ref->isPublic() ? self::VISIBILITY_PUBLIC : ($ref->isProtected() ? self::VISIBILITY_PROTECTED : self::VISIBILITY_PRIVATE));
 		
-		$docblock = new DocBlock($ref);
+		$docblock = new Docblock($ref);
 		$constant->setDocblock($docblock);
 		$constant->setDescription($docblock->getShortDescription());
 		
@@ -52,16 +52,15 @@ class PhpConstant extends AbstractModel implements GenerateableInterface, Docblo
 
 	public function generateDocblock() {
 		$docblock = $this->getDocblock();
-		if (!$docblock instanceof DocBlock) {
-			$docblock = new DocBlock();
-		}
 		$docblock->setShortDescription($this->getDescription());
 		$docblock->setLongDescription($this->getLongDescription());
 		
-		$docblock->appendTag(VarTag::create()->setType($this->getType())->setDescription($this->getTypeDescription()));
-		
-		$this->setDocblock($docblock);
-		
-		return $docblock;
+		$type = $this->getType();
+		if (!empty($type)) {
+			$docblock->appendTag(VarTag::create()
+				->setType($type)
+				->setDescription($this->getTypeDescription())
+			);
+		}
 	}
 }

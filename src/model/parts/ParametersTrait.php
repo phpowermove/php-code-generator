@@ -26,12 +26,11 @@ trait ParametersTrait {
 	/**
 	 * @param string      $name
 	 * @param null|string $type
-	 * @param mixed       $defaultValue omit the argument to define now default value
+	 * @param mixed       $defaultValue omit the argument to define no default value
 	 *
 	 * @return $this
 	 */
-	public function addSimpleParameter($name, $type = null, $defaultValue = null)
-	{
+	public function addSimpleParameter($name, $type = null, $defaultValue = null) {
 		$parameter = new PhpParameter($name);
 		$parameter->setType($type);
 
@@ -47,12 +46,11 @@ trait ParametersTrait {
 	 * @param string      $name
 	 * @param null|string $type
 	 * @param null|string $typeDescription
-	 * @param mixed       $defaultValue omit the argument to define now default value
+	 * @param mixed       $defaultValue omit the argument to define no default value
 	 *
 	 * @return $this
 	 */
-	public function addSimpleDescParameter($name, $type = null, $typeDescription = null, $defaultValue = null)
-	{
+	public function addSimpleDescParameter($name, $type = null, $typeDescription = null, $defaultValue = null) {
 		$parameter = new PhpParameter($name);
 		$parameter->setType($type);
 		$parameter->setTypeDescription($typeDescription);

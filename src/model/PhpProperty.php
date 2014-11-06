@@ -18,7 +18,7 @@
 namespace gossi\codegen\model;
 
 use gossi\docblock\tags\VarTag;
-use gossi\docblock\DocBlock;
+use gossi\docblock\Docblock;
 use gossi\codegen\model\parts\DefaultValueTrait;
 
 /**
@@ -31,10 +31,9 @@ class PhpProperty extends AbstractPhpMember {
 	use DefaultValueTrait;
 
 	/**
-	 *
-	 * @param string|null $name        	
+	 * @param string|null $name
 	 */
-	public static function create($name = null) {
+	public static function create($name) {
 		return new static($name);
 	}
 
@@ -43,7 +42,7 @@ class PhpProperty extends AbstractPhpMember {
 		$property->setStatic($ref->isStatic())->setVisibility($ref->isPublic() ? self::VISIBILITY_PUBLIC : ($ref->isProtected() ? self::VISIBILITY_PROTECTED : self::VISIBILITY_PRIVATE));
 		
 		if ($ref->getDocComment()) {
-			$docblock = new DocBlock($ref);
+			$docblock = new Docblock($ref);
 			$property->setDocblock($docblock);
 			$property->setDescription($docblock->getShortDescription());
 		}
@@ -58,16 +57,15 @@ class PhpProperty extends AbstractPhpMember {
 
 	public function generateDocblock() {
 		$docblock = $this->getDocblock();
-		if (!$docblock instanceof Docblock) {
-			$docblock = new DocBlock();
-		}
 		$docblock->setShortDescription($this->getDescription());
 		$docblock->setLongDescription($this->getLongDescription());
 		
-		$docblock->appendTag(VarTag::create()->setType($this->getType())->setDescription($this->getTypeDescription()));
-		
-		$this->setDocblock($docblock);
-		
-		return $docblock;
+		$type = $this->getType();
+		if (!empty($type)) {
+			$docblock->appendTag(VarTag::create()
+				->setType($type)
+				->setDescription($this->getTypeDescription())
+			);
+		}
 	}
 }

@@ -2,36 +2,61 @@
 namespace gossi\codegen\generator;
 
 use gossi\codegen\model\GenerateableInterface;
+use gossi\codegen\config\CodeGeneratorConfig;
+use gossi\codegen\visitor\EmptyDocblockVisitor;
+use gossi\codegen\visitor\DefaultVisitor;
 
-class CodeGenerator extends AbstractCodeGenerator {
+class CodeGenerator {
 
-	private $generateDocblock = true;
-
+	private $config;
+	
 	/**
-	 * Returns whether docblocks should be generated prior to code generation
-	 *
-	 * @return boolean
+	 * @var DefaultGeneratorStrategy
 	 */
-	public function getGenerateDocblock() {
-		return $this->generateDocblock;
+	private $strategy;
+	
+	/**
+	 * 
+	 * @param CodeGeneratorConfig|array $config
+	 */
+	public function __construct($config = null) {
+		if (is_array($config)) {
+			$this->config = new CodeGeneratorConfig($config);
+		} else if ($config === null) {
+			$this->config = new CodeGeneratorConfig();
+		} else if ($config instanceof CodeGeneratorConfig) {
+			$this->config = $config;
+		}
+
+		$this->init();
+	}
+	
+	protected function init() {
+		if ($this->config->getGenerateEmptyDocblock()) {
+			$visitor = new EmptyDocblockVisitor();
+		} else {
+			$visitor = new DefaultVisitor();
+		}
+		$this->strategy = new DefaultGeneratorStrategy($visitor);
+	}
+	
+	/**
+	 * @return CodeGeneratorConfig
+	 */
+	public function getConfig() {
+		return $this->config;
 	}
 
-	/**
-	 * Sets whether docblocks should be generated prior to code generation
-	 *
-	 * @param boolean $generateDocblock        	
-	 * @return CodeGenerator $this
-	 */
-	public function setGenerateDocblock($generateDocblock) {
-		$this->generateDocblock = $generateDocblock;
-		return $this;
+	public function getGeneratorStrategy() {
+		return $this->strategy;
 	}
 
-	public function generateCode(GenerateableInterface $model) {
-		if ($this->generateDocblock) {
+	public function generate(GenerateableInterface $model) {
+		if ($this->config->getGenerateDocblock()) {
 			$model->generateDocblock();
 		}
-		
-		return $this->doGenerateCode($model);
+
+		return $this->strategy->generate($model);
 	}
+	
 }

@@ -238,9 +238,6 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 
 	public function generateDocblock() {
 		$docblock = $this->getDocblock();
-		if (!$docblock instanceof DocBlock) {
-			$docblock = new DocBlock();
-		}
 		$docblock->setShortDescription($this->getDescription());
 		$docblock->setLongDescription($this->getLongDescription());
 		
@@ -248,6 +245,6 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 			$method->generateDocblock();
 		}
 		
-		return $docblock;
+// 		$this->setDocblock($docblock);
 	}
 }

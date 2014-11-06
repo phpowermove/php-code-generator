@@ -1,10 +1,10 @@
 <?php
 namespace gossi\codegen\model;
 
-use Doctrine\Common\Annotations\PhpParser;
-use gossi\docblock\DocBlock;
+use gossi\docblock\Docblock;
 use gossi\codegen\model\parts\PropertiesTrait;
 use gossi\codegen\model\parts\TraitsTrait;
+use Doctrine\Common\Annotations\PhpParser;
 
 class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, TraitsInterface {
 	
@@ -18,24 +18,13 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
 		if (null === self::$phpParser) {
 			self::$phpParser = new PhpParser();
 		}
-		
 		$trait->setUseStatements(self::$phpParser->parseClass($ref));
-		
+
 		if ($ref->getDocComment()) {
-			$docblock = new DocBlock($ref);
+			$docblock = new Docblock($ref);
 			$trait->setDocblock($docblock);
 			$trait->setDescription($docblock->getShortDescription());
 			$trait->setLongDescription($docblock->getLongDescription());
-		}
-		
-		// methods
-		foreach ($ref->getMethods() as $method) {
-			$trait->setMethod(static::createMethod($method));
-		}
-		
-		// properties
-		foreach ($ref->getProperties() as $property) {
-			$trait->setProperty(static::createProperty($property));
 		}
 		
 		// traits
@@ -43,6 +32,16 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
 			$trait->addTrait(PhpTrait::fromReflection($trait));
 		}
 		
+		// properties
+		foreach ($ref->getProperties() as $property) {
+			$trait->setProperty(static::createProperty($property));
+		}
+		
+		// methods
+		foreach ($ref->getMethods() as $method) {
+			$trait->setMethod(static::createMethod($method));
+		}
+
 		return $trait;
 	}
 
@@ -50,19 +49,15 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
 		parent::__construct($name);
 	}
 
-	/*
-	 * (non-PHPdoc)
-	 * @see \CG\Model\AbstractModel::generateDocblock()
-	 */
 	public function generateDocblock() {
-		$docblock = parent::generateDocblock();
+		parent::generateDocblock();
 		
 		foreach ($this->properties as $prop) {
 			$prop->generateDocblock();
 		}
 		
-		$this->setDocblock($docblock);
+// 		$this->setDocblock($docblock);
 		
-		return $docblock;
+// 		return $docblock;
 	}
 }

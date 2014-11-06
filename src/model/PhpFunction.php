@@ -17,7 +17,7 @@
  */
 namespace gossi\codegen\model;
 
-use gossi\docblock\DocBlock;
+use gossi\docblock\Docblock;
 use gossi\docblock\tags\ReturnTag;
 use gossi\codegen\model\parts\QualifiedNameTrait;
 use gossi\codegen\model\parts\DocblockTrait;
@@ -48,7 +48,7 @@ class PhpFunction extends AbstractModel implements GenerateableInterface, Namesp
 			->setReferenceReturned($ref->returnsReference())
 			->setBody(ReflectionUtils::getFunctionBody($ref));
 		
-		$docblock = new DocBlock($ref);
+		$docblock = new Docblock($ref);
 		$function->setDocblock($docblock);
 		$function->setDescription($docblock->getShortDescription());
 		$function->setLongDescription($docblock->getLongDescription());
@@ -71,15 +71,8 @@ class PhpFunction extends AbstractModel implements GenerateableInterface, Namesp
 		$this->setQualifiedName($name);
 	}
 
-	/*
-	 * (non-PHPdoc)
-	 * @see \CG\Model\AbstractModel::generateDocblock()
-	 */
 	public function generateDocblock() {
 		$docblock = $this->getDocblock();
-		if (!$docblock instanceof Docblock) {
-			$docblock = new DocBlock();
-		}
 		$docblock->setShortDescription($this->getDescription());
 		$docblock->setLongDescription($this->getLongDescription());
 		
@@ -92,9 +85,5 @@ class PhpFunction extends AbstractModel implements GenerateableInterface, Namesp
 		foreach ($this->parameters as $param) {
 			$docblock->appendTag($param->getDocblockTag());
 		}
-		
-		$this->setDocblock($docblock);
-		
-		return $docblock;
 	}
 }

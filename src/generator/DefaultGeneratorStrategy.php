@@ -14,8 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-namespace gossi\codegen\strategy;
-
+namespace gossi\codegen\generator;
 
 use gossi\codegen\visitor\GeneratorVisitorInterface;
 use gossi\codegen\visitor\DefaultNavigator;
@@ -30,7 +29,7 @@ use gossi\codegen\model\GenerateableInterface;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class DefaultGeneratorStrategy implements GeneratorStrategyInterface {
+class DefaultGeneratorStrategy {
 
 	private $navigator;
 
@@ -38,7 +37,7 @@ class DefaultGeneratorStrategy implements GeneratorStrategyInterface {
 
 	public function __construct(GeneratorVisitorInterface $visitor = null) {
 		$this->navigator = new DefaultNavigator();
-		$this->visitor = $visitor ?  : new DefaultVisitor();
+		$this->visitor = $visitor ?: new DefaultVisitor();
 	}
 
 	public function setConstantSortFunc(\Closure $func = null) {

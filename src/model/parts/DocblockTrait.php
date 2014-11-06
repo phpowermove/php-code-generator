@@ -1,25 +1,25 @@
 <?php
 namespace gossi\codegen\model\parts;
 
-use gossi\docblock\DocBlock;
+use gossi\docblock\Docblock;
 
 trait DocblockTrait {
 
 	/**
 	 *
-	 * @var DocBlock
+	 * @var Docblock
 	 */
 	private $docblock;
 
 	/**
 	 *
-	 * @param DocBlock|string $doc        	
+	 * @param Docblock|string $doc        	
 	 * @return $this
 	 */
 	public function setDocblock($doc) {
 		if (is_string($doc)) {
 			$doc = trim($doc);
-			$doc = new DocBlock($doc);
+			$doc = new Docblock($doc);
 		}
 		$this->docblock = $doc;
 		
@@ -28,9 +28,12 @@ trait DocblockTrait {
 
 	/**
 	 *
-	 * @return DocBlock
+	 * @return Docblock
 	 */
 	public function getDocblock() {
+		if ($this->docblock === null) {
+			$this->docblock = new Docblock();
+		}
 		return $this->docblock;
 	}
 }
