@@ -32,7 +32,8 @@ class CodeFileGenerator extends CodeGenerator {
 	public function generate(GenerateableInterface $model) {
 		$content = "<?php\n";
 		
-		if (($comment = $this->config->getHeaderComment()) !== null) {
+		$comment = $this->config->getHeaderComment();
+		if (!empty($comment)) {
 			$docblock = new Docblock();
 			$docblock->setLongDescription($comment);
 			$content .= str_replace('/**', '/*', $docblock->toString()) . "\n";
