@@ -13,11 +13,11 @@ class CodeFileGenerator extends CodeGenerator {
 	public function __construct($config = null) {
 		if (is_array($config)) {
 			$this->config = new CodeFileGeneratorConfig($config);
-		} else if ($config === null) {
-			$this->config = new CodeFileGeneratorConfig();
 		} else if ($config instanceof CodeFileGeneratorConfig) {
 			$this->config = $config;
-		}
+		} else {
+			$this->config = new CodeFileGeneratorConfig();
+		} 
 		
 		$this->init();
 	}

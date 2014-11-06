@@ -8,25 +8,25 @@ use gossi\codegen\visitor\DefaultVisitor;
 
 class CodeGenerator {
 
-	private $config;
+	protected $config;
 	
 	/**
 	 * @var DefaultGeneratorStrategy
 	 */
-	private $strategy;
+	protected $strategy;
 	
 	/**
 	 * 
 	 * @param CodeGeneratorConfig|array $config
 	 */
 	public function __construct($config = null) {
-		if (is_array($config)) {
+	if (is_array($config)) {
 			$this->config = new CodeGeneratorConfig($config);
-		} else if ($config === null) {
-			$this->config = new CodeGeneratorConfig();
 		} else if ($config instanceof CodeGeneratorConfig) {
 			$this->config = $config;
-		}
+		} else {
+			$this->config = new CodeGeneratorConfig();
+		} 
 
 		$this->init();
 	}
