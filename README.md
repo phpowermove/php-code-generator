@@ -16,6 +16,7 @@ Install via Composer:
 		"gossi/php-code-generator": "~1"
 	}
 }
+```
 
 ## Usage
 
