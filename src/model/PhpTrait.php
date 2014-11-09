@@ -4,7 +4,7 @@ namespace gossi\codegen\model;
 use gossi\docblock\Docblock;
 use gossi\codegen\model\parts\PropertiesTrait;
 use gossi\codegen\model\parts\TraitsTrait;
-use Doctrine\Common\Annotations\PhpParser;
+use gossi\codegen\utils\ReflectionUtils;
 
 class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, TraitsInterface {
 	
@@ -14,7 +14,7 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
 	public static function fromReflection(\ReflectionClass $ref) {
 		$trait = new static();
 		$trait->setQualifiedName($ref->name);
-		$trait->setUseStatements(static::getUseStatementsFromReflection($ref));
+		$trait->setUseStatements(ReflectionUtils::getUseStatements($ref));
 
 		$docblock = new Docblock($ref);
 		$trait->setDocblock($docblock);

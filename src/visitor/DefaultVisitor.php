@@ -104,6 +104,7 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 				
 				$this->writer->write(";\n");
 			}
+			$this->ensureBlankLine();
 		}
 	}
 

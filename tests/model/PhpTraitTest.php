@@ -21,7 +21,7 @@ class PhpTraitTest extends \PHPUnit_Framework_TestCase {
 		$trait->setMethod(PhpMethod::create('foo')->setVisibility('public'));
 		$trait->setProperty(PhpProperty::create('iAmHidden')->setVisibility('private'));
 		// @TODO: this alias is only a workaround
-		$trait->addUseStatement('gossi\\codegen\\tests\\fixture\\VeryDummyTrait', 'verydummytrait');
+		$trait->addUseStatement('gossi\\codegen\\tests\\fixture\\VeryDummyTrait');
 		$trait->addTrait('VeryDummyTrait');
 		$trait->generateDocblock();
 		$this->assertEquals($trait, PhpTrait::fromReflection(new \ReflectionClass('gossi\\codegen\\tests\\fixture\\DummyTrait')));

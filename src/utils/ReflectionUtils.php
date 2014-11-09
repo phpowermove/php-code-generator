@@ -17,6 +17,7 @@
  */
 namespace gossi\codegen\utils;
 
+use gossi\tokenizer\PhpTokenizer;
 class ReflectionUtils {
 
 	/**
@@ -70,7 +71,62 @@ class ReflectionUtils {
 		$close = strrpos($body, '}');
 		return trim(substr($body, $open + 1, (strlen($body) - $close) * -1));
 	}
-
-	final private function __construct() {
+	
+	public static function getUseStatements(\ReflectionClass $class) {
+		$content = '';
+		$file = file($class->getFileName());
+		for ($i = 0; $i < $class->getStartLine(); $i++) {
+			$content .= $file[$i];
+		}
+		$tokenizer = new PhpTokenizer();
+		$tokens = $tokenizer->tokenize($content);
+		$tokens = $tokens->filter(function ($token) {
+			if ($token->type !== T_WHITESPACE && $token->type !== T_COMMENT && $token->type !== T_DOC_COMMENT) {
+				return $token;
+			}
+		});
+		$statements = [];
+		
+		while (($token = $tokens->next())) {
+			if ($token->type === T_USE) {
+				$explicitAlias = false;
+				$alias = '';
+				$class = '';
+				
+				while (($token = $tokens->next())) {
+					$isNameToken = $token->type === T_STRING || $token->type === T_NS_SEPARATOR;
+					if (!$explicitAlias && $isNameToken) {
+						$class .= $token->contents;
+					} else if ($explicitAlias && $isNameToken) {
+						$alias .= $token->contents;
+					} else if ($token->type === T_AS) {
+						$explicitAlias = true;
+						$alias = '';
+					} else if ($token->contents === ',') {
+						if ($explicitAlias) {
+							$statements[$alias] = $class;
+						} else {
+							$statements[] = $class;
+						}
+						
+						$class = '';
+						$alias = '';
+						$explicitAlias = false;
+					} else if ($token->contents === ';') {
+						if ($explicitAlias) {
+							$statements[$alias] = $class;
+						} else {
+							$statements[] = $class;
+						}
+						break;
+					} else {
+						break;
+					}
+				}
+			}
+		}
+		
+		return $statements;
 	}
+
 }

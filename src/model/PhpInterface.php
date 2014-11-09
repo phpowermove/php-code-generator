@@ -4,6 +4,7 @@ namespace gossi\codegen\model;
 use gossi\docblock\Docblock;
 use gossi\codegen\model\parts\InterfacesTrait;
 use gossi\codegen\model\parts\ConstantsTrait;
+use gossi\codegen\utils\ReflectionUtils;
 
 class PhpInterface extends AbstractPhpStruct implements GenerateableInterface, ConstantsInterface {
 	
@@ -14,7 +15,7 @@ class PhpInterface extends AbstractPhpStruct implements GenerateableInterface, C
 		$interface = new static();
 		$interface->setQualifiedName($ref->name)
 			->setConstants($ref->getConstants())
-			->setUseStatements(static::getUseStatementsFromReflection($ref));
+			->setUseStatements(ReflectionUtils::getUseStatements($ref));
 		
 		$docblock = new Docblock($ref);
 		$interface->setDocblock($docblock);

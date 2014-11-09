@@ -3,6 +3,8 @@ namespace gossi\codegen\tests\model;
 
 use gossi\codegen\model\PhpClass;
 use gossi\codegen\model\PhpMethod;
+use gossi\codegen\model\PhpTrait;
+use gossi\codegen\utils\ReflectionUtils;
 
 class AbstractPhpStructTest extends \PHPUnit_Framework_TestCase {
 
@@ -50,6 +52,15 @@ class AbstractPhpStructTest extends \PHPUnit_Framework_TestCase {
 		$this->assertTrue($class->hasUseStatement('bar'));
 		$class->removeUseStatement('bar');
 		$this->assertFalse($class->hasUseStatement('bar'));
+		
+		// from reflection
+		require_once __DIR__ . '/../fixture/DummyTrait.php';
+		$statements = ReflectionUtils::getUseStatements(new \ReflectionClass('gossi\\codegen\\tests\\fixture\\DummyTrait'));
+		$this->assertEquals(['gossi\\codegen\\tests\\fixture\\VeryDummyTrait'], $statements);
+		
+		require_once __DIR__ . '/../fixture/ClassWithTraits.php';
+		$statements = ReflectionUtils::getUseStatements(new \ReflectionClass('gossi\\codegen\\tests\\fixture\\ClassWithTraits'));
+		$this->assertEquals(['DT' => 'gossi\\codegen\\tests\\fixture\\DummyTrait'], $statements);
 	}
 
 	public function testMethods() {

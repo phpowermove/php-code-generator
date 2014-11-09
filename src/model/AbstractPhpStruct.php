@@ -20,7 +20,6 @@ use gossi\docblock\Docblock;
 use gossi\codegen\model\parts\QualifiedNameTrait;
 use gossi\codegen\model\parts\DocblockTrait;
 use gossi\codegen\model\parts\LongDescriptionTrait;
-use Doctrine\Common\Annotations\PhpParser;
 
 /**
  * Represents an abstract php struct.
@@ -64,13 +63,6 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 	protected static function createProperty(\ReflectionProperty $property) {
 		return PhpProperty::fromReflection($property);
 	}
-	
-	protected static function getUseStatementsFromReflection(\ReflectionClass $ref) {
-		if (null === self::$phpParser) {
-			self::$phpParser = new PhpParser();
-		}
-		return self::$phpParser->parseClass($ref);
-	}
 
 	public function __construct($name = null) {
 		$this->setQualifiedName($name);
@@ -94,7 +86,10 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 	}
 
 	public function setUseStatements(array $useStatements) {
-		$this->useStatements = $useStatements;
+		$this->useStatements = [];
+		foreach ($useStatements as $alias => $useStatement) {
+			$this->addUseStatement($useStatement, $alias);
+		}
 
 		return $this;
 	}
@@ -106,7 +101,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 	 * @return $this
 	 */
 	public function addUseStatement($qualifiedName, $alias = null) {
-		if (null === $alias) {
+		if (!is_string($alias)) {
 			if (false === strpos($qualifiedName, '\\')) {
 				$alias = $qualifiedName;
 			} else {
@@ -129,29 +124,6 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 		$flipped = array_flip($this->useStatements);
 		return isset($flipped[$qualifiedName]);
 	}
-
-// 	public function declareUses()
-// 	{
-// 		foreach (func_get_args() as $name) {
-// 			$this->declareUse($name);
-// 		}
-// 	}
-
-// 	/**
-// 	 * @param string      $fullClassName
-// 	 * @param null|string $alias
-// 	 *
-// 	 * @return string
-// 	 */
-// 	public function declareUse($fullClassName, $alias = null)
-// 	{
-// 		$fullClassName = trim($fullClassName, '\\');
-// 		if (!$this->hasUseStatement($fullClassName)) {
-// 			$this->addUseStatement($fullClassName, $alias);
-// 		}
-
-// 		return $this->getUseAlias($fullClassName);
-// 	}
 
 	/**
 	 * @param string $qualifiedName
@@ -253,7 +225,5 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 		foreach ($this->methods as $method) {
 			$method->generateDocblock();
 		}
-		
-// 		$this->setDocblock($docblock);
 	}
 }

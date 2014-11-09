@@ -7,6 +7,7 @@ use gossi\codegen\model\PhpMethod;
 use gossi\codegen\model\PhpFunction;
 use gossi\codegen\model\PhpParameter;
 use gossi\codegen\model\PhpProperty;
+use gossi\codegen\generator\CodeFileGenerator;
 
 class CodeGeneratorTest extends \PHPUnit_Framework_TestCase {
 
@@ -69,5 +70,25 @@ class CodeGeneratorTest extends \PHPUnit_Framework_TestCase {
 		$code = $codegen->generate($fn);
 		
 		$this->assertEquals($expected, $code);
+	}
+	
+	public function testUseStatements() {
+		$class = new PhpClass('Foo\\Bar');
+		$class->addUseStatement('Bam\\Baz');
+		
+		$codegen = new CodeFileGenerator(['generateDocblock' => false, 'generateEmptyDocblock' => false]);
+		$code = $codegen->generate($class);
+
+		$this->assertEquals($this->getContent('FooBar.php'), $code);
+	}
+	
+	public function testUseStatementsWithAlias() {
+		$class = new PhpClass('Foo\\Bar');
+		$class->addUseStatement('Bam\\Baz', 'BamBaz');
+		
+		$codegen = new CodeFileGenerator(['generateDocblock' => false, 'generateEmptyDocblock' => false]);
+		$code = $codegen->generate($class);
+
+		$this->assertEquals($this->getContent('FooBarWithAlias.php'), $code);
 	}
 }

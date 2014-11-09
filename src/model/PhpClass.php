@@ -9,6 +9,7 @@ use gossi\codegen\model\parts\FinalTrait;
 use gossi\codegen\model\parts\ConstantsTrait;
 use gossi\codegen\model\parts\PropertiesTrait;
 use gossi\codegen\model\parts\TraitsTrait;
+use gossi\codegen\utils\ReflectionUtils;
 
 class PhpClass extends AbstractPhpStruct implements GenerateableInterface, TraitsInterface, ConstantsInterface {
 	
@@ -27,7 +28,7 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 			->setAbstract($ref->isAbstract())
 			->setFinal($ref->isFinal())
 			->setConstants($ref->getConstants())
-			->setUseStatements(static::getUseStatementsFromReflection($ref));
+			->setUseStatements(ReflectionUtils::getUseStatements($ref));
 
 		if ($ref->getDocComment()) {
 			$docblock = new Docblock($ref);
