@@ -115,6 +115,37 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 	}
 
 	/**
+	 *  Declares multiple use statements at once.
+	 */
+	public function declareUses()
+ 	{
+ 		foreach (func_get_args() as $name) {
+ 			$this->declareUse($name);
+ 		}
+ 	}
+	
+	/**
+	 * Declares a "use $fullClassName" with " as $alias" if $alias is available,
+	 * and returns its alias (or not qualified classname) to be used in your actual
+	 * php code.
+	 * 
+	 * If the class has already been declared you get only the set alias.
+	 * 
+ 	 * @param string      $fullClassName
+ 	 * @param null|string $alias
+ 	 *
+ 	 * @return string
+ 	 */
+ 	public function declareUse($fullClassName, $alias = null)
+	{
+ 		$fullClassName = trim($fullClassName, '\\');
+ 		if (!$this->hasUseStatement($fullClassName)) {
+ 			$this->addUseStatement($fullClassName, $alias);
+ 		}
+		return $this->getUseAlias($fullClassName);
+ 	}
+
+	/**
 	 * Returns whether the given use statement is present
 	 *
 	 * @param string $qualifiedName        	
