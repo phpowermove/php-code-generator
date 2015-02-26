@@ -3,6 +3,7 @@ namespace gossi\codegen\tests\visitor;
 
 use gossi\codegen\model\PhpFunction;
 use gossi\codegen\model\PhpParameter;
+use gossi\codegen\model\PhpProperty;
 use gossi\codegen\visitor\DefaultVisitor;
 use gossi\codegen\model\PhpMethod;
 use gossi\codegen\utils\Writer;
@@ -51,6 +52,17 @@ class DefaultVisitorTest extends \PHPUnit_Framework_TestCase {
 		
 		$this->assertEquals($this->getContent('callable_parameter.php'), $visitor->getContent());
 	}
+
+	public function testDefaultNotEmptyArray() {
+		$property = new PhpProperty('fooArray');
+		$visitor = new DefaultVisitor();
+
+		$property->setDefaultValue(array("some value"));
+		$visitor->visitProperty($property);
+
+		$this->assertContains("some value", $visitor->getContent());
+	}
+
 
 	/**
 	 *

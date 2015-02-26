@@ -224,16 +224,9 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 	}
 
 	protected function getPhpExport($value) {
-		if (is_bool($value)) {
-			return $value ? 'true' : 'false';
-		}
-
+		// Simply to be sure a null value is displayed in lowercase.
 		if (null === $value) {
 			return 'null';
-		}
-
-		if (is_array($value)) {
-			return 'array()';
 		}
 
 		return var_export($value, true);
