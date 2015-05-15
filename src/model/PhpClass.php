@@ -1,7 +1,6 @@
 <?php
 namespace gossi\codegen\model;
 
-use Doctrine\Common\Annotations\PhpParser;
 use gossi\docblock\Docblock;
 use gossi\codegen\model\parts\InterfacesTrait;
 use gossi\codegen\model\parts\AbstractTrait;

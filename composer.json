@@ -18,7 +18,7 @@
 		"php" : ">=5.4.0",
 		"gossi/docblock" : "~1",
 		"symfony/options-resolver" : "~2",
-		"gossi/tokenizer" : "~0"
+		"phootwork/tokenizer" : "~0"
 	},
 	"autoload" : {
 		"psr-4" : {

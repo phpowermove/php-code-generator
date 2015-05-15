@@ -17,7 +17,8 @@
  */
 namespace gossi\codegen\utils;
 
-use gossi\tokenizer\PhpTokenizer;
+use phootwork\tokenizer\PhpTokenizer;
+
 class ReflectionUtils {
 
 	/**
@@ -81,9 +82,7 @@ class ReflectionUtils {
 		$tokenizer = new PhpTokenizer();
 		$tokens = $tokenizer->tokenize($content);
 		$tokens = $tokens->filter(function ($token) {
-			if ($token->type !== T_WHITESPACE && $token->type !== T_COMMENT && $token->type !== T_DOC_COMMENT) {
-				return $token;
-			}
+			return $token->type !== T_WHITESPACE && $token->type !== T_COMMENT && $token->type !== T_DOC_COMMENT;
 		});
 		$statements = [];
 		
