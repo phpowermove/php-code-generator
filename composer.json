@@ -20,6 +20,9 @@
 		"symfony/options-resolver" : "~2",
 		"phootwork/tokenizer" : "~0"
 	},
+	"suggest": {
+		"gossi/php-code-formatter": "Formatting your generated code"
+	},
 	"autoload" : {
 		"psr-4" : {
 			"gossi\\codegen\\" : "src/"

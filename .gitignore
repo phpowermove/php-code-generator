@@ -6,4 +6,4 @@ vendor/
 api/
 cache/
 coverage/
-
+docs/_build
