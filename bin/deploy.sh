@@ -4,6 +4,7 @@ set -o errexit -o nounset
 
 rev=$(git rev-parse --short HEAD)
 
+php vendor/bin/sami.php update sami.php
 mkdir _site
 cp -R api _site/
 cd _site

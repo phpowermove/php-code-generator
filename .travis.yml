@@ -13,7 +13,6 @@ install:
 
 script:
   - phpunit --coverage-clover=coverage.clover
-  - php vendor/bin/sami.php update sami.php
 
 after_script:
   - wget https://scrutinizer-ci.com/ocular.phar
