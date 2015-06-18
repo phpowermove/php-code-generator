@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>gossi\codegen\visitor\GeneratorVisitorInterface | CodeGen API Documentation</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/sami.css">
+        <script src="../../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../sami.js"></script>
+    
+    
+    </head>
+
+    <body id="class" data-name="class:gossi_codegen_visitor_GeneratorVisitorInterface" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">CodeGen API Documentation</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                                            <li><a href="../../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">interface</span></li>
+                                                            <li><a href="../../../gossi.html">gossi</a></li>
+                                        <li><a href="../../../gossi/codegen.html">codegen</a></li>
+                                        <li><a href="../../../gossi/codegen/visitor.html">visitor</a></li>
+    
+                <li>GeneratorVisitorInterface</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>GeneratorVisitorInterface</h1>
+    </div>
+
+    <p>    interface
+    <strong>GeneratorVisitorInterface</strong>
+</p>
+
+            <div class="description">
+            <p>The visitor interface required by the DefaultNavigator.</p>                    </div>
+    
+    
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_reset">reset</a>()
+                                            <p>Resets the visitors internal state to allow re-using the same instance.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_startVisitingClass">startVisitingClass</a>(<abbr title="gossi\codegen\visitor\gossi\codegen\model\PhpClass">PhpClass</abbr> $class)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_startVisitingInterface">startVisitingInterface</a>(<abbr title="gossi\codegen\visitor\gossi\codegen\model\PhpInterface">PhpInterface</abbr> $interface)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_startVisitingTrait">startVisitingTrait</a>(<abbr title="gossi\codegen\visitor\gossi\codegen\model\PhpTrait">PhpTrait</abbr> $trait)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_startVisitingStructConstants">startVisitingStructConstants</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_visitStructConstant">visitStructConstant</a>(<abbr title="gossi\codegen\visitor\gossi\codegen\model\PhpConstant">PhpConstant</abbr> $constant)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_endVisitingStructConstants">endVisitingStructConstants</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_startVisitingProperties">startVisitingProperties</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_visitProperty">visitProperty</a>(<abbr title="gossi\codegen\visitor\gossi\codegen\model\PhpProperty">PhpProperty</abbr> $property)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_endVisitingProperties">endVisitingProperties</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_startVisitingMethods">startVisitingMethods</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_visitMethod">visitMethod</a>(<abbr title="gossi\codegen\visitor\gossi\codegen\model\PhpMethod">PhpMethod</abbr> $method)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_endVisitingMethods">endVisitingMethods</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_endVisitingClass">endVisitingClass</a>(<abbr title="gossi\codegen\visitor\gossi\codegen\model\PhpClass">PhpClass</abbr> $class)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_endVisitingInterface">endVisitingInterface</a>(<abbr title="gossi\codegen\visitor\gossi\codegen\model\PhpInterface">PhpInterface</abbr> $interface)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_endVisitingTrait">endVisitingTrait</a>(<abbr title="gossi\codegen\visitor\gossi\codegen\model\PhpTrait">PhpTrait</abbr> $trait)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_visitFunction">visitFunction</a>(<abbr title="gossi\codegen\visitor\gossi\codegen\model\PhpFunction">PhpFunction</abbr> $function)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_reset">
+        <div class="location">at line 40</div>
+        <code>                    void
+    <strong>reset</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Resets the visitors internal state to allow re-using the same instance.</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_startVisitingClass">
+        <div class="location">at line 46</div>
+        <code>                    void
+    <strong>startVisitingClass</strong>(<abbr title="gossi\codegen\visitor\gossi\codegen\model\PhpClass">PhpClass</abbr> $class)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="gossi\codegen\visitor\gossi\codegen\model\PhpClass">PhpClass</abbr></td>
+                <td>$class</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_startVisitingInterface">
+        <div class="location">at line 52</div>
+        <code>                    void
+    <strong>startVisitingInterface</strong>(<abbr title="gossi\codegen\visitor\gossi\codegen\model\PhpInterface">PhpInterface</abbr> $interface)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="gossi\codegen\visitor\gossi\codegen\model\PhpInterface">PhpInterface</abbr></td>
+                <td>$interface</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_startVisitingTrait">
+        <div class="location">at line 58</div>
+        <code>                    void
+    <strong>startVisitingTrait</strong>(<abbr title="gossi\codegen\visitor\gossi\codegen\model\PhpTrait">PhpTrait</abbr> $trait)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="gossi\codegen\visitor\gossi\codegen\model\PhpTrait">PhpTrait</abbr></td>
+                <td>$trait</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_startVisitingStructConstants">
+        <div class="location">at line 64</div>
+        <code>                    void
+    <strong>startVisitingStructConstants</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_visitStructConstant">
+        <div class="location">at line 71</div>
+        <code>                    void
+    <strong>visitStructConstant</strong>(<abbr title="gossi\codegen\visitor\gossi\codegen\model\PhpConstant">PhpConstant</abbr> $constant)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="gossi\codegen\visitor\gossi\codegen\model\PhpConstant">PhpConstant</abbr></td>
+                <td>$constant</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_endVisitingStructConstants">
+        <div class="location">at line 77</div>
+        <code>                    void
+    <strong>endVisitingStructConstants</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_startVisitingProperties">
+        <div class="location">at line 83</div>
+        <code>                    void
+    <strong>startVisitingProperties</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_visitProperty">
+        <div class="location">at line 89</div>
+        <code>                    void
+    <strong>visitProperty</strong>(<abbr title="gossi\codegen\visitor\gossi\codegen\model\PhpProperty">PhpProperty</abbr> $property)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="gossi\codegen\visitor\gossi\codegen\model\PhpProperty">PhpProperty</abbr></td>
+                <td>$property</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_endVisitingProperties">
+        <div class="location">at line 95</div>
+        <code>                    void
+    <strong>endVisitingProperties</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_startVisitingMethods">
+        <div class="location">at line 101</div>
+        <code>                    void
+    <strong>startVisitingMethods</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_visitMethod">
+        <div class="location">at line 107</div>
+        <code>                    void
+    <strong>visitMethod</strong>(<abbr title="gossi\codegen\visitor\gossi\codegen\model\PhpMethod">PhpMethod</abbr> $method)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="gossi\codegen\visitor\gossi\codegen\model\PhpMethod">PhpMethod</abbr></td>
+                <td>$method</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_endVisitingMethods">
+        <div class="location">at line 113</div>
+        <code>                    void
+    <strong>endVisitingMethods</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_endVisitingClass">
+        <div class="location">at line 119</div>
+        <code>                    void
+    <strong>endVisitingClass</strong>(<abbr title="gossi\codegen\visitor\gossi\codegen\model\PhpClass">PhpClass</abbr> $class)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="gossi\codegen\visitor\gossi\codegen\model\PhpClass">PhpClass</abbr></td>
+                <td>$class</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_endVisitingInterface">
+        <div class="location">at line 125</div>
+        <code>                    void
+    <strong>endVisitingInterface</strong>(<abbr title="gossi\codegen\visitor\gossi\codegen\model\PhpInterface">PhpInterface</abbr> $interface)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="gossi\codegen\visitor\gossi\codegen\model\PhpInterface">PhpInterface</abbr></td>
+                <td>$interface</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_endVisitingTrait">
+        <div class="location">at line 131</div>
+        <code>                    void
+    <strong>endVisitingTrait</strong>(<abbr title="gossi\codegen\visitor\gossi\codegen\model\PhpTrait">PhpTrait</abbr> $trait)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="gossi\codegen\visitor\gossi\codegen\model\PhpTrait">PhpTrait</abbr></td>
+                <td>$trait</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_visitFunction">
+        <div class="location">at line 137</div>
+        <code>                    void
+    <strong>visitFunction</strong>(<abbr title="gossi\codegen\visitor\gossi\codegen\model\PhpFunction">PhpFunction</abbr> $function)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="gossi\codegen\visitor\gossi\codegen\model\PhpFunction">PhpFunction</abbr></td>
+                <td>$function</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>

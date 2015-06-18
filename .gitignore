@@ -1,9 +1,0 @@
-.project
-.buildpath
-.settings/
-phpunit.xml
-vendor/
-api/
-cache/
-coverage/
-docs/_build
