@@ -54,7 +54,8 @@ abstract class AbstractModel {
 	}
 
 	/**
-	 *
+	 * Returns this description
+	 * 
 	 * @return string
 	 */
 	public function getDescription() {
@@ -62,7 +63,8 @@ abstract class AbstractModel {
 	}
 
 	/**
-	 *
+	 * Sets the description, which will also be used when generating a docblock
+	 * 
 	 * @param string|array $description
 	 * @return $this
 	 */
