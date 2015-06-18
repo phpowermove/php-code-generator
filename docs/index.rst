@@ -21,3 +21,4 @@ Contents:
    model
    generator
    best-practices
+   api
