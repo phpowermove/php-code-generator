@@ -8,7 +8,7 @@ $iterator = Finder::create()->files()->name('*.php')->in(__DIR__ . '/src');
 
 return new Sami($iterator, [
 	'title' => 'CodeGen API Documentation',
+	'theme' => 'default',
 	'build_dir' => __DIR__ . '/api',
-	'default_opened_level' => 2,
-	'theme' => 'enhanced'
+	'default_opened_level' => 2
 ]);
