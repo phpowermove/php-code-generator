@@ -88,7 +88,7 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 
 	/**
 	 *
-	 * @param boolean $show
+	 * @param boolean $strict
 	 * @return $this
 	 */
 	public function setDeclareStrictTypes($strict) {
