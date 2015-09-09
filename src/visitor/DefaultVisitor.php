@@ -267,9 +267,7 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 
 		$this->writeParameters($method->getParameters());
 		$this->writer->write(")");
-		if ($this->returnTypeHints && false === strpos($method->getType(), '|')) {
-			$this->writer->write(": {$method->getType()}");
-		}
+		$this->writeFunctionReturnType($method->getType());
 
 		if ($method->isAbstract() || $method->getParent() instanceof PhpInterface) {
 			$this->writer->write(";\n\n");
@@ -308,10 +306,8 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 
 		$this->writer->write("function {$function->getName()}(");
 		$this->writeParameters($function->getParameters());
-		$this->writer->write(")");
-		if ($this->returnTypeHints && false === strpos($function->getType(), '|')) {
-			$this->writer->write(": {$function->getType()}");
-		}
+		$this->writer->write(')');
+		$this->writeFunctionReturnType($function->getType());
 		$this->writer->write(" {\n")->indent()->writeln(trim($function->getBody()))->outdent()->rtrim()->write('}');
 	}
 
@@ -353,6 +349,12 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 
 				}
 			}
+		}
+	}
+
+	protected function writeFunctionReturnType($type) {
+		if ($this->returnTypeHints && false === strpos($type, '|')) {
+			$this->writer->write(': ')->write($type);
 		}
 	}
 }
