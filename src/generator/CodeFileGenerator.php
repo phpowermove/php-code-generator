@@ -44,7 +44,7 @@ class CodeFileGenerator extends CodeGenerator {
 		}
 
 		if ($this->config->getDeclareStrictTypes()) {
-			$content .= "declare(strict_types=1);\n";
+			$content .= "declare(strict_types=1);\n\n";
 		}
 
 		$content .= parent::generate($model);
