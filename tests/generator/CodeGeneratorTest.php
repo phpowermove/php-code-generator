@@ -146,7 +146,7 @@ class CodeGeneratorTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testStrictTypesDeclaration() {
-		$expected = "<?php\ndeclare(strict_types=1);\nfunction fn(\$a) {\n}\n";
+		$expected = "<?php\ndeclare(strict_types=1);\n\nfunction fn(\$a) {\n}\n";
 		$fn = PhpFunction::create('fn')->addParameter(PhpParameter::create('a')->setType('int'));
 		$fn->setType('int');
 
