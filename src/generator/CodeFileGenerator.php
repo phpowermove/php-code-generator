@@ -6,7 +6,7 @@ use gossi\codegen\config\CodeFileGeneratorConfig;
 use gossi\docblock\Docblock;
 
 class CodeFileGenerator extends CodeGenerator {
-	
+
 	/**
 	 * @param CodeFileGeneratorConfig|array $config
 	 */
@@ -17,38 +17,42 @@ class CodeFileGenerator extends CodeGenerator {
 			$this->config = $config;
 		} else {
 			$this->config = new CodeFileGeneratorConfig();
-		} 
-		
+		}
+
 		$this->init();
 	}
-	
+
 	/**
 	 * @return CodeFileGeneratorConfig
 	 */
 	public function getConfig() {
 		return $this->config;
 	}
-	
+
 	public function generate(GenerateableInterface $model) {
 		$content = "<?php\n";
-		
+
 		$comment = $this->config->getHeaderComment();
 		if (!empty($comment)) {
 			$docblock = new Docblock();
 			$docblock->setLongDescription($comment);
 			$content .= str_replace('/**', '/*', $docblock->toString()) . "\n";
 		}
-		
+
 		if ($this->config->getHeaderDocblock() instanceof Docblock) {
 			$content .= $this->config->getHeaderDocblock()->toString() . "\n";
 		}
-		
+
+		if ($this->config->getDeclareStrictTypes()) {
+			$content .= "declare(strict_types=1);\n";
+		}
+
 		$content .= parent::generate($model);
-		
+
 		if ($this->config->getBlankLineAtEnd()) {
 			$content .= "\n";
 		}
-		
+
 		return $content;
 	}
 }

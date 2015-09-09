@@ -39,6 +39,9 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 
 	protected $writer;
 
+	protected $scalarTypeHints;
+	protected $returnTypeHints;
+
 	protected static $noTypeHints = [
 		'string',
 		'int',
@@ -52,7 +55,9 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 		'resource'
 	];
 
-	public function __construct() {
+	public function __construct($scalarTypeHints = false, $returnTypeHints = false) {
+		$this->scalarTypeHints = $scalarTypeHints;
+		$this->returnTypeHints = $returnTypeHints;
 		$this->writer = new Writer();
 	}
 
@@ -101,7 +106,7 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 				if ($commonName !== $alias) {
 					$this->writer->write(' as ' . $alias);
 				}
-				
+
 				$this->writer->write(";\n");
 			}
 			$this->ensureBlankLine();
@@ -113,7 +118,7 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 			$this->writeDocblock($docblock);
 		}
 	}
-	
+
 	protected function writeDocblock(Docblock $docblock) {
 		$docblock = $docblock->toString();
 		if (!empty($docblock)) {
@@ -134,31 +139,31 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 		$this->visitRequiredFiles($class);
 		$this->visitUseStatements($class);
 		$this->visitDocblock($class->getDocblock());
-		
+
 		// signature
 		if ($class->isAbstract()) {
 			$this->writer->write('abstract ');
 		}
-		
+
 		if ($class->isFinal()) {
 			$this->writer->write('final ');
 		}
-		
+
 		$this->writer->write('class ');
 		$this->writer->write($class->getName());
-		
+
 		if ($parentClassName = $class->getParentClassName()) {
 			$this->writer->write(' extends ' . $parentClassName);
 		}
-		
+
 		if ($class->hasInterfaces()) {
 			$this->writer->write(' implements ');
 			$this->writer->write(implode(', ', $class->getInterfaces()));
 		}
-		
+
 		// body
 		$this->writer->writeln(" {\n")->indent();
-		
+
 		$this->visitTraits($class);
 	}
 
@@ -167,16 +172,16 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 		$this->visitRequiredFiles($interface);
 		$this->visitUseStatements($interface);
 		$this->visitDocblock($interface->getDocblock());
-		
+
 		// signature
 		$this->writer->write('interface ');
 		$this->writer->write($interface->getName());
-		
+
 		if ($interface->hasInterfaces()) {
 			$this->writer->write(' extends ');
 			$this->writer->write(implode(', ', $interface->getInterfaces()));
 		}
-		
+
 		// body
 		$this->writer->writeln(" {\n")->indent();
 	}
@@ -186,14 +191,14 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 		$this->visitRequiredFiles($trait);
 		$this->visitUseStatements($trait);
 		$this->visitDocblock($trait->getDocblock());
-		
+
 		// signature
 		$this->writer->write('trait ');
 		$this->writer->write($trait->getName());
-		
+
 		// body
 		$this->writer->writeln(" {\n")->indent();
-		
+
 		$this->visitTraits($trait);
 	}
 
@@ -213,13 +218,13 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 
 	public function visitProperty(PhpProperty $property) {
 		$this->visitDocblock($property->getDocblock());
-		
+
 		$this->writer->write($property->getVisibility() . ' ' . ($property->isStatic() ? 'static ' : '') . '$' . $property->getName());
-		
+
 		if ($property->hasDefaultValue()) {
 			$this->writer->write(' = ' . $this->getPhpExport($property->getDefaultValue()));
 		}
-		
+
 		$this->writer->writeln(';');
 	}
 
@@ -241,34 +246,38 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 
 	public function visitMethod(PhpMethod $method) {
 		$this->visitDocblock($method->getDocblock());
-		
+
 		if ($method->isAbstract()) {
 			$this->writer->write('abstract ');
 		}
-		
+
 		$this->writer->write($method->getVisibility() . ' ');
-		
+
 		if ($method->isStatic()) {
 			$this->writer->write('static ');
 		}
-		
+
 		$this->writer->write('function ');
-		
+
 		if ($method->isReferenceReturned()) {
 			$this->writer->write('& ');
 		}
-		
+
 		$this->writer->write($method->getName() . '(');
-		
+
 		$this->writeParameters($method->getParameters());
-		
+		$this->writer->write(")");
+		if ($this->returnTypeHints && false === strpos($method->getType(), '|')) {
+			$this->writer->write(": {$method->getType()}");
+		}
+
 		if ($method->isAbstract() || $method->getParent() instanceof PhpInterface) {
-			$this->writer->write(");\n\n");
-			
+			$this->writer->write(";\n\n");
+
 			return;
 		}
-		
-		$this->writer->writeln(') {')->indent()->writeln(trim($method->getBody()))->outdent()->rtrim()->write("}\n\n");
+
+		$this->writer->writeln(' {')->indent()->writeln(trim($method->getBody()))->outdent()->rtrim()->write("}\n\n");
 	}
 
 	public function endVisitingMethods() {
@@ -294,12 +303,16 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 		if ($namespace = $function->getNamespace()) {
 			$this->writer->write("namespace $namespace;\n\n");
 		}
-		
+
 		$this->visitDocblock($function->getDocblock());
-		
+
 		$this->writer->write("function {$function->getName()}(");
 		$this->writeParameters($function->getParameters());
-		$this->writer->write(") {\n")->indent()->writeln(trim($function->getBody()))->outdent()->rtrim()->write('}');
+		$this->writer->write(")");
+		if ($this->returnTypeHints && false === strpos($function->getType(), '|')) {
+			$this->writer->write(": {$function->getType()}");
+		}
+		$this->writer->write(" {\n")->indent()->writeln(trim($function->getBody()))->outdent()->rtrim()->write('}');
 	}
 
 	public function getContent() {
@@ -313,17 +326,17 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 				$this->writer->write(', ');
 			}
 			$first = false;
-			
-			if (false === strpos($parameter->getType(), '|') && ($type = $parameter->getType()) && !in_array($type, self::$noTypeHints)) {
+
+			if (false === strpos($parameter->getType(), '|') && ($type = $parameter->getType()) && (!in_array($type, self::$noTypeHints) || $this->scalarTypeHints)) {
 				$this->writer->write($type . ' ');
 			}
-			
+
 			if ($parameter->isPassedByReference()) {
 				$this->writer->write('&');
 			}
-			
+
 			$this->writer->write('$' . $parameter->getName());
-			
+
 			if ($parameter->hasDefaultValue()) {
 				$this->writer->write(' = ');
 				$defaultValue = $parameter->getDefaultValue();
