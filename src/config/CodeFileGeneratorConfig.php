@@ -2,6 +2,8 @@
 namespace gossi\codegen\config;
 
 use gossi\docblock\Docblock;
+use Symfony\Component\OptionsResolver\Options;
+
 class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 
 	protected function getOptionalOptions() {
@@ -11,12 +13,24 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 	}
 	
 	protected function getDefaultOptions() {
-		return array_merge([
+		return array_merge(
+			parent::getDefaultOptions(),
+			[
 				'headerComment' => '',
 				'headerDocblock' => null,
 				'blankLineAtEnd' => true,
 				'declareStrictTypes'  => false,
-			], parent::getDefaultOptions());
+				'generateScalarTypeHints' => function(Options $options) {
+					if ($options['declareStrictTypes'])
+						return true;
+					return false;
+				},
+				'generateReturnTypeHints' => function(Options $options) {
+					if ($options['declareStrictTypes'])
+						return true;
+					return false;
+				},
+			]);
 	}
 	
 	protected function getAllowedOptionTypes() {

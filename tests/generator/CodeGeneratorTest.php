@@ -147,8 +147,7 @@ class CodeGeneratorTest extends \PHPUnit_Framework_TestCase {
 
 	public function testStrictTypesDeclaration() {
 		$expected = "<?php\ndeclare(strict_types=1);\n\nfunction fn(\$a) {\n}\n";
-		$fn = PhpFunction::create('fn')->addParameter(PhpParameter::create('a')->setType('int'));
-		$fn->setType('int');
+		$fn = PhpFunction::create('fn')->addParameter(PhpParameter::create('a'));
 
 		$codegen = new CodeFileGenerator(['generateDocblock' => false, 'generateEmptyDocblock' => false, 'declareStrictTypes' => true]);
 		$code = $codegen->generate($fn);

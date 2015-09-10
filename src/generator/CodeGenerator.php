@@ -32,17 +32,7 @@ class CodeGenerator {
 	}
 
 	protected function init() {
-		if ($this->config->getGenerateEmptyDocblock()) {
-			$visitor = new EmptyDocblockVisitor(
-				$this->config->getGenerateScalarTypeHints(),
-				$this->config->getGenerateReturnTypeHints()
-			);
-		} else {
-			$visitor = new DefaultVisitor(
-				$this->config->getGenerateScalarTypeHints(),
-				$this->config->getGenerateReturnTypeHints()
-			);
-		}
+		$visitor = new DefaultVisitor($this->config);
 		$this->strategy = new DefaultGeneratorStrategy($visitor);
 	}
 

@@ -16,6 +16,7 @@
  */
 namespace gossi\codegen\visitor;
 
+use gossi\codegen\config\CodeGeneratorConfig;
 use gossi\codegen\model\NamespaceInterface;
 use gossi\codegen\model\AbstractPhpStruct;
 use gossi\codegen\model\DocblockInterface;
@@ -42,6 +43,8 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 	protected $scalarTypeHints;
 	protected $returnTypeHints;
 
+	protected $config;
+
 	protected static $noTypeHints = [
 		'string',
 		'int',
@@ -55,9 +58,9 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 		'resource'
 	];
 
-	public function __construct($scalarTypeHints = false, $returnTypeHints = false) {
-		$this->scalarTypeHints = $scalarTypeHints;
-		$this->returnTypeHints = $returnTypeHints;
+	public function __construct(CodeGeneratorConfig $config = null) {
+		// Make sure we retain the old default behavior for this class
+		$this->config = $config?: new CodeGeneratorConfig(['generateEmptyDocblock' => false]);
 		$this->writer = new Writer();
 	}
 
@@ -114,7 +117,7 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 	}
 
 	protected function visitDocblock(Docblock $docblock) {
-		if (!$docblock->isEmpty()) {
+		if (!$docblock->isEmpty() || $this->config->getGenerateEmptyDocblock()) {
 			$this->writeDocblock($docblock);
 		}
 	}
@@ -323,7 +326,9 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 			}
 			$first = false;
 
-			if (false === strpos($parameter->getType(), '|') && ($type = $parameter->getType()) && (!in_array($type, self::$noTypeHints) || $this->scalarTypeHints)) {
+			if (false === strpos($parameter->getType(), '|') &&
+				($type = $parameter->getType()) &&
+				(!in_array($type, self::$noTypeHints) || $this->config->getGenerateScalarTypeHints())) {
 				$this->writer->write($type . ' ');
 			}
 
@@ -353,7 +358,7 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 	}
 
 	protected function writeFunctionReturnType($type) {
-		if ($this->returnTypeHints && false === strpos($type, '|')) {
+		if ($this->config->getGenerateReturnTypeHints() && $type != NULL && false === strpos($type, '|')) {
 			$this->writer->write(': ')->write($type);
 		}
 	}
