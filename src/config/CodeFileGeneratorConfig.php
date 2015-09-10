@@ -21,14 +21,10 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 				'blankLineAtEnd' => true,
 				'declareStrictTypes'  => false,
 				'generateScalarTypeHints' => function(Options $options) {
-					if ($options['declareStrictTypes'])
-						return true;
-					return false;
+					return $options['declareStrictTypes'];
 				},
 				'generateReturnTypeHints' => function(Options $options) {
-					if ($options['declareStrictTypes'])
-						return true;
-					return false;
+					return $options['declareStrictTypes'];
 				},
 			]);
 	}
