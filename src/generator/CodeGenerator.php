@@ -9,14 +9,14 @@ use gossi\codegen\visitor\DefaultVisitor;
 class CodeGenerator {
 
 	protected $config;
-	
+
 	/**
 	 * @var DefaultGeneratorStrategy
 	 */
 	protected $strategy;
-	
+
 	/**
-	 * 
+	 *
 	 * @param CodeGeneratorConfig|array $config
 	 */
 	public function __construct($config = null) {
@@ -26,20 +26,16 @@ class CodeGenerator {
 			$this->config = $config;
 		} else {
 			$this->config = new CodeGeneratorConfig();
-		} 
+		}
 
 		$this->init();
 	}
-	
+
 	protected function init() {
-		if ($this->config->getGenerateEmptyDocblock()) {
-			$visitor = new EmptyDocblockVisitor();
-		} else {
-			$visitor = new DefaultVisitor();
-		}
+		$visitor = new DefaultVisitor($this->config);
 		$this->strategy = new DefaultGeneratorStrategy($visitor);
 	}
-	
+
 	/**
 	 * @return CodeGeneratorConfig
 	 */
@@ -58,5 +54,5 @@ class CodeGenerator {
 
 		return $this->strategy->generate($model);
 	}
-	
+
 }

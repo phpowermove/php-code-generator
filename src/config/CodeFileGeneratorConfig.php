@@ -2,27 +2,39 @@
 namespace gossi\codegen\config;
 
 use gossi\docblock\Docblock;
+use Symfony\Component\OptionsResolver\Options;
+
 class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 
 	protected function getOptionalOptions() {
 		return array_merge([
-				'headerComment', 'headerDocblock', 'blankLineAtEnd'
+				'headerComment', 'headerDocblock', 'blankLineAtEnd', 'declareStrictTypes'
 			], parent::getOptionalOptions());
 	}
 	
 	protected function getDefaultOptions() {
-		return array_merge([
+		return array_merge(
+			parent::getDefaultOptions(),
+			[
 				'headerComment' => '',
 				'headerDocblock' => null,
-				'blankLineAtEnd' => true
-			], parent::getDefaultOptions());
+				'blankLineAtEnd' => true,
+				'declareStrictTypes'  => false,
+				'generateScalarTypeHints' => function(Options $options) {
+					return $options['declareStrictTypes'];
+				},
+				'generateReturnTypeHints' => function(Options $options) {
+					return $options['declareStrictTypes'];
+				},
+			]);
 	}
 	
 	protected function getAllowedOptionTypes() {
 		return array_merge([
 				'headerComment' => 'string',
 				'headerDocblock' => ['null', 'gossi\\docblock\\Docblock'],
-				'blankLineAtEnd' => 'bool'
+				'blankLineAtEnd' => 'bool',
+				'declareStrictTypes' => 'bool',
 			], parent::getAllowedOptionTypes());
 	}
 	
@@ -42,7 +54,7 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 		$this->options['headerComment'] = $comment;
 		return $this;
 	}
-
+	
 	/**
 	 * @return Docblock
 	 */
@@ -59,7 +71,7 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 		$this->options['headerDocblock'] = $docblock;
 		return $this;
 	}
-
+	
 	/**
 	 * @return boolean
 	 */
@@ -76,5 +88,21 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 		$this->options['blankLineAtEnd'] = $show;
 		return $this;
 	}
-
+	
+	/**
+	 * @return boolean
+	 */
+	public function getDeclareStrictTypes() {
+		return $this->options['declareStrictTypes'];
+	}
+	
+	/**
+	 * 
+	 * @param boolean $strict
+	 * @return $this
+	 */
+	public function setDeclareStrictTypes($strict) {
+		$this->options['declareStrictTypes'] = $strict;
+		return $this;
+	}
 }
