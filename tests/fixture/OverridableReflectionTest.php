@@ -1,30 +1,38 @@
 <?php
+
 namespace gossi\codegen\tests\fixture;
 
-abstract class OverridableReflectionTest {
+abstract class OverridableReflectionTest
+{
+    public function a()
+    {
+    }
 
-	public function a() {
-	}
+    final public function b()
+    {
+    }
 
-	final public function b() {
-	}
+    public static function c()
+    {
+    }
 
-	public static function c() {
-	}
+    abstract public function d();
 
-	abstract public function d();
+    protected function e()
+    {
+    }
 
-	protected function e() {
-	}
+    final protected function f()
+    {
+    }
 
-	final protected function f() {
-	}
+    protected static function g()
+    {
+    }
 
-	protected static function g() {
-	}
+    abstract protected function h();
 
-	abstract protected function h();
-
-	private function i() {
-	}
+    private function i()
+    {
+    }
 }

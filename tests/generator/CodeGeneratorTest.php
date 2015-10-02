@@ -51,8 +51,7 @@ class CodeGeneratorTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testPrimitveParameter() {
-		$expected = 'function fn($a) {
-}';
+		$expected = 'function fn($a)'."\n".'{'."\n".'}';
 		$fn = PhpFunction::create('fn')->addParameter(PhpParameter::create('a')->setType('int'));
 
 		$codegen = new CodeGenerator(['generateDocblock' => false, 'generateEmptyDocblock' => false]);
@@ -62,8 +61,7 @@ class CodeGeneratorTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testNonPrimitveParameter() {
-		$expected = 'function fn(Response $a) {
-}';
+		$expected = 'function fn(Response $a)'."\n".'{'."\n".'}';
 		$fn = PhpFunction::create('fn')->addParameter(PhpParameter::create('a')->setType('Response'));
 
 		$codegen = new CodeGenerator(['generateDocblock' => false, 'generateEmptyDocblock' => false]);
@@ -93,8 +91,7 @@ class CodeGeneratorTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testFunctionScalarTypeHinting() {
-		$expected = 'function fn(int $a) {
-}';
+		$expected = 'function fn(int $a)'."\n".'{'."\n".'}';
 		$fn = PhpFunction::create('fn')->addParameter(PhpParameter::create('a')->setType('int'));
 
 		$codegen = new CodeGenerator(['generateDocblock' => false, 'generateEmptyDocblock' => false, 'generateScalarTypeHints' => true]);
@@ -104,8 +101,7 @@ class CodeGeneratorTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testFunctionReturnTypeHinting() {
-		$expected = 'function fn($a): int {
-}';
+		$expected = 'function fn($a): int'."\n".'{'."\n".'}';
 		$fn = PhpFunction::create('fn')->addParameter(PhpParameter::create('a')->setType('int'));
 		$fn->setType('int');
 
@@ -122,7 +118,7 @@ class CodeGeneratorTest extends \PHPUnit_Framework_TestCase {
 			->addParameter(PhpParameter::create('b')
 			->setType('int')));
 
-		$expected = "class GenerationTestClass {\n\n\tpublic function a(int \$b) {\n\t}\n}";
+		$expected = "class GenerationTestClass\n{\n    public function a(int \$b)\n    {\n    }\n}";
 
 		$codegen = new CodeGenerator(['generateDocblock' => false, 'generateEmptyDocblock' => false, 'generateScalarTypeHints' => true]);
 		$code = $codegen->generate($class);
@@ -137,7 +133,7 @@ class CodeGeneratorTest extends \PHPUnit_Framework_TestCase {
 				->addParameter(PhpParameter::create('b'))
 					->setType('int'));
 
-		$expected = "class GenerationTestClass {\n\n\tpublic function a(\$b): int {\n\t}\n}";
+		$expected = "class GenerationTestClass\n{\n    public function a(\$b): int\n    {\n    }\n}";
 
 		$codegen = new CodeGenerator(['generateDocblock' => false, 'generateEmptyDocblock' => false, 'generateReturnTypeHints' => true]);
 		$code = $codegen->generate($class);
@@ -146,7 +142,7 @@ class CodeGeneratorTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testStrictTypesDeclaration() {
-		$expected = "<?php\ndeclare(strict_types=1);\n\nfunction fn(\$a) {\n}\n";
+		$expected = "<?php\ndeclare(strict_types=1);\n\nfunction fn(\$a)\n{\n}\n";
 		$fn = PhpFunction::create('fn')->addParameter(PhpParameter::create('a'));
 
 		$codegen = new CodeFileGenerator(['generateDocblock' => false, 'generateEmptyDocblock' => false, 'declareStrictTypes' => true]);

@@ -70,7 +70,20 @@ class ReflectionUtils {
 		$body = implode('', array_slice($source, $start, $end - $start));
 		$open = strpos($body, '{');
 		$close = strrpos($body, '}');
-		return trim(substr($body, $open + 1, (strlen($body) - $close) * -1));
+		$body = trim(substr($body, $open + 1, (strlen($body) - $close) * -1), "\n");
+
+		$lines = explode("\n", $body);
+		$prefix = '';
+		if (isset($lines[0])) {
+			$prefix = str_replace(trim($lines[0], "\t "), '', $lines[0]);
+		}
+		$lines = array_map(function($line) use ($prefix) {
+			if (substr($line,0, strlen($prefix)) === $prefix) {
+				$line = substr($line, strlen($prefix));
+			}
+			return $line;
+		}, $lines);
+		return implode("\n", $lines);
 	}
 	
 	public static function getUseStatements(\ReflectionClass $class) {

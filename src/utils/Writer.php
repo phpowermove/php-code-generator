@@ -31,7 +31,7 @@ class Writer {
 	private $indentation;
 	
 	private $options = [
-		'indentation_character' => "\t",
+		'indentation_character' => '    ',
 		'indentation_size' => 1
 	];
 	

@@ -22,7 +22,7 @@ class DefaultVisitorTest extends \PHPUnit_Framework_TestCase {
 		
 		$visitor = new DefaultVisitor();
 		$visitor->visitFunction($function);
-		
+
 		$this->assertEquals($this->getContent('a_b_function.php'), $visitor->getContent());
 	}
 
