@@ -1,3 +1,4 @@
-public function & foo() {
+public function & foo()
+{
 }
 

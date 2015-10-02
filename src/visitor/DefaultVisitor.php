@@ -69,13 +69,16 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 	}
 
 	private function ensureBlankLine() {
-		if (!$this->writer->endsWith("\n\n") && strlen($this->writer->rtrim()->getContent()) > 0) {
+		if ((!$this->writer->endsWith("\n\n") && !$this->writer->endsWith("{\n")) && strlen($this->writer->rtrim()->getContent()) > 0 ) {
 			$this->writer->writeln();
 		}
 	}
 
 	protected function visitNamespace(NamespaceInterface $model) {
 		if ($namespace = $model->getNamespace()) {
+			if (!$this->writer->endsWith("\n\n")) {
+				$this->writer->writeln();
+			}
 			$this->writer->writeln('namespace ' . $namespace . ';');
 		}
 	}
@@ -165,7 +168,7 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 		}
 
 		// body
-		$this->writer->writeln(" {\n")->indent();
+		$this->writer->writeln("\n{")->indent();
 
 		$this->visitTraits($class);
 	}
@@ -278,14 +281,14 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 			return;
 		}
 
-		$this->writer->writeln(' {')->indent()->writeln(trim($method->getBody()))->outdent()->rtrim()->write("}\n\n");
+		$this->writer->writeln("\n{")->indent()->writeln(trim($method->getBody()))->outdent()->rtrim()->write("}\n\n");
 	}
 
 	public function endVisitingMethods() {
 	}
 
 	protected function endVisitingStruct(AbstractPhpStruct $struct) {
-		$this->writer->outdent()->rtrim()->write('}');
+		$this->writer->outdent()->rtrim()->write("}");
 	}
 
 	public function endVisitingClass(PhpClass $class) {
@@ -311,7 +314,7 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 		$this->writeParameters($function->getParameters());
 		$this->writer->write(')');
 		$this->writeFunctionReturnType($function->getType());
-		$this->writer->write(" {\n")->indent()->writeln(trim($function->getBody()))->outdent()->rtrim()->write('}');
+		$this->writer->writeln("\n{")->indent()->writeln(trim($function->getBody()))->outdent()->rtrim()->write('}');
 	}
 
 	public function getContent() {

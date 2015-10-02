@@ -1,4 +1,5 @@
 <?php
+
 namespace gossi\codegen\tests\fixture;
 
 /**
@@ -6,30 +7,32 @@ namespace gossi\codegen\tests\fixture;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-abstract class Entity {
+abstract class Entity
+{
+    /**
+     *
+     * @var integer
+     */
+    private $id;
 
-	/**
-	 *
-	 * @var integer
-	 */
-	private $id;
+    private $enabled = false;
 
-	private $enabled = false;
+    /**
+     * Another doc comment.
+     *
+     * @param unknown_type $a        	
+     * @param array $b        	
+     * @param \stdClass $c        	
+     * @param string $d        	
+     * @param callable $e        	
+     */
+    final public function __construct($a, array &$b, \stdClass $c, $d = 'foo', callable $e)
+    {
+    }
 
-	/**
-	 * Another doc comment.
-	 *
-	 * @param unknown_type $a        	
-	 * @param array $b        	
-	 * @param \stdClass $c        	
-	 * @param string $d        	
-	 * @param callable $e        	
-	 */
-	final public function __construct($a, array &$b, \stdClass $c, $d = 'foo', callable $e) {
-	}
+    abstract protected function foo();
 
-	abstract protected function foo();
-
-	private static function bar() {
-	}
+    private static function bar()
+    {
+    }
 }

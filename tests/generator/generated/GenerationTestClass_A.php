@@ -1,14 +1,16 @@
-class GenerationTestClass {
+class GenerationTestClass
+{
+    const a = 'foo';
+    const b = 'bar';
 
-	const a = 'foo';
-	const b = 'bar';
+    public $a;
+    public $b;
 
-	public $a;
-	public $b;
+    public function a()
+    {
+    }
 
-	public function a() {
-	}
-
-	public function b() {
-	}
+    public function b()
+    {
+    }
 }

@@ -28,7 +28,7 @@ class PhpTraitTest extends \PHPUnit_Framework_TestCase {
 	}
 	
 	public function testSignature() {
-		$expected = 'trait MyTrait {'."\n". '}';
+		$expected = 'trait MyTrait {'."\n".'}';
 		
 		$trait = PhpTrait::create('MyTrait');
 		
