@@ -9,9 +9,11 @@ class CodeGeneratorConfig {
 
 	public function __construct(array $options = []) {
 		$resolver = new OptionsResolver();
-		$resolver->setOptional($this->getOptionalOptions());
-		$resolver->setAllowedTypes($this->getAllowedOptionTypes());
+		$resolver->setDefined($this->getOptionalOptions());
 		$resolver->setDefaults($this->getDefaultOptions());
+		foreach ($this->getAllowedOptionTypes() as $option => $type) {
+			$resolver->setAllowedTypes($option, $type);
+		}
 		$this->options = $resolver->resolve($options);
 	}
 
