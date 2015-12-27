@@ -1,14 +1,16 @@
 <?php
 namespace gossi\codegen\model;
 
-use gossi\docblock\Docblock;
-use gossi\codegen\model\parts\InterfacesTrait;
 use gossi\codegen\model\parts\AbstractTrait;
-use gossi\codegen\model\parts\FinalTrait;
 use gossi\codegen\model\parts\ConstantsTrait;
+use gossi\codegen\model\parts\FinalTrait;
+use gossi\codegen\model\parts\InterfacesTrait;
 use gossi\codegen\model\parts\PropertiesTrait;
 use gossi\codegen\model\parts\TraitsTrait;
+use gossi\codegen\parser\FileParser;
+use gossi\codegen\parser\visitor\PhpClassVisitor;
 use gossi\codegen\utils\ReflectionUtils;
+use gossi\docblock\Docblock;
 
 class PhpClass extends AbstractPhpStruct implements GenerateableInterface, TraitsInterface, ConstantsInterface {
 	
@@ -21,6 +23,12 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 
 	private $parentClassName;
 
+	/**
+	 * Creates a class from reflection
+	 * 
+	 * @param \ReflectionClass $ref
+	 * @return PhpClass
+	 */
 	public static function fromReflection(\ReflectionClass $ref) {
 		$class = new static();
 		$class->setQualifiedName($ref->name)
@@ -55,6 +63,18 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 		$class->setConstants($ref->getConstants());
 
 		return $class;
+	}
+	
+	/**
+	 * Creates a class from file
+	 * 
+	 * @param string $filename
+	 * @return PhpClass
+	 */
+	public static function fromFile($filename) {
+		$visitor = new PhpClassVisitor();
+		$parser = new FileParser();
+		return $parser->parse($visitor, $filename);
 	}
 
 	public function __construct($name = null) {

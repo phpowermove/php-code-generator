@@ -14,17 +14,32 @@ class PhpTraitTest extends \PHPUnit_Framework_TestCase {
 		require_once __DIR__ . '/../fixture/DummyTrait.php';
 	}
 	
-	public function testFromReflection() {
+	/**
+	 * @return PhpTrait
+	 */
+	private function createDummyTrait() {
 		$trait = new PhpTrait('DummyTrait');
 		$trait->setNamespace('gossi\\codegen\\tests\\fixture');
 		$trait->setDescription('Dummy docblock');
 		$trait->setMethod(PhpMethod::create('foo')->setVisibility('public'));
 		$trait->setProperty(PhpProperty::create('iAmHidden')->setVisibility('private'));
-		// @TODO: this alias is only a workaround
 		$trait->addUseStatement('gossi\\codegen\\tests\\fixture\\VeryDummyTrait');
 		$trait->addTrait('VeryDummyTrait');
 		$trait->generateDocblock();
-		$this->assertEquals($trait, PhpTrait::fromReflection(new \ReflectionClass('gossi\\codegen\\tests\\fixture\\DummyTrait')));
+		
+		return $trait;
+	}
+	
+	public function testFromReflection() {
+		$expected = $this->createDummyTrait();
+		$actual = PhpTrait::fromReflection(new \ReflectionClass('gossi\\codegen\\tests\\fixture\\DummyTrait'));
+		$this->assertEquals($expected, $actual);
+	}
+	
+	public function testFromFile() {
+		$expected = $this->createDummyTrait();
+		$actual = PhpTrait::fromFile(__DIR__ . '/../fixture/DummyTrait.php');
+		$this->assertEquals($expected, $actual);
 	}
 	
 	public function testSignature() {

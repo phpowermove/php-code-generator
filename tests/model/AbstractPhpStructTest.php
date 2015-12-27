@@ -3,7 +3,6 @@ namespace gossi\codegen\tests\model;
 
 use gossi\codegen\model\PhpClass;
 use gossi\codegen\model\PhpMethod;
-use gossi\codegen\model\PhpTrait;
 use gossi\codegen\utils\ReflectionUtils;
 
 class AbstractPhpStructTest extends \PHPUnit_Framework_TestCase {

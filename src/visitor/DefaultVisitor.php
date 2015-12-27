@@ -17,17 +17,16 @@
 namespace gossi\codegen\visitor;
 
 use gossi\codegen\config\CodeGeneratorConfig;
-use gossi\codegen\model\NamespaceInterface;
 use gossi\codegen\model\AbstractPhpStruct;
-use gossi\codegen\model\DocblockInterface;
-use gossi\codegen\model\TraitsInterface;
+use gossi\codegen\model\NamespaceInterface;
 use gossi\codegen\model\PhpClass;
-use gossi\codegen\model\PhpInterface;
-use gossi\codegen\model\PhpTrait;
 use gossi\codegen\model\PhpConstant;
-use gossi\codegen\model\PhpProperty;
-use gossi\codegen\model\PhpMethod;
 use gossi\codegen\model\PhpFunction;
+use gossi\codegen\model\PhpInterface;
+use gossi\codegen\model\PhpMethod;
+use gossi\codegen\model\PhpProperty;
+use gossi\codegen\model\PhpTrait;
+use gossi\codegen\model\TraitsInterface;
 use gossi\codegen\utils\Writer;
 use gossi\docblock\Docblock;
 

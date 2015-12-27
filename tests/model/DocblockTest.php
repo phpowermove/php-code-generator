@@ -1,19 +1,18 @@
 <?php
 namespace gossi\codegen\tests\model;
 
-use gossi\docblock\tags\AuthorTag;
-use gossi\docblock\tags\ThrowsTag;
-use gossi\docblock\Docblock;
-use gossi\docblock\tags\SeeTag;
-use gossi\docblock\tags\VarTag;
-use gossi\codegen\model\PhpMethod;
-use gossi\codegen\model\PhpProperty;
-use gossi\codegen\model\PhpConstant;
 use gossi\codegen\model\PhpClass;
-use gossi\codegen\model\PhpParameter;
-use gossi\codegen\model\PhpInterface;
-use gossi\codegen\model\PhpTrait;
+use gossi\codegen\model\PhpConstant;
 use gossi\codegen\model\PhpFunction;
+use gossi\codegen\model\PhpInterface;
+use gossi\codegen\model\PhpMethod;
+use gossi\codegen\model\PhpParameter;
+use gossi\codegen\model\PhpProperty;
+use gossi\codegen\model\PhpTrait;
+use gossi\docblock\Docblock;
+use gossi\docblock\tags\AuthorTag;
+use gossi\docblock\tags\SeeTag;
+use gossi\docblock\tags\ThrowsTag;
 
 class DocblockTest extends \PHPUnit_Framework_TestCase {
 

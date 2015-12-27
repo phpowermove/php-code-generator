@@ -1,7 +1,6 @@
 <?php
 namespace gossi\codegen\tests\model;
 
-// use gossi\codegen\tests\model\fixture\Entity;
 use gossi\docblock\Docblock;
 use gossi\codegen\model\PhpClass;
 use gossi\codegen\model\PhpMethod;
@@ -290,4 +289,30 @@ class PhpClassTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals("multiline\ndescription", $class->getDescription());
 	}
 	
+	public function testFromFile() {
+		$class = PhpClass::fromFile(__DIR__ . '/../fixture/Entity.php');
+
+		$this->assertEquals(PhpClass::fromReflection(new \ReflectionClass('gossi\codegen\tests\fixture\Entity')), $class);
+	}
+	
+	public function testFromFileWithBody() {
+		$class = PhpClass::fromFile(__DIR__ . '/../fixture/HelloWorld.php');
+		
+		$this->assertTrue($class->hasMethod('sayHello'));
+		
+		$sayHello = $class->getMethod('sayHello');
+		$this->assertEquals('return \'Hello World!\';', $sayHello->getBody());
+	}
+	
+	public function testFromFileWithConstants() {
+		$class = PhpClass::fromFile(__DIR__ . '/../fixture/ClassWithConstants.php');
+		
+		$this->assertTrue($class->hasConstant('FOO'));
+	}
+	
+	public function testFromFileWithTraits() {
+		$class = PhpClass::fromFile(__DIR__ . '/../fixture/ClassWithTraits.php');
+	
+		$this->assertTrue($class->hasTrait('DT'));
+	}
 }

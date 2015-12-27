@@ -1,10 +1,8 @@
 <?php
 namespace gossi\codegen\tests\model;
 
-use gossi\codegen\model\PhpParameter;
-use gossi\codegen\model\PhpClass;
-use gossi\codegen\model\PhpMethod;
 use gossi\codegen\model\PhpFunction;
+use gossi\codegen\model\PhpParameter;
 
 class PhpParameterTest extends \PHPUnit_Framework_TestCase {
 

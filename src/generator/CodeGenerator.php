@@ -1,9 +1,8 @@
 <?php
 namespace gossi\codegen\generator;
 
-use gossi\codegen\model\GenerateableInterface;
 use gossi\codegen\config\CodeGeneratorConfig;
-use gossi\codegen\visitor\EmptyDocblockVisitor;
+use gossi\codegen\model\GenerateableInterface;
 use gossi\codegen\visitor\DefaultVisitor;
 
 class CodeGenerator {

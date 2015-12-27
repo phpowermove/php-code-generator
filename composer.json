@@ -7,21 +7,20 @@
 	"type" : "library",
 	"license" : "Apache2",
 	"authors" : [{
-			"name" : "Johannes M. Schmitt",
-			"email" : "schmittjoh@gmail.com"
-		}, {
 			"name" : "Thomas Gossmann",
 			"homepage" : "http://gos.si"
 		}
 	],
 	"require" : {
-		"php" : ">=5.4.0",
+		"php" : ">=5.4",
 		"gossi/docblock" : "~1",
 		"symfony/options-resolver" : "~2",
-		"phootwork/tokenizer" : "~0"
+		"phootwork/tokenizer" : "~0",
+		"nikic/php-parser" : "~1",
+		"phootwork/file" : "~0"
 	},
-	"suggest": {
-		"gossi/php-code-formatter": "Formatting your generated code"
+	"suggest" : {
+		"gossi/php-code-formatter" : "Formatting your generated code"
 	},
 	"autoload" : {
 		"psr-4" : {

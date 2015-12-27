@@ -1,16 +1,24 @@
 <?php
 namespace gossi\codegen\model;
 
-use gossi\docblock\Docblock;
 use gossi\codegen\model\parts\PropertiesTrait;
 use gossi\codegen\model\parts\TraitsTrait;
+use gossi\codegen\parser\FileParser;
+use gossi\codegen\parser\visitor\PhpTraitVisitor;
 use gossi\codegen\utils\ReflectionUtils;
+use gossi\docblock\Docblock;
 
 class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, TraitsInterface {
 	
 	use PropertiesTrait;
 	use TraitsTrait;
 
+	/**
+	 * Creates a trait from reflection
+	 * 
+	 * @param \ReflectionClass $ref
+	 * @return PhpTrait
+	 */
 	public static function fromReflection(\ReflectionClass $ref) {
 		$trait = new static();
 		$trait->setQualifiedName($ref->name);
@@ -37,6 +45,18 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
 		}
 
 		return $trait;
+	}
+	
+	/**
+	 * Creates a trait from a file
+	 * 
+	 * @param string $filename
+	 * @return PhpInterface
+	 */
+	public static function fromFile($filename) {
+		$visitor = new PhpTraitVisitor();
+		$parser = new FileParser();
+		return $parser->parse($visitor, $filename);
 	}
 
 	public function __construct($name = null) {
