@@ -94,16 +94,16 @@
         },
         {
             "name": "phootwork/collection",
-            "version": "v1.2.2",
+            "version": "v1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phootwork/collection.git",
-                "reference": "14e9dee4b514c76972209e873852aa3bbf3fb552"
+                "reference": "a38173350687b0e99088dbac437d8b8637195491"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phootwork/collection/zipball/14e9dee4b514c76972209e873852aa3bbf3fb552",
-                "reference": "14e9dee4b514c76972209e873852aa3bbf3fb552",
+                "url": "https://api.github.com/repos/phootwork/collection/zipball/a38173350687b0e99088dbac437d8b8637195491",
+                "reference": "a38173350687b0e99088dbac437d8b8637195491",
                 "shasum": ""
             },
             "require": {
@@ -134,7 +134,7 @@
                 "set",
                 "stack"
             ],
-            "time": "2015-11-06 17:48:19"
+            "time": "2015-12-28 16:07:10"
         },
         {
             "name": "phootwork/file",
@@ -251,25 +251,25 @@
         },
         {
             "name": "symfony/options-resolver",
-            "version": "v2.8.0",
+            "version": "v3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/options-resolver.git",
-                "reference": "e7f62cf7d9e48238299cfa5d0556aee8cff1e075"
+                "reference": "8e68c053a39e26559357cc742f01a7182ce40785"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/e7f62cf7d9e48238299cfa5d0556aee8cff1e075",
-                "reference": "e7f62cf7d9e48238299cfa5d0556aee8cff1e075",
+                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/8e68c053a39e26559357cc742f01a7182ce40785",
+                "reference": "8e68c053a39e26559357cc742f01a7182ce40785",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.9"
+                "php": ">=5.5.9"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.8-dev"
+                    "dev-master": "3.0-dev"
                 }
             },
             "autoload": {
@@ -301,7 +301,7 @@
                 "configuration",
                 "options"
             ],
-            "time": "2015-11-18 13:45:00"
+            "time": "2015-11-18 13:48:51"
         }
     ],
     "packages-dev": [

@@ -17,14 +17,16 @@
  */
 namespace gossi\codegen\model;
 
-use gossi\docblock\tags\ReturnTag;
-use gossi\docblock\Docblock;
 use gossi\codegen\model\parts\AbstractTrait;
-use gossi\codegen\model\parts\FinalTrait;
-use gossi\codegen\model\parts\ReferenceReturnTrait;
 use gossi\codegen\model\parts\BodyTrait;
+use gossi\codegen\model\parts\FinalTrait;
+use gossi\codegen\model\parts\ParamDocblockGeneratorTrait;
 use gossi\codegen\model\parts\ParametersTrait;
+use gossi\codegen\model\parts\ReferenceReturnTrait;
+use gossi\codegen\model\parts\TypeDocblockGeneratorTrait;
 use gossi\codegen\utils\ReflectionUtils;
+use gossi\docblock\Docblock;
+use gossi\docblock\tags\ReturnTag;
 
 /**
  * Represents a PHP method.
@@ -38,6 +40,8 @@ class PhpMethod extends AbstractPhpMember {
 	use ParametersTrait;
 	use BodyTrait;
 	use ReferenceReturnTrait;
+	use TypeDocblockGeneratorTrait;
+	use ParamDocblockGeneratorTrait;
 
 	/**
 	 *
@@ -85,12 +89,10 @@ class PhpMethod extends AbstractPhpMember {
 		$docblock->setShortDescription($this->getDescription());
 		$docblock->setLongDescription($this->getLongDescription());
 		
-		if ($this->getType()) {
-			$docblock->appendTag(ReturnTag::create()->setType($this->getType())->setDescription($this->getTypeDescription()));
-		}
+		// return tag
+		$this->generateTypeTag(new ReturnTag());
 		
-		foreach ($this->parameters as $param) {
-			$docblock->appendTag($param->getDocblockTag());
-		}
+		// param tags
+		$this->generateParamDocblock();
 	}
 }

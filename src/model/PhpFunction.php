@@ -27,6 +27,8 @@ use gossi\codegen\model\parts\ReferenceReturnTrait;
 use gossi\codegen\model\parts\TypeTrait;
 use gossi\codegen\model\parts\LongDescriptionTrait;
 use gossi\codegen\utils\ReflectionUtils;
+use gossi\codegen\model\parts\TypeDocblockGeneratorTrait;
+use gossi\codegen\model\parts\ParamDocblockGeneratorTrait;
 
 /**
  * Represents a PHP function.
@@ -42,6 +44,8 @@ class PhpFunction extends AbstractModel implements GenerateableInterface, Namesp
 	use ReferenceReturnTrait;
 	use TypeTrait;
 	use LongDescriptionTrait;
+	use TypeDocblockGeneratorTrait;
+	use ParamDocblockGeneratorTrait;
 
 	public static function fromReflection(\ReflectionFunction $ref) {
 		$function = PhpFunction::create($ref->name)
@@ -77,14 +81,10 @@ class PhpFunction extends AbstractModel implements GenerateableInterface, Namesp
 		$docblock->setShortDescription($this->getDescription());
 		$docblock->setLongDescription($this->getLongDescription());
 		
-		if ($this->getType()) {
-			$docblock->appendTag(ReturnTag::create()
-				->setType($this->getType())
-				->setDescription($this->getTypeDescription()));
-		}
+		// return tag
+		$this->generateTypeTag(new ReturnTag());
 		
-		foreach ($this->parameters as $param) {
-			$docblock->appendTag($param->getDocblockTag());
-		}
+		// param tags
+		$this->generateParamDocblock();
 	}
 }

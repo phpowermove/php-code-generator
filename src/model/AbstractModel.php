@@ -75,4 +75,5 @@ abstract class AbstractModel {
 		$this->description = $description;
 		return $this;
 	}
+
 }

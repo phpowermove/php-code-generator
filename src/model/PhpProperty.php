@@ -17,9 +17,10 @@
  */
 namespace gossi\codegen\model;
 
-use gossi\docblock\tags\VarTag;
-use gossi\docblock\Docblock;
 use gossi\codegen\model\parts\DefaultValueTrait;
+use gossi\codegen\model\parts\TypeDocblockGeneratorTrait;
+use gossi\docblock\Docblock;
+use gossi\docblock\tags\VarTag;
 
 /**
  * Represents a PHP property.
@@ -29,6 +30,7 @@ use gossi\codegen\model\parts\DefaultValueTrait;
 class PhpProperty extends AbstractPhpMember {
 	
 	use DefaultValueTrait;
+	use TypeDocblockGeneratorTrait;
 
 	/**
 	 * @param string|null $name
@@ -59,12 +61,7 @@ class PhpProperty extends AbstractPhpMember {
 		$docblock->setShortDescription($this->getDescription());
 		$docblock->setLongDescription($this->getLongDescription());
 		
-		$type = $this->getType();
-		if (!empty($type)) {
-			$docblock->appendTag(VarTag::create()
-				->setType($type)
-				->setDescription($this->getTypeDescription())
-			);
-		}
+		// var tag
+		$this->generateTypeTag(new VarTag());
 	}
 }

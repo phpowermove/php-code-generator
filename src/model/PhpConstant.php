@@ -7,6 +7,7 @@ use gossi\codegen\model\parts\NameTrait;
 use gossi\codegen\model\parts\LongDescriptionTrait;
 use gossi\codegen\model\parts\DocblockTrait;
 use gossi\codegen\model\parts\TypeTrait;
+use gossi\codegen\model\parts\TypeDocblockGeneratorTrait;
 
 class PhpConstant extends AbstractModel implements GenerateableInterface, DocblockInterface {
 	
@@ -14,6 +15,7 @@ class PhpConstant extends AbstractModel implements GenerateableInterface, Docblo
 	use LongDescriptionTrait;
 	use DocblockTrait;
 	use TypeTrait;
+	use TypeDocblockGeneratorTrait;
 
 	private $value;
 
@@ -45,12 +47,7 @@ class PhpConstant extends AbstractModel implements GenerateableInterface, Docblo
 		$docblock->setShortDescription($this->getDescription());
 		$docblock->setLongDescription($this->getLongDescription());
 		
-		$type = $this->getType();
-		if (!empty($type)) {
-			$docblock->appendTag(VarTag::create()
-				->setType($type)
-				->setDescription($this->getTypeDescription())
-			);
-		}
+		// var tag
+		$this->generateTypeTag(new VarTag());
 	}
 }
