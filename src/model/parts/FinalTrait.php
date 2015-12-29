@@ -5,13 +5,19 @@ trait FinalTrait {
 
 	private $final = false;
 
+	/**
+	 * Returns whether this is final
+	 * 
+	 * @return boolean `true` for final and `false` if not
+	 */
 	public function isFinal() {
 		return $this->final;
 	}
 
 	/**
-	 *
-	 * @param boolean $bool        	
+	 * Sets this final
+	 * 
+	 * @param boolean $bool `true` for final and `false` if not        	
 	 * @return $this
 	 */
 	public function setFinal($bool) {

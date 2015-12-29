@@ -39,15 +39,18 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 	}
 	
 	/**
-	 * @return string
+	 * Returns the file header comment
+	 * 
+	 * @return string the header comment
 	 */
 	public function getHeaderComment() {
 		return $this->options['headerComment'];
 	}
 	
 	/**
+	 * Sets the file header comment
 	 * 
-	 * @param string $comment
+	 * @param string $comment the header comment
 	 * @return $this
 	 */
 	public function setHeaderComment($comment) {
@@ -56,15 +59,18 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 	}
 	
 	/**
-	 * @return Docblock
+	 * Returns the file header docblock
+	 * 
+	 * @return Docblock the docblock
 	 */
 	public function getHeaderDocblock() {
 		return $this->options['headerDocblock'];
 	}
 	
 	/**
+	 * Sets the file header docblock
 	 * 
-	 * @param Docblock $docblock
+	 * @param Docblock $docblock the docblock
 	 * @return $this
 	 */
 	public function setHeaderDocblock(Docblock $docblock) {
@@ -73,15 +79,18 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 	}
 	
 	/**
-	 * @return boolean
+	 * Returns whether a blank line should be generated at the end of the file
+	 * 
+	 * @return boolean `true` if it will be generated and `false` if not
 	 */
 	public function getBlankLineAtEnd() {
 		return $this->options['blankLineAtEnd'];
 	}
 	
 	/**
+	 * Sets whether a blank line should be generated at the end of the file
 	 * 
-	 * @param boolean $show
+	 * @param boolean $show `true` if it will be generated and `false` if not
 	 * @return $this
 	 */
 	public function setBlankLineAtEnd($show) {
@@ -90,15 +99,20 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 	}
 	
 	/**
-	 * @return boolean
+	 * Returns whether a `declare(strict_types=1);` statement should be printed 
+	 * below the header comments (PHP 7)
+	 * 
+	 * @return boolean `true` if it will be printed and `false` if not
 	 */
 	public function getDeclareStrictTypes() {
 		return $this->options['declareStrictTypes'];
 	}
 	
 	/**
+	 * Sets whether a `declare(strict_types=1);` statement should be printed 
+	 * below the header comments (PHP 7)
 	 * 
-	 * @param boolean $strict
+	 * @param boolean $strict `true` if it will be printed and `false` if not
 	 * @return $this
 	 */
 	public function setDeclareStrictTypes($strict) {

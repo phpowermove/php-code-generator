@@ -8,13 +8,18 @@ use gossi\codegen\parser\visitor\PhpInterfaceVisitor;
 use gossi\codegen\utils\ReflectionUtils;
 use gossi\docblock\Docblock;
 
+/**
+ * Represents a PHP interface.
+ * 
+ * @author gossi
+ */
 class PhpInterface extends AbstractPhpStruct implements GenerateableInterface, ConstantsInterface {
 	
 	use InterfacesTrait;
 	use ConstantsTrait;
 
 	/**
-	 * Creates an interface from reflection
+	 * Creates a PHP interface from reflection
 	 * 
 	 * @param \ReflectionClass $ref
 	 * @return PhpInterface
@@ -40,7 +45,7 @@ class PhpInterface extends AbstractPhpStruct implements GenerateableInterface, C
 	}
 	
 	/**
-	 * Creates an interface from file 
+	 * Creates a PHP interface from file 
 	 * 
 	 * @param string $filename
 	 * @return PhpInterface
@@ -51,6 +56,11 @@ class PhpInterface extends AbstractPhpStruct implements GenerateableInterface, C
 		return $parser->parse($visitor, $filename);
 	}
 
+	/**
+	 * Create a new PHP interface
+	 * 
+	 * @param string $name qualified name
+	 */
 	public function __construct($name = null) {
 		parent::__construct($name);
 	}

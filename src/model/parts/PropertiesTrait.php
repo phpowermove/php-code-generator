@@ -12,7 +12,8 @@ trait PropertiesTrait {
 	private $properties = [];
 
 	/**
-	 *
+	 * Sets a collection of properties
+	 * 
 	 * @param PhpProperty[] $properties        	
 	 * @return $this
 	 */
@@ -30,6 +31,12 @@ trait PropertiesTrait {
 		return $this;
 	}
 
+	/**
+	 * Adds a property
+	 * 
+	 * @param PhpProperty $property
+	 * @return $this
+	 */
 	public function setProperty(PhpProperty $property) {
 		$property->setParent($this);
 		$this->properties[$property->getName()] = $property;
@@ -38,8 +45,10 @@ trait PropertiesTrait {
 	}
 
 	/**
-	 *
-	 * @param string $property        	
+	 * Returns a property
+	 * 
+	 * @param string $property property name
+	 * @return PhpProperty        	
 	 */
 	public function getProperty($property) {
 		if ($property instanceof PhpProperty) {
@@ -52,8 +61,10 @@ trait PropertiesTrait {
 	}
 
 	/**
-	 *
-	 * @param string $property        	
+	 * Checks whether a property exists
+	 * 
+	 * @param PhpProperty|string $property property name or instance
+	 * @return boolean `true` if a property exists and `false` if not        	
 	 */
 	public function hasProperty($property) {
 		if ($property instanceof PhpProperty) {
@@ -64,8 +75,10 @@ trait PropertiesTrait {
 	}
 
 	/**
-	 *
-	 * @param string $property        	
+	 * Removes a property
+	 * 
+	 * @param PhpProperty|string $property property name or instance
+	 * @return $this         	
 	 */
 	public function removeProperty($property) {
 		if ($property instanceof PhpProperty) {
@@ -82,6 +95,11 @@ trait PropertiesTrait {
 		return $this;
 	}
 
+	/**
+	 * Returns a collection of properties
+	 * 
+	 * @return PhpProperty[]
+	 */
 	public function getProperties() {
 		return $this->properties;
 	}

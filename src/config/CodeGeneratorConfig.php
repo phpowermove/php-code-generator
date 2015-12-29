@@ -3,10 +3,21 @@ namespace gossi\codegen\config;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Configuration for code generator
+ * 
+ * @author gossi
+ */
 class CodeGeneratorConfig {
 
 	protected $options;
 
+	/**
+	 * Creates a new configuration for code generator
+	 * 
+	 * @see https://php-code-generator.readthedocs.org/en/latest/generator.html
+	 * @param array $options
+	 */
 	public function __construct(array $options = []) {
 		$resolver = new OptionsResolver();
 		$resolver->setDefined($this->getOptionalOptions());
@@ -45,15 +56,18 @@ class CodeGeneratorConfig {
 	}
 
 	/**
-	 * @return boolean
+	 * Returns whether docblocks should be generated
+	 * 
+	 * @return boolean `true` if they will be generated and `false` if not
 	 */
 	public function getGenerateDocblock() {
 		return $this->options['generateDocblock'];
 	}
 
 	/**
+	 * Sets whether docblocks should be generated
 	 *
-	 * @param boolean $generate
+	 * @param boolean $generate `true` if they will be generated and `false` if not
 	 * @return $this
 	 */
 	public function setGenerateDocblock($generate) {
@@ -62,15 +76,18 @@ class CodeGeneratorConfig {
 	}
 
 	/**
-	 * @return boolean
+	 * Returns whether empty docblocks are generated
+	 * 
+	 * @return boolean `true` if they will be generated and `false` if not
 	 */
 	public function getGenerateEmptyDocblock() {
 		return $this->options['generateEmptyDocblock'];
 	}
 
 	/**
+	 * Sets whether empty docblocks are generated
 	 *
-	 * @param boolean $generate
+	 * @param boolean $generate `true` if they will be generated and `false` if not
 	 * @return $this
 	 */
 	public function setGenerateEmptyDocblock($generate) {
@@ -79,15 +96,18 @@ class CodeGeneratorConfig {
 	}
 
 	/**
-	 * @return boolean
+	 * Returns whether scalar type hints will be generated for method parameters (PHP 7)
+	 * 
+	 * @return boolean `true` if they will be generated and `false` if not
 	 */
 	public function getGenerateScalarTypeHints() {
 		return $this->options['generateScalarTypeHints'];
 	}
 
 	/**
+	 * Sets whether scalar type hints will be generated for method parameters (PHP 7)
 	 *
-	 * @param boolean $generate
+	 * @param boolean $generate `true` if they will be generated and `false` if not
 	 * @return $this
 	 */
 	public function setGenerateScalarTypeHints($generate) {
@@ -96,15 +116,18 @@ class CodeGeneratorConfig {
 	}
 
 	/**
-	 * @return boolean
+	 * Returns whether return type hints will be generated for method parameters (PHP 7)
+	 * 
+	 * @return boolean `true` if they will be generated and `false` if not
 	 */
 	public function getGenerateReturnTypeHints() {
 		return $this->options['generateReturnTypeHints'];
 	}
 
 	/**
+	 * Sets whether return type hints will be generated for method parameters (PHP 7)
 	 *
-	 * @param boolean $generate
+	 * @param boolean $generate `true` if they will be generated and `false` if not
 	 * @return $this
 	 */
 	public function setGenerateReturnTypeHints($generate) {

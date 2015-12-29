@@ -1,6 +1,11 @@
 <?php
 namespace gossi\codegen\model;
 
+/**
+ * Parent of all models
+ * 
+ * @author gossi
+ */
 abstract class AbstractModel {
 
 	private $attributes = [];

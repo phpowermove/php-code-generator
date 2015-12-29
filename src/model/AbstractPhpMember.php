@@ -34,10 +34,25 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
 	use LongDescriptionTrait;
 	use TypeTrait;
 
+	/**
+	 * Private visibility
+	 * 
+	 * @var string
+	 */
 	const VISIBILITY_PRIVATE = 'private';
 
+	/**
+	 * Protected visibility
+	 * 
+	 * @var string
+	 */
 	const VISIBILITY_PROTECTED = 'protected';
 
+	/**
+	 * Public visibility
+	 * 
+	 * @var string
+	 */
 	const VISIBILITY_PUBLIC = 'public';
 
 	private $static = false;
@@ -46,14 +61,24 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
 
 	private $parent;
 
+	/**
+	 * Creates a new member
+	 * 
+	 * @param string $name the name of the member
+	 */
 	public function __construct($name) {
 		$this->setName($name);
 		$this->docblock = new Docblock();
 	}
 
 	/**
-	 *
-	 * @param string $visibility        	
+	 * Sets the members visibility
+	 * 
+	 * @see AbstractPhpMember::VISIBILITY_PUBLIC
+	 * @see AbstractPhpMember::VISIBILITY_PROTECTED
+	 * @see AbstractPhpMember::VISIBILITY_PRIVATE
+	 * @param string $visibility the new visibility
+	 * @return $this
 	 */
 	public function setVisibility($visibility) {
 		if ($visibility !== self::VISIBILITY_PRIVATE 
@@ -66,10 +91,21 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
 		
 		return $this;
 	}
+	
+	/**
+	 * Returns the visibility state of this member
+	 *
+	 * @return string the visibility
+	 */
+	public function getVisibility() {
+		return $this->visibility;
+	}
 
 	/**
-	 *
-	 * @param boolean $bool        	
+	 * Sets whether or not this member is static
+	 * 
+	 * @param boolean $bool
+	 * @return $this        	
 	 */
 	public function setStatic($bool) {
 		$this->static = (boolean) $bool;
@@ -77,16 +113,19 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
 		return $this;
 	}
 
+	/**
+	 * Returns whether this member is static
+	 * 
+	 * @return boolean `true` if static and `false` if not
+	 */
 	public function isStatic() {
 		return $this->static;
 	}
 
-	public function getVisibility() {
-		return $this->visibility;
-	}
-
 	/**
-	 *
+	 * Sets the parent structure to which this member belongs
+	 * 
+	 * @internal
 	 * @param AbstractPhpStruct|null $parent        	
 	 * @return $this
 	 */
@@ -96,7 +135,9 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
 	}
 
 	/**
-	 *
+	 * Returns the parent structure to which this member belongs
+	 * 
+	 * @internal
 	 * @return AbstractPhpStruct
 	 */
 	public function getParent() {

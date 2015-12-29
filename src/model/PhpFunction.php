@@ -47,6 +47,12 @@ class PhpFunction extends AbstractModel implements GenerateableInterface, Namesp
 	use TypeDocblockGeneratorTrait;
 	use ParamDocblockGeneratorTrait;
 
+	/**
+	 * Creates a PHP function from reflection
+	 *
+	 * @param \ReflectionFunction $ref
+	 * @return PhpFunction
+	 */
 	public static function fromReflection(\ReflectionFunction $ref) {
 		$function = PhpFunction::create($ref->name)
 			->setReferenceReturned($ref->returnsReference())
@@ -67,10 +73,21 @@ class PhpFunction extends AbstractModel implements GenerateableInterface, Namesp
 		return $function;
 	}
 
+	/**
+	 * Creates a new PHP function
+	 * 
+	 * @param string $name qualified name
+	 * @return static
+	 */
 	public static function create($name = null) {
 		return new static($name);
 	}
 
+	/**
+	 * Creates a new PHP function
+	 *
+	 * @param string $name qualified name
+	 */
 	public function __construct($name = null) {
 		$this->setQualifiedName($name);
 		$this->docblock = new Docblock();

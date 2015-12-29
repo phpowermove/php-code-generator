@@ -9,6 +9,11 @@ use gossi\codegen\model\parts\DocblockTrait;
 use gossi\codegen\model\parts\TypeTrait;
 use gossi\codegen\model\parts\TypeDocblockGeneratorTrait;
 
+/**
+ * Represents a PHP constant.
+ * 
+ * @author gossi
+ */
 class PhpConstant extends AbstractModel implements GenerateableInterface, DocblockInterface {
 	
 	use NameTrait;

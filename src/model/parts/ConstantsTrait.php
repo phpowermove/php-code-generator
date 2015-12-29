@@ -6,11 +6,15 @@ use gossi\codegen\model\PhpConstant;
 trait ConstantsTrait {
 
 	/**
-	 *
 	 * @var PhpConstant[]
 	 */
 	private $constants = [];
 
+	/**
+	 * Sets a collection of constants
+	 *
+	 * @param PhpConstant[] $constants
+	 */
 	public function setConstants(array $constants) {
 		$normalizedConstants = array();
 		foreach ($constants as $name => $value) {
@@ -29,9 +33,11 @@ trait ConstantsTrait {
 	}
 
 	/**
+	 * Adds a constant
 	 *
-	 * @param string|PhpConstant $name        	
-	 * @param string $value        	
+	 * @param string|PhpConstant $name constant name or instance
+	 * @param string $value
+	 * @return $this
 	 */
 	public function setConstant($nameOrConstant, $value = null) {
 		if ($nameOrConstant instanceof PhpConstant) {
@@ -49,9 +55,9 @@ trait ConstantsTrait {
 	}
 
 	/**
+	 * Checks whether a constant exists
 	 *
-	 * @param string $name        	
-	 *
+	 * @param string $name
 	 * @return boolean
 	 */
 	public function hasConstant($name) {
@@ -61,7 +67,7 @@ trait ConstantsTrait {
 	/**
 	 * Returns a constant.
 	 *
-	 * @param string $name        	
+	 * @param string $name constant name
 	 *
 	 * @return PhpConstant
 	 */
@@ -74,8 +80,10 @@ trait ConstantsTrait {
 	}
 
 	/**
+	 * Removes a constant
 	 *
-	 * @param string $name        	
+	 * @param string $name constant name
+	 * @return $this
 	 */
 	public function removeConstant($name) {
 		if (!array_key_exists($name, $this->constants)) {
@@ -87,6 +95,11 @@ trait ConstantsTrait {
 		return $this;
 	}
 
+	/**
+	 * Returns constants
+	 *
+	 * @param boolean $asObjects (deprecated, will be replaced with getConstantNames() and getConstant???() [??? = e.g. Map, Array] method)
+	 */
 	public function getConstants($asObjects = false) {
 		if ($asObjects) {
 			return $this->constants;

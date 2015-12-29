@@ -6,7 +6,8 @@ trait NameTrait {
 	private $name;
 
 	/**
-	 *
+	 * Sets the name
+	 * 
 	 * @param string $name        	
 	 * @return $this
 	 */
@@ -16,6 +17,11 @@ trait NameTrait {
 		return $this;
 	}
 
+	/**
+	 * Returns the name
+	 * 
+	 * @return string
+	 */
 	public function getName() {
 		return $this->name;
 	}

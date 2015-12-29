@@ -12,6 +12,11 @@ use gossi\codegen\parser\visitor\PhpClassVisitor;
 use gossi\codegen\utils\ReflectionUtils;
 use gossi\docblock\Docblock;
 
+/**
+ * Represents a PHP class.
+ * 
+ * @author gossi
+ */
 class PhpClass extends AbstractPhpStruct implements GenerateableInterface, TraitsInterface, ConstantsInterface {
 	
 	use InterfacesTrait;
@@ -24,7 +29,7 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 	private $parentClassName;
 
 	/**
-	 * Creates a class from reflection
+	 * Creates a PHP class from reflection
 	 * 
 	 * @param \ReflectionClass $ref
 	 * @return PhpClass
@@ -66,7 +71,7 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 	}
 	
 	/**
-	 * Creates a class from file
+	 * Creates a PHP class from file
 	 * 
 	 * @param string $filename
 	 * @return PhpClass
@@ -77,17 +82,29 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 		return $parser->parse($visitor, $filename);
 	}
 
+	/** 
+	 * Creates a new PHP class
+	 * 
+	 * @param string $name the qualified name
+	 */
 	public function __construct($name = null) {
 		parent::__construct($name);
 	}
 
+	/**
+	 * Returns the parent class name
+	 * 
+	 * @return string
+	 */
 	public function getParentClassName() {
 		return $this->parentClassName;
 	}
 
 	/**
-	 *
-	 * @param string|null $name        	
+	 * Sets the parent class name
+	 * 
+	 * @param string|null $name the new parent
+	 * @return $this        	
 	 */
 	public function setParentClassName($name) {
 		$this->parentClassName = $name;

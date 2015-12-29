@@ -33,12 +33,21 @@ class PhpProperty extends AbstractPhpMember {
 	use TypeDocblockGeneratorTrait;
 
 	/**
-	 * @param string|null $name
+	 * Creates a new PHP property
+	 * 
+	 * @param string $name the properties name
+	 * @return static
 	 */
 	public static function create($name) {
 		return new static($name);
 	}
 
+	/**
+	 * Creates a new PHP property from reflection
+	 * 
+	 * @param \ReflectionProperty $ref
+	 * @return static
+	 */
 	public static function fromReflection(\ReflectionProperty $ref) {
 		$property = new static($ref->name);
 		$property->setStatic($ref->isStatic())

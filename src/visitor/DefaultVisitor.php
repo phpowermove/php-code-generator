@@ -59,7 +59,7 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 
 	public function __construct(CodeGeneratorConfig $config = null) {
 		// Make sure we retain the old default behavior for this class
-		$this->config = $config?: new CodeGeneratorConfig(['generateEmptyDocblock' => false]);
+		$this->config = $config ?: new CodeGeneratorConfig(['generateEmptyDocblock' => false]);
 		$this->writer = new Writer();
 	}
 

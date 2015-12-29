@@ -37,13 +37,21 @@ class PhpParameter extends AbstractModel {
 	private $passedByReference = false;
 
 	/**
-	 *
-	 * @param string|null $name        	
+	 * Creates a new PHP parameter.
+	 * 
+	 * @param string $name the parameter name
+	 * @return static        	
 	 */
 	public static function create($name = null) {
 		return new static($name);
 	}
 
+	/**
+	 * Creates a PHP parameter from reflection
+	 * 
+	 * @param \ReflectionParameter $ref
+	 * @return PhpParameter
+	 */
 	public static function fromReflection(\ReflectionParameter $ref) {
 		$parameter = new static();
 		$parameter->setName($ref->name)->setPassedByReference($ref->isPassedByReference());
@@ -78,13 +86,20 @@ class PhpParameter extends AbstractModel {
 		return $parameter;
 	}
 
+	/**
+	 * Creates a new PHP parameter
+	 * 
+	 * @param string $name the parameter name
+	 */
 	public function __construct($name = null) {
 		$this->setName($name);
 	}
 
 	/**
-	 *
-	 * @param boolean $bool        	
+	 * Sets whether this parameter is passed by reference
+	 * 
+	 * @param boolean $bool `true` if passed by reference and `false` if not
+	 * @return $this        	
 	 */
 	public function setPassedByReference($bool) {
 		$this->passedByReference = (boolean) $bool;
@@ -92,30 +107,42 @@ class PhpParameter extends AbstractModel {
 		return $this;
 	}
 
+	/**
+	 * Returns whether this parameter is passed by reference
+	 * 
+	 * @return boolean `true` if passed by reference and `false` if not
+	 */
 	public function isPassedByReference() {
 		return $this->passedByReference;
 	}
 
 	/**
-	 *
+	 * Returns a docblock tag for this parameter
+	 * 
 	 * @return ParamTag
 	 */
 	public function getDocblockTag() {
-		return ParamTag::create()->setType($this->getType() ?  : 'mixed')->setVariable($this->getName())->setDescription($this->getTypeDescription());
+		return ParamTag::create()
+			->setType($this->getType() ?  : 'mixed')
+			->setVariable($this->getName())
+			->setDescription($this->getTypeDescription());
 	}
 
 	/**
+	 * Alias for setDescription()
 	 *
 	 * @see #setDescription
-	 * @param string $description        	
+	 * @param string $description
+	 * @return $this        	
 	 */
 	public function setTypeDescription($description) {
-		$this->setDescription($description);
+		return $this->setDescription($description);
 	}
 
 	/**
 	 * Alias for getDescription()
 	 *
+	 * @see #getDescription
 	 * @return string
 	 */
 	public function getTypeDescription() {

@@ -8,13 +8,18 @@ use gossi\codegen\parser\visitor\PhpTraitVisitor;
 use gossi\codegen\utils\ReflectionUtils;
 use gossi\docblock\Docblock;
 
+/**
+ * Represents a PHP trait.
+ * 
+ * @author gossi
+ */
 class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, TraitsInterface {
 	
 	use PropertiesTrait;
 	use TraitsTrait;
 
 	/**
-	 * Creates a trait from reflection
+	 * Creates a PHP trait from reflection
 	 * 
 	 * @param \ReflectionClass $ref
 	 * @return PhpTrait
@@ -48,10 +53,10 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
 	}
 	
 	/**
-	 * Creates a trait from a file
+	 * Creates a PHP trait from a file
 	 * 
 	 * @param string $filename
-	 * @return PhpInterface
+	 * @return PhpTrait
 	 */
 	public static function fromFile($filename) {
 		$visitor = new PhpTraitVisitor();
@@ -59,6 +64,11 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
 		return $parser->parse($visitor, $filename);
 	}
 
+	/**
+	 * Creates a new PHP trait
+	 * 
+	 * @param string $name qualified name
+	 */
 	public function __construct($name = null) {
 		parent::__construct($name);
 	}

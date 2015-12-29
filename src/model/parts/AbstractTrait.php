@@ -5,13 +5,20 @@ trait AbstractTrait {
 
 	private $abstract = false;
 
+	/**
+	 * Returns whether this is abstract
+	 * 
+	 * @return boolean `true` for abstract and `false` if not
+	 */
 	public function isAbstract() {
 		return $this->abstract;
 	}
 
 	/**
-	 *
-	 * @param boolean $bool        	
+	 * Sets this to abstract
+	 * 
+	 * @param boolean $bool `true` for abstract and `false` if not
+	 * @return $this        	
 	 */
 	public function setAbstract($bool) {
 		$this->abstract = (boolean) $bool;

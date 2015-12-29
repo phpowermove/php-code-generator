@@ -44,13 +44,20 @@ class PhpMethod extends AbstractPhpMember {
 	use ParamDocblockGeneratorTrait;
 
 	/**
-	 *
-	 * @param string|null $name        	
+	 * Creates a new PHP method.
+	 * 
+	 * @param string $name the method name	
 	 */
 	public static function create($name) {
 		return new static($name);
 	}
 
+	/**
+	 * Creates a PHP method from reflection
+	 * 
+	 * @param \ReflectionMethod $ref
+	 * @return PhpMethod
+	 */
 	public static function fromReflection(\ReflectionMethod $ref) {
 		$method = new static($ref->name);
 		$method->setFinal($ref->isFinal())
@@ -85,7 +92,6 @@ class PhpMethod extends AbstractPhpMember {
 	}
 
 	/**
-	 *
 	 * @return PhpParameter
 	 */
 	protected static function createParameter(\ReflectionParameter $parameter) {

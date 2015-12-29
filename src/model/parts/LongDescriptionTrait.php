@@ -6,7 +6,8 @@ trait LongDescriptionTrait {
 	private $longDescription;
 
 	/**
-	 *
+	 * Returns the long description
+	 * 
 	 * @return string
 	 */
 	public function getLongDescription() {
@@ -14,8 +15,10 @@ trait LongDescriptionTrait {
 	}
 
 	/**
-	 *
-	 * @param string $longDescription        	
+	 * Sets the long description
+	 * 
+	 * @param string $longDescription
+	 * @return $this        	
 	 */
 	public function setLongDescription($longDescription) {
 		$this->longDescription = $longDescription;

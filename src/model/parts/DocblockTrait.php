@@ -11,7 +11,8 @@ trait DocblockTrait {
 	private $docblock;
 
 	/**
-	 *
+	 * Sets the docblock
+	 * 
 	 * @param Docblock|string $doc        	
 	 * @return $this
 	 */
@@ -26,6 +27,8 @@ trait DocblockTrait {
 	}
 
 	/**
+	 * Returns the docblock
+	 * 
 	 * @return Docblock
 	 */
 	public function getDocblock() {

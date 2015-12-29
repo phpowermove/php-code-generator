@@ -11,18 +11,36 @@ trait ParametersTrait {
 	 */
 	private $parameters = [];
 
+	/**
+	 * Sets a collection of parameters
+	 * 
+	 * @param PhpParameter[] $parameters
+	 * @return $this
+	 */
 	public function setParameters(array $parameters) {
 		$this->parameters = array_values($parameters);
 
 		return $this;
 	}
 
+	/**
+	 * Adds a parameter
+	 * 
+	 * @param PhpParameter $parameter
+	 * @return $this
+	 */
 	public function addParameter(PhpParameter $parameter) {
 		$this->parameters[count($this->parameters)] = $parameter;
 
 		return $this;
 	}
 	
+	/**
+	 * Checks whether a parameter exists
+	 * 
+	 * @param string $name parameter name
+	 * @return boolean `true` if a parameter exists and `false` if not
+	 */
 	public function hasParameter($name) {
 		foreach ($this->parameters as $parameter) {
 			if ($parameter->getName() === $name) {
@@ -33,6 +51,8 @@ trait ParametersTrait {
 	}
 
 	/**
+	 * A quick way to add a parameter which is created from the given parameters 
+	 * 
 	 * @param string      $name
 	 * @param null|string $type
 	 * @param mixed       $defaultValue omit the argument to define no default value
@@ -52,6 +72,8 @@ trait ParametersTrait {
 	}
 
 	/**
+	 * A quick way to add a parameter with description which is created from the given parameters
+	 * 
 	 * @param string      $name
 	 * @param null|string $type
 	 * @param null|string $typeDescription
@@ -64,7 +86,7 @@ trait ParametersTrait {
 		$parameter->setType($type);
 		$parameter->setTypeDescription($typeDescription);
 
-		if (3 < func_num_args()) {
+		if (3 < func_num_args() == 3) {
 			$parameter->setDefaultValue($defaultValue);
 		}
 
@@ -73,9 +95,9 @@ trait ParametersTrait {
 	}
 
 	/**
-	 *
+	 * Returns a parameter by index or name
+	 * 
 	 * @param string|integer $nameOrIndex
-	 *
 	 * @return PhpParameter
 	 */
 	public function getParameter($nameOrIndex) {
@@ -98,6 +120,14 @@ trait ParametersTrait {
 		throw new \InvalidArgumentException(sprintf('There is no parameter named "%s".', $nameOrIndex));
 	}
 
+	/**
+	 * Replaces a parameter at a given position
+	 * 
+	 * @param int $position
+	 * @param PhpParameter $parameter
+	 * @throws \InvalidArgumentException
+	 * @return $this
+	 */
 	public function replaceParameter($position, PhpParameter $parameter) {
 		if ($position < 0 || $position > count($this->parameters)) {
 			throw new \InvalidArgumentException(sprintf('The position must be in the range [0, %d].', count($this->parameters)));
@@ -108,8 +138,10 @@ trait ParametersTrait {
 	}
 
 	/**
-	 *
+	 * Remove a parameter at a given position
+	 * 
 	 * @param integer $position
+	 * @return $this
 	 */
 	public function removeParameter($position) {
 		if (!isset($this->parameters[$position])) {
@@ -121,6 +153,11 @@ trait ParametersTrait {
 		return $this;
 	}
 
+	/**
+	 * Returns a collection of parameters
+	 * 
+	 * @return PhpParameter[]
+	 */
 	public function getParameters() {
 		return $this->parameters;
 	}

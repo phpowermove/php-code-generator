@@ -15,11 +15,11 @@ trait InterfacesTrait {
 
 	/**
 	 * Adds an interface.
-	 * If the interface is passed as PhpInterface object,
+	 * 
+	 * If the interface is passed as PhpInterface object, 
 	 * the interface is also added as use statement.
 	 *
-	 * @param PhpInterface|string $interface
-	 *        	interface or qualified name
+	 * @param PhpInterface|string $interface interface or qualified name
 	 * @return $this
 	 */
 	public function addInterface($interface) {
@@ -42,17 +42,28 @@ trait InterfacesTrait {
 		return $this;
 	}
 
+	/**
+	 * Returns the interfaces
+	 * 
+	 * @return PhpInterface[]
+	 */
 	public function getInterfaces() {
 		return $this->interfaces;
 	}
 
+	/**
+	 * Checks whether interfaces exists
+	 * 
+	 * @return boolean `true` if interfaces are available and `false` if not
+	 */
 	public function hasInterfaces() {
 		return count($this->interfaces) > 0;
 	}
 
 	/**
-	 *
-	 * @param PhpInterface|string $interface        	
+	 * Checks whether an interface exists
+	 * 
+	 * @param PhpInterface|string $interface interface name or instance        	
 	 * @return boolean
 	 */
 	public function hasInterface($interface) {
@@ -65,11 +76,11 @@ trait InterfacesTrait {
 
 	/**
 	 * Removes an interface.
-	 * If the interface is passed as PhpInterface object,
+	 * 
+	 * If the interface is passed as PhpInterface object, 
 	 * the interface is also remove from the use statements.
 	 *
-	 * @param PhpInterface|string $interface
-	 *        	interface or qualified name
+	 * @param PhpInterface|string $interface interface or qualified name
 	 * @return $this
 	 */
 	public function removeInterface($interface) {
@@ -91,8 +102,9 @@ trait InterfacesTrait {
 	}
 
 	/**
-	 *
-	 * @param array $interfaces        	
+	 * Sets a collection of interfaces
+	 * 
+	 * @param PhpInterface[] $interfaces        	
 	 * @return $this
 	 */
 	public function setInterfaces(array $interfaces) {

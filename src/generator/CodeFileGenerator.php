@@ -1,13 +1,24 @@
 <?php
 namespace gossi\codegen\generator;
 
-use gossi\codegen\model\GenerateableInterface;
 use gossi\codegen\config\CodeFileGeneratorConfig;
+use gossi\codegen\model\GenerateableInterface;
 use gossi\docblock\Docblock;
 
+/**
+ * Code file generator.
+ * 
+ * Generates code for a model and puts it into a file with `<?php` statements. Can also
+ * generate header comments. 
+ * 
+ * @author gossi
+ */
 class CodeFileGenerator extends CodeGenerator {
 
 	/**
+	 * Creates a new CodeFileGenerator
+	 * 
+	 * @see https://php-code-generator.readthedocs.org/en/latest/generator.html
 	 * @param CodeFileGeneratorConfig|array $config
 	 */
 	public function __construct($config = null) {
@@ -23,12 +34,17 @@ class CodeFileGenerator extends CodeGenerator {
 	}
 
 	/**
+	 * {@inheritDoc}
+	 * 
 	 * @return CodeFileGeneratorConfig
 	 */
 	public function getConfig() {
 		return $this->config;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public function generate(GenerateableInterface $model) {
 		$content = "<?php\n";
 

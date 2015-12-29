@@ -8,7 +8,8 @@ trait QualifiedNameTrait {
 	private $namespace;
 
 	/**
-	 *
+	 * Sets the namespace
+	 * 
 	 * @param string $namespace        	
 	 * @return $this
 	 */
@@ -39,10 +40,20 @@ trait QualifiedNameTrait {
 		return $this;
 	}
 
+	/**
+	 * Returns the namespace
+	 * 
+	 * @return string
+	 */
 	public function getNamespace() {
 		return $this->namespace;
 	}
 
+	/**
+	 * Returns the qualified name
+	 * 
+	 * @return string
+	 */
 	public function getQualifiedName() {
 		if ($this->namespace) {
 			return $this->namespace . '\\' . $this->name;

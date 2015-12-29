@@ -36,16 +36,29 @@ class CodeGenerator {
 	}
 
 	/**
+	 * Returns the used configuration
+	 * 
 	 * @return CodeGeneratorConfig
 	 */
 	public function getConfig() {
 		return $this->config;
 	}
 
+	/**
+	 * Returns the used generator strategy
+	 * 
+	 * @return DefaultGeneratorStrategy
+	 */
 	public function getGeneratorStrategy() {
 		return $this->strategy;
 	}
 
+	/**
+	 * Generates code from a given model
+	 * 
+	 * @param GenerateableInterface $model
+	 * @return string the generated code
+	 */
 	public function generate(GenerateableInterface $model) {
 		if ($this->config->getGenerateDocblock()) {
 			$model->generateDocblock();

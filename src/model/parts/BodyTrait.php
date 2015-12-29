@@ -6,8 +6,10 @@ trait BodyTrait {
 	private $body = '';
 
 	/**
-	 *
-	 * @param string $body        	
+	 * Sets the body for this
+	 * 
+	 * @param string $body
+	 * @return $this        	
 	 */
 	public function setBody($body) {
 		$this->body = $body;
@@ -15,6 +17,11 @@ trait BodyTrait {
 		return $this;
 	}
 
+	/**
+	 * Returns the body
+	 * 
+	 * @return string
+	 */
 	public function getBody() {
 		return $this->body;
 	}
