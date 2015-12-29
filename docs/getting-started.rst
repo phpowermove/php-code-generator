@@ -19,52 +19,68 @@ Generate Code
 
 a) Simple:
 
-::
+  ::
 
-  <?php
-  use gossi\codegen\generator\CodeGenerator;
-  use gossi\codegen\model\PhpClass;
-  use gossi\codegen\model\PhpMethod;
-  use gossi\codegen\model\PhpParameter;
+	<?php
+	use gossi\codegen\generator\CodeGenerator;
+	use gossi\codegen\model\PhpClass;
+	use gossi\codegen\model\PhpMethod;
+	use gossi\codegen\model\PhpParameter;
 
-  $class = new PhpClass();
-  $class
-		->setQualifiedName('my\cool\Tool')
-  	->setMethod(PhpMethod::create('__construct')
-  		->addParameter(PhpParameter::create('target')
-  			->setType('string')
-  			->setDescription('Creates my Tool')
-  		)
-  	);
+	$class = new PhpClass();
+	$class
+	    ->setQualifiedName('my\\cool\\Tool')
+	    ->setMethod(PhpMethod::create('__construct')
+	        ->addParameter(PhpParameter::create('target')
+	            ->setType('string')
+	            ->setDescription('Creates my Tool')
+	        )
+	    )
+	;
 
-  $generator = new CodeGenerator();
-  $code = $generator->generate($class);
+	$generator = new CodeGenerator();
+	$code = $generator->generate($class);
 
-will generate::
+  will generate:
 
-  <?php
-  namespace my\cool;
+  ::
 
-  class Tool {
+	<?php
+	namespace my\cool;
 
-    /**
-     *
-     * @param $target string Creates my Tool
-     */
-    public function __construct($target) {
-    }
-  }
+	class Tool {
+
+	    /**
+	     *
+	     * @param $target string Creates my Tool
+	     */
+	    public function __construct($target) {
+	    }
+	}
+
+b) From File:
+
+  ::
+
+	<?php
+	use gossi\codegen\generator\CodeGenerator;
+	use gossi\codegen\model\PhpClass;
+
+	$class = PhpClass::fromFile('path/to/class.php');
+
+	$generator = new CodeGenerator();
+	$code = $generator->generate($class);
 
 
-b) From Reflection:
+c) From Reflection:
 
-::
+  ::
 
-  <?php
-  use gossi\codegen\generator\CodeGenerator;
-  use gossi\codegen\model\PhpClass;
+	<?php
+	use gossi\codegen\generator\CodeGenerator;
+	use gossi\codegen\model\PhpClass;
 
-  $class = PhpClass::fromReflection(new \ReflectionClass('MyClass'));
+	$class = PhpClass::fromReflection(new \ReflectionClass('MyClass'));
 
-  $generator = new CodeGenerator();
-  $code = $generator->generate($class);
+	$generator = new CodeGenerator();
+	$code = $generator->generate($class);

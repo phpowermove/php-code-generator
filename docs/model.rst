@@ -1,17 +1,54 @@
 Model
 =====
 
-Create Models programmatically
-------------------------------
+A model is a representation of your code, that you either read or create.
 
-You can create models with the provided fluent API. These models are available:
+Model Overview
+--------------
+
+There are different types of models available which are explained in this section.
+
+Structured Models
+^^^^^^^^^^^^^^^^^
+
+Structured models are composites and can contain other models, these are:
 
 * ``PhpClass``
 * ``PhpTrait``
 * ``PhpInterface``
-* ``PhpFunction``
 
-The functionality is demonstrated for a ``PhpClass`` but also works accordingly for all the other types.
+Generateable Models
+^^^^^^^^^^^^^^^^^^^
+
+There is only a couple of models available which can be passed to a generator. These are the mentioned structured models + ``PhpFunction``.
+
+Part Models
+^^^^^^^^^^^
+
+Structured models can be composed of various members. And functions and methods can itself contain zero to many parameters. All parts are:
+
+* ``PhpConstant``
+* ``PhpProperty``
+* ``PhpMethod``
+* ``PhpParameter``
+
+Name vs. Namespace vs. Qualified Name ?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+There can be a little struggle about the different names, which are `name`, `namespace` and `qualified name`. Every model has a name and generateable models additionally have a namespace and qualified name. The qualified name is a combination of namespace + name. Here is an overview:
+
++--------------------+----------------+
+| **Name**           | Tool           |
++--------------------+----------------+
+| **Namespace**      | my\\cool       |
++--------------------+----------------+
+| **Qualified Name** | my\\cool\\Tool |
++--------------------+----------------+
+
+Create Models programmatically
+------------------------------
+
+You can create models with the provided fluent API. The functionality is demonstrated for a ``PhpClass`` but also works accordingly for all the other generateable models.
 
 Create your first Class
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -22,7 +59,7 @@ Let's start with a simple example::
   use gossi\codegen\model\PhpClass;
 
   $class = new PhpClass();
-  $class->setQualifiedName('my\cool\Tool');
+  $class->setQualifiedName('my\\cool\\Tool');
 
 which will generate an empty::
 
@@ -44,15 +81,15 @@ It's better to have a constructor, so we add one::
   use gossi\codegen\model\PhpMethod;
   use gossi\codegen\model\PhpParameter;
 
-  $class = new PhpClass();
+  $class = new PhpClass('my\\cool\\Tool');
   $class
-    ->setQualifiedName('my\cool\Tool')
-    ->setMethod(PhpMethod::create('__construct')
-      ->addParameter(PhpParameter::create('target')
-        ->setType('string')
-        ->setDescription('Creates my Tool')
+      ->setMethod(PhpMethod::create('__construct')
+          ->addParameter(PhpParameter::create('target')
+              ->setType('string')
+              ->setDescription('Creates my Tool')
+          )
       )
-    );
+  ;
 
 you can see the fluent API in action and the snippet above will generate::
 
@@ -61,19 +98,19 @@ you can see the fluent API in action and the snippet above will generate::
 
   class Tool {
 
-    /**
-     *
-     * @param $target string Creates my Tool
-     */
-    public function __construct($target) {
-    }
+      /**
+       *
+       * @param $target string Creates my Tool
+       */
+      public function __construct($target) {
+      }
   }
 
 
 Adding members
 ^^^^^^^^^^^^^^
 
-We've just learned how to pass a blank method, the constructor to the class. We can also add `variables`, `constants` and of course `methods`. Let's do so::
+We've just learned how to pass a blank method, the constructor to the class. We can also add `properties`, `constants` and of course `methods`. Let's do so::
 
   <?php
   use gossi\codegen\model\PhpClass;
@@ -82,20 +119,18 @@ We've just learned how to pass a blank method, the constructor to the class. We 
   use gossi\codegen\model\PhpProperty;
   use gossi\codegen\model\PhpConstant;
 
-  $class = new PhpClass();
-  $class
-    ->setName('my\cool\Tool')
-    ->setMethod(PhpMethod::create('setDriver')
-      ->addParameter(PhpParameter::create('driver')
-        ->setType('string')
+  $class = PhpClass::create('my\\cool\\Tool')
+      ->setMethod(PhpMethod::create('setDriver')
+          ->addParameter(PhpParameter::create('driver')
+              ->setType('string')
+          )
+          ->setBody('$this->driver = $driver');
       )
-      ->setBody('$this->driver = $driver');
-    )
-    ->setProperty(PhpProperty::create('driver')
-      ->setVisibility('private')
-      ->setType('string')
-    )
-    ->setConstant(new PhpConstant('FOO', 'bar'))
+      ->setProperty(PhpProperty::create('driver')
+          ->setVisibility('private')
+          ->setType('string')
+      )
+      ->setConstant(new PhpConstant('FOO', 'bar'))
   ;
 
 will generate::
@@ -105,29 +140,29 @@ will generate::
 
   class Tool {
 
-    /**
-     */
-    const FOO = 'bar';
+      /**
+       */
+      const FOO = 'bar';
 
-    /**
-     * @var string
-     */
-    private $driver;
+      /**
+       * @var string
+       */
+      private $driver;
 
-    /**
-     *
-     * @param $driver string
-     */
-    public function setDriver($driver) {
-      $this->driver = $driver;
-    }
+      /**
+       *
+       * @param $driver string
+       */
+      public function setDriver($driver) {
+          $this->driver = $driver;
+      }
   }
 
 
 Declare use statements
 ^^^^^^^^^^^^^^^^^^^^^^
 
-When you put code inside a method there can be a reference to a class or interface, which you normally would put the qualified name into a use statement above your code. So here is how you do it::
+When you put code inside a method there can be a reference to a class or interface, where you normally put the qualified name into a use statement. So here is how you do it::
 
   <?php
   use gossi\codegen\model\PhpClass;
@@ -135,11 +170,13 @@ When you put code inside a method there can be a reference to a class or interfa
 
   $class = new PhpClass();
   $class
-    ->setQualifiedName('my\cool\Tool')
-    ->setMethod(PhpMethod::create('__construct')
-      ->setBody('$request = Request::createFromGlobals();')
-    )
-    ->declareUse('Symfony\\Component\\HttpFoundation\\Request');
+      ->setName('Tool')
+      ->setNamespace('my\\cool')
+      ->setMethod(PhpMethod::create('__construct')
+          ->setBody('$request = Request::createFromGlobals();')
+      )
+      ->declareUse('Symfony\\Component\\HttpFoundation\\Request')
+  ;
 
 which will create::
 
@@ -150,11 +187,11 @@ which will create::
 
   class Tool {
 
-    /**
-     */
-    public function __construct() {
-      $request = Request::createFromGlobals();
-    }
+      /**
+       */
+      public function __construct() {
+          $request = Request::createFromGlobals();
+      }
   }
 
 Much, much more
@@ -162,14 +199,30 @@ Much, much more
 
 The API has a lot more to offer and has almost full support for what you would expect to manipulate on each model, of course everything is fluent API.
 
-Create Models through Reflection
---------------------------------
+Create from existing Models
+---------------------------
 
-If you want to modify existing code, the best way to do this is through reflection. Just like the following::
+You can also read a model from existing code. Reading from a file is probably the best option here. It will parse the file and fill up the model. Alternatively if you do have the class already loaded you can use reflection to load the model.
+
+From File
+^^^^^^^^^
+
+Reading from a file is the simplest way to read existing code, just like this::
+
+  <?php
+  use gossi\codegen\model\PhpClass;
+
+  $class = PhpClass::fromFile('path/to/MyClass.php');
+
+
+Through Reflection
+^^^^^^^^^^^^^^^^^^
+
+If you already have your class loaded, then you can use reflection to load your code::
 
   <?php
   use gossi\codegen\model\PhpClass;
 
   $class = PhpClass::fromReflection(new \ReflectionClass('MyClass'));
 
-Make sure ``MyClass`` is loaded.
+Also reflection is nice, there is a catch to it. You must make sure ``MyClass`` is loaded. Also all the requirements (use statements, etc.) are loaded as well, anyway you will get an error when initializing the the reflection object.
