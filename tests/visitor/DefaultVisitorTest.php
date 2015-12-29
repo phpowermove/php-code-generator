@@ -2,11 +2,11 @@
 namespace gossi\codegen\tests\visitor;
 
 use gossi\codegen\model\PhpFunction;
+use gossi\codegen\model\PhpMethod;
 use gossi\codegen\model\PhpParameter;
 use gossi\codegen\model\PhpProperty;
-use gossi\codegen\visitor\DefaultVisitor;
-use gossi\codegen\model\PhpMethod;
 use gossi\codegen\utils\Writer;
+use gossi\codegen\visitor\DefaultVisitor;
 
 class DefaultVisitorTest extends \PHPUnit_Framework_TestCase {
 

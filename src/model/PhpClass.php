@@ -34,7 +34,6 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 		$class->setQualifiedName($ref->name)
 			->setAbstract($ref->isAbstract())
 			->setFinal($ref->isFinal())
-			->setConstants($ref->getConstants())
 			->setUseStatements(ReflectionUtils::getUseStatements($ref));
 
 		if ($ref->getDocComment()) {
@@ -60,6 +59,7 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 		}
 		
 		// constants
+		// TODO: https://github.com/gossi/php-code-generator/issues/19
 		$class->setConstants($ref->getConstants());
 
 		return $class;

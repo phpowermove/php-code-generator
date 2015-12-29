@@ -44,7 +44,7 @@ class PhpParameterTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals('a', $param->getName());
 		$this->assertFalse($param->isPassedByReference());
 		$this->assertEmpty($param->getDefaultValue());
-		$this->assertEmpty($param->getType());
+		$this->assertEquals('unknown_type', $param->getType());
 	}
 
 	private function paramB(\ReflectionParameter $param) {
@@ -62,10 +62,7 @@ class PhpParameterTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals('c', $param->getName());
 		$this->assertFalse($param->isPassedByReference());
 		$this->assertEmpty($param->getDefaultValue());
-		
-		// PHP BUG ?: Doesn't return \stdClass, just stdClass
-		// $this->assertEquals('\stdClass', $param->getType());
-		$this->assertEquals('stdClass', $param->getType());
+		$this->assertEquals('\stdClass', $param->getType());
 	}
 
 	private function paramD(\ReflectionParameter $param) {
@@ -74,7 +71,7 @@ class PhpParameterTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals('d', $param->getName());
 		$this->assertFalse($param->isPassedByReference());
 		$this->assertEquals('foo', $param->getDefaultValue());
-		$this->assertEmpty($param->getType());
+		$this->assertEquals('string', $param->getType());
 	}
 
 	private function paramE(\ReflectionParameter $param) {

@@ -21,6 +21,7 @@ use gossi\docblock\tags\ParamTag;
 use gossi\codegen\model\parts\NameTrait;
 use gossi\codegen\model\parts\DefaultValueTrait;
 use gossi\codegen\model\parts\TypeTrait;
+use gossi\docblock\Docblock;
 
 /**
  * Represents a PHP parameter.
@@ -51,12 +52,27 @@ class PhpParameter extends AbstractModel {
 			$parameter->setDefaultValue($ref->getDefaultValue());
 		}
 		
-		if ($ref->isArray()) {
-			$parameter->setType('array');
-		} elseif ($class = $ref->getClass()) {
-			$parameter->setType($class->getName());
-		} elseif (method_exists($ref, 'isCallable') && $ref->isCallable()) {
-			$parameter->setType('callable');
+		// find type and description in docblock
+		$docblock = new Docblock($ref->getDeclaringFunction());
+		
+		$params = $docblock->getTags('param');
+		$tag = $params->find($ref->name, function (ParamTag $t, $name) {
+			return $t->getVariable() == '$' . $name;
+		});
+		
+		if ($tag !== null) {
+			$parameter->setType($tag->getType(), $tag->getDescription());
+		}
+		
+		// set type if not found in comment
+		if ($parameter->getType() === null) {
+			if ($ref->isArray()) {
+				$parameter->setType('array');
+			} elseif ($class = $ref->getClass()) {
+				$parameter->setType($class->getName());
+			} elseif (method_exists($ref, 'isCallable') && $ref->isCallable()) {
+				$parameter->setType('callable');
+			}
 		}
 		
 		return $parameter;

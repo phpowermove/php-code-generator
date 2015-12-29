@@ -208,6 +208,7 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 	}
 
 	public function visitStructConstant(PhpConstant $constant) {
+		$this->visitDocblock($constant->getDocblock());
 		$this->writer->writeln('const ' . $constant->getName() . ' = ' . $this->getPhpExport($constant->getValue()) . ';');
 	}
 

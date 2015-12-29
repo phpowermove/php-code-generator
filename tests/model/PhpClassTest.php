@@ -1,14 +1,15 @@
 <?php
 namespace gossi\codegen\tests\model;
 
-use gossi\docblock\Docblock;
+use gossi\codegen\generator\CodeFileGenerator;
 use gossi\codegen\model\PhpClass;
-use gossi\codegen\model\PhpMethod;
-use gossi\codegen\model\PhpProperty;
-use gossi\codegen\model\PhpParameter;
 use gossi\codegen\model\PhpConstant;
 use gossi\codegen\model\PhpInterface;
+use gossi\codegen\model\PhpMethod;
+use gossi\codegen\model\PhpParameter;
+use gossi\codegen\model\PhpProperty;
 use gossi\codegen\model\PhpTrait;
+use gossi\docblock\Docblock;
 
 class PhpClassTest extends \PHPUnit_Framework_TestCase {
 
@@ -18,6 +19,7 @@ class PhpClassTest extends \PHPUnit_Framework_TestCase {
 		require_once __DIR__ . '/../fixture/Entity.php';
 		require_once __DIR__ . '/../fixture/ClassWithTraits.php';
 		require_once __DIR__ . '/../fixture/ClassWithConstants.php';
+		require_once __DIR__ . '/../fixture/ClassWithComments.php';
 	}
 
 	public function testFromReflection() {
@@ -38,6 +40,7 @@ class PhpClassTest extends \PHPUnit_Framework_TestCase {
 			->setProperty(PhpProperty::create('id')
 				->setVisibility('private')
 				->setDocblock($propDoc)
+				->setType('integer')
 				->setDescription($propDoc->getShortDescription()))
 			->setProperty(PhpProperty::create('enabled')
 				->setVisibility('private')
@@ -54,16 +57,18 @@ class PhpClassTest extends \PHPUnit_Framework_TestCase {
  */');
 		$method = PhpMethod::create('__construct')
 			->setFinal(true)
-			->addParameter(new PhpParameter('a'))
+			->addParameter(PhpParameter::create('a')
+				->setType('unknown_type'))
 			->addParameter(PhpParameter::create()
 				->setName('b')
 				->setType('array')
 				->setPassedByReference(true))
 			->addParameter(PhpParameter::create()
 				->setName('c')
-				->setType('stdClass'))
+				->setType('\\stdClass'))
 			->addParameter(PhpParameter::create()
 				->setName('d')
+				->setType('string')
 				->setDefaultValue('foo'))
 			->addParameter(PhpParameter::create()
 				->setName('e')
@@ -314,5 +319,64 @@ class PhpClassTest extends \PHPUnit_Framework_TestCase {
 		$class = PhpClass::fromFile(__DIR__ . '/../fixture/ClassWithTraits.php');
 	
 		$this->assertTrue($class->hasTrait('DT'));
+	}
+	
+	public function testFromFileWithComments() {
+		$class = PhpClass::fromFile(__DIR__ . '/../fixture/ClassWithComments.php');
+		$this->assertClassWithComments($class);
+		
+		$generator = new CodeFileGenerator();
+		$code = $generator->generate($class);
+		
+		$this->assertEquals(file_get_contents(__DIR__ . '/../fixture/ClassWithComments.php'), $code);
+	}
+	
+	public function testFromReflectionWithComments() {
+		// TODO: https://github.com/gossi/php-code-generator/issues/19
+// 		$class = PhpClass::fromReflection(new \ReflectionClass('gossi\codegen\tests\fixture\ClassWithComments'));
+// 		$this->assertClassWithComments($class);
+	}
+	
+	private function assertClassWithComments(PhpClass $class) {
+		$docblock = $class->getDocblock();
+		
+		$this->assertEquals($docblock->getShortDescription(), $class->getDescription());
+		$this->assertEquals($docblock->getLongDescription(), $class->getLongDescription());
+		
+		$this->assertEquals('A class with comments', $docblock->getShortDescription());
+		$this->assertEquals('Here is a super dooper long-description', $docblock->getLongDescription());
+		
+		$this->assertTrue($docblock->getTags('author')->size() > 0);
+		$this->assertTrue($docblock->getTags('since')->size() > 0);
+		
+		$FOO = $class->getConstant('FOO');
+		
+		$this->assertEquals('Best const ever', $FOO->getDescription());
+		$this->assertEquals('Aaaand we go along long', $FOO->getLongDescription());
+		$this->assertEquals('baz', $FOO->getTypeDescription());
+		$this->assertEquals('string', $FOO->getType());
+		$this->assertEquals('bar', $FOO->getValue());
+		
+		$propper = $class->getProperty('propper');
+		
+		$this->assertEquals('Best prop ever', $propper->getDescription());
+		$this->assertEquals('Aaaand we go along long long', $propper->getLongDescription());
+		$this->assertEquals('Wer macht sauber?', $propper->getTypeDescription());
+		$this->assertEquals('string', $propper->getType());
+		$this->assertEquals('Meister', $propper->getDefaultValue());
+		
+		$setup = $class->getMethod('setup');
+		$this->assertEquals('Short desc', $setup->getDescription());
+		$this->assertEquals('Looong desc', $setup->getLongDescription());
+		$this->assertEquals('true on success and false if it fails', $setup->getTypeDescription());
+		$this->assertEquals('boolean', $setup->getType());
+		
+		$moo = $setup->getParameter('moo');
+		$this->assertEquals('makes a cow', $moo->getTypeDescription());
+		$this->assertEquals('boolean', $moo->getType());
+		
+		$foo = $setup->getParameter('foo');
+		$this->assertEquals('makes a fow', $foo->getTypeDescription());
+		$this->assertEquals('string', $foo->getType());
 	}
 }

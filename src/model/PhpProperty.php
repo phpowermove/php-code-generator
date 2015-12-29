@@ -47,6 +47,13 @@ class PhpProperty extends AbstractPhpMember {
 		$docblock = new Docblock($ref);
 		$property->setDocblock($docblock);
 		$property->setDescription($docblock->getShortDescription());
+		$property->setLongDescription($docblock->getLongDescription());
+		
+		$vars = $docblock->getTags('var');
+		if ($vars->size() > 0) {
+			$var = $vars->get(0);
+			$property->setType($var->getType(), $var->getDescription());
+		}
 		
 		$defaultProperties = $ref->getDeclaringClass()->getDefaultProperties();
 		if (isset($defaultProperties[$ref->name])) {

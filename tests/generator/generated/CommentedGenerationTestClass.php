@@ -2,7 +2,12 @@
  */
 class GenerationTestClass {
 
+	/**
+	 */
 	const a = 'foo';
+
+	/**
+	 */
 	const b = 'bar';
 
 	/**

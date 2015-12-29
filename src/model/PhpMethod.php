@@ -69,6 +69,14 @@ class PhpMethod extends AbstractPhpMember {
 		$method->setDescription($docblock->getShortDescription());
 		$method->setLongDescription($docblock->getLongDescription());
 		
+		// return type and description
+		$returns = $method->getDocblock()->getTags('return');
+		if ($returns->size() > 0) {
+			$return = $returns->get(0);
+			$method->setType($return->getType(), $return->getDescription());
+		}
+		
+		// params
 		foreach ($ref->getParameters() as $param) {
 			$method->addParameter(static::createParameter($param));
 		}

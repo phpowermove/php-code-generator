@@ -25,6 +25,9 @@ use PhpParser\PrettyPrinter\Standard;
 use PhpParser\Node\Stmt\Class_;
 use PhpParser\Node\Stmt\Interface_;
 use PhpParser\Node\Stmt\Trait_;
+use PhpParser\Node\Stmt\ClassConst;
+use PhpParser\Comment\Doc;
+use gossi\docblock\tags\ParamTag;
 
 abstract class AbstractPhpStructVisitor extends NodeVisitorAbstract {
 	
@@ -75,8 +78,8 @@ abstract class AbstractPhpStructVisitor extends NodeVisitorAbstract {
 				$this->visitTraitUse($node);
 				break;
 				
-			case 'Const':
-				$this->visitConstant($node);
+			case 'Stmt_ClassConst':
+				$this->visitConstants($node);
 				break;
 				
 			case 'Stmt_Property':
@@ -115,8 +118,20 @@ abstract class AbstractPhpStructVisitor extends NodeVisitorAbstract {
 		}
 	}
 	
-	protected function visitConstant(Const_ $node) {
-		$this->struct->setConstant($this->getConstant($node));
+	protected function visitConstants(ClassConst $node) {
+		$doc = $node->getDocComment();
+		foreach ($node->consts as $const) {
+			$this->visitConstant($const, $doc);
+		}
+	}
+	
+	protected function visitConstant(Const_ $node, Doc $doc = null) {
+		$const = new PhpConstant($node->name, $this->getValue($node));
+		$const->setValue($this->getValue($node->value));
+
+		$this->parseMemberDocblock($const, $doc);
+		
+		$this->struct->setConstant($const);
 	}
 	
 	protected function visitProperty(Property $node) {
@@ -153,6 +168,7 @@ abstract class AbstractPhpStructVisitor extends NodeVisitorAbstract {
 		}
 		
 		// params
+		$params = $m->getDocblock()->getTags('param');
 		foreach ($node->params as $param) {
 			/* @var $param Param */
 			
@@ -171,7 +187,22 @@ abstract class AbstractPhpStructVisitor extends NodeVisitorAbstract {
 				$p->setDefaultValue($this->getValue($default));
 			}
 			
+			$tag = $params->find($p, function (ParamTag $t, $p) {
+				return $t->getVariable() == '$' . $p->getName();
+			});
+			
+			if ($tag !== null) {
+				$p->setType($tag->getType(), $tag->getDescription());
+			}
+			
 			$m->addParameter($p);
+		}
+		
+		// return type and description
+		$returns = $m->getDocblock()->getTags('return');
+		if ($returns->size() > 0) {
+			$return = $returns->get(0);
+			$m->setType($return->getType(), $return->getDescription());
 		}
 		
 		// body
@@ -196,23 +227,25 @@ abstract class AbstractPhpStructVisitor extends NodeVisitorAbstract {
 	
 		$p->setStatic($node->isStatic());
 		$p->setVisibility($this->getVisibility($node));
-		if (($doc = $node->getDocComment()) !== null) {
-			$p->setDocblock($doc->getReformattedText());
-			$docblock = $p->getDocblock();
-			$p->setDescription($docblock->getShortDescription());
-			$p->setLongDescription($docblock->getLongDescription());
-		}
+		
+		$this->parseMemberDocblock($p, $node->getDocComment());
 	
 		return $p;
 	}
 	
-	/**
-	 * 
-	 * @param Const_ $node
-	 * @return PhpConstant
-	 */
-	protected function getConstant(Const_ $node) {
-		return new PhpConstant($node->name, $this->getValue($node));
+	private function parseMemberDocblock($member, Doc $doc = null) {
+		if ($doc !== null) {
+			$member->setDocblock($doc->getReformattedText());
+			$docblock = $member->getDocblock();
+			$member->setDescription($docblock->getShortDescription());
+			$member->setLongDescription($docblock->getLongDescription());
+	
+			$vars = $docblock->getTags('var');
+			if ($vars->size() > 0) {
+				$var = $vars->get(0);
+				$member->setType($var->getType(), $var->getDescription());
+			}
+		}
 	}
 	
 	private function getValue(Node $node) {
