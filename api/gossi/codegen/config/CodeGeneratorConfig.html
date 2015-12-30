@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>gossi\codegen\config\CodeGeneratorConfig | CodeGen API Documentation</title>
+    <title>gossi\codegen\config\CodeGeneratorConfig | PHP Code Generator API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -12,6 +12,9 @@
         <script src="../../../js/bootstrap.min.js"></script>
         <script src="../../../js/typeahead.min.js"></script>
         <script src="../../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     
     
     </head>
@@ -42,7 +45,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../../../index.html">CodeGen API Documentation</a>
+                <a class="navbar-brand" href="../../../index.html">PHP Code Generator API</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
@@ -77,6 +80,8 @@
     <strong>CodeGeneratorConfig</strong>
 </p>
 
+            <div class="description">
+            <p>Configuration for code generator</p>                    </div>
     
     
     
@@ -87,51 +92,96 @@
                     <div class="row">
                 <div class="col-md-2 type">
                     
+    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(array $options = array())
-                                            <p class="no-description">No description</p>
-                                    </div>
+                    <a href="#method___construct">__construct</a>(
+    array $options = array())
+                                            <p>Creates a new configuration for code generator</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    boolean
+                    
+    boolean
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getGenerateDocblock">getGenerateDocblock</a>()
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Returns whether docblocks should be generated</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="gossi\codegen\config\$this">$this</abbr>
+                    
+    <abbr title="gossi\codegen\config\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setGenerateDocblock">setGenerateDocblock</a>(boolean $generate)
-                                            <p class="no-description">No description</p>
-                                    </div>
+                    <a href="#method_setGenerateDocblock">setGenerateDocblock</a>(
+    boolean $generate)
+                                            <p>Sets whether docblocks should be generated</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    boolean
+                    
+    boolean
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getGenerateEmptyDocblock">getGenerateEmptyDocblock</a>()
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Returns whether empty docblocks are generated</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="gossi\codegen\config\$this">$this</abbr>
+                    
+    <abbr title="gossi\codegen\config\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setGenerateEmptyDocblock">setGenerateEmptyDocblock</a>(boolean $generate)
-                                            <p class="no-description">No description</p>
-                                    </div>
+                    <a href="#method_setGenerateEmptyDocblock">setGenerateEmptyDocblock</a>(
+    boolean $generate)
+                                            <p>Sets whether empty docblocks are generated</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getGenerateScalarTypeHints">getGenerateScalarTypeHints</a>()
+                                            <p>Returns whether scalar type hints will be generated for method parameters (PHP 7)</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="gossi\codegen\config\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setGenerateScalarTypeHints">setGenerateScalarTypeHints</a>(
+    boolean $generate)
+                                            <p>Sets whether scalar type hints will be generated for method parameters (PHP 7)</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getGenerateReturnTypeHints">getGenerateReturnTypeHints</a>()
+                                            <p>Returns whether return type hints will be generated for method parameters (PHP 7)</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="gossi\codegen\config\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setGenerateReturnTypeHints">setGenerateReturnTypeHints</a>(
+    boolean $generate)
+                                            <p>Sets whether return type hints will be generated for method parameters (PHP 7)</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -142,17 +192,22 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at line 10</div>
+        <div class="location">at line 21</div>
         <code>                    
-    <strong>__construct</strong>(array $options = array())</code>
+    
+    <strong>__construct</strong>(
+    array $options = array())</code>
     </h3>
     <div class="details">
+                    <div class="method-description">
+                                    <p>Creates a new configuration for code generator</p>                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>array</td>
+                <td>
+    array</td>
                 <td>$options</td>
                 <td>
 </td>
@@ -162,26 +217,38 @@
             
             
             
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>https://php-code-generator.readthedocs.org/en/latest/generator.html</td>
+                <td></td>
+            </tr>
+            </table>
+
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_getGenerateDocblock">
-        <div class="location">at line 39</div>
-        <code>                    boolean
+        <div class="location">at line 63</div>
+        <code>                    
+    boolean
     <strong>getGenerateDocblock</strong>()</code>
     </h3>
     <div class="details">
+                    <div class="method-description">
+                                    <p>Returns whether docblocks should be generated</p>                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>boolean</td>
             <td>
-</td>
+    boolean</td>
+            <td><code>true</code> if they will be generated and <code>false</code> if not</td>
         </tr>
     </table>
 
@@ -193,20 +260,24 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setGenerateDocblock">
-        <div class="location">at line 48</div>
-        <code>                    <abbr title="gossi\codegen\config\$this">$this</abbr>
-    <strong>setGenerateDocblock</strong>(boolean $generate)</code>
+        <div class="location">at line 73</div>
+        <code>                    
+    <abbr title="gossi\codegen\config\$this">$this</abbr>
+    <strong>setGenerateDocblock</strong>(
+    boolean $generate)</code>
     </h3>
     <div class="details">
+                    <div class="method-description">
+                                    <p>Sets whether docblocks should be generated</p>                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
-                <td>$generate</td>
                 <td>
-</td>
+    boolean</td>
+                <td>$generate</td>
+                <td><code>true</code> if they will be generated and <code>false</code> if not</td>
             </tr>
             </table>
 
@@ -215,7 +286,8 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="gossi\codegen\config\$this">$this</abbr></td>
+            <td>
+    <abbr title="gossi\codegen\config\$this">$this</abbr></td>
             <td>
 </td>
         </tr>
@@ -229,18 +301,62 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getGenerateEmptyDocblock">
-        <div class="location">at line 56</div>
-        <code>                    boolean
+        <div class="location">at line 83</div>
+        <code>                    
+    boolean
     <strong>getGenerateEmptyDocblock</strong>()</code>
     </h3>
     <div class="details">
+                    <div class="method-description">
+                                    <p>Returns whether empty docblocks are generated</p>                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>boolean</td>
+            <td>
+    boolean</td>
+            <td><code>true</code> if they will be generated and <code>false</code> if not</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setGenerateEmptyDocblock">
+        <div class="location">at line 93</div>
+        <code>                    
+    <abbr title="gossi\codegen\config\$this">$this</abbr>
+    <strong>setGenerateEmptyDocblock</strong>(
+    boolean $generate)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Sets whether empty docblocks are generated</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    boolean</td>
+                <td>$generate</td>
+                <td><code>true</code> if they will be generated and <code>false</code> if not</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="gossi\codegen\config\$this">$this</abbr></td>
             <td>
 </td>
         </tr>
@@ -253,21 +369,53 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setGenerateEmptyDocblock">
-        <div class="location">at line 65</div>
-        <code>                    <abbr title="gossi\codegen\config\$this">$this</abbr>
-    <strong>setGenerateEmptyDocblock</strong>(boolean $generate)</code>
+                    <h3 id="method_getGenerateScalarTypeHints">
+        <div class="location">at line 103</div>
+        <code>                    
+    boolean
+    <strong>getGenerateScalarTypeHints</strong>()</code>
     </h3>
     <div class="details">
+                    <div class="method-description">
+                                    <p>Returns whether scalar type hints will be generated for method parameters (PHP 7)</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    boolean</td>
+            <td><code>true</code> if they will be generated and <code>false</code> if not</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setGenerateScalarTypeHints">
+        <div class="location">at line 113</div>
+        <code>                    
+    <abbr title="gossi\codegen\config\$this">$this</abbr>
+    <strong>setGenerateScalarTypeHints</strong>(
+    boolean $generate)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Sets whether scalar type hints will be generated for method parameters (PHP 7)</p>                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>boolean</td>
-                <td>$generate</td>
                 <td>
-</td>
+    boolean</td>
+                <td>$generate</td>
+                <td><code>true</code> if they will be generated and <code>false</code> if not</td>
             </tr>
             </table>
 
@@ -276,7 +424,77 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="gossi\codegen\config\$this">$this</abbr></td>
+            <td>
+    <abbr title="gossi\codegen\config\$this">$this</abbr></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getGenerateReturnTypeHints">
+        <div class="location">at line 123</div>
+        <code>                    
+    boolean
+    <strong>getGenerateReturnTypeHints</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Returns whether return type hints will be generated for method parameters (PHP 7)</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    boolean</td>
+            <td><code>true</code> if they will be generated and <code>false</code> if not</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setGenerateReturnTypeHints">
+        <div class="location">at line 133</div>
+        <code>                    
+    <abbr title="gossi\codegen\config\$this">$this</abbr>
+    <strong>setGenerateReturnTypeHints</strong>(
+    boolean $generate)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Sets whether return type hints will be generated for method parameters (PHP 7)</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    boolean</td>
+                <td>$generate</td>
+                <td><code>true</code> if they will be generated and <code>false</code> if not</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="gossi\codegen\config\$this">$this</abbr></td>
             <td>
 </td>
         </tr>

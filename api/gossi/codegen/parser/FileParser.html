@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>gossi\codegen\model\GenerateableInterface | PHP Code Generator API</title>
+    <title>gossi\codegen\parser\FileParser | PHP Code Generator API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:gossi_codegen_model_GenerateableInterface" data-root-path="../../../">
+    <body id="class" data-name="class:gossi_codegen_parser_FileParser" data-root-path="../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -62,22 +62,22 @@
 
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
-                <li><span class="label label-default">interface</span></li>
+                <li><span class="label label-default">class</span></li>
                                                             <li><a href="../../../gossi.html">gossi</a></li>
                                         <li><a href="../../../gossi/codegen.html">codegen</a></li>
-                                        <li><a href="../../../gossi/codegen/model.html">model</a></li>
+                                        <li><a href="../../../gossi/codegen/parser.html">parser</a></li>
     
-                <li>GenerateableInterface</li>
+                <li>FileParser</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
-        <h1>GenerateableInterface</h1>
+        <h1>FileParser</h1>
     </div>
 
-    <p>    interface
-    <strong>GenerateableInterface</strong>
+    <p>    class
+    <strong>FileParser</strong>
 </p>
 
     
@@ -90,11 +90,14 @@
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    
+    <a href="../../../gossi/codegen/model/AbstractPhpStruct.html"><abbr title="gossi\codegen\model\AbstractPhpStruct">AbstractPhpStruct</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_generateDocblock">generateDocblock</a>()
-                                            <p>Generates docblock based on provided information</p>                </div>
+                    <a href="#method_parse">parse</a>(
+    <abbr title="gossi\codegen\parser\gossi\codegen\parser\visitor\AbstractPhpStructVisitor">AbstractPhpStructVisitor</abbr> $visitor, 
+    string $filename)
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -104,18 +107,58 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_generateDocblock">
-        <div class="location">at line 9</div>
+                    <h3 id="method_parse">
+        <div class="location">at line 21</div>
         <code>                    
-    
-    <strong>generateDocblock</strong>()</code>
+    <a href="../../../gossi/codegen/model/AbstractPhpStruct.html"><abbr title="gossi\codegen\model\AbstractPhpStruct">AbstractPhpStruct</abbr></a>
+    <strong>parse</strong>(
+    <abbr title="gossi\codegen\parser\gossi\codegen\parser\visitor\AbstractPhpStructVisitor">AbstractPhpStructVisitor</abbr> $visitor, 
+    string $filename)</code>
     </h3>
     <div class="details">
-                    <div class="method-description">
-                                    <p>Generates docblock based on provided information</p>                                </div>
                 <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <abbr title="gossi\codegen\parser\gossi\codegen\parser\visitor\AbstractPhpStructVisitor">AbstractPhpStructVisitor</abbr></td>
+                <td>$visitor</td>
+                <td>
+</td>
+            </tr>
+                    <tr>
+                <td>
+    string</td>
+                <td>$filename</td>
+                <td>
+</td>
+            </tr>
+            </table>
+
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <a href="../../../gossi/codegen/model/AbstractPhpStruct.html"><abbr title="gossi\codegen\model\AbstractPhpStruct">AbstractPhpStruct</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="phootwork\file\exception\FileNotFoundException">FileNotFoundException</abbr></td>
+                <td>
+</td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>

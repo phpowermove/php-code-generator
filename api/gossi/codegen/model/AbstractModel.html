@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>gossi\codegen\model\AbstractModel | CodeGen API Documentation</title>
+    <title>gossi\codegen\model\AbstractModel | PHP Code Generator API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -12,6 +12,9 @@
         <script src="../../../js/bootstrap.min.js"></script>
         <script src="../../../js/typeahead.min.js"></script>
         <script src="../../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     
     
     </head>
@@ -42,7 +45,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../../../index.html">CodeGen API Documentation</a>
+                <a class="navbar-brand" href="../../../index.html">PHP Code Generator API</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-elements">
                 <ul class="nav navbar-nav">
@@ -77,6 +80,8 @@
     <strong>AbstractModel</strong>
 </p>
 
+            <div class="description">
+            <p>Parent of all models</p>                    </div>
     
     
     
@@ -87,6 +92,7 @@
                     <div class="row">
                 <div class="col-md-2 type">
                     
+    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_setAttribute">setAttribute</a>($key, $value)
@@ -97,6 +103,7 @@
                     <div class="row">
                 <div class="col-md-2 type">
                     
+    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_removeAttribute">removeAttribute</a>($key)
@@ -107,6 +114,7 @@
                     <div class="row">
                 <div class="col-md-2 type">
                     
+    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getAttribute">getAttribute</a>($key)
@@ -117,6 +125,7 @@
                     <div class="row">
                 <div class="col-md-2 type">
                     
+    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getAttributeOrElse">getAttributeOrElse</a>($key, $default)
@@ -127,6 +136,7 @@
                     <div class="row">
                 <div class="col-md-2 type">
                     
+    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_hasAttribute">hasAttribute</a>($key)
@@ -137,9 +147,11 @@
                     <div class="row">
                 <div class="col-md-2 type">
                     
+    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setAttributes">setAttributes</a>(array $attrs)
+                    <a href="#method_setAttributes">setAttributes</a>(
+    array $attrs)
                                             <p class="no-description">No description</p>
                                     </div>
                 <div class="col-md-2"></div>
@@ -147,6 +159,7 @@
                     <div class="row">
                 <div class="col-md-2 type">
                     
+    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getAttributes">getAttributes</a>()
@@ -156,7 +169,8 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    
+    string
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getDescription">getDescription</a>()
@@ -165,10 +179,12 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="gossi\codegen\model\$this">$this</abbr>
+                    
+    <abbr title="gossi\codegen\model\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setDescription">setDescription</a>(string|array $description)
+                    <a href="#method_setDescription">setDescription</a>(
+    string|array $description)
                                             <p>Sets the description, which will also be used when generating a docblock</p>                </div>
                 <div class="col-md-2"></div>
             </div>
@@ -180,8 +196,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_setAttribute">
-        <div class="location">at line 10</div>
+        <div class="location">at line 15</div>
         <code>                    
+    
     <strong>setAttribute</strong>($key, $value)</code>
     </h3>
     <div class="details">
@@ -212,8 +229,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_removeAttribute">
-        <div class="location">at line 16</div>
+        <div class="location">at line 21</div>
         <code>                    
+    
     <strong>removeAttribute</strong>($key)</code>
     </h3>
     <div class="details">
@@ -238,8 +256,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getAttribute">
-        <div class="location">at line 22</div>
+        <div class="location">at line 27</div>
         <code>                    
+    
     <strong>getAttribute</strong>($key)</code>
     </h3>
     <div class="details">
@@ -264,8 +283,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getAttributeOrElse">
-        <div class="location">at line 34</div>
+        <div class="location">at line 39</div>
         <code>                    
+    
     <strong>getAttributeOrElse</strong>($key, $default)</code>
     </h3>
     <div class="details">
@@ -296,8 +316,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_hasAttribute">
-        <div class="location">at line 42</div>
+        <div class="location">at line 47</div>
         <code>                    
+    
     <strong>hasAttribute</strong>($key)</code>
     </h3>
     <div class="details">
@@ -322,9 +343,11 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setAttributes">
-        <div class="location">at line 46</div>
+        <div class="location">at line 51</div>
         <code>                    
-    <strong>setAttributes</strong>(array $attrs)</code>
+    
+    <strong>setAttributes</strong>(
+    array $attrs)</code>
     </h3>
     <div class="details">
                 <div class="tags">
@@ -332,7 +355,8 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>array</td>
+                <td>
+    array</td>
                 <td>$attrs</td>
                 <td>
 </td>
@@ -348,8 +372,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getAttributes">
-        <div class="location">at line 52</div>
+        <div class="location">at line 57</div>
         <code>                    
+    
     <strong>getAttributes</strong>()</code>
     </h3>
     <div class="details">
@@ -363,8 +388,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getDescription">
-        <div class="location">at line 61</div>
-        <code>                    string
+        <div class="location">at line 66</div>
+        <code>                    
+    string
     <strong>getDescription</strong>()</code>
     </h3>
     <div class="details">
@@ -376,7 +402,8 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>string</td>
+            <td>
+    string</td>
             <td>
 </td>
         </tr>
@@ -390,9 +417,11 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setDescription">
-        <div class="location">at line 71</div>
-        <code>                    <abbr title="gossi\codegen\model\$this">$this</abbr>
-    <strong>setDescription</strong>(string|array $description)</code>
+        <div class="location">at line 76</div>
+        <code>                    
+    <abbr title="gossi\codegen\model\$this">$this</abbr>
+    <strong>setDescription</strong>(
+    string|array $description)</code>
     </h3>
     <div class="details">
                     <div class="method-description">
@@ -402,7 +431,8 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string|array</td>
+                <td>
+    string|array</td>
                 <td>$description</td>
                 <td>
 </td>
@@ -414,7 +444,8 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="gossi\codegen\model\$this">$this</abbr></td>
+            <td>
+    <abbr title="gossi\codegen\model\$this">$this</abbr></td>
             <td>
 </td>
         </tr>
