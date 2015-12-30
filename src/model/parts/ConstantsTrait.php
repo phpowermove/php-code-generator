@@ -35,7 +35,7 @@ trait ConstantsTrait {
 	/**
 	 * Adds a constant
 	 *
-	 * @param string|PhpConstant $name constant name or instance
+	 * @param string|PhpConstant $nameOrConstant constant name or instance
 	 * @param string $value
 	 * @return $this
 	 */
