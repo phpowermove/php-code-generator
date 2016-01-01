@@ -7,3 +7,4 @@ api/
 cache/
 coverage/
 docs/_build
+_site/
