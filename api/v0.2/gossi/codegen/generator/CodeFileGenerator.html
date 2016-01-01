@@ -25,8 +25,8 @@
                 <div id="control-panel">
                     <form action="#" method="GET">
                 <select id="version-switcher" name="version">
-                                            <option value="../../../../v0.1/index.html" selected>v0.1</option>
-                                            <option value="../../../../v0.2/index.html">v0.2</option>
+                                            <option value="../../../../v0.1/index.html">v0.1</option>
+                                            <option value="../../../../v0.2/index.html" selected>v0.2</option>
                                             <option value="../../../../master/index.html">master branch</option>
                                     </select>
             </form>
@@ -87,6 +87,9 @@
     <strong>CodeFileGenerator</strong>        extends <a href="../../../gossi/codegen/generator/CodeGenerator.html"><abbr title="gossi\codegen\generator\CodeGenerator">CodeGenerator</abbr></a>
 </p>
 
+            <div class="description">
+            <p>Code file generator.</p>            <p>Generates code for a model and puts it into a file with <code>&lt;?php</code> statements. Can also
+generate header comments.</p>        </div>
     
     
     
@@ -102,8 +105,7 @@
                 <div class="col-md-8 type">
                     <a href="#method___construct">__construct</a>(
     <a href="../../../gossi/codegen/config/CodeGeneratorConfig.html"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a>|array $config = null)
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Creates a new CodeFileGenerator</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -113,32 +115,29 @@
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getConfig">getConfig</a>()
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Returns the used configuration</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    
+    <a href="../../../gossi/codegen/generator/DefaultGeneratorStrategy.html"><abbr title="gossi\codegen\generator\DefaultGeneratorStrategy">DefaultGeneratorStrategy</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getGeneratorStrategy">getGeneratorStrategy</a>()
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Returns the used generator strategy</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;
     <a href="../../../gossi/codegen/generator/CodeGenerator.html#method_getGeneratorStrategy"><abbr title="gossi\codegen\generator\CodeGenerator">CodeGenerator</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    
+    string
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_generate">generate</a>(
     <abbr title="gossi\codegen\generator\gossi\codegen\model\GenerateableInterface">GenerateableInterface</abbr> $model)
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Generates code from a given model</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -149,13 +148,15 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at line 13</div>
+        <div class="location">at line 24</div>
         <code>                    
     
     <strong>__construct</strong>(
     <a href="../../../gossi/codegen/config/CodeGeneratorConfig.html"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a>|array $config = null)</code>
     </h3>
     <div class="details">
+                    <div class="method-description">
+                                    <p>Creates a new CodeFileGenerator</p>                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -172,18 +173,29 @@
             
             
             
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>https://php-code-generator.readthedocs.org/en/latest/generator.html</td>
+                <td></td>
+            </tr>
+            </table>
+
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_getConfig">
-        <div class="location">at line 28</div>
+        <div class="location">at line 41</div>
         <code>                    
     <a href="../../../gossi/codegen/config/CodeGeneratorConfig.html"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a>
     <strong>getConfig</strong>()</code>
     </h3>
     <div class="details">
+                    <div class="method-description">
+                                    <p>Returns the used configuration</p>                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -206,14 +218,27 @@
                     <div class="method-item">
                     <h3 id="method_getGeneratorStrategy">
         <div class="location">in 
-    <a href="../../../gossi/codegen/generator/CodeGenerator.html#method_getGeneratorStrategy"><abbr title="gossi\codegen\generator\CodeGenerator">CodeGenerator</abbr></a> at line 46</div>
+    <a href="../../../gossi/codegen/generator/CodeGenerator.html#method_getGeneratorStrategy"><abbr title="gossi\codegen\generator\CodeGenerator">CodeGenerator</abbr></a> at line 52</div>
         <code>                    
-    
+    <a href="../../../gossi/codegen/generator/DefaultGeneratorStrategy.html"><abbr title="gossi\codegen\generator\DefaultGeneratorStrategy">DefaultGeneratorStrategy</abbr></a>
     <strong>getGeneratorStrategy</strong>()</code>
     </h3>
     <div class="details">
+                    <div class="method-description">
+                                    <p>Returns the used generator strategy</p>                                </div>
                 <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <a href="../../../gossi/codegen/generator/DefaultGeneratorStrategy.html"><abbr title="gossi\codegen\generator\DefaultGeneratorStrategy">DefaultGeneratorStrategy</abbr></a></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -222,13 +247,15 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_generate">
-        <div class="location">at line 32</div>
+        <div class="location">at line 48</div>
         <code>                    
-    
+    string
     <strong>generate</strong>(
     <abbr title="gossi\codegen\generator\gossi\codegen\model\GenerateableInterface">GenerateableInterface</abbr> $model)</code>
     </h3>
     <div class="details">
+                    <div class="method-description">
+                                    <p>Generates code from a given model</p>                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -243,6 +270,16 @@
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    string</td>
+            <td>the generated code</td>
+        </tr>
+    </table>
+
             
             
                     </div>

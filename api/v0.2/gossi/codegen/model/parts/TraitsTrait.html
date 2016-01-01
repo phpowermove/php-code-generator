@@ -25,8 +25,8 @@
                 <div id="control-panel">
                     <form action="#" method="GET">
                 <select id="version-switcher" name="version">
-                                            <option value="../../../../../v0.1/index.html" selected>v0.1</option>
-                                            <option value="../../../../../v0.2/index.html">v0.2</option>
+                                            <option value="../../../../../v0.1/index.html">v0.1</option>
+                                            <option value="../../../../../v0.2/index.html" selected>v0.2</option>
                                             <option value="../../../../../master/index.html">master branch</option>
                                     </select>
             </form>
@@ -131,7 +131,7 @@
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    
+    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_addTrait">addTrait</a>(
@@ -142,12 +142,11 @@
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    
+    string[]
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getTraits">getTraits</a>()
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Returns a collection of traits</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -156,32 +155,31 @@
     boolean
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_hasTrait">hasTrait</a>($trait)
-                                            <p class="no-description">No description</p>
-                                    </div>
+                    <a href="#method_hasTrait">hasTrait</a>(
+    <a href="../../../../gossi/codegen/model/PhpTrait.html"><abbr title="gossi\codegen\model\PhpTrait">PhpTrait</abbr></a>|string $trait)
+                                            <p>Checks whether a trait exists</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    
+    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_removeTrait">removeTrait</a>(
     <a href="../../../../gossi/codegen/model/PhpTrait.html"><abbr title="gossi\codegen\model\PhpTrait">PhpTrait</abbr></a>|string $trait)
-                                            <p>Adds a trait.</p>                </div>
+                                            <p>Removes a trait.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    
+    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_setTraits">setTraits</a>(
     array $traits)
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p>Sets a collection of traits</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -268,9 +266,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_addTrait">
-        <div class="location">at line 24</div>
+        <div class="location">at line 25</div>
         <code>                    
-    
+    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
     <strong>addTrait</strong>(
     <a href="../../../../gossi/codegen/model/PhpTrait.html"><abbr title="gossi\codegen\model\PhpTrait">PhpTrait</abbr></a>|string $trait)</code>
     </h3>
@@ -291,6 +289,17 @@ the trait is also added as use statement.</p>            </div>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -299,14 +308,27 @@ the trait is also added as use statement.</p>            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTraits">
-        <div class="location">at line 44</div>
+        <div class="location">at line 50</div>
         <code>                    
-    
+    string[]
     <strong>getTraits</strong>()</code>
     </h3>
     <div class="details">
+                    <div class="method-description">
+                                    <p>Returns a collection of traits</p>                                </div>
                 <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    string[]</td>
+            <td>
+</td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -315,18 +337,22 @@ the trait is also added as use statement.</p>            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_hasTrait">
-        <div class="location">at line 53</div>
+        <div class="location">at line 60</div>
         <code>                    
     boolean
-    <strong>hasTrait</strong>($trait)</code>
+    <strong>hasTrait</strong>(
+    <a href="../../../../gossi/codegen/model/PhpTrait.html"><abbr title="gossi\codegen\model\PhpTrait">PhpTrait</abbr></a>|string $trait)</code>
     </h3>
     <div class="details">
+                    <div class="method-description">
+                                    <p>Checks whether a trait exists</p>                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>
+    <a href="../../../../gossi/codegen/model/PhpTrait.html"><abbr title="gossi\codegen\model\PhpTrait">PhpTrait</abbr></a>|string</td>
                 <td>$trait</td>
                 <td>
 </td>
@@ -340,8 +366,7 @@ the trait is also added as use statement.</p>            </div>
         <tr>
             <td>
     boolean</td>
-            <td>
-</td>
+            <td><code>true</code> if it exists and <code>false</code> if not</td>
         </tr>
     </table>
 
@@ -353,15 +378,15 @@ the trait is also added as use statement.</p>            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_removeTrait">
-        <div class="location">at line 69</div>
+        <div class="location">at line 77</div>
         <code>                    
-    
+    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
     <strong>removeTrait</strong>(
     <a href="../../../../gossi/codegen/model/PhpTrait.html"><abbr title="gossi\codegen\model\PhpTrait">PhpTrait</abbr></a>|string $trait)</code>
     </h3>
     <div class="details">
                     <div class="method-description">
-                                    <p>Adds a trait.</p>                    <p>If the trait is passed as PhpTrait object,
+                                    <p>Removes a trait.</p>                    <p>If the trait is passed as PhpTrait object,
 the trait is also removed from use statements.</p>            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
@@ -376,6 +401,17 @@ the trait is also removed from use statements.</p>            </div>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -384,13 +420,15 @@ the trait is also removed from use statements.</p>            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setTraits">
-        <div class="location">at line 89</div>
+        <div class="location">at line 103</div>
         <code>                    
-    
+    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
     <strong>setTraits</strong>(
     array $traits)</code>
     </h3>
     <div class="details">
+                    <div class="method-description">
+                                    <p>Sets a collection of traits</p>                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -405,6 +443,17 @@ the trait is also removed from use statements.</p>            </div>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
+            <td>
+</td>
+        </tr>
+    </table>
+
             
             
                     </div>
