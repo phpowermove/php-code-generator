@@ -9,6 +9,11 @@ php:
 # disabled hhvm because of a bug in 3.2.0 which is resolved in 3.3.0
 # see: https://github.com/facebook/hhvm/issues/3932
 
+addons:
+  apt:
+    packages:
+      - git
+
 install:
   - composer install
 
