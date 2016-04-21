@@ -1,5 +1,5 @@
 {
-	"name" : "gossi/php-code-generator",
+	"name" : "nas1k/gossi-php-code-generator",
 	"description" : "Toolset for generating PHP code",
 	"keywords" : [
 		"code generation"
