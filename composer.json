@@ -1,5 +1,5 @@
 {
-	"name" : "gossi/php-code-generator",
+	"name" : "nas1k/gossi-php-code-generator",
 	"description" : "Toolset for generating PHP code",
 	"keywords" : [
 		"code generation"
@@ -15,7 +15,7 @@
 		"php" : ">=5.4",
 		"gossi/docblock" : "~1",
 		"symfony/options-resolver" : "~2.0|~3.0",
-		"phootwork/file" : "~0",
+		"phootwork/file" : "dev-master",
 		"phootwork/tokenizer" : "~0",
 		"nikic/php-parser" : "~1"
 	},
