@@ -10,7 +10,7 @@ use PhpParser\NodeTraverser;
 use PhpParser\Parser;
 
 class FileParser {
-	
+
 	/**
 	 * 
 	 * @param AbstractPhpStructVisitor $visitor
@@ -20,16 +20,16 @@ class FileParser {
 	 */
 	public function parse(AbstractPhpStructVisitor $visitor, $filename) {
 		$file = new File($filename);
-		
+
 		if (!$file->exists()) {
 			throw new FileNotFoundException(sprintf('File (%s) does not exist.', $filename));
 		}
-		
+
 		$parser = new Parser(new Emulative());
 		$traverser = new NodeTraverser();
 		$traverser->addVisitor($visitor);
 		$traverser->traverse($parser->parse($file->read()));
-		
+
 		return $visitor->getStruct();
 	}
 }

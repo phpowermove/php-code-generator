@@ -27,18 +27,18 @@ trait TraitsTrait {
 			$name = $trait->getName();
 			$qname = $trait->getQualifiedName();
 			$namespace = $trait->getNamespace();
-			
+
 			if ($namespace != $this->getNamespace()) {
 				$this->addUseStatement($qname);
 			}
 		} else {
 			$name = $trait;
 		}
-		
+
 		if (!in_array($name, $this->traits)) {
 			$this->traits[] = $name;
 		}
-		
+
 		return $this;
 	}
 
@@ -80,17 +80,17 @@ trait TraitsTrait {
 		} else {
 			$name = $trait;
 		}
-		
+
 		$index = array_search($name, $this->traits);
 		if ($index) {
 			unset($this->traits[$name]);
-			
+
 			if ($trait instanceof PhpTrait) {
 				$qname = $trait->getQualifiedName();
 				$this->removeUseStatement($qname);
 			}
 		}
-		
+
 		return $this;
 	}
 
@@ -104,7 +104,7 @@ trait TraitsTrait {
 		foreach ($traits as $trait) {
 			$this->addTrait($trait);
 		}
-		
+
 		return $this;
 	}
 }

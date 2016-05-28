@@ -17,8 +17,8 @@
  */
 namespace gossi\codegen\model;
 
-use gossi\codegen\model\parts\DefaultValueTrait;
 use gossi\codegen\model\parts\TypeDocblockGeneratorTrait;
+use gossi\codegen\model\parts\ValueTrait;
 use gossi\docblock\Docblock;
 use gossi\docblock\tags\VarTag;
 
@@ -28,8 +28,8 @@ use gossi\docblock\tags\VarTag;
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
 class PhpProperty extends AbstractPhpMember {
-	
-	use DefaultValueTrait;
+
+	use ValueTrait;
 	use TypeDocblockGeneratorTrait;
 
 	/**
@@ -57,18 +57,18 @@ class PhpProperty extends AbstractPhpMember {
 		$property->setDocblock($docblock);
 		$property->setDescription($docblock->getShortDescription());
 		$property->setLongDescription($docblock->getLongDescription());
-		
+
 		$vars = $docblock->getTags('var');
 		if ($vars->size() > 0) {
 			$var = $vars->get(0);
 			$property->setType($var->getType(), $var->getDescription());
 		}
-		
+
 		$defaultProperties = $ref->getDeclaringClass()->getDefaultProperties();
 		if (isset($defaultProperties[$ref->name])) {
 			$property->setDefaultValue($defaultProperties[$ref->name]);
 		}
-		
+
 		return $property;
 	}
 
@@ -76,7 +76,7 @@ class PhpProperty extends AbstractPhpMember {
 		$docblock = $this->getDocblock();
 		$docblock->setShortDescription($this->getDescription());
 		$docblock->setLongDescription($this->getLongDescription());
-		
+
 		// var tag
 		$this->generateTypeTag(new VarTag());
 	}

@@ -8,6 +8,7 @@ use gossi\codegen\model\PhpFunction;
 use gossi\codegen\model\PhpParameter;
 use gossi\codegen\model\PhpProperty;
 use gossi\codegen\generator\CodeFileGenerator;
+use gossi\codegen\model\PhpConstant;
 
 class CodeGeneratorTest extends \PHPUnit_Framework_TestCase {
 
@@ -153,5 +154,43 @@ class CodeGeneratorTest extends \PHPUnit_Framework_TestCase {
 		$code = $codegen->generate($fn);
 
 		$this->assertEquals($expected, $code);
+	}
+
+	public function testSortingUseStatement() {
+		$class = new PhpClass('ClassWithSortedUseStatements');
+
+		$class->addUseStatement('phootwork\lang\Comparable');
+		$class->addUseStatement('phootwork\lang\Text');
+		$class->addUseStatement('Doctrine\Instantiator\Instantiator');
+		$class->addUseStatement('phootwork\collection\ArrayList');
+		$class->addUseStatement('Symfony\Component\Finder\Finder');
+		$class->addUseStatement('phootwork\file\Path');
+		$class->addUseStatement('gossi\docblock\Docblock');
+		$class->addUseStatement('phootwork\tokenizer\PhpTokenizer');
+		$class->addUseStatement('phootwork\collection\Map');
+
+		$codegen = new CodeFileGenerator();
+		$code = $codegen->generate($class);
+
+		$this->assertEquals($this->getContent('ClassWithSortedUseStatements.php'), $code);
+	}
+
+	public function testExpression() {
+		$class = new PhpClass('ClassWithExpression');
+		$class
+			->setConstant(PhpConstant::create('FOO', 'BAR'))
+			->setProperty(PhpProperty::create('bembel')
+				->setExpression("['ebbelwoi' => 'is eh besser', 'als wie' => 'bier']")
+			)
+			->setMethod(PhpMethod::create('getValue')
+				->addParameter(PhpParameter::create('arr')
+					->setExpression('[self::FOO => \'baz\']')
+				)
+			);
+
+		$codegen = new CodeFileGenerator(['generateDocblock' => false]);
+		$code = $codegen->generate($class);
+
+		$this->assertEquals($this->getContent('ClassWithExpression.php'), $code);
 	}
 }

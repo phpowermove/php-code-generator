@@ -1,6 +1,4 @@
-.project
 .buildpath
-.settings/
 phpunit.xml
 vendor/
 api/

@@ -27,7 +27,7 @@ use gossi\codegen\model\parts\LongDescriptionTrait;
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
 abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInterface, DocblockInterface {
-	
+
 	use QualifiedNameTrait;
 	use DocblockTrait;
 	use LongDescriptionTrait;
@@ -88,7 +88,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 	 */
 	public function setRequiredFiles(array $files) {
 		$this->requiredFiles = $files;
-		
+
 		return $this;
 	}
 
@@ -96,12 +96,21 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 	 * Adds a new required file
 	 * 
 	 * @param string $file
-	 * @return $this        	
+	 * @return $this       	
 	 */
 	public function addRequiredFile($file) {
 		$this->requiredFiles[] = $file;
-		
+
 		return $this;
+	}
+
+	/**
+	 * Returns required files
+	 *
+	 * @return array collection of filenames
+	 */
+	public function getRequiredFiles() {
+		return $this->requiredFiles;
 	}
 
 	/**
@@ -136,9 +145,9 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 				$alias = substr($qualifiedName, strrpos($qualifiedName, '\\') + 1);
 			}
 		}
-		
+
 		$this->useStatements[$alias] = $qualifiedName;
-		
+
 		return $this;
 	}
 
@@ -146,13 +155,15 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 	 * Declares multiple use statements at once.
 	 * 
 	 * @param ... use statements multiple qualified names
+	 * @return $this
 	 */
 	public function declareUses() {
 		foreach (func_get_args() as $name) {
 			$this->declareUse($name);
 		}
+		return $this;
 	}
-	
+
 	/**
 	 * Declares a "use $fullClassName" with " as $alias" if $alias is available,
 	 * and returns its alias (or not qualified classname) to be used in your actual
@@ -160,13 +171,11 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 	 * 
 	 * If the class has already been declared you get only the set alias.
 	 * 
- 	 * @param string      $qualifiedName
+ 	 * @param string $qualifiedName
  	 * @param null|string $alias
- 	 *
  	 * @return string the used alias
  	 */
- 	public function declareUse($qualifiedName, $alias = null)
-	{
+ 	public function declareUse($qualifiedName, $alias = null) {
  		$qualifiedName = trim($qualifiedName, '\\');
  		if (!$this->hasUseStatement($qualifiedName)) {
  			$this->addUseStatement($qualifiedName, $alias);
@@ -211,6 +220,15 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 	}
 
 	/**
+	 * Returns all use statements
+	 *
+	 * @return array collection of use statements
+	 */
+	public function getUseStatements() {
+		return $this->useStatements;
+	}
+
+	/**
 	 * Sets a collection of methods
 	 * 
 	 * @param PhpMethod[] $methods        	
@@ -220,12 +238,12 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 		foreach ($this->methods as $method) {
 			$method->setParent(null);
 		}
-		
+
 		$this->methods = [];
 		foreach ($methods as $method) {
 			$this->setMethod($method);
 		}
-		
+
 		return $this;
 	}
 
@@ -238,85 +256,95 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 	public function setMethod(PhpMethod $method) {
 		$method->setParent($this);
 		$this->methods[$method->getName()] = $method;
-		
+
 		return $this;
+	}
+
+	/**
+	 * Removes a method
+	 *
+	 * @param string|PhpMethod $nameOrMethod method name or Method instance
+	 * @throws \InvalidArgumentException if the method cannot be found
+	 * @return $this
+	 */
+	public function removeMethod($nameOrMethod) {
+		if ($nameOrMethod instanceof PhpMethod) {
+			$nameOrMethod = $nameOrMethod->getName();
+		}
+
+		if (!array_key_exists($nameOrMethod, $this->methods)) {
+			throw new \InvalidArgumentException(sprintf('The method "%s" does not exist.', $nameOrMethod));
+		}
+		$m = $this->methods[$nameOrMethod];
+		$m->setParent(null);
+		unset($this->methods[$nameOrMethod]);
+
+		return $this;
+	}
+
+	/**
+	 * Checks whether a method exists or not
+	 *
+	 * @param string|PhpMethod $nameOrMethod method name or Method instance
+	 * @return boolean `true` if it exists and `false` if not
+	 */
+	public function hasMethod($nameOrMethod) {
+		if ($nameOrMethod instanceof PhpMethod) {
+			$nameOrMethod = $nameOrMethod->getName();
+		}
+
+		return isset($this->methods[$nameOrMethod]);
 	}
 
 	/**
 	 * Returns a method
 	 * 
-	 * @param string $method the methods name
-	 * @throws \InvalidArgumentException
+	 * @param string $nameOrMethod the methods name
+	 * @throws \InvalidArgumentException if the method cannot be found
 	 * @return PhpMethod
 	 */
-	public function getMethod($method) {
-		if (!isset($this->methods[$method])) {
-			throw new \InvalidArgumentException(sprintf('The method "%s" does not exist.', $method));
+	public function getMethod($nameOrMethod) {
+		if ($nameOrMethod instanceof PhpMethod) {
+			$nameOrMethod = $nameOrMethod->getName();
 		}
-		
-		return $this->methods[$method];
-	}
 
-	/**
-	 * Checks whether a method exists or not
-	 * 
-	 * @param string|PhpMethod $method method name or Method instance
-	 * @return boolean `true` if it exists and `false` if not
-	 */
-	public function hasMethod($method) {
-		if ($method instanceof PhpMethod) {
-			$method = $method->getName();
+		if (!isset($this->methods[$nameOrMethod])) {
+			throw new \InvalidArgumentException(sprintf('The method "%s" does not exist.', $nameOrMethod));
 		}
-		
-		return isset($this->methods[$method]);
-	}
 
-	/**
-	 * Removes a method
-	 * 
-	 * @param string|PhpMethod $method method name or Method instance
-	 * @return $this
-	 */
-	public function removeMethod($method) {
-		if ($method instanceof PhpMethod) {
-			$method = $method->getName();
-		}
-		
-		if (!array_key_exists($method, $this->methods)) {
-			throw new \InvalidArgumentException(sprintf('The method "%s" does not exist.', $method));
-		}
-		$m = $this->methods[$method];
-		$m->setParent(null);
-		unset($this->methods[$method]);
-		
-		return $this;
-	}
-
-	/**
-	 * Returns required files
-	 * 
-	 * @return array collection of filenames
-	 */
-	public function getRequiredFiles() {
-		return $this->requiredFiles;
-	}
-
-	/**
-	 * Returns all use statements
-	 * 
-	 * @return array collection of use statements
-	 */
-	public function getUseStatements() {
-		return $this->useStatements;
+		return $this->methods[$nameOrMethod];
 	}
 
 	/**
 	 * Returns all methods
-	 * 
+	 *
 	 * @return PhpMethod[] collection of methods
 	 */
 	public function getMethods() {
 		return $this->methods;
+	}
+
+	/**
+	 * Returns all method names
+	 * 
+	 * @return string[]
+	 */
+	public function getMethodNames() {
+		return array_keys($this->methods);
+	}
+
+	/**
+	 * Clears all methods
+	 * 
+	 * @return $this
+	 */
+	public function clearMethods() {
+		foreach ($this->methods as $method) {
+			$method->setParent(null);
+		}
+		$this->methods = [];
+
+		return $this;
 	}
 
 	/**
@@ -328,11 +356,11 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 		$docblock = $this->getDocblock();
 		$docblock->setShortDescription($this->getDescription());
 		$docblock->setLongDescription($this->getLongDescription());
-		
+
 		foreach ($this->methods as $method) {
 			$method->generateDocblock();
 		}
-		
+
 		return $this;
 	}
 }

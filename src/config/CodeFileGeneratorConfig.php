@@ -11,24 +11,23 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 				'headerComment', 'headerDocblock', 'blankLineAtEnd', 'declareStrictTypes'
 			], parent::getOptionalOptions());
 	}
-	
+
 	protected function getDefaultOptions() {
 		return array_merge(
-			parent::getDefaultOptions(),
-			[
+			parent::getDefaultOptions(), [
 				'headerComment' => '',
 				'headerDocblock' => null,
 				'blankLineAtEnd' => true,
 				'declareStrictTypes'  => false,
-				'generateScalarTypeHints' => function(Options $options) {
+				'generateScalarTypeHints' => function (Options $options) {
 					return $options['declareStrictTypes'];
 				},
-				'generateReturnTypeHints' => function(Options $options) {
+				'generateReturnTypeHints' => function (Options $options) {
 					return $options['declareStrictTypes'];
 				},
 			]);
 	}
-	
+
 	protected function getAllowedOptionTypes() {
 		return array_merge([
 				'headerComment' => 'string',
@@ -37,7 +36,7 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 				'declareStrictTypes' => 'bool',
 			], parent::getAllowedOptionTypes());
 	}
-	
+
 	/**
 	 * Returns the file header comment
 	 * 
@@ -46,7 +45,7 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 	public function getHeaderComment() {
 		return $this->options['headerComment'];
 	}
-	
+
 	/**
 	 * Sets the file header comment
 	 * 
@@ -57,7 +56,7 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 		$this->options['headerComment'] = $comment;
 		return $this;
 	}
-	
+
 	/**
 	 * Returns the file header docblock
 	 * 
@@ -66,7 +65,7 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 	public function getHeaderDocblock() {
 		return $this->options['headerDocblock'];
 	}
-	
+
 	/**
 	 * Sets the file header docblock
 	 * 
@@ -77,7 +76,7 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 		$this->options['headerDocblock'] = $docblock;
 		return $this;
 	}
-	
+
 	/**
 	 * Returns whether a blank line should be generated at the end of the file
 	 * 
@@ -86,7 +85,7 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 	public function getBlankLineAtEnd() {
 		return $this->options['blankLineAtEnd'];
 	}
-	
+
 	/**
 	 * Sets whether a blank line should be generated at the end of the file
 	 * 
@@ -97,7 +96,7 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 		$this->options['blankLineAtEnd'] = $show;
 		return $this;
 	}
-	
+
 	/**
 	 * Returns whether a `declare(strict_types=1);` statement should be printed 
 	 * below the header comments (PHP 7)
@@ -107,7 +106,7 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 	public function getDeclareStrictTypes() {
 		return $this->options['declareStrictTypes'];
 	}
-	
+
 	/**
 	 * Sets whether a `declare(strict_types=1);` statement should be printed 
 	 * below the header comments (PHP 7)

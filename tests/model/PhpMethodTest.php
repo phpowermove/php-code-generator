@@ -8,30 +8,30 @@ class PhpMethodTest extends \PHPUnit_Framework_TestCase {
 
 	public function testParameters() {
 		$method = new PhpMethod('needsName');
-		
-		$this->assertEquals(array(), $method->getParameters());
-		$this->assertSame($method, $method->setParameters($params = array(
+
+		$this->assertEquals([], $method->getParameters());
+		$this->assertSame($method, $method->setParameters($params = [
 			new PhpParameter('a')
-		)));
+		]));
 		$this->assertSame($params, $method->getParameters());
-		
+
 		$this->assertSame($method, $method->addParameter($param = new PhpParameter('b')));
 		$this->assertSame($param, $method->getParameter('b'));
 		$this->assertSame($param, $method->getParameter(1));
 		$params[] = $param;
 		$this->assertSame($params, $method->getParameters());
-		
+
 		$this->assertSame($method, $method->removeParameter(0));
 		unset($params[0]);
-		$this->assertSame(array(
+		$this->assertSame([
 			$param
-		), $method->getParameters());
-		
+		], $method->getParameters());
+
 		$this->assertSame($method, $method->addParameter($param = new PhpParameter('c')));
 		$params[] = $param;
 		$params = array_values($params);
 		$this->assertSame($params, $method->getParameters());
-		
+
 		$this->assertSame($method, $method->replaceParameter(0, $param = new PhpParameter('a')));
 		$params[0] = $param;
 		$this->assertSame($params, $method->getParameters());
@@ -71,7 +71,7 @@ class PhpMethodTest extends \PHPUnit_Framework_TestCase {
 
 	public function testBody() {
 		$method = new PhpMethod('needsName');
-		
+
 		$this->assertSame('', $method->getBody());
 		$this->assertSame($method, $method->setBody('foo'));
 		$this->assertEquals('foo', $method->getBody());
@@ -79,7 +79,7 @@ class PhpMethodTest extends \PHPUnit_Framework_TestCase {
 
 	public function testReferenceReturned() {
 		$method = new PhpMethod('needsName');
-		
+
 		$this->assertFalse($method->isReferenceReturned());
 		$this->assertSame($method, $method->setReferenceReturned(true));
 		$this->assertTrue($method->isReferenceReturned());

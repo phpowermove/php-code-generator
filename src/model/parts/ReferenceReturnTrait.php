@@ -13,7 +13,7 @@ trait ReferenceReturnTrait {
 	 */
 	public function setReferenceReturned($bool) {
 		$this->referenceReturned = (boolean) $bool;
-		
+
 		return $this;
 	}
 

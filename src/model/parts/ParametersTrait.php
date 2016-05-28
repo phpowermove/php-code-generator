@@ -5,10 +5,7 @@ use gossi\codegen\model\PhpParameter;
 
 trait ParametersTrait {
 
-	/**
-	 *
-	 * @var PhpParameter[]
-	 */
+	/** @var PhpParameter[] */
 	private $parameters = [];
 
 	/**
@@ -34,7 +31,7 @@ trait ParametersTrait {
 
 		return $this;
 	}
-	
+
 	/**
 	 * Checks whether a parameter exists
 	 * 
@@ -64,7 +61,7 @@ trait ParametersTrait {
 		$parameter->setType($type);
 
 		if (2 < func_num_args()) {
-			$parameter->setDefaultValue($defaultValue);
+			$parameter->setValue($defaultValue);
 		}
 
 		$this->addParameter($parameter);
@@ -87,7 +84,7 @@ trait ParametersTrait {
 		$parameter->setTypeDescription($typeDescription);
 
 		if (3 < func_num_args() == 3) {
-			$parameter->setDefaultValue($defaultValue);
+			$parameter->setValue($defaultValue);
 		}
 
 		$this->addParameter($parameter);

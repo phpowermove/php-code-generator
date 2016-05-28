@@ -18,7 +18,7 @@ use gossi\docblock\Docblock;
  * @author gossi
  */
 class PhpClass extends AbstractPhpStruct implements GenerateableInterface, TraitsInterface, ConstantsInterface {
-	
+
 	use InterfacesTrait;
 	use AbstractTrait;
 	use FinalTrait;
@@ -62,14 +62,14 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 		foreach ($ref->getTraits() as $trait) {
 			$class->addTrait(PhpTrait::fromReflection($trait));
 		}
-		
+
 		// constants
 		// TODO: https://github.com/gossi/php-code-generator/issues/19
 		$class->setConstants($ref->getConstants());
 
 		return $class;
 	}
-	
+
 	/**
 	 * Creates a PHP class from file
 	 * 
@@ -108,17 +108,17 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 	 */
 	public function setParentClassName($name) {
 		$this->parentClassName = $name;
-		
+
 		return $this;
 	}
 
 	public function generateDocblock() {
 		parent::generateDocblock();
-		
+
 		foreach ($this->constants as $constant) {
 			$constant->generateDocblock();
 		}
-		
+
 		foreach ($this->properties as $prop) {
 			$prop->generateDocblock();
 		}

@@ -2,6 +2,7 @@
 namespace gossi\codegen\config;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\OptionsResolver\Options;
 
 /**
  * Configuration for code generator
@@ -40,7 +41,9 @@ class CodeGeneratorConfig {
 	protected function getDefaultOptions() {
 		return [
 			'generateDocblock' => true,
-			'generateEmptyDocblock' => true,
+			'generateEmptyDocblock' => function (Options $options) {
+				return $options['generateDocblock'];
+			},
 			'generateScalarTypeHints' => false,
 			'generateReturnTypeHints' => false,
 		];
@@ -72,6 +75,9 @@ class CodeGeneratorConfig {
 	 */
 	public function setGenerateDocblock($generate) {
 		$this->options['generateDocblock'] = $generate;
+		if (!$generate) {
+			$this->options['generateEmptyDocblock'] = $generate;
+		}
 		return $this;
 	}
 
@@ -92,6 +98,9 @@ class CodeGeneratorConfig {
 	 */
 	public function setGenerateEmptyDocblock($generate) {
 		$this->options['generateEmptyDocblock'] = $generate;
+		if ($generate) {
+			$this->options['generateDocblock'] = $generate;
+		}
 		return $this;
 	}
 

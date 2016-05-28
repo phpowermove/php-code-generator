@@ -14,7 +14,7 @@ abstract class AbstractModel {
 
 	public function setAttribute($key, $value) {
 		$this->attributes[$key] = $value;
-		
+
 		return $this;
 	}
 
@@ -28,7 +28,7 @@ abstract class AbstractModel {
 		if (!isset($this->attributes[$key])) {
 			throw new \InvalidArgumentException(sprintf('There is no attribute named "%s".', $key));
 		}
-		
+
 		return $this->attributes[$key];
 	}
 
@@ -40,7 +40,7 @@ abstract class AbstractModel {
 		if (!isset($this->attributes[$key])) {
 			return $default;
 		}
-		
+
 		return $this->attributes[$key];
 	}
 
@@ -50,7 +50,7 @@ abstract class AbstractModel {
 
 	public function setAttributes(array $attrs) {
 		$this->attributes = $attrs;
-		
+
 		return $this;
 	}
 

@@ -81,17 +81,17 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
 	 * @return $this
 	 */
 	public function setVisibility($visibility) {
-		if ($visibility !== self::VISIBILITY_PRIVATE 
-				&& $visibility !== self::VISIBILITY_PROTECTED 
+		if ($visibility !== self::VISIBILITY_PRIVATE
+				&& $visibility !== self::VISIBILITY_PROTECTED
 				&& $visibility !== self::VISIBILITY_PUBLIC) {
 			throw new \InvalidArgumentException(sprintf('The visibility "%s" does not exist.', $visibility));
 		}
-		
+
 		$this->visibility = $visibility;
-		
+
 		return $this;
 	}
-	
+
 	/**
 	 * Returns the visibility state of this member
 	 *
@@ -109,7 +109,7 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
 	 */
 	public function setStatic($bool) {
 		$this->static = (boolean) $bool;
-		
+
 		return $this;
 	}
 

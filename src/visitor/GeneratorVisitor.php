@@ -35,7 +35,7 @@ use gossi\docblock\Docblock;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class DefaultVisitor implements GeneratorVisitorInterface {
+class GeneratorVisitor implements GeneratorVisitorInterface {
 
 	protected $writer;
 
@@ -224,8 +224,12 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 
 		$this->writer->write($property->getVisibility() . ' ' . ($property->isStatic() ? 'static ' : '') . '$' . $property->getName());
 
-		if ($property->hasDefaultValue()) {
-			$this->writer->write(' = ' . $this->getPhpExport($property->getDefaultValue()));
+		if ($property->hasValue()) {
+			if ($property->isExpression()) {
+				$this->writer->write(' = ' . $property->getExpression());
+			} else {
+				$this->writer->write(' = ' . $this->getPhpExport($property->getValue()));
+			}
 		}
 
 		$this->writer->writeln(';');
@@ -338,20 +342,21 @@ class DefaultVisitor implements GeneratorVisitorInterface {
 
 			$this->writer->write('$' . $parameter->getName());
 
-			if ($parameter->hasDefaultValue()) {
+			if ($parameter->hasValue()) {
 				$this->writer->write(' = ');
-				$defaultValue = $parameter->getDefaultValue();
 
-				switch (true) {
-					case is_array($defaultValue) && empty($defaultValue):
-						$this->writer->write('array()');
-						break;
-					case ($defaultValue instanceof PhpConstant):
-						$this->writer->write($defaultValue->getName());
-						break;
-					default:
-					$this->writer->write($this->getPhpExport($defaultValue));
+				if ($parameter->isExpression()) {
+					$this->writer->write($parameter->getExpression());
+				} else {
+					$value = $parameter->getValue();
 
+					if (is_array($value) && empty($value)) {
+						$this->writer->write('[]');
+					} else if ($value instanceof PhpConstant) {
+						$this->writer->write($value->getName());
+					} else {
+						$this->writer->write($this->getPhpExport($value));
+					}
 				}
 			}
 		}

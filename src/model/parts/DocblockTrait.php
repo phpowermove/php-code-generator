@@ -22,7 +22,7 @@ trait DocblockTrait {
 			$doc = new Docblock($doc);
 		}
 		$this->docblock = $doc;
-		
+
 		return $this;
 	}
 

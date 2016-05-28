@@ -13,7 +13,7 @@ trait BodyTrait {
 	 */
 	public function setBody($body) {
 		$this->body = $body;
-		
+
 		return $this;
 	}
 

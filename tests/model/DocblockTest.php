@@ -62,18 +62,18 @@ class DocblockTest extends \PHPUnit_Framework_TestCase {
 			->setMethod($this->getMethod())
 			->setConstant($this->getConstant())
 			->generateDocblock();
-		
+
 		$this->assertFalse($class->getDocblock()->isEmpty());
 		$this->assertNotNull($class->getProperty(self::PROP)->getDocblock());
 		$this->assertNotNull($class->getMethod(self::METHOD)->getDocblock());
 		$this->assertNotNull($class->getConstant(self::CONSTANT)->getDocblock());
-		
+
 		$docblock = $class->getDocblock();
 		$author = AuthorTag::create()->setName('gossi')->setEmail('iiih@mail.me');
 		$docblock->appendTag($author);
-		
+
 		$this->assertTrue($docblock->hasTag('author'));
-		
+
 		$expected = '/**
  * this is my class
  * 
@@ -83,7 +83,7 @@ class DocblockTest extends \PHPUnit_Framework_TestCase {
  */';
 		$this->assertEquals($expected, $docblock->toString());
 	}
-	
+
 	public function testEmptyClass() {
 		$class = new PhpClass();
 		$class->generateDocblock();
@@ -94,12 +94,12 @@ class DocblockTest extends \PHPUnit_Framework_TestCase {
 		$interface = new PhpInterface();
 		$interface->setDescription('my interface')->setLongDescription('this is my very long description')->setConstant($this->getConstant())->setMethod($this->getMethod());
 		$interface->generateDocblock();
-		
+
 		$this->assertFalse($interface->getDocblock()->isEmpty());
 		$this->assertNotNull($interface->getMethod(self::METHOD)->getDocblock());
 		$this->assertNotNull($interface->getConstant(self::CONSTANT)->getDocblock());
 	}
-	
+
 	public function testEmptyInterface() {
 		$interface = new PhpInterface();
 		$interface->generateDocblock();
@@ -110,12 +110,12 @@ class DocblockTest extends \PHPUnit_Framework_TestCase {
 		$trait = new PhpTrait();
 		$trait->setDescription('my trait')->setLongDescription('this is my very long description')->setProperty($this->getProperty())->setMethod($this->getMethod());
 		$trait->generateDocblock();
-		
+
 		$this->assertFalse($trait->getDocblock()->isEmpty());
 		$this->assertNotNull($trait->getProperty(self::PROP)->getDocblock());
 		$this->assertNotNull($trait->getMethod(self::METHOD)->getDocblock());
 	}
-	
+
 	public function testEmptyTrait() {
 		$trait = new PhpTrait();
 		$trait->generateDocblock();
@@ -127,7 +127,7 @@ class DocblockTest extends \PHPUnit_Framework_TestCase {
 		$function->generateDocblock();
 		$this->assertFalse($function->getDocblock()->isEmpty());
 	}
-	
+
 	public function testEmptyFunction() {
 		$function = new PhpFunction();
 		$function->generateDocblock();
@@ -144,10 +144,10 @@ class DocblockTest extends \PHPUnit_Framework_TestCase {
  */';
 		$constant = $this->getConstant();
 		$constant->generateDocblock();
-		
+
 		$this->assertEquals($expected, '' . $constant->getDocblock()->toString());
 	}
-	
+
 	public function testEmptyConstant() {
 		$constant = new PhpConstant();
 		$constant->generateDocblock();
@@ -164,10 +164,10 @@ class DocblockTest extends \PHPUnit_Framework_TestCase {
  */';
 		$property = $this->getProperty();
 		$property->generateDocblock();
-		
+
 		$this->assertEquals($expected, $property->getDocblock()->toString());
 	}
-	
+
 	public function testEmptyProperty() {
 		$property = new PhpProperty(self::PROP);
 		$property->generateDocblock();
@@ -188,19 +188,19 @@ class DocblockTest extends \PHPUnit_Framework_TestCase {
 		$throws = new ThrowsTag('\Exception when something goes wrong');
 		$doc = new Docblock();
 		$doc->appendTag($throws);
-		
+
 		$method = $this->getMethod();
 		$method->setDocblock($doc);
 		$method->generateDocblock();
 		$docblock = $method->getDocblock();
-		
+
 		$see = new SeeTag('MyClass#myMethod see-desc');
 		$docblock->appendTag($see);
-		
+
 		$this->assertSame($docblock, $doc);
 		$this->assertEquals($expected, $docblock->toString());
 	}
-	
+
 	public function testEmptyMethod() {
 		$method = new PhpMethod(self::METHOD);
 		$method->generateDocblock();

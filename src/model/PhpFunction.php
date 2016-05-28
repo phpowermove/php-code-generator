@@ -57,19 +57,19 @@ class PhpFunction extends AbstractModel implements GenerateableInterface, Namesp
 		$function = PhpFunction::create($ref->name)
 			->setReferenceReturned($ref->returnsReference())
 			->setBody(ReflectionUtils::getFunctionBody($ref));
-		
+
 		$docblock = new Docblock($ref);
 		$function->setDocblock($docblock);
 		$function->setDescription($docblock->getShortDescription());
 		$function->setLongDescription($docblock->getLongDescription());
-		
+
 		foreach ($ref->getParameters() as $refParam) {
 			assert($refParam instanceof \ReflectionParameter); // hmm - assert here?
-			
+
 			$param = PhpParameter::fromReflection($refParam);
 			$function->addParameter($param);
 		}
-		
+
 		return $function;
 	}
 
@@ -97,10 +97,10 @@ class PhpFunction extends AbstractModel implements GenerateableInterface, Namesp
 		$docblock = $this->getDocblock();
 		$docblock->setShortDescription($this->getDescription());
 		$docblock->setLongDescription($this->getLongDescription());
-		
+
 		// return tag
 		$this->generateTypeTag(new ReturnTag());
-		
+
 		// param tags
 		$this->generateParamDocblock();
 	}

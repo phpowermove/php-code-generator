@@ -22,7 +22,7 @@ trait AbstractTrait {
 	 */
 	public function setAbstract($bool) {
 		$this->abstract = (boolean) $bool;
-		
+
 		return $this;
 	}
 }

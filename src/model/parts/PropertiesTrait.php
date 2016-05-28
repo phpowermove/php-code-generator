@@ -5,10 +5,7 @@ use gossi\codegen\model\PhpProperty;
 
 trait PropertiesTrait {
 
-	/**
-	 *
-	 * @var PhpProperty[]
-	 */
+	/** @var PhpProperty[] */
 	private $properties = [];
 
 	/**
@@ -21,13 +18,13 @@ trait PropertiesTrait {
 		foreach ($this->properties as $prop) {
 			$prop->setParent(null);
 		}
-		
+
 		$this->properties = [];
-		
+
 		foreach ($properties as $prop) {
 			$this->setProperty($prop);
 		}
-		
+
 		return $this;
 	}
 
@@ -40,59 +37,63 @@ trait PropertiesTrait {
 	public function setProperty(PhpProperty $property) {
 		$property->setParent($this);
 		$this->properties[$property->getName()] = $property;
-		
+
 		return $this;
+	}
+
+	/**
+	 * Removes a property
+	 *
+	 * @param PhpProperty|string $nameOrProperty property name or instance
+	 * @throws \InvalidArgumentException If the property cannot be found
+	 * @return $this
+	 */
+	public function removeProperty($nameOrProperty) {
+		if ($nameOrProperty instanceof PhpProperty) {
+			$nameOrProperty = $nameOrProperty->getName();
+		}
+
+		if (!array_key_exists($nameOrProperty, $this->properties)) {
+			throw new \InvalidArgumentException(sprintf('The property "%s" does not exist.', $nameOrProperty));
+		}
+		$p = $this->properties[$nameOrProperty];
+		$p->setParent(null);
+		unset($this->properties[$nameOrProperty]);
+
+		return $this;
+	}
+
+	/**
+	 * Checks whether a property exists
+	 *
+	 * @param PhpProperty|string $nameOrProperty property name or instance
+	 * @return boolean `true` if a property exists and `false` if not
+	 */
+	public function hasProperty($nameOrProperty) {
+		if ($nameOrProperty instanceof PhpProperty) {
+			$nameOrProperty = $nameOrProperty->getName();
+		}
+
+		return isset($this->properties[$nameOrProperty]);
 	}
 
 	/**
 	 * Returns a property
 	 * 
-	 * @param string $property property name
-	 * @return PhpProperty        	
+	 * @param string $nameOrProperty property name
+	 * @throws \InvalidArgumentException If the property cannot be found
+	 * @return PhpProperty
 	 */
-	public function getProperty($property) {
-		if ($property instanceof PhpProperty) {
-			$property = $property->getName();
+	public function getProperty($nameOrProperty) {
+		if ($nameOrProperty instanceof PhpProperty) {
+			$nameOrProperty = $nameOrProperty->getName();
 		}
-		
-		if (isset($this->properties[$property])) {
-			return $this->properties[$property];
-		}
-	}
 
-	/**
-	 * Checks whether a property exists
-	 * 
-	 * @param PhpProperty|string $property property name or instance
-	 * @return boolean `true` if a property exists and `false` if not        	
-	 */
-	public function hasProperty($property) {
-		if ($property instanceof PhpProperty) {
-			$property = $property->getName();
+		if (!array_key_exists($nameOrProperty, $this->properties)) {
+			throw new \InvalidArgumentException(sprintf('The property "%s" does not exist.', $nameOrProperty));
 		}
-		
-		return isset($this->properties[$property]);
-	}
 
-	/**
-	 * Removes a property
-	 * 
-	 * @param PhpProperty|string $property property name or instance
-	 * @return $this         	
-	 */
-	public function removeProperty($property) {
-		if ($property instanceof PhpProperty) {
-			$property = $property->getName();
-		}
-		
-		if (!array_key_exists($property, $this->properties)) {
-			throw new \InvalidArgumentException(sprintf('The property "%s" does not exist.', $property));
-		}
-		$p = $this->properties[$property];
-		$p->setParent(null);
-		unset($this->properties[$property]);
-		
-		return $this;
+		return $this->properties[$nameOrProperty];
 	}
 
 	/**
@@ -102,5 +103,28 @@ trait PropertiesTrait {
 	 */
 	public function getProperties() {
 		return $this->properties;
+	}
+
+	/**
+	 * Returns all property names
+	 * 
+	 * @return string[]
+	 */
+	public function getPropertyNames() {
+		return array_keys($this->properties);
+	}
+
+	/**
+	 * Clears all properties
+	 * 
+	 * @return $this
+	 */
+	public function clearProperties() {
+		foreach ($this->properties as $property) {
+			$property->setParent(null);
+		}
+		$this->properties = [];
+
+		return $this;
 	}
 }

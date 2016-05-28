@@ -27,18 +27,18 @@ trait InterfacesTrait {
 			$name = $interface->getName();
 			$qname = $interface->getQualifiedName();
 			$namespace = $interface->getNamespace();
-			
+
 			if ($namespace != $this->getNamespace()) {
 				$this->addUseStatement($qname);
 			}
 		} else {
 			$name = $interface;
 		}
-		
+
 		if (!in_array($name, $this->interfaces)) {
 			$this->interfaces[] = $name;
 		}
-		
+
 		return $this;
 	}
 
@@ -87,17 +87,17 @@ trait InterfacesTrait {
 		if ($interface instanceof PhpInterface) {
 			$name = $interface->getName();
 			$qname = $interface->getQualifiedName();
-			
+
 			$this->removeUseStatement($qname);
 		} else {
 			$name = $interface;
 		}
-		
+
 		$index = array_search($name, $this->interfaces);
 		if ($index) {
 			unset($this->interfaces[$name]);
 		}
-		
+
 		return $this;
 	}
 
@@ -111,7 +111,7 @@ trait InterfacesTrait {
 		foreach ($interfaces as $interface) {
 			$this->addInterface($interface);
 		}
-		
+
 		return $this;
 	}
 }

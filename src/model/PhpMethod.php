@@ -34,7 +34,7 @@ use gossi\docblock\tags\ReturnTag;
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
 class PhpMethod extends AbstractPhpMember {
-	
+
 	use AbstractTrait;
 	use FinalTrait;
 	use ParametersTrait;
@@ -63,10 +63,10 @@ class PhpMethod extends AbstractPhpMember {
 		$method->setFinal($ref->isFinal())
 			->setAbstract($ref->isAbstract())
 			->setStatic($ref->isStatic())
-			->setVisibility($ref->isPublic() 
-				? self::VISIBILITY_PUBLIC 
-				: ($ref->isProtected() 
-					? self::VISIBILITY_PROTECTED 
+			->setVisibility($ref->isPublic()
+				? self::VISIBILITY_PUBLIC
+				: ($ref->isProtected()
+					? self::VISIBILITY_PROTECTED
 					: self::VISIBILITY_PRIVATE))
 			->setReferenceReturned($ref->returnsReference())
 			->setBody(ReflectionUtils::getFunctionBody($ref));
@@ -75,19 +75,19 @@ class PhpMethod extends AbstractPhpMember {
 		$method->setDocblock($docblock);
 		$method->setDescription($docblock->getShortDescription());
 		$method->setLongDescription($docblock->getLongDescription());
-		
+
 		// return type and description
 		$returns = $method->getDocblock()->getTags('return');
 		if ($returns->size() > 0) {
 			$return = $returns->get(0);
 			$method->setType($return->getType(), $return->getDescription());
 		}
-		
+
 		// params
 		foreach ($ref->getParameters() as $param) {
 			$method->addParameter(static::createParameter($param));
 		}
-		
+
 		return $method;
 	}
 
@@ -102,10 +102,10 @@ class PhpMethod extends AbstractPhpMember {
 		$docblock = $this->getDocblock();
 		$docblock->setShortDescription($this->getDescription());
 		$docblock->setLongDescription($this->getLongDescription());
-		
+
 		// return tag
 		$this->generateTypeTag(new ReturnTag());
-		
+
 		// param tags
 		$this->generateParamDocblock();
 	}

@@ -19,7 +19,7 @@ trait TypeTrait {
 		if (null !== $description) {
 			$this->setTypeDescription($description);
 		}
-		
+
 		return $this;
 	}
 

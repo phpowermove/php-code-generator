@@ -1,15 +1,15 @@
 <?php
 namespace gossi\codegen\tests\generator;
 
-use gossi\codegen\generator\DefaultGeneratorStrategy;
+use gossi\codegen\generator\GeneratorStrategy;
 use gossi\codegen\model\PhpClass;
 use gossi\codegen\model\PhpMethod;
 use gossi\codegen\model\PhpProperty;
 
-class DefaultGeneratorStrategyTest extends \PHPUnit_Framework_TestCase {
+class GeneratorStrategyTest extends \PHPUnit_Framework_TestCase {
 
 	public function testGenerate() {
-		$strategy = new DefaultGeneratorStrategy();
+		$strategy = new GeneratorStrategy();
 		$strategy->setConstantSortFunc(function ($a, $b) {
 			return strcasecmp($a, $b);
 		});
@@ -17,12 +17,12 @@ class DefaultGeneratorStrategyTest extends \PHPUnit_Framework_TestCase {
 			return strcasecmp($a->getName(), $b->getName());
 		});
 		$strategy->setPropertySortFunc($func);
-		
+
 		$this->assertEquals($this->getContent('GenerationTestClass_A.php'), $strategy->generate($this->getClass()));
 	}
 
 	public function testGenerateChangedConstantOrder() {
-		$strategy = new DefaultGeneratorStrategy();
+		$strategy = new GeneratorStrategy();
 		$strategy->setConstantSortFunc(function ($a, $b) {
 			return -1 * strcasecmp($a, $b);
 		});
@@ -30,7 +30,7 @@ class DefaultGeneratorStrategyTest extends \PHPUnit_Framework_TestCase {
 			return strcasecmp($a->getName(), $b->getName());
 		});
 		$strategy->setPropertySortFunc($func);
-		
+
 		$this->assertEquals($this->getContent('GenerationTestClass_B.php'), $strategy->generate($this->getClass()));
 	}
 
@@ -55,7 +55,7 @@ class DefaultGeneratorStrategyTest extends \PHPUnit_Framework_TestCase {
 			->setProperty(PhpProperty::create('b'))
 			->setConstant('a', 'foo')
 			->setConstant('b', 'bar');
-		
+
 		return $class;
 	}
 }

@@ -1,9 +1,6 @@
 {
 	"name" : "gossi/php-code-generator",
 	"description" : "Toolset for generating PHP code",
-	"keywords" : [
-		"code generation"
-	],
 	"type" : "library",
 	"license" : "Apache2",
 	"authors" : [{
@@ -11,17 +8,9 @@
 			"homepage" : "http://gos.si"
 		}
 	],
-	"require" : {
-		"php" : ">=5.4",
-		"gossi/docblock" : "~1",
-		"symfony/options-resolver" : "~2.0|~3.0",
-		"phootwork/file" : "~0",
-		"phootwork/tokenizer" : "~0",
-		"nikic/php-parser" : "~1"
-	},
-	"suggest" : {
-		"gossi/php-code-formatter" : "Formatting your generated code"
-	},
+	"keywords" : [
+		"code generation"
+	],
 	"autoload" : {
 		"psr-4" : {
 			"gossi\\codegen\\" : "src/"
@@ -32,13 +21,19 @@
 			"gossi\\codegen\\tests\\" : "tests/"
 		}
 	},
-	"extra" : {
-		"branch-alias" : {
-			"dev-master" : "1.1-dev"
-		}
+	"require" : {
+		"php" : ">=5.4",
+		"gossi/docblock" : "~1",
+		"symfony/options-resolver" : "~2|~3",
+		"phootwork/file" : "~0",
+		"phootwork/tokenizer" : "~0",
+		"nikic/php-parser" : "~1"
 	},
 	"require-dev" : {
 		"phpunit/phpunit" : "~4",
 		"sami/sami" : "~3"
+	},
+	"suggest" : {
+		"gossi/php-code-formatter" : "Formatting your generated code"
 	}
 }

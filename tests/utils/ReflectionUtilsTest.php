@@ -16,37 +16,37 @@ class ReflectionUtilsTest extends \PHPUnit_Framework_TestCase {
 	public function testFunctionBody() {
 		$actual = ReflectionUtils::getFunctionBody(new \ReflectionFunction('wurst'));
 		$expected = 'return \'wurst\';';
-		
+
 		$this->assertEquals($expected, $actual);
-		
+
 		$actual = ReflectionUtils::getFunctionBody(new \ReflectionFunction('inline'));
 		$expected = 'return \'x\';';
-		
+
 		$this->assertEquals($expected, $actual);
 	}
 
 	public function testGetOverridableMethods() {
 		$ref = new \ReflectionClass('gossi\codegen\tests\fixture\OverridableReflectionTest');
 		$methods = ReflectionUtils::getOverrideableMethods($ref);
-	
+
 		$this->assertEquals(4, count($methods));
-	
+
 		$methods = array_map(function ($v) {
 			return $v->name;
 		}, $methods);
 		sort($methods);
-		$this->assertEquals(array(
+		$this->assertEquals([
 			'a',
 			'd',
 			'e',
 			'h'
-		), $methods);
+		], $methods);
 	}
-	
+
 	public function testGetUnindentedDocComment() {
 		$writer = new Writer();
 		$comment = $writer->writeln('/**')->indent()->writeln(' * Foo.')->write(' */')->getContent();
-	
+
 		$this->assertEquals("/**\n * Foo.\n */", ReflectionUtils::getUnindentedDocComment($comment));
 	}
 }

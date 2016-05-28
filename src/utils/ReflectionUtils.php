@@ -27,11 +27,11 @@ class ReflectionUtils {
 	 */
 	public static function getOverrideableMethods(\ReflectionClass $class, $publicOnly = false) {
 		$filter = \ReflectionMethod::IS_PUBLIC;
-		
+
 		if (!$publicOnly) {
 			$filter |= \ReflectionMethod::IS_PROTECTED;
 		}
-		
+
 		return array_filter($class->getMethods($filter), function ($method) {
 			return !$method->isFinal() && !$method->isStatic();
 		});
@@ -48,14 +48,14 @@ class ReflectionUtils {
 				$docBlock = $lines[0] . "\n";
 				continue;
 			}
-			
+
 			$docBlock .= ' ' . ltrim($lines[$i]);
-			
+
 			if ($i + 1 < $c) {
 				$docBlock .= "\n";
 			}
 		}
-		
+
 		return $docBlock;
 	}
 
@@ -72,7 +72,7 @@ class ReflectionUtils {
 		$close = strrpos($body, '}');
 		return trim(substr($body, $open + 1, (strlen($body) - $close) * -1));
 	}
-	
+
 	public static function getUseStatements(\ReflectionClass $class) {
 		$content = '';
 		$file = file($class->getFileName());
@@ -85,13 +85,13 @@ class ReflectionUtils {
 			return $token->type !== T_WHITESPACE && $token->type !== T_COMMENT && $token->type !== T_DOC_COMMENT;
 		});
 		$statements = [];
-		
+
 		while (($token = $tokens->next())) {
 			if ($token->type === T_USE) {
 				$explicitAlias = false;
 				$alias = '';
 				$class = '';
-				
+
 				while (($token = $tokens->next())) {
 					$isNameToken = $token->type === T_STRING || $token->type === T_NS_SEPARATOR;
 					if (!$explicitAlias && $isNameToken) {
@@ -107,7 +107,7 @@ class ReflectionUtils {
 						} else {
 							$statements[] = $class;
 						}
-						
+
 						$class = '';
 						$alias = '';
 						$explicitAlias = false;
@@ -124,7 +124,7 @@ class ReflectionUtils {
 				}
 			}
 		}
-		
+
 		return $statements;
 	}
 

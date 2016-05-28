@@ -2,7 +2,7 @@
 namespace gossi\codegen\model\parts;
 
 trait QualifiedNameTrait {
-	
+
 	use NameTrait;
 
 	private $namespace;
@@ -15,7 +15,7 @@ trait QualifiedNameTrait {
 	 */
 	public function setNamespace($namespace) {
 		$this->namespace = $namespace;
-		
+
 		return $this;
 	}
 
@@ -30,13 +30,13 @@ trait QualifiedNameTrait {
 		if (false !== $pos = strrpos($name, '\\')) {
 			$this->namespace = trim(substr($name, 0, $pos), '\\');
 			$this->name = substr($name, $pos + 1);
-			
+
 			return $this;
 		}
-		
+
 		$this->namespace = null;
 		$this->name = $name;
-		
+
 		return $this;
 	}
 
@@ -58,7 +58,7 @@ trait QualifiedNameTrait {
 		if ($this->namespace) {
 			return $this->namespace . '\\' . $this->name;
 		}
-		
+
 		return $this->name;
 	}
 }

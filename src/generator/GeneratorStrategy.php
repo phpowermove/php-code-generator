@@ -16,10 +16,10 @@
  */
 namespace gossi\codegen\generator;
 
-use gossi\codegen\visitor\GeneratorVisitorInterface;
-use gossi\codegen\visitor\DefaultNavigator;
-use gossi\codegen\visitor\DefaultVisitor;
 use gossi\codegen\model\GenerateableInterface;
+use gossi\codegen\visitor\GeneratorNavigator;
+use gossi\codegen\visitor\GeneratorVisitor;
+use gossi\codegen\visitor\GeneratorVisitorInterface;
 
 /**
  * The default generator strategy.
@@ -29,15 +29,15 @@ use gossi\codegen\model\GenerateableInterface;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class DefaultGeneratorStrategy {
+class GeneratorStrategy {
 
 	private $navigator;
 
 	private $visitor;
 
 	public function __construct(GeneratorVisitorInterface $visitor = null) {
-		$this->navigator = new DefaultNavigator();
-		$this->visitor = $visitor ?: new DefaultVisitor();
+		$this->navigator = new GeneratorNavigator();
+		$this->visitor = $visitor ?: new GeneratorVisitor();
 	}
 
 	public function setConstantSortFunc(\Closure $func = null) {
@@ -52,10 +52,14 @@ class DefaultGeneratorStrategy {
 		$this->navigator->setPropertySortFunc($func);
 	}
 
+	public function setUseStatementSortFunc(\Closure $func = null) {
+		$this->navigator->setUseStatementSortFunc($func);
+	}
+
 	public function generate(GenerateableInterface $class) {
 		$this->visitor->reset();
 		$this->navigator->accept($this->visitor, $class);
-		
+
 		return $this->visitor->getContent();
 	}
 }

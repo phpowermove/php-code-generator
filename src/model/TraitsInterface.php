@@ -20,7 +20,7 @@ interface TraitsInterface {
 	 * @return string[]
 	 */
 	public function getTraits();
-	
+
 	/**
 	 * Checks whether a trait exists
 	 * 

@@ -14,7 +14,7 @@ use gossi\docblock\Docblock;
  * @author gossi
  */
 class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, TraitsInterface {
-	
+
 	use PropertiesTrait;
 	use TraitsTrait;
 
@@ -33,17 +33,17 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
 		$trait->setDocblock($docblock);
 		$trait->setDescription($docblock->getShortDescription());
 		$trait->setLongDescription($docblock->getLongDescription());
-		
+
 		// traits
 		foreach ($ref->getTraits() as $reflectionTrait) {
 			$trait->addTrait(PhpTrait::fromReflection($reflectionTrait));
 		}
-		
+
 		// properties
 		foreach ($ref->getProperties() as $property) {
 			$trait->setProperty(static::createProperty($property));
 		}
-		
+
 		// methods
 		foreach ($ref->getMethods() as $method) {
 			$trait->setMethod(static::createMethod($method));
@@ -51,7 +51,7 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
 
 		return $trait;
 	}
-	
+
 	/**
 	 * Creates a PHP trait from a file
 	 * 
@@ -75,7 +75,7 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
 
 	public function generateDocblock() {
 		parent::generateDocblock();
-		
+
 		foreach ($this->properties as $prop) {
 			$prop->generateDocblock();
 		}

@@ -7,7 +7,7 @@ class AbstractModelTest extends \PHPUnit_Framework_TestCase {
 
 	public function testUseStatements() {
 		$class = new PhpClass();
-		
+
 		$this->assertEquals([], $class->getAttributes());
 		$this->assertSame($class, $class->setAttributes([
 			'foo' => 'bar'

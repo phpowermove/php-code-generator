@@ -2,14 +2,15 @@
 namespace gossi\codegen\model;
 
 interface ConstantsInterface {
-	
+
 	/**
 	 * Sets a collection of constants
 	 * 
 	 * @param PhpConstant[] $constants
+	 * @return $this
 	 */
 	public function setConstants(array $constants);
-	
+
 	/**
 	 * Adds a constant
 	 * 
@@ -18,7 +19,7 @@ interface ConstantsInterface {
 	 * @return $this
 	 */
 	public function setConstant($nameOrConstant, $value = null);
-	
+
 	/**
 	 * Checks whether a constant exists
 	 * 
@@ -28,10 +29,9 @@ interface ConstantsInterface {
 	public function hasConstant($name);
 
 	/**
-	 * Returns a constant.
+	 * Returns a constant
 	 *
 	 * @param string $name constant name
-	 *
 	 * @return PhpConstant
 	 */
 	public function getConstant($name);
@@ -47,8 +47,14 @@ interface ConstantsInterface {
 	/**
 	 * Returns constants
 	 * 
-	 * @param boolean $asObjects (deprecated, will be replaced with getConstantNames() method)
+	 * @return PhpConstant[]
 	 */
-	public function getConstants($asObjects = false);
-	
+	public function getConstants();
+
+	/**
+	 * Returns all constant names
+	 * 
+	 * @return string[]
+	 */
+	public function getConstantNames();
 }

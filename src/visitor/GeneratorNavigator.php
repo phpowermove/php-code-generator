@@ -37,7 +37,7 @@ use gossi\codegen\model\TraitsInterface;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
-class DefaultNavigator {
+class GeneratorNavigator {
 
 	private $constantSortFunc;
 
@@ -45,9 +45,13 @@ class DefaultNavigator {
 
 	private $methodSortFunc;
 
+	private $useStatementSortFunc;
+
 	private static $defaultMethodSortFunc;
 
 	private static $defaultPropertySortFunc;
+
+	private static $defaultUseStatementSortFunc;
 
 	/**
 	 * Sets a custom constant sorting function.
@@ -76,6 +80,15 @@ class DefaultNavigator {
 		$this->methodSortFunc = $func;
 	}
 
+	/**
+	 * Sets a custom method sorting function.
+	 *
+	 * @param null|\Closure $func
+	 */
+	public function setUseStatementSortFunc(\Closure $func = null) {
+		$this->useStatementSortFunc = $func;
+	}
+
 	public function accept(GeneratorVisitorInterface $visitor, GenerateableInterface $model) {
 		if ($model instanceof AbstractPhpStruct) {
 			$this->visitStruct($visitor, $model);
@@ -85,7 +98,11 @@ class DefaultNavigator {
 	}
 
 	private function visitStruct(GeneratorVisitorInterface $visitor, AbstractPhpStruct $struct) {
-		// start struct
+		// start struct - sort use statements
+		$useStatements = $struct->getUseStatements();
+		uasort($useStatements, $this->getUseSortFunc());
+		$struct->setUseStatements($useStatements);
+
 		if ($struct instanceof PhpInterface) {
 			$visitor->startVisitingInterface($struct);
 		} else if ($struct instanceof PhpTrait) {
@@ -93,13 +110,13 @@ class DefaultNavigator {
 		} else if ($struct instanceof PhpClass) {
 			$visitor->startVisitingClass($struct);
 		}
-		
+
 		// contents
 		if ($struct instanceof ConstantsInterface) {
 			$constants = $struct->getConstants(true);
 			if (!empty($constants)) {
 				uksort($constants, $this->getConstantSortFunc());
-				
+
 				$visitor->startVisitingStructConstants();
 				foreach ($constants as $constant) {
 					$visitor->visitStructConstant($constant);
@@ -107,12 +124,12 @@ class DefaultNavigator {
 				$visitor->endVisitingStructConstants();
 			}
 		}
-		
+
 		if ($struct instanceof TraitsInterface) {
 			$properties = $struct->getProperties();
 			if (!empty($properties)) {
 				usort($properties, $this->getPropertySortFunc());
-				
+
 				$visitor->startVisitingProperties();
 				foreach ($properties as $property) {
 					$visitor->visitProperty($property);
@@ -120,18 +137,18 @@ class DefaultNavigator {
 				$visitor->endVisitingProperties();
 			}
 		}
-		
+
 		$methods = $struct->getMethods();
 		if (!empty($methods)) {
 			usort($methods, $this->getMethodSortFunc());
-			
+
 			$visitor->startVisitingMethods();
 			foreach ($methods as $method) {
 				$visitor->visitMethod($method);
 			}
 			$visitor->endVisitingMethods();
 		}
-		
+
 		// end struct
 		if ($struct instanceof PhpInterface) {
 			$visitor->endVisitingInterface($struct);
@@ -146,28 +163,68 @@ class DefaultNavigator {
 		return $this->constantSortFunc ?  : 'strcasecmp';
 	}
 
+	private function getUseSortFunc() {
+		if (null !== $this->useStatementSortFunc) {
+			return $this->useStatemenentSortFunc;
+		}
+
+		if (empty(self::$defaultUseStatementSortFunc)) {
+			self::$defaultUseStatementSortFunc = function ($s1, $s2) {
+				// find first difference
+				$cmp1 = null;
+				$cmp2 = null;
+				$min = min(strlen($s1), strlen($s2));
+				for ($i = 0; $i < $min; $i++) {
+					if ($s1[$i] != $s2[$i]) {
+						$cmp1 = $s1[$i];
+						$cmp2 = $s2[$i];
+						break;
+					}
+				}
+
+				if ($cmp1 === null && $cmp2 === null) {
+					return 0;
+				}
+
+				$getAscii = function ($str) {
+					$ord = ord($str);
+					if ($ord >= 65 && $ord <= 90) {
+						$ord += 32;
+					} else if ($ord >= 97 && $ord <= 122) {
+						$ord -= 32;
+					}
+					return $ord;
+				};
+
+				return $getAscii($cmp1) - $getAscii($cmp2);
+			};
+		}
+
+		return self::$defaultUseStatementSortFunc;
+	}
+
 	private function getMethodSortFunc() {
 		if (null !== $this->methodSortFunc) {
 			return $this->methodSortFunc;
 		}
-		
+
 		if (empty(self::$defaultMethodSortFunc)) {
 			self::$defaultMethodSortFunc = function ($a, $b) {
 				if ($a->isStatic() !== $isStatic = $b->isStatic()) {
 					return $isStatic ? 1 : -1;
 				}
-				
+
 				if (($aV = $a->getVisibility()) !== $bV = $b->getVisibility()) {
 					$aV = 'public' === $aV ? 3 : ('protected' === $aV ? 2 : 1);
 					$bV = 'public' === $bV ? 3 : ('protected' === $bV ? 2 : 1);
-					
+
 					return $aV > $bV ? -1 : 1;
 				}
-				
+
 				return strcasecmp($a->getName(), $b->getName());
 			};
 		}
-		
+
 		return self::$defaultMethodSortFunc;
 	}
 
@@ -175,20 +232,20 @@ class DefaultNavigator {
 		if (null !== $this->propertySortFunc) {
 			return $this->propertySortFunc;
 		}
-		
+
 		if (empty(self::$defaultPropertySortFunc)) {
 			self::$defaultPropertySortFunc = function ($a, $b) {
 				if (($aV = $a->getVisibility()) !== $bV = $b->getVisibility()) {
 					$aV = 'public' === $aV ? 3 : ('protected' === $aV ? 2 : 1);
 					$bV = 'public' === $bV ? 3 : ('protected' === $bV ? 2 : 1);
-					
+
 					return $aV > $bV ? -1 : 1;
 				}
-				
+
 				return strcasecmp($a->getName(), $b->getName());
 			};
 		}
-		
+
 		return self::$defaultPropertySortFunc;
 	}
 }

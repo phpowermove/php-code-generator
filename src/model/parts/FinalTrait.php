@@ -22,7 +22,7 @@ trait FinalTrait {
 	 */
 	public function setFinal($bool) {
 		$this->final = (boolean) $bool;
-		
+
 		return $this;
 	}
 }

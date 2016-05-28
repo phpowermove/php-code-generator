@@ -5,30 +5,31 @@ use gossi\codegen\model\PhpConstant;
 
 trait ConstantsTrait {
 
-	/**
-	 * @var PhpConstant[]
-	 */
+	/** @var PhpConstant[] */
 	private $constants = [];
 
 	/**
 	 * Sets a collection of constants
 	 *
 	 * @param PhpConstant[] $constants
+	 * @return $this
 	 */
 	public function setConstants(array $constants) {
-		$normalizedConstants = array();
+		$normalizedConstants = [];
 		foreach ($constants as $name => $value) {
-			if (!$value instanceof PhpConstant) {
+			if ($value instanceof PhpConstant) {
+				$name = $value->getName();
+			} else {
 				$constValue = $value;
 				$value = new PhpConstant($name);
 				$value->setValue($constValue);
 			}
-			
+
 			$normalizedConstants[$name] = $value;
 		}
-		
+
 		$this->constants = $normalizedConstants;
-		
+
 		return $this;
 	}
 
@@ -48,65 +49,91 @@ trait ConstantsTrait {
 			$constant = new PhpConstant($nameOrConstant);
 			$constant->setValue($value);
 		}
-		
+
 		$this->constants[$name] = $constant;
-		
+
+		return $this;
+	}
+
+	/**
+	 * Removes a constant
+	 *
+	 * @param string $nameOrConstant constant name
+	 * @throws \InvalidArgumentException If the constant cannot be found
+	 * @return $this
+	 */
+	public function removeConstant($nameOrConstant) {
+		if ($nameOrConstant instanceof PhpConstant) {
+			$nameOrConstant = $nameOrConstant->getName();
+		}
+
+		if (!array_key_exists($nameOrConstant, $this->constants)) {
+			throw new \InvalidArgumentException(sprintf('The constant "%s" does not exist.', $nameOrConstant));
+		}
+
+		unset($this->constants[$nameOrConstant]);
+
 		return $this;
 	}
 
 	/**
 	 * Checks whether a constant exists
 	 *
-	 * @param string $name
+	 * @param string|PhpConstant $nameOrConstant
 	 * @return boolean
 	 */
-	public function hasConstant($name) {
-		return array_key_exists($name, $this->constants);
+	public function hasConstant($nameOrConstant) {
+		if ($nameOrConstant instanceof PhpConstant) {
+			$nameOrConstant = $nameOrConstant->getName();
+		}
+		return array_key_exists($nameOrConstant, $this->constants);
 	}
 
 	/**
 	 * Returns a constant.
 	 *
-	 * @param string $name constant name
-	 *
+	 * @param string|PhpConstant $nameOrConstant
+	 * @throws \InvalidArgumentException If the constant cannot be found
 	 * @return PhpConstant
 	 */
-	public function getConstant($name) {
-		if (!isset($this->constants[$name])) {
-			throw new \InvalidArgumentException(sprintf('The constant "%s" does not exist.', $name));
+	public function getConstant($nameOrConstant) {
+		if ($nameOrConstant instanceof PhpConstant) {
+			$nameOrConstant = $nameOrConstant->getName();
 		}
-		
-		return $this->constants[$name];
+
+		if (!isset($this->constants[$nameOrConstant])) {
+			throw new \InvalidArgumentException(sprintf('The constant "%s" does not exist.', $nameOrConstant));
+		}
+
+		return $this->constants[$nameOrConstant];
 	}
 
 	/**
-	 * Removes a constant
+	 * Returns all constants
 	 *
-	 * @param string $name constant name
+	 * @return PhpConstant[]
+	 */
+	public function getConstants() {
+		return $this->constants;
+	}
+
+	/**
+	 * Returns all constant names
+	 * 
+	 * @return string[]
+	 */
+	public function getConstantNames() {
+		return array_keys($this->constants);
+	}
+
+	/**
+	 * Clears all constants
+	 * 
 	 * @return $this
 	 */
-	public function removeConstant($name) {
-		if (!array_key_exists($name, $this->constants)) {
-			throw new \InvalidArgumentException(sprintf('The constant "%s" does not exist.', $name));
-		}
-		
-		unset($this->constants[$name]);
-		
-		return $this;
-	}
+	public function clearConstants() {
+		$this->constants = [];
 
-	/**
-	 * Returns constants
-	 *
-	 * @param boolean $asObjects (deprecated, will be replaced with getConstantNames() and getConstant???() [??? = e.g. Map, Array] method)
-	 */
-	public function getConstants($asObjects = false) {
-		if ($asObjects) {
-			return $this->constants;
-		}
-		
-		return array_map(function (PhpConstant $constant) {
-			return $constant->getValue();
-		}, $this->constants);
+		return $this;
 	}
 }

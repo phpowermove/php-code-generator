@@ -16,7 +16,7 @@ class PhpParameterTest extends \PHPUnit_Framework_TestCase {
 		$class = new \ReflectionClass('gossi\codegen\tests\fixture\Entity');
 		$ctor = $class->getMethod('__construct');
 		$params = $ctor->getParameters();
-		
+
 		foreach ($params as $param) {
 			switch ($param->getName()) {
 				case 'a':
@@ -40,7 +40,7 @@ class PhpParameterTest extends \PHPUnit_Framework_TestCase {
 
 	private function paramA(\ReflectionParameter $param) {
 		$param = PhpParameter::fromReflection($param);
-		
+
 		$this->assertEquals('a', $param->getName());
 		$this->assertFalse($param->isPassedByReference());
 		$this->assertEmpty($param->getDefaultValue());
@@ -49,7 +49,7 @@ class PhpParameterTest extends \PHPUnit_Framework_TestCase {
 
 	private function paramB(\ReflectionParameter $param) {
 		$param = PhpParameter::fromReflection($param);
-		
+
 		$this->assertEquals('b', $param->getName());
 		$this->assertTrue($param->isPassedByReference());
 		$this->assertEmpty($param->getDefaultValue());
@@ -58,7 +58,7 @@ class PhpParameterTest extends \PHPUnit_Framework_TestCase {
 
 	private function paramC(\ReflectionParameter $param) {
 		$param = PhpParameter::fromReflection($param);
-		
+
 		$this->assertEquals('c', $param->getName());
 		$this->assertFalse($param->isPassedByReference());
 		$this->assertEmpty($param->getDefaultValue());
@@ -67,7 +67,7 @@ class PhpParameterTest extends \PHPUnit_Framework_TestCase {
 
 	private function paramD(\ReflectionParameter $param) {
 		$param = PhpParameter::fromReflection($param);
-		
+
 		$this->assertEquals('d', $param->getName());
 		$this->assertFalse($param->isPassedByReference());
 		$this->assertEquals('foo', $param->getDefaultValue());
@@ -76,7 +76,7 @@ class PhpParameterTest extends \PHPUnit_Framework_TestCase {
 
 	private function paramE(\ReflectionParameter $param) {
 		$param = PhpParameter::fromReflection($param);
-		
+
 		$this->assertEquals('e', $param->getName());
 		$this->assertFalse($param->isPassedByReference());
 		$this->assertEmpty($param->getDefaultValue());
@@ -85,32 +85,32 @@ class PhpParameterTest extends \PHPUnit_Framework_TestCase {
 
 	public function testType() {
 		$param = new PhpParameter();
-		
+
 		$this->assertNull($param->getType());
 		$this->assertSame($param, $param->setType('array'));
 		$this->assertEquals('array', $param->getType());
 		$this->assertSame($param, $param->setType('array', 'boo!'));
 		$this->assertEquals('boo!', $param->getTypeDescription());
 	}
-	
+
 	public function testSimpleParameter() {
 		$function = new PhpFunction();
 		$function->addSimpleParameter('param1', 'string');
-		
+
 		$this->assertTrue($function->hasParameter('param1'));
 		$this->assertFalse($function->hasParameter('param2'));
 		$param1 = $function->getParameter('param1');
 		$this->assertEquals('string', $param1->getType());
 		$this->assertFalse($param1->hasDefaultValue());
-		
+
 		$function->addSimpleParameter('param2', 'string', null);
-		
+
 		$this->assertTrue($function->hasParameter('param2'));
 		$param2 = $function->getParameter('param2');
 		$this->assertEquals('string', $param2->getType());
 		$this->assertNull($param2->getDefaultValue());
 	}
-	
+
 	public function testSimpleDescParameter() {
 		$function = new PhpFunction();
 		$function->addSimpleDescParameter('param1', 'string');
@@ -119,20 +119,20 @@ class PhpParameterTest extends \PHPUnit_Framework_TestCase {
 		$param1 = $function->getParameter('param1');
 		$this->assertEquals('string', $param1->getType());
 		$this->assertFalse($param1->hasDefaultValue());
-	
+
 		$function->addSimpleDescParameter('param2', 'string', 'desc');
-	
+
 		$this->assertTrue($function->hasParameter('param2'));
 		$param2 = $function->getParameter('param2');
 		$this->assertEquals('string', $param2->getType());
 		$this->assertFalse($param2->hasDefaultValue());
-		
+
 		$function->addSimpleDescParameter('param3', 'string', 'desc', null);
-		
+
 		$this->assertTrue($function->hasParameter('param3'));
 		$param3 = $function->getParameter('param3');
 		$this->assertEquals('string', $param3->getType());
 		$this->assertNull($param3->getDefaultValue());
 	}
-	
+
 }

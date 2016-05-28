@@ -13,9 +13,9 @@ trait TypeDocblockGeneratorTrait {
 	protected function generateTypeTag(AbstractTag $tag) {
 		$docblock = $this->getDocblock();
 		$type = $this->getType();
-		
+
 		if (!empty($type)) {
-		
+
 			// try to find tag at first and update
 			$tags = $docblock->getTags($tag->getTagName());
 			if ($tags->size() > 0) {

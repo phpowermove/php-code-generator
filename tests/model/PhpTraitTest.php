@@ -13,7 +13,7 @@ class PhpTraitTest extends \PHPUnit_Framework_TestCase {
 		// required through composer's autoload
 		require_once __DIR__ . '/../fixture/DummyTrait.php';
 	}
-	
+
 	/**
 	 * @return PhpTrait
 	 */
@@ -26,31 +26,31 @@ class PhpTraitTest extends \PHPUnit_Framework_TestCase {
 		$trait->addUseStatement('gossi\\codegen\\tests\\fixture\\VeryDummyTrait');
 		$trait->addTrait('VeryDummyTrait');
 		$trait->generateDocblock();
-		
+
 		return $trait;
 	}
-	
+
 	public function testFromReflection() {
 		$expected = $this->createDummyTrait();
 		$actual = PhpTrait::fromReflection(new \ReflectionClass('gossi\\codegen\\tests\\fixture\\DummyTrait'));
 		$this->assertEquals($expected, $actual);
 	}
-	
+
 	public function testFromFile() {
 		$expected = $this->createDummyTrait();
 		$actual = PhpTrait::fromFile(__DIR__ . '/../fixture/DummyTrait.php');
 		$this->assertEquals($expected, $actual);
 	}
-	
+
 	public function testSignature() {
 		$expected = 'trait MyTrait {'."\n". '}';
-		
+
 		$trait = PhpTrait::create('MyTrait');
-		
+
 		$codegen = new CodeGenerator(['generateDocblock' => false, 'generateEmptyDocblock' => false]);
 		$code = $codegen->generate($trait);
-		
+
 		$this->assertEquals($expected, $code);
 	}
-	
+
 }

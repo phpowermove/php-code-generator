@@ -33,7 +33,7 @@ abstract class GeneratorUtils {
 				return '$' . $p->name;
 			}, $method->getParameters());
 		}
-		
+
 		return '\\' . $method->getDeclaringClass()->name . '::' . $method->name . '(' . implode(', ', $params) . ')';
 	}
 }

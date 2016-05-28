@@ -3,7 +3,7 @@ namespace gossi\codegen\generator;
 
 use gossi\codegen\config\CodeGeneratorConfig;
 use gossi\codegen\model\GenerateableInterface;
-use gossi\codegen\visitor\DefaultVisitor;
+use gossi\codegen\visitor\GeneratorVisitor;
 
 class CodeGenerator {
 
@@ -19,7 +19,7 @@ class CodeGenerator {
 	 * @param CodeGeneratorConfig|array $config
 	 */
 	public function __construct($config = null) {
-	if (is_array($config)) {
+		if (is_array($config)) {
 			$this->config = new CodeGeneratorConfig($config);
 		} else if ($config instanceof CodeGeneratorConfig) {
 			$this->config = $config;
@@ -31,8 +31,8 @@ class CodeGenerator {
 	}
 
 	protected function init() {
-		$visitor = new DefaultVisitor($this->config);
-		$this->strategy = new DefaultGeneratorStrategy($visitor);
+		$visitor = new GeneratorVisitor($this->config);
+		$this->strategy = new GeneratorStrategy($visitor);
 	}
 
 	/**

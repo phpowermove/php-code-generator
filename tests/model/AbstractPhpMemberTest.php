@@ -5,7 +5,7 @@ class AbstractPhpMemberTest extends \PHPUnit_Framework_TestCase {
 
 	public function testSetGetStatic() {
 		$member = $this->getMember();
-		
+
 		$this->assertFalse($member->isStatic());
 		$this->assertSame($member, $member->setStatic(true));
 		$this->assertTrue($member->isStatic());
@@ -15,7 +15,7 @@ class AbstractPhpMemberTest extends \PHPUnit_Framework_TestCase {
 
 	public function testSetGetVisibility() {
 		$member = $this->getMember();
-		
+
 		$this->assertEquals('public', $member->getVisibility());
 		$this->assertSame($member, $member->setVisibility('private'));
 		$this->assertEquals('private', $member->getVisibility());
@@ -31,7 +31,7 @@ class AbstractPhpMemberTest extends \PHPUnit_Framework_TestCase {
 
 	public function testSetGetName() {
 		$member = $this->getMember();
-		
+
 		$this->assertNotNull($member->getName());
 		$this->assertSame($member, $member->setName('foo'));
 		$this->assertEquals('foo', $member->getName());
@@ -39,7 +39,7 @@ class AbstractPhpMemberTest extends \PHPUnit_Framework_TestCase {
 
 	public function testSetGetDocblock() {
 		$member = $this->getMember();
-		
+
 		$this->assertNotNull($member->getDocblock());
 		$this->assertSame($member, $member->setDocblock('foo'));
 		$this->assertEquals('foo', $member->getDocblock()->getShortDescription());

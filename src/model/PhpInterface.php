@@ -14,7 +14,7 @@ use gossi\docblock\Docblock;
  * @author gossi
  */
 class PhpInterface extends AbstractPhpStruct implements GenerateableInterface, ConstantsInterface {
-	
+
 	use InterfacesTrait;
 	use ConstantsTrait;
 
@@ -29,21 +29,21 @@ class PhpInterface extends AbstractPhpStruct implements GenerateableInterface, C
 		$interface->setQualifiedName($ref->name)
 			->setConstants($ref->getConstants())
 			->setUseStatements(ReflectionUtils::getUseStatements($ref));
-		
+
 		$docblock = new Docblock($ref);
 		$interface->setDocblock($docblock);
 		$interface->setDescription($docblock->getShortDescription());
 		$interface->setLongDescription($docblock->getLongDescription());
-		
+
 		foreach ($ref->getMethods() as $method) {
 			$method = static::createMethod($method);
 			$method->setAbstract(false);
 			$interface->setMethod($method);
 		}
-		
+
 		return $interface;
 	}
-	
+
 	/**
 	 * Creates a PHP interface from file 
 	 * 
@@ -67,7 +67,7 @@ class PhpInterface extends AbstractPhpStruct implements GenerateableInterface, C
 
 	public function generateDocblock() {
 		parent::generateDocblock();
-		
+
 		foreach ($this->constants as $constant) {
 			$constant->generateDocblock();
 		}

@@ -31,12 +31,14 @@ Generates code for a given model. Additionally (and by default), it will generat
   +=========================+=========+===============+=============================================================================+
   | generateDocblock        | boolean | true          | enables docblock generation prior to code generation                        |
   +-------------------------+---------+---------------+-----------------------------------------------------------------------------+
-  | generateEmptyDocblock   | boolean | true          | when docblock generation is enabled, even empty docblocks will be generated |
+  | generateEmptyDocblock   | boolean | true          | allows generation of empty docblocks                                        |
   +-------------------------+---------+---------------+-----------------------------------------------------------------------------+
   | generateScalarTypeHints | boolean | false         | generates scalar type hints, e.g. in method/function parameters (PHP 7)     |
   +-------------------------+---------+---------------+-----------------------------------------------------------------------------+
   | generateReturnTypeHints | boolean | false         | generates scalar type hints for return values (PHP 7)                       |
   +-------------------------+---------+---------------+-----------------------------------------------------------------------------+
+
+  **Note**: when ``generateDocblock`` is set to ``false`` then ``generateEmptyDocblock`` is ``false` as well.
 
 * Example:
 

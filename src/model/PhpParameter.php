@@ -17,11 +17,11 @@
  */
 namespace gossi\codegen\model;
 
-use gossi\docblock\tags\ParamTag;
 use gossi\codegen\model\parts\NameTrait;
-use gossi\codegen\model\parts\DefaultValueTrait;
 use gossi\codegen\model\parts\TypeTrait;
+use gossi\codegen\model\parts\ValueTrait;
 use gossi\docblock\Docblock;
+use gossi\docblock\tags\ParamTag;
 
 /**
  * Represents a PHP parameter.
@@ -29,9 +29,9 @@ use gossi\docblock\Docblock;
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
 class PhpParameter extends AbstractModel {
-	
+
 	use NameTrait;
-	use DefaultValueTrait;
+	use ValueTrait;
 	use TypeTrait;
 
 	private $passedByReference = false;
@@ -55,23 +55,23 @@ class PhpParameter extends AbstractModel {
 	public static function fromReflection(\ReflectionParameter $ref) {
 		$parameter = new static();
 		$parameter->setName($ref->name)->setPassedByReference($ref->isPassedByReference());
-		
+
 		if ($ref->isDefaultValueAvailable()) {
 			$parameter->setDefaultValue($ref->getDefaultValue());
 		}
-		
+
 		// find type and description in docblock
 		$docblock = new Docblock($ref->getDeclaringFunction());
-		
+
 		$params = $docblock->getTags('param');
 		$tag = $params->find($ref->name, function (ParamTag $t, $name) {
 			return $t->getVariable() == '$' . $name;
 		});
-		
+
 		if ($tag !== null) {
 			$parameter->setType($tag->getType(), $tag->getDescription());
 		}
-		
+
 		// set type if not found in comment
 		if ($parameter->getType() === null) {
 			if ($ref->isArray()) {
@@ -82,7 +82,7 @@ class PhpParameter extends AbstractModel {
 				$parameter->setType('callable');
 			}
 		}
-		
+
 		return $parameter;
 	}
 
@@ -103,7 +103,7 @@ class PhpParameter extends AbstractModel {
 	 */
 	public function setPassedByReference($bool) {
 		$this->passedByReference = (boolean) $bool;
-		
+
 		return $this;
 	}
 
