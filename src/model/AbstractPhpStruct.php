@@ -16,10 +16,10 @@
  */
 namespace gossi\codegen\model;
 
-use gossi\docblock\Docblock;
-use gossi\codegen\model\parts\QualifiedNameTrait;
 use gossi\codegen\model\parts\DocblockTrait;
 use gossi\codegen\model\parts\LongDescriptionTrait;
+use gossi\codegen\model\parts\QualifiedNameTrait;
+use gossi\docblock\Docblock;
 
 /**
  * Represents an abstract php structure (class, trait or interface).
@@ -187,7 +187,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 	 * Returns whether the given use statement is present
 	 *
 	 * @param string $qualifiedName        	
-	 * @return boolean
+	 * @return bool
 	 */
 	public function hasUseStatement($qualifiedName) {
 		$flipped = array_flip($this->useStatements);
@@ -286,7 +286,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 	 * Checks whether a method exists or not
 	 *
 	 * @param string|PhpMethod $nameOrMethod method name or Method instance
-	 * @return boolean `true` if it exists and `false` if not
+	 * @return bool `true` if it exists and `false` if not
 	 */
 	public function hasMethod($nameOrMethod) {
 		if ($nameOrMethod instanceof PhpMethod) {

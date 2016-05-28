@@ -24,7 +24,7 @@ interface ConstantsInterface {
 	 * Checks whether a constant exists
 	 * 
 	 * @param string $name
-	 * @return boolean
+	 * @return bool
 	 */
 	public function hasConstant($name);
 

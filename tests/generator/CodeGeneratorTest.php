@@ -1,14 +1,14 @@
 <?php
 namespace gossi\codegen\tests\generator;
 
+use gossi\codegen\generator\CodeFileGenerator;
 use gossi\codegen\generator\CodeGenerator;
 use gossi\codegen\model\PhpClass;
-use gossi\codegen\model\PhpMethod;
+use gossi\codegen\model\PhpConstant;
 use gossi\codegen\model\PhpFunction;
+use gossi\codegen\model\PhpMethod;
 use gossi\codegen\model\PhpParameter;
 use gossi\codegen\model\PhpProperty;
-use gossi\codegen\generator\CodeFileGenerator;
-use gossi\codegen\model\PhpConstant;
 
 class CodeGeneratorTest extends \PHPUnit_Framework_TestCase {
 

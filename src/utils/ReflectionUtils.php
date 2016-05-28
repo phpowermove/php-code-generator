@@ -23,7 +23,7 @@ class ReflectionUtils {
 
 	/**
 	 *
-	 * @param boolean $publicOnly        	
+	 * @param bool $publicOnly        	
 	 */
 	public static function getOverrideableMethods(\ReflectionClass $class, $publicOnly = false) {
 		$filter = \ReflectionMethod::IS_PUBLIC;

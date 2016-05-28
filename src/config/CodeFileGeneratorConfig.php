@@ -80,7 +80,7 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 	/**
 	 * Returns whether a blank line should be generated at the end of the file
 	 * 
-	 * @return boolean `true` if it will be generated and `false` if not
+	 * @return bool `true` if it will be generated and `false` if not
 	 */
 	public function getBlankLineAtEnd() {
 		return $this->options['blankLineAtEnd'];
@@ -89,7 +89,7 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 	/**
 	 * Sets whether a blank line should be generated at the end of the file
 	 * 
-	 * @param boolean $show `true` if it will be generated and `false` if not
+	 * @param bool $show `true` if it will be generated and `false` if not
 	 * @return $this
 	 */
 	public function setBlankLineAtEnd($show) {
@@ -101,7 +101,7 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 	 * Returns whether a `declare(strict_types=1);` statement should be printed 
 	 * below the header comments (PHP 7)
 	 * 
-	 * @return boolean `true` if it will be printed and `false` if not
+	 * @return bool `true` if it will be printed and `false` if not
 	 */
 	public function getDeclareStrictTypes() {
 		return $this->options['declareStrictTypes'];
@@ -111,7 +111,7 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 	 * Sets whether a `declare(strict_types=1);` statement should be printed 
 	 * below the header comments (PHP 7)
 	 * 
-	 * @param boolean $strict `true` if it will be printed and `false` if not
+	 * @param bool $strict `true` if it will be printed and `false` if not
 	 * @return $this
 	 */
 	public function setDeclareStrictTypes($strict) {

@@ -25,7 +25,7 @@ interface TraitsInterface {
 	 * Checks whether a trait exists
 	 * 
 	 * @param PhpTrait|string $trait
-	 * @return boolean `true` if it exists and `false` if not
+	 * @return bool `true` if it exists and `false` if not
 	 */
 	public function hasTrait($trait);
 

@@ -8,7 +8,7 @@ trait AbstractTrait {
 	/**
 	 * Returns whether this is abstract
 	 * 
-	 * @return boolean `true` for abstract and `false` if not
+	 * @return bool `true` for abstract and `false` if not
 	 */
 	public function isAbstract() {
 		return $this->abstract;
@@ -17,7 +17,7 @@ trait AbstractTrait {
 	/**
 	 * Sets this to abstract
 	 * 
-	 * @param boolean $bool `true` for abstract and `false` if not
+	 * @param bool $bool `true` for abstract and `false` if not
 	 * @return $this        	
 	 */
 	public function setAbstract($bool) {

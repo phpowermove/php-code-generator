@@ -17,8 +17,8 @@
 namespace gossi\codegen\model;
 
 use gossi\codegen\model\parts\DocblockTrait;
-use gossi\codegen\model\parts\NameTrait;
 use gossi\codegen\model\parts\LongDescriptionTrait;
+use gossi\codegen\model\parts\NameTrait;
 use gossi\codegen\model\parts\TypeTrait;
 use gossi\docblock\Docblock;
 
@@ -104,7 +104,7 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
 	/**
 	 * Sets whether or not this member is static
 	 * 
-	 * @param boolean $bool
+	 * @param bool $bool
 	 * @return $this        	
 	 */
 	public function setStatic($bool) {
@@ -116,7 +116,7 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
 	/**
 	 * Returns whether this member is static
 	 * 
-	 * @return boolean `true` if static and `false` if not
+	 * @return bool `true` if static and `false` if not
 	 */
 	public function isStatic() {
 		return $this->static;

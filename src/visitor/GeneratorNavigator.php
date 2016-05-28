@@ -17,13 +17,13 @@
  */
 namespace gossi\codegen\visitor;
 
-use gossi\codegen\model\GenerateableInterface;
 use gossi\codegen\model\AbstractPhpStruct;
+use gossi\codegen\model\ConstantsInterface;
+use gossi\codegen\model\GenerateableInterface;
+use gossi\codegen\model\PhpClass;
 use gossi\codegen\model\PhpFunction;
 use gossi\codegen\model\PhpInterface;
 use gossi\codegen\model\PhpTrait;
-use gossi\codegen\model\PhpClass;
-use gossi\codegen\model\ConstantsInterface;
 use gossi\codegen\model\TraitsInterface;
 
 /**

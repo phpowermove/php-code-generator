@@ -36,7 +36,7 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
 
 		// traits
 		foreach ($ref->getTraits() as $reflectionTrait) {
-			$trait->addTrait(PhpTrait::fromReflection($reflectionTrait));
+			$trait->addTrait(self::fromReflection($reflectionTrait));
 		}
 
 		// properties

@@ -1,14 +1,14 @@
 <?php
 namespace gossi\codegen\model;
 
+use gossi\codegen\model\parts\DocblockTrait;
+use gossi\codegen\model\parts\LongDescriptionTrait;
+use gossi\codegen\model\parts\NameTrait;
+use gossi\codegen\model\parts\TypeDocblockGeneratorTrait;
+use gossi\codegen\model\parts\TypeTrait;
+use gossi\codegen\model\parts\ValueTrait;
 use gossi\docblock\Docblock;
 use gossi\docblock\tags\VarTag;
-use gossi\codegen\model\parts\NameTrait;
-use gossi\codegen\model\parts\LongDescriptionTrait;
-use gossi\codegen\model\parts\DocblockTrait;
-use gossi\codegen\model\parts\TypeTrait;
-use gossi\codegen\model\parts\TypeDocblockGeneratorTrait;
-use gossi\codegen\model\parts\ValueTrait;
 
 /**
  * Represents a PHP constant.

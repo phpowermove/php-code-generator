@@ -67,7 +67,7 @@ trait PropertiesTrait {
 	 * Checks whether a property exists
 	 *
 	 * @param PhpProperty|string $nameOrProperty property name or instance
-	 * @return boolean `true` if a property exists and `false` if not
+	 * @return bool `true` if a property exists and `false` if not
 	 */
 	public function hasProperty($nameOrProperty) {
 		if ($nameOrProperty instanceof PhpProperty) {

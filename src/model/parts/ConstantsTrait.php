@@ -80,7 +80,7 @@ trait ConstantsTrait {
 	 * Checks whether a constant exists
 	 *
 	 * @param string|PhpConstant $nameOrConstant
-	 * @return boolean
+	 * @return bool
 	 */
 	public function hasConstant($nameOrConstant) {
 		if ($nameOrConstant instanceof PhpConstant) {

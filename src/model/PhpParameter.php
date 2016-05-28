@@ -98,7 +98,7 @@ class PhpParameter extends AbstractModel {
 	/**
 	 * Sets whether this parameter is passed by reference
 	 * 
-	 * @param boolean $bool `true` if passed by reference and `false` if not
+	 * @param bool $bool `true` if passed by reference and `false` if not
 	 * @return $this        	
 	 */
 	public function setPassedByReference($bool) {
@@ -110,7 +110,7 @@ class PhpParameter extends AbstractModel {
 	/**
 	 * Returns whether this parameter is passed by reference
 	 * 
-	 * @return boolean `true` if passed by reference and `false` if not
+	 * @return bool `true` if passed by reference and `false` if not
 	 */
 	public function isPassedByReference() {
 		return $this->passedByReference;

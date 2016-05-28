@@ -273,7 +273,7 @@ class GeneratorVisitor implements GeneratorVisitorInterface {
 		$this->writer->write($method->getName() . '(');
 
 		$this->writeParameters($method->getParameters());
-		$this->writer->write(")");
+		$this->writer->write(')');
 		$this->writeFunctionReturnType($method->getType());
 
 		if ($method->isAbstract() || $method->getParent() instanceof PhpInterface) {
@@ -363,7 +363,7 @@ class GeneratorVisitor implements GeneratorVisitorInterface {
 	}
 
 	protected function writeFunctionReturnType($type) {
-		if ($this->config->getGenerateReturnTypeHints() && $type != NULL && false === strpos($type, '|')) {
+		if ($this->config->getGenerateReturnTypeHints() && $type != null && false === strpos($type, '|')) {
 			$this->writer->write(': ')->write($type);
 		}
 	}

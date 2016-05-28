@@ -1,10 +1,10 @@
 <?php
 namespace gossi\codegen\tests\model;
 
-use gossi\codegen\model\PhpTrait;
 use gossi\codegen\generator\CodeGenerator;
 use gossi\codegen\model\PhpMethod;
 use gossi\codegen\model\PhpProperty;
+use gossi\codegen\model\PhpTrait;
 
 class PhpTraitTest extends \PHPUnit_Framework_TestCase {
 
@@ -43,7 +43,7 @@ class PhpTraitTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testSignature() {
-		$expected = 'trait MyTrait {'."\n". '}';
+		$expected = 'trait MyTrait {' . "\n" . '}';
 
 		$trait = PhpTrait::create('MyTrait');
 

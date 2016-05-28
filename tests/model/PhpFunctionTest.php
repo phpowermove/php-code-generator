@@ -1,9 +1,9 @@
 <?php
 namespace gossi\codegen\tests\model;
 
-use gossi\docblock\Docblock;
 use gossi\codegen\model\PhpFunction;
 use gossi\codegen\model\PhpParameter;
+use gossi\docblock\Docblock;
 
 class PhpFunctionTest extends \PHPUnit_Framework_TestCase {
 

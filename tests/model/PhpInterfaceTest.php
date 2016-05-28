@@ -1,8 +1,8 @@
 <?php
 namespace gossi\codegen\tests\model;
 
-use gossi\codegen\model\PhpInterface;
 use gossi\codegen\generator\CodeGenerator;
+use gossi\codegen\model\PhpInterface;
 use gossi\codegen\model\PhpMethod;
 
 class PhpInterfaceTest extends \PHPUnit_Framework_TestCase {
@@ -36,7 +36,7 @@ class PhpInterfaceTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testSignature() {
-		$expected = 'interface MyInterface {'."\n".'}';
+		$expected = 'interface MyInterface {' . "\n" . '}';
 
 		$trait = PhpInterface::create('MyInterface');
 

@@ -57,10 +57,10 @@ class GeneratorVisitorTest extends \PHPUnit_Framework_TestCase {
 		$property = new PhpProperty('fooArray');
 		$visitor = new GeneratorVisitor();
 
-		$property->setDefaultValue(["some value"]);
+		$property->setDefaultValue(['some value']);
 		$visitor->visitProperty($property);
 
-		$this->assertContains("some value", $visitor->getContent());
+		$this->assertContains('some value', $visitor->getContent());
 	}
 
 	/**

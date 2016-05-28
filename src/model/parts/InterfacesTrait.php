@@ -54,7 +54,7 @@ trait InterfacesTrait {
 	/**
 	 * Checks whether interfaces exists
 	 * 
-	 * @return boolean `true` if interfaces are available and `false` if not
+	 * @return bool `true` if interfaces are available and `false` if not
 	 */
 	public function hasInterfaces() {
 		return count($this->interfaces) > 0;
@@ -64,7 +64,7 @@ trait InterfacesTrait {
 	 * Checks whether an interface exists
 	 * 
 	 * @param PhpInterface|string $interface interface name or instance        	
-	 * @return boolean
+	 * @return bool
 	 */
 	public function hasInterface($interface) {
 		if (!$interface instanceof PhpInterface) {

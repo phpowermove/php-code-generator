@@ -8,7 +8,7 @@ trait FinalTrait {
 	/**
 	 * Returns whether this is final
 	 * 
-	 * @return boolean `true` for final and `false` if not
+	 * @return bool `true` for final and `false` if not
 	 */
 	public function isFinal() {
 		return $this->final;
@@ -17,7 +17,7 @@ trait FinalTrait {
 	/**
 	 * Sets this final
 	 * 
-	 * @param boolean $bool `true` for final and `false` if not        	
+	 * @param bool $bool `true` for final and `false` if not        	
 	 * @return $this
 	 */
 	public function setFinal($bool) {

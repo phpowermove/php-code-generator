@@ -8,7 +8,7 @@ trait ReferenceReturnTrait {
 	/**
 	 * Set true if a reference is returned of false if not
 	 *
-	 * @param boolean $bool        	
+	 * @param bool $bool        	
 	 * @return $this
 	 */
 	public function setReferenceReturned($bool) {
@@ -20,7 +20,7 @@ trait ReferenceReturnTrait {
 	/**
 	 * Returns whether a reference is returned
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function isReferenceReturned() {
 		return $this->referenceReturned;

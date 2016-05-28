@@ -36,7 +36,7 @@ trait ParametersTrait {
 	 * Checks whether a parameter exists
 	 * 
 	 * @param string $name parameter name
-	 * @return boolean `true` if a parameter exists and `false` if not
+	 * @return bool `true` if a parameter exists and `false` if not
 	 */
 	public function hasParameter($name) {
 		foreach ($this->parameters as $parameter) {
@@ -94,7 +94,7 @@ trait ParametersTrait {
 	/**
 	 * Returns a parameter by index or name
 	 * 
-	 * @param string|integer $nameOrIndex
+	 * @param string|int $nameOrIndex
 	 * @return PhpParameter
 	 */
 	public function getParameter($nameOrIndex) {
@@ -137,7 +137,7 @@ trait ParametersTrait {
 	/**
 	 * Remove a parameter at a given position
 	 * 
-	 * @param integer $position
+	 * @param int $position
 	 * @return $this
 	 */
 	public function removeParameter($position) {
