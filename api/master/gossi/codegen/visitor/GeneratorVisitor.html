@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>gossi\codegen\config\CodeFileGeneratorConfig | PHP Code Generator API</title>
+    <title>gossi\codegen\visitor\GeneratorVisitor | PHP Code Generator API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,15 +19,15 @@
     
     </head>
 
-    <body id="class" data-name="class:gossi_codegen_config_CodeFileGeneratorConfig" data-root-path="../../../">
+    <body id="class" data-name="class:gossi_codegen_visitor_GeneratorVisitor" data-root-path="../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
                     <form action="#" method="GET">
                 <select id="version-switcher" name="version">
-                                            <option value="../../../../v0.1/index.html" selected>v0.1</option>
+                                            <option value="../../../../v0.1/index.html">v0.1</option>
                                             <option value="../../../../v0.2/index.html">v0.2</option>
-                                            <option value="../../../../master/index.html">master branch</option>
+                                            <option value="../../../../master/index.html" selected>master branch</option>
                                     </select>
             </form>
                 <form id="search-form" action="../../../search.html" method="GET">
@@ -72,21 +72,24 @@
                 <li><span class="label label-default">class</span></li>
                                                             <li><a href="../../../gossi.html">gossi</a></li>
                                         <li><a href="../../../gossi/codegen.html">codegen</a></li>
-                                        <li><a href="../../../gossi/codegen/config.html">config</a></li>
+                                        <li><a href="../../../gossi/codegen/visitor.html">visitor</a></li>
     
-                <li>CodeFileGeneratorConfig</li>
+                <li>GeneratorVisitor</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
-        <h1>CodeFileGeneratorConfig</h1>
+        <h1>GeneratorVisitor</h1>
     </div>
 
     <p>    class
-    <strong>CodeFileGeneratorConfig</strong>        extends <a href="../../../gossi/codegen/config/CodeGeneratorConfig.html"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a>
+    <strong>GeneratorVisitor</strong>        implements
+        <a href="../../../gossi/codegen/visitor/GeneratorVisitorInterface.html"><abbr title="gossi\codegen\visitor\GeneratorVisitorInterface">GeneratorVisitorInterface</abbr></a>
 </p>
 
+            <div class="description">
+            <p>The default code generation visitor.</p>                    </div>
     
     
     
@@ -101,110 +104,7 @@
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method___construct">__construct</a>(
-    array $options = array())
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/config/CodeGeneratorConfig.html#method___construct"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getGenerateDocblock">getGenerateDocblock</a>()
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/config/CodeGeneratorConfig.html#method_getGenerateDocblock"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-    <abbr title="gossi\codegen\config\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setGenerateDocblock">setGenerateDocblock</a>(
-    boolean $generate)
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/config/CodeGeneratorConfig.html#method_setGenerateDocblock"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getGenerateEmptyDocblock">getGenerateEmptyDocblock</a>()
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/config/CodeGeneratorConfig.html#method_getGenerateEmptyDocblock"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-    <abbr title="gossi\codegen\config\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setGenerateEmptyDocblock">setGenerateEmptyDocblock</a>(
-    boolean $generate)
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/config/CodeGeneratorConfig.html#method_setGenerateEmptyDocblock"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getGenerateScalarTypeHints">getGenerateScalarTypeHints</a>()
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/config/CodeGeneratorConfig.html#method_getGenerateScalarTypeHints"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-    <abbr title="gossi\codegen\config\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setGenerateScalarTypeHints">setGenerateScalarTypeHints</a>(
-    boolean $generate)
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/config/CodeGeneratorConfig.html#method_setGenerateScalarTypeHints"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getGenerateReturnTypeHints">getGenerateReturnTypeHints</a>()
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/config/CodeGeneratorConfig.html#method_getGenerateReturnTypeHints"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-    <abbr title="gossi\codegen\config\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setGenerateReturnTypeHints">setGenerateReturnTypeHints</a>(
-    boolean $generate)
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/config/CodeGeneratorConfig.html#method_setGenerateReturnTypeHints"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-    string
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getHeaderComment">getHeaderComment</a>()
+    <a href="../../../gossi/codegen/config/CodeGeneratorConfig.html"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a> $config = null)
                                             <p class="no-description">No description</p>
                                     </div>
                 <div class="col-md-2"></div>
@@ -212,11 +112,21 @@
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    <abbr title="gossi\codegen\config\$this">$this</abbr>
+    void
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setHeaderComment">setHeaderComment</a>(
-    string $comment)
+                    <a href="#method_reset">reset</a>()
+                                            <p>Resets the visitors internal state to allow re-using the same instance.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_startVisitingClass">startVisitingClass</a>(
+    <a href="../../../gossi/codegen/model/PhpClass.html"><abbr title="gossi\codegen\model\PhpClass">PhpClass</abbr></a> $class)
                                             <p class="no-description">No description</p>
                                     </div>
                 <div class="col-md-2"></div>
@@ -224,10 +134,11 @@
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    <abbr title="gossi\docblock\Docblock">Docblock</abbr>
+    void
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getHeaderDocblock">getHeaderDocblock</a>()
+                    <a href="#method_startVisitingInterface">startVisitingInterface</a>(
+    <a href="../../../gossi/codegen/model/PhpInterface.html"><abbr title="gossi\codegen\model\PhpInterface">PhpInterface</abbr></a> $interface)
                                             <p class="no-description">No description</p>
                                     </div>
                 <div class="col-md-2"></div>
@@ -235,11 +146,11 @@
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    <abbr title="gossi\codegen\config\$this">$this</abbr>
+    void
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setHeaderDocblock">setHeaderDocblock</a>(
-    <abbr title="gossi\docblock\Docblock">Docblock</abbr> $docblock)
+                    <a href="#method_startVisitingTrait">startVisitingTrait</a>(
+    <a href="../../../gossi/codegen/model/PhpTrait.html"><abbr title="gossi\codegen\model\PhpTrait">PhpTrait</abbr></a> $trait)
                                             <p class="no-description">No description</p>
                                     </div>
                 <div class="col-md-2"></div>
@@ -247,10 +158,10 @@
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    boolean
+    void
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getBlankLineAtEnd">getBlankLineAtEnd</a>()
+                    <a href="#method_startVisitingStructConstants">startVisitingStructConstants</a>()
                                             <p class="no-description">No description</p>
                                     </div>
                 <div class="col-md-2"></div>
@@ -258,11 +169,11 @@
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    <abbr title="gossi\codegen\config\$this">$this</abbr>
+    void
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setBlankLineAtEnd">setBlankLineAtEnd</a>(
-    boolean $show)
+                    <a href="#method_visitStructConstant">visitStructConstant</a>(
+    <a href="../../../gossi/codegen/model/PhpConstant.html"><abbr title="gossi\codegen\model\PhpConstant">PhpConstant</abbr></a> $constant)
                                             <p class="no-description">No description</p>
                                     </div>
                 <div class="col-md-2"></div>
@@ -270,10 +181,10 @@
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    boolean
+    void
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getDeclareStrictTypes">getDeclareStrictTypes</a>()
+                    <a href="#method_endVisitingStructConstants">endVisitingStructConstants</a>()
                                             <p class="no-description">No description</p>
                                     </div>
                 <div class="col-md-2"></div>
@@ -281,11 +192,126 @@
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    <abbr title="gossi\codegen\config\$this">$this</abbr>
+    void
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setDeclareStrictTypes">setDeclareStrictTypes</a>(
-    boolean $strict)
+                    <a href="#method_startVisitingProperties">startVisitingProperties</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_visitProperty">visitProperty</a>(
+    <a href="../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a> $property)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_endVisitingProperties">endVisitingProperties</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_startVisitingMethods">startVisitingMethods</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_visitMethod">visitMethod</a>(
+    <a href="../../../gossi/codegen/model/PhpMethod.html"><abbr title="gossi\codegen\model\PhpMethod">PhpMethod</abbr></a> $method)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_endVisitingMethods">endVisitingMethods</a>()
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_endVisitingClass">endVisitingClass</a>(
+    <a href="../../../gossi/codegen/model/PhpClass.html"><abbr title="gossi\codegen\model\PhpClass">PhpClass</abbr></a> $class)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_endVisitingInterface">endVisitingInterface</a>(
+    <a href="../../../gossi/codegen/model/PhpInterface.html"><abbr title="gossi\codegen\model\PhpInterface">PhpInterface</abbr></a> $interface)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_endVisitingTrait">endVisitingTrait</a>(
+    <a href="../../../gossi/codegen/model/PhpTrait.html"><abbr title="gossi\codegen\model\PhpTrait">PhpTrait</abbr></a> $trait)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_visitFunction">visitFunction</a>(
+    <a href="../../../gossi/codegen/model/PhpFunction.html"><abbr title="gossi\codegen\model\PhpFunction">PhpFunction</abbr></a> $function)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getContent">getContent</a>()
                                             <p class="no-description">No description</p>
                                     </div>
                 <div class="col-md-2"></div>
@@ -298,11 +324,11 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">in <a href="../../../gossi/codegen/config/CodeGeneratorConfig.html#method___construct"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a> at line         line 10</div>
+        <div class="location">at line         line 60</div>
         <code>                    
     
     <strong>__construct</strong>(
-    array $options = array())</code>
+    <a href="../../../gossi/codegen/config/CodeGeneratorConfig.html"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a> $config = null)</code>
     </h3>
     <div class="details">
                 <div class="tags">
@@ -311,8 +337,8 @@
                     <table class="table table-condensed">
                     <tr>
                 <td>
-    array</td>
-                <td>$options</td>
+    <a href="../../../gossi/codegen/config/CodeGeneratorConfig.html"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a></td>
+                <td>$config</td>
                 <td></td>
             </tr>
             </table>
@@ -325,13 +351,15 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getGenerateDocblock">
-        <div class="location">in <a href="../../../gossi/codegen/config/CodeGeneratorConfig.html#method_getGenerateDocblock"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a> at line         line 48</div>
+                    <h3 id="method_reset">
+        <div class="location">at line         line 66</div>
         <code>                    
-    boolean
-    <strong>getGenerateDocblock</strong>()</code>
+    void
+    <strong>reset</strong>()</code>
     </h3>
     <div class="details">
+                    <div class="method-description">
+                                    <p>Resets the visitors internal state to allow re-using the same instance.</p>                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -339,7 +367,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>
-    boolean</td>
+    void</td>
             <td></td>
         </tr>
     </table>
@@ -351,12 +379,12 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setGenerateDocblock">
-        <div class="location">in <a href="../../../gossi/codegen/config/CodeGeneratorConfig.html#method_setGenerateDocblock"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a> at line         line 57</div>
+                    <h3 id="method_startVisitingClass">
+        <div class="location">at line         line 139</div>
         <code>                    
-    <abbr title="gossi\codegen\config\$this">$this</abbr>
-    <strong>setGenerateDocblock</strong>(
-    boolean $generate)</code>
+    void
+    <strong>startVisitingClass</strong>(
+    <a href="../../../gossi/codegen/model/PhpClass.html"><abbr title="gossi\codegen\model\PhpClass">PhpClass</abbr></a> $class)</code>
     </h3>
     <div class="details">
                 <div class="tags">
@@ -365,8 +393,8 @@
                     <table class="table table-condensed">
                     <tr>
                 <td>
-    boolean</td>
-                <td>$generate</td>
+    <a href="../../../gossi/codegen/model/PhpClass.html"><abbr title="gossi\codegen\model\PhpClass">PhpClass</abbr></a></td>
+                <td>$class</td>
                 <td></td>
             </tr>
             </table>
@@ -377,7 +405,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>
-    <abbr title="gossi\codegen\config\$this">$this</abbr></td>
+    void</td>
             <td></td>
         </tr>
     </table>
@@ -389,38 +417,12 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getGenerateEmptyDocblock">
-        <div class="location">in <a href="../../../gossi/codegen/config/CodeGeneratorConfig.html#method_getGenerateEmptyDocblock"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a> at line         line 65</div>
+                    <h3 id="method_startVisitingInterface">
+        <div class="location">at line         line 172</div>
         <code>                    
-    boolean
-    <strong>getGenerateEmptyDocblock</strong>()</code>
-    </h3>
-    <div class="details">
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    boolean</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setGenerateEmptyDocblock">
-        <div class="location">in <a href="../../../gossi/codegen/config/CodeGeneratorConfig.html#method_setGenerateEmptyDocblock"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a> at line         line 74</div>
-        <code>                    
-    <abbr title="gossi\codegen\config\$this">$this</abbr>
-    <strong>setGenerateEmptyDocblock</strong>(
-    boolean $generate)</code>
+    void
+    <strong>startVisitingInterface</strong>(
+    <a href="../../../gossi/codegen/model/PhpInterface.html"><abbr title="gossi\codegen\model\PhpInterface">PhpInterface</abbr></a> $interface)</code>
     </h3>
     <div class="details">
                 <div class="tags">
@@ -429,8 +431,8 @@
                     <table class="table table-condensed">
                     <tr>
                 <td>
-    boolean</td>
-                <td>$generate</td>
+    <a href="../../../gossi/codegen/model/PhpInterface.html"><abbr title="gossi\codegen\model\PhpInterface">PhpInterface</abbr></a></td>
+                <td>$interface</td>
                 <td></td>
             </tr>
             </table>
@@ -441,7 +443,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>
-    <abbr title="gossi\codegen\config\$this">$this</abbr></td>
+    void</td>
             <td></td>
         </tr>
     </table>
@@ -453,38 +455,12 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getGenerateScalarTypeHints">
-        <div class="location">in <a href="../../../gossi/codegen/config/CodeGeneratorConfig.html#method_getGenerateScalarTypeHints"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a> at line         line 82</div>
+                    <h3 id="method_startVisitingTrait">
+        <div class="location">at line         line 191</div>
         <code>                    
-    boolean
-    <strong>getGenerateScalarTypeHints</strong>()</code>
-    </h3>
-    <div class="details">
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    boolean</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setGenerateScalarTypeHints">
-        <div class="location">in <a href="../../../gossi/codegen/config/CodeGeneratorConfig.html#method_setGenerateScalarTypeHints"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a> at line         line 91</div>
-        <code>                    
-    <abbr title="gossi\codegen\config\$this">$this</abbr>
-    <strong>setGenerateScalarTypeHints</strong>(
-    boolean $generate)</code>
+    void
+    <strong>startVisitingTrait</strong>(
+    <a href="../../../gossi/codegen/model/PhpTrait.html"><abbr title="gossi\codegen\model\PhpTrait">PhpTrait</abbr></a> $trait)</code>
     </h3>
     <div class="details">
                 <div class="tags">
@@ -493,8 +469,8 @@
                     <table class="table table-condensed">
                     <tr>
                 <td>
-    boolean</td>
-                <td>$generate</td>
+    <a href="../../../gossi/codegen/model/PhpTrait.html"><abbr title="gossi\codegen\model\PhpTrait">PhpTrait</abbr></a></td>
+                <td>$trait</td>
                 <td></td>
             </tr>
             </table>
@@ -505,7 +481,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>
-    <abbr title="gossi\codegen\config\$this">$this</abbr></td>
+    void</td>
             <td></td>
         </tr>
     </table>
@@ -517,11 +493,11 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getGenerateReturnTypeHints">
-        <div class="location">in <a href="../../../gossi/codegen/config/CodeGeneratorConfig.html#method_getGenerateReturnTypeHints"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a> at line         line 99</div>
+                    <h3 id="method_startVisitingStructConstants">
+        <div class="location">at line         line 207</div>
         <code>                    
-    boolean
-    <strong>getGenerateReturnTypeHints</strong>()</code>
+    void
+    <strong>startVisitingStructConstants</strong>()</code>
     </h3>
     <div class="details">
                 <div class="tags">
@@ -531,7 +507,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>
-    boolean</td>
+    void</td>
             <td></td>
         </tr>
     </table>
@@ -543,12 +519,12 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setGenerateReturnTypeHints">
-        <div class="location">in <a href="../../../gossi/codegen/config/CodeGeneratorConfig.html#method_setGenerateReturnTypeHints"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a> at line         line 108</div>
+                    <h3 id="method_visitStructConstant">
+        <div class="location">at line         line 210</div>
         <code>                    
-    <abbr title="gossi\codegen\config\$this">$this</abbr>
-    <strong>setGenerateReturnTypeHints</strong>(
-    boolean $generate)</code>
+    void
+    <strong>visitStructConstant</strong>(
+    <a href="../../../gossi/codegen/model/PhpConstant.html"><abbr title="gossi\codegen\model\PhpConstant">PhpConstant</abbr></a> $constant)</code>
     </h3>
     <div class="details">
                 <div class="tags">
@@ -557,8 +533,8 @@
                     <table class="table table-condensed">
                     <tr>
                 <td>
-    boolean</td>
-                <td>$generate</td>
+    <a href="../../../gossi/codegen/model/PhpConstant.html"><abbr title="gossi\codegen\model\PhpConstant">PhpConstant</abbr></a></td>
+                <td>$constant</td>
                 <td></td>
             </tr>
             </table>
@@ -569,7 +545,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>
-    <abbr title="gossi\codegen\config\$this">$this</abbr></td>
+    void</td>
             <td></td>
         </tr>
     </table>
@@ -581,11 +557,11 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getHeaderComment">
-        <div class="location">at line         line 44</div>
+                    <h3 id="method_endVisitingStructConstants">
+        <div class="location">at line         line 215</div>
         <code>                    
-    string
-    <strong>getHeaderComment</strong>()</code>
+    void
+    <strong>endVisitingStructConstants</strong>()</code>
     </h3>
     <div class="details">
                 <div class="tags">
@@ -595,7 +571,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>
-    string</td>
+    void</td>
             <td></td>
         </tr>
     </table>
@@ -607,12 +583,38 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setHeaderComment">
-        <div class="location">at line         line 53</div>
+                    <h3 id="method_startVisitingProperties">
+        <div class="location">at line         line 219</div>
         <code>                    
-    <abbr title="gossi\codegen\config\$this">$this</abbr>
-    <strong>setHeaderComment</strong>(
-    string $comment)</code>
+    void
+    <strong>startVisitingProperties</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_visitProperty">
+        <div class="location">at line         line 222</div>
+        <code>                    
+    void
+    <strong>visitProperty</strong>(
+    <a href="../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a> $property)</code>
     </h3>
     <div class="details">
                 <div class="tags">
@@ -621,8 +623,8 @@
                     <table class="table table-condensed">
                     <tr>
                 <td>
-    string</td>
-                <td>$comment</td>
+    <a href="../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a></td>
+                <td>$property</td>
                 <td></td>
             </tr>
             </table>
@@ -633,7 +635,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>
-    <abbr title="gossi\codegen\config\$this">$this</abbr></td>
+    void</td>
             <td></td>
         </tr>
     </table>
@@ -645,11 +647,11 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getHeaderDocblock">
-        <div class="location">at line         line 61</div>
+                    <h3 id="method_endVisitingProperties">
+        <div class="location">at line         line 247</div>
         <code>                    
-    <abbr title="gossi\docblock\Docblock">Docblock</abbr>
-    <strong>getHeaderDocblock</strong>()</code>
+    void
+    <strong>endVisitingProperties</strong>()</code>
     </h3>
     <div class="details">
                 <div class="tags">
@@ -659,7 +661,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>
-    <abbr title="gossi\docblock\Docblock">Docblock</abbr></td>
+    void</td>
             <td></td>
         </tr>
     </table>
@@ -671,12 +673,38 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setHeaderDocblock">
-        <div class="location">at line         line 70</div>
+                    <h3 id="method_startVisitingMethods">
+        <div class="location">at line         line 251</div>
         <code>                    
-    <abbr title="gossi\codegen\config\$this">$this</abbr>
-    <strong>setHeaderDocblock</strong>(
-    <abbr title="gossi\docblock\Docblock">Docblock</abbr> $docblock)</code>
+    void
+    <strong>startVisitingMethods</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_visitMethod">
+        <div class="location">at line         line 254</div>
+        <code>                    
+    void
+    <strong>visitMethod</strong>(
+    <a href="../../../gossi/codegen/model/PhpMethod.html"><abbr title="gossi\codegen\model\PhpMethod">PhpMethod</abbr></a> $method)</code>
     </h3>
     <div class="details">
                 <div class="tags">
@@ -685,8 +713,8 @@
                     <table class="table table-condensed">
                     <tr>
                 <td>
-    <abbr title="gossi\docblock\Docblock">Docblock</abbr></td>
-                <td>$docblock</td>
+    <a href="../../../gossi/codegen/model/PhpMethod.html"><abbr title="gossi\codegen\model\PhpMethod">PhpMethod</abbr></a></td>
+                <td>$method</td>
                 <td></td>
             </tr>
             </table>
@@ -697,7 +725,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>
-    <abbr title="gossi\codegen\config\$this">$this</abbr></td>
+    void</td>
             <td></td>
         </tr>
     </table>
@@ -709,11 +737,11 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getBlankLineAtEnd">
-        <div class="location">at line         line 78</div>
+                    <h3 id="method_endVisitingMethods">
+        <div class="location">at line         line 288</div>
         <code>                    
-    boolean
-    <strong>getBlankLineAtEnd</strong>()</code>
+    void
+    <strong>endVisitingMethods</strong>()</code>
     </h3>
     <div class="details">
                 <div class="tags">
@@ -723,7 +751,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>
-    boolean</td>
+    void</td>
             <td></td>
         </tr>
     </table>
@@ -735,12 +763,12 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setBlankLineAtEnd">
-        <div class="location">at line         line 87</div>
+                    <h3 id="method_endVisitingClass">
+        <div class="location">at line         line 295</div>
         <code>                    
-    <abbr title="gossi\codegen\config\$this">$this</abbr>
-    <strong>setBlankLineAtEnd</strong>(
-    boolean $show)</code>
+    void
+    <strong>endVisitingClass</strong>(
+    <a href="../../../gossi/codegen/model/PhpClass.html"><abbr title="gossi\codegen\model\PhpClass">PhpClass</abbr></a> $class)</code>
     </h3>
     <div class="details">
                 <div class="tags">
@@ -749,8 +777,8 @@
                     <table class="table table-condensed">
                     <tr>
                 <td>
-    boolean</td>
-                <td>$show</td>
+    <a href="../../../gossi/codegen/model/PhpClass.html"><abbr title="gossi\codegen\model\PhpClass">PhpClass</abbr></a></td>
+                <td>$class</td>
                 <td></td>
             </tr>
             </table>
@@ -761,7 +789,7 @@
                     <table class="table table-condensed">
         <tr>
             <td>
-    <abbr title="gossi\codegen\config\$this">$this</abbr></td>
+    void</td>
             <td></td>
         </tr>
     </table>
@@ -773,38 +801,12 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getDeclareStrictTypes">
-        <div class="location">at line         line 95</div>
+                    <h3 id="method_endVisitingInterface">
+        <div class="location">at line         line 299</div>
         <code>                    
-    boolean
-    <strong>getDeclareStrictTypes</strong>()</code>
-    </h3>
-    <div class="details">
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    boolean</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setDeclareStrictTypes">
-        <div class="location">at line         line 104</div>
-        <code>                    
-    <abbr title="gossi\codegen\config\$this">$this</abbr>
-    <strong>setDeclareStrictTypes</strong>(
-    boolean $strict)</code>
+    void
+    <strong>endVisitingInterface</strong>(
+    <a href="../../../gossi/codegen/model/PhpInterface.html"><abbr title="gossi\codegen\model\PhpInterface">PhpInterface</abbr></a> $interface)</code>
     </h3>
     <div class="details">
                 <div class="tags">
@@ -813,8 +815,8 @@
                     <table class="table table-condensed">
                     <tr>
                 <td>
-    boolean</td>
-                <td>$strict</td>
+    <a href="../../../gossi/codegen/model/PhpInterface.html"><abbr title="gossi\codegen\model\PhpInterface">PhpInterface</abbr></a></td>
+                <td>$interface</td>
                 <td></td>
             </tr>
             </table>
@@ -825,11 +827,103 @@
                     <table class="table table-condensed">
         <tr>
             <td>
-    <abbr title="gossi\codegen\config\$this">$this</abbr></td>
+    void</td>
             <td></td>
         </tr>
     </table>
 
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_endVisitingTrait">
+        <div class="location">at line         line 303</div>
+        <code>                    
+    void
+    <strong>endVisitingTrait</strong>(
+    <a href="../../../gossi/codegen/model/PhpTrait.html"><abbr title="gossi\codegen\model\PhpTrait">PhpTrait</abbr></a> $trait)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <a href="../../../gossi/codegen/model/PhpTrait.html"><abbr title="gossi\codegen\model\PhpTrait">PhpTrait</abbr></a></td>
+                <td>$trait</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_visitFunction">
+        <div class="location">at line         line 307</div>
+        <code>                    
+    void
+    <strong>visitFunction</strong>(
+    <a href="../../../gossi/codegen/model/PhpFunction.html"><abbr title="gossi\codegen\model\PhpFunction">PhpFunction</abbr></a> $function)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <a href="../../../gossi/codegen/model/PhpFunction.html"><abbr title="gossi\codegen\model\PhpFunction">PhpFunction</abbr></a></td>
+                <td>$function</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getContent">
+        <div class="location">at line         line 321</div>
+        <code>                    
+    
+    <strong>getContent</strong>()</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+            
             
             
                     </div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>gossi\codegen\generator\CodeGenerator | PHP Code Generator API</title>
+    <title>gossi\codegen\generator\GeneratorStrategy | PHP Code Generator API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,15 +19,15 @@
     
     </head>
 
-    <body id="class" data-name="class:gossi_codegen_generator_CodeGenerator" data-root-path="../../../">
+    <body id="class" data-name="class:gossi_codegen_generator_GeneratorStrategy" data-root-path="../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
                     <form action="#" method="GET">
                 <select id="version-switcher" name="version">
                                             <option value="../../../../v0.1/index.html">v0.1</option>
-                                            <option value="../../../../v0.2/index.html" selected>v0.2</option>
-                                            <option value="../../../../master/index.html">master branch</option>
+                                            <option value="../../../../v0.2/index.html">v0.2</option>
+                                            <option value="../../../../master/index.html" selected>master branch</option>
                                     </select>
             </form>
                 <form id="search-form" action="../../../search.html" method="GET">
@@ -74,19 +74,22 @@
                                         <li><a href="../../../gossi/codegen.html">codegen</a></li>
                                         <li><a href="../../../gossi/codegen/generator.html">generator</a></li>
     
-                <li>CodeGenerator</li>
+                <li>GeneratorStrategy</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
-        <h1>CodeGenerator</h1>
+        <h1>GeneratorStrategy</h1>
     </div>
 
     <p>    class
-    <strong>CodeGenerator</strong>
+    <strong>GeneratorStrategy</strong>
 </p>
 
+            <div class="description">
+            <p>The default generator strategy.</p>            <p>This strategy allows to change the order in which methods, properties and
+constants are sorted.</p>        </div>
     
     
     
@@ -101,7 +104,7 @@
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method___construct">__construct</a>(
-    <a href="../../../gossi/codegen/config/CodeGeneratorConfig.html"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a>|array $config = null)
+    <a href="../../../gossi/codegen/visitor/GeneratorVisitorInterface.html"><abbr title="gossi\codegen\visitor\GeneratorVisitorInterface">GeneratorVisitorInterface</abbr></a> $visitor = null)
                                             <p class="no-description">No description</p>
                                     </div>
                 <div class="col-md-2"></div>
@@ -109,32 +112,61 @@
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    <a href="../../../gossi/codegen/config/CodeGeneratorConfig.html"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a>
+    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getConfig">getConfig</a>()
-                                            <p>Returns the used configuration</p>                </div>
+                    <a href="#method_setConstantSortFunc">setConstantSortFunc</a>(
+    <a target="_blank" href="http://php.net/Closure">Closure</a> $func = null)
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    <a href="../../../gossi/codegen/generator/DefaultGeneratorStrategy.html"><abbr title="gossi\codegen\generator\DefaultGeneratorStrategy">DefaultGeneratorStrategy</abbr></a>
+    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getGeneratorStrategy">getGeneratorStrategy</a>()
-                                            <p>Returns the used generator strategy</p>                </div>
+                    <a href="#method_setMethodSortFunc">setMethodSortFunc</a>(
+    <a target="_blank" href="http://php.net/Closure">Closure</a> $func = null)
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    string
+    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setPropertySortFunc">setPropertySortFunc</a>(
+    <a target="_blank" href="http://php.net/Closure">Closure</a> $func = null)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setUseStatementSortFunc">setUseStatementSortFunc</a>(
+    <a target="_blank" href="http://php.net/Closure">Closure</a> $func = null)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_generate">generate</a>(
-    <a href="../../../gossi/codegen/model/GenerateableInterface.html"><abbr title="gossi\codegen\model\GenerateableInterface">GenerateableInterface</abbr></a> $model)
-                                            <p>Generates code from a given model</p>                </div>
+    <a href="../../../gossi/codegen/model/GenerateableInterface.html"><abbr title="gossi\codegen\model\GenerateableInterface">GenerateableInterface</abbr></a> $class)
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -145,11 +177,11 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at line         line 21</div>
+        <div class="location">at line         line 38</div>
         <code>                    
     
     <strong>__construct</strong>(
-    <a href="../../../gossi/codegen/config/CodeGeneratorConfig.html"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a>|array $config = null)</code>
+    <a href="../../../gossi/codegen/visitor/GeneratorVisitorInterface.html"><abbr title="gossi\codegen\visitor\GeneratorVisitorInterface">GeneratorVisitorInterface</abbr></a> $visitor = null)</code>
     </h3>
     <div class="details">
                 <div class="tags">
@@ -158,8 +190,8 @@
                     <table class="table table-condensed">
                     <tr>
                 <td>
-    <a href="../../../gossi/codegen/config/CodeGeneratorConfig.html"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a>|array</td>
-                <td>$config</td>
+    <a href="../../../gossi/codegen/visitor/GeneratorVisitorInterface.html"><abbr title="gossi\codegen\visitor\GeneratorVisitorInterface">GeneratorVisitorInterface</abbr></a></td>
+                <td>$visitor</td>
                 <td></td>
             </tr>
             </table>
@@ -172,27 +204,27 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getConfig">
+                    <h3 id="method_setConstantSortFunc">
         <div class="location">at line         line 43</div>
         <code>                    
-    <a href="../../../gossi/codegen/config/CodeGeneratorConfig.html"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a>
-    <strong>getConfig</strong>()</code>
+    
+    <strong>setConstantSortFunc</strong>(
+    <a target="_blank" href="http://php.net/Closure">Closure</a> $func = null)</code>
     </h3>
     <div class="details">
-                    <div class="method-description">
-                                    <p>Returns the used configuration</p>                                </div>
                 <div class="tags">
-            
-                            <h4>Return Value</h4>
+                            <h4>Parameters</h4>
 
                     <table class="table table-condensed">
-        <tr>
-            <td>
-    <a href="../../../gossi/codegen/config/CodeGeneratorConfig.html"><abbr title="gossi\codegen\config\CodeGeneratorConfig">CodeGeneratorConfig</abbr></a></td>
-            <td></td>
-        </tr>
-    </table>
+                    <tr>
+                <td>
+    <a target="_blank" href="http://php.net/Closure">Closure</a></td>
+                <td>$func</td>
+                <td></td>
+            </tr>
+            </table>
 
+            
             
             
                     </div>
@@ -200,27 +232,83 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getGeneratorStrategy">
-        <div class="location">at line         line 52</div>
+                    <h3 id="method_setMethodSortFunc">
+        <div class="location">at line         line 47</div>
         <code>                    
-    <a href="../../../gossi/codegen/generator/DefaultGeneratorStrategy.html"><abbr title="gossi\codegen\generator\DefaultGeneratorStrategy">DefaultGeneratorStrategy</abbr></a>
-    <strong>getGeneratorStrategy</strong>()</code>
+    
+    <strong>setMethodSortFunc</strong>(
+    <a target="_blank" href="http://php.net/Closure">Closure</a> $func = null)</code>
     </h3>
     <div class="details">
-                    <div class="method-description">
-                                    <p>Returns the used generator strategy</p>                                </div>
                 <div class="tags">
-            
-                            <h4>Return Value</h4>
+                            <h4>Parameters</h4>
 
                     <table class="table table-condensed">
-        <tr>
-            <td>
-    <a href="../../../gossi/codegen/generator/DefaultGeneratorStrategy.html"><abbr title="gossi\codegen\generator\DefaultGeneratorStrategy">DefaultGeneratorStrategy</abbr></a></td>
-            <td></td>
-        </tr>
-    </table>
+                    <tr>
+                <td>
+    <a target="_blank" href="http://php.net/Closure">Closure</a></td>
+                <td>$func</td>
+                <td></td>
+            </tr>
+            </table>
 
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setPropertySortFunc">
+        <div class="location">at line         line 51</div>
+        <code>                    
+    
+    <strong>setPropertySortFunc</strong>(
+    <a target="_blank" href="http://php.net/Closure">Closure</a> $func = null)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <a target="_blank" href="http://php.net/Closure">Closure</a></td>
+                <td>$func</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setUseStatementSortFunc">
+        <div class="location">at line         line 55</div>
+        <code>                    
+    
+    <strong>setUseStatementSortFunc</strong>(
+    <a target="_blank" href="http://php.net/Closure">Closure</a> $func = null)</code>
+    </h3>
+    <div class="details">
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <a target="_blank" href="http://php.net/Closure">Closure</a></td>
+                <td>$func</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
             
             
                     </div>
@@ -229,15 +317,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_generate">
-        <div class="location">at line         line 62</div>
+        <div class="location">at line         line 59</div>
         <code>                    
-    string
+    
     <strong>generate</strong>(
-    <a href="../../../gossi/codegen/model/GenerateableInterface.html"><abbr title="gossi\codegen\model\GenerateableInterface">GenerateableInterface</abbr></a> $model)</code>
+    <a href="../../../gossi/codegen/model/GenerateableInterface.html"><abbr title="gossi\codegen\model\GenerateableInterface">GenerateableInterface</abbr></a> $class)</code>
     </h3>
     <div class="details">
-                    <div class="method-description">
-                                    <p>Generates code from a given model</p>                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -245,22 +331,12 @@
                     <tr>
                 <td>
     <a href="../../../gossi/codegen/model/GenerateableInterface.html"><abbr title="gossi\codegen\model\GenerateableInterface">GenerateableInterface</abbr></a></td>
-                <td>$model</td>
+                <td>$class</td>
                 <td></td>
             </tr>
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    string</td>
-            <td>the generated code</td>
-        </tr>
-    </table>
-
             
             
                     </div>
