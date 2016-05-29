@@ -17,15 +17,14 @@
  */
 namespace gossi\codegen\model;
 
-use gossi\codegen\model\parts\BodyTrait;
-use gossi\codegen\model\parts\DocblockTrait;
-use gossi\codegen\model\parts\LongDescriptionTrait;
-use gossi\codegen\model\parts\ParamDocblockGeneratorTrait;
-use gossi\codegen\model\parts\ParametersTrait;
-use gossi\codegen\model\parts\QualifiedNameTrait;
-use gossi\codegen\model\parts\ReferenceReturnTrait;
-use gossi\codegen\model\parts\TypeDocblockGeneratorTrait;
-use gossi\codegen\model\parts\TypeTrait;
+use gossi\codegen\model\parts\BodyPart;
+use gossi\codegen\model\parts\DocblockPart;
+use gossi\codegen\model\parts\LongDescriptionPart;
+use gossi\codegen\model\parts\ParametersPart;
+use gossi\codegen\model\parts\QualifiedNamePart;
+use gossi\codegen\model\parts\ReferenceReturnPart;
+use gossi\codegen\model\parts\TypeDocblockGeneratorPart;
+use gossi\codegen\model\parts\TypePart;
 use gossi\codegen\utils\ReflectionUtils;
 use gossi\docblock\Docblock;
 use gossi\docblock\tags\ReturnTag;
@@ -34,18 +33,18 @@ use gossi\docblock\tags\ReturnTag;
  * Represents a PHP function.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
+ * @author Thomas Gossmann
  */
 class PhpFunction extends AbstractModel implements GenerateableInterface, NamespaceInterface, DocblockInterface {
 
-	use QualifiedNameTrait;
-	use DocblockTrait;
-	use ParametersTrait;
-	use BodyTrait;
-	use ReferenceReturnTrait;
-	use TypeTrait;
-	use LongDescriptionTrait;
-	use TypeDocblockGeneratorTrait;
-	use ParamDocblockGeneratorTrait;
+	use BodyPart;
+	use DocblockPart;
+	use LongDescriptionPart;
+	use ParametersPart;
+	use QualifiedNamePart;
+	use ReferenceReturnPart;
+	use TypeDocblockGeneratorPart;
+	use TypePart;
 
 	/**
 	 * Creates a PHP function from reflection
@@ -75,7 +74,7 @@ class PhpFunction extends AbstractModel implements GenerateableInterface, Namesp
 
 	/**
 	 * Creates a new PHP function
-	 * 
+	 *
 	 * @param string $name qualified name
 	 * @return static
 	 */
@@ -93,6 +92,9 @@ class PhpFunction extends AbstractModel implements GenerateableInterface, Namesp
 		$this->docblock = new Docblock();
 	}
 
+	/**
+	 * @inheritDoc
+	 */
 	public function generateDocblock() {
 		$docblock = $this->getDocblock();
 		$docblock->setShortDescription($this->getDescription());

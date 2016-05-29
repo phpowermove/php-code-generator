@@ -1,8 +1,8 @@
 <?php
 namespace gossi\codegen\model;
 
-use gossi\codegen\model\parts\PropertiesTrait;
-use gossi\codegen\model\parts\TraitsTrait;
+use gossi\codegen\model\parts\PropertiesPart;
+use gossi\codegen\model\parts\TraitsPart;
 use gossi\codegen\parser\FileParser;
 use gossi\codegen\parser\visitor\PhpTraitVisitor;
 use gossi\codegen\utils\ReflectionUtils;
@@ -10,17 +10,17 @@ use gossi\docblock\Docblock;
 
 /**
  * Represents a PHP trait.
- * 
- * @author gossi
+ *
+ * @author Thomas Gossmann
  */
 class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, TraitsInterface {
 
-	use PropertiesTrait;
-	use TraitsTrait;
+	use PropertiesPart;
+	use TraitsPart;
 
 	/**
 	 * Creates a PHP trait from reflection
-	 * 
+	 *
 	 * @param \ReflectionClass $ref
 	 * @return PhpTrait
 	 */
@@ -54,7 +54,7 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
 
 	/**
 	 * Creates a PHP trait from a file
-	 * 
+	 *
 	 * @param string $filename
 	 * @return PhpTrait
 	 */
@@ -66,13 +66,16 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
 
 	/**
 	 * Creates a new PHP trait
-	 * 
+	 *
 	 * @param string $name qualified name
 	 */
 	public function __construct($name = null) {
 		parent::__construct($name);
 	}
 
+	/**
+	 * @inheritDoc
+	 */
 	public function generateDocblock() {
 		parent::generateDocblock();
 

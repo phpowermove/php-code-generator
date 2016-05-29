@@ -56,7 +56,7 @@ class GeneratorNavigator {
 	/**
 	 * Sets a custom constant sorting function.
 	 *
-	 * @param null|\Closure $func        	
+	 * @param null|\Closure $func
 	 */
 	public function setConstantSortFunc(\Closure $func = null) {
 		$this->constantSortFunc = $func;
@@ -65,7 +65,7 @@ class GeneratorNavigator {
 	/**
 	 * Sets a custom property sorting function.
 	 *
-	 * @param null|\Closure $func        	
+	 * @param null|\Closure $func
 	 */
 	public function setPropertySortFunc(\Closure $func = null) {
 		$this->propertySortFunc = $func;
@@ -74,7 +74,7 @@ class GeneratorNavigator {
 	/**
 	 * Sets a custom method sorting function.
 	 *
-	 * @param null|\Closure $func        	
+	 * @param null|\Closure $func
 	 */
 	public function setMethodSortFunc(\Closure $func = null) {
 		$this->methodSortFunc = $func;
@@ -100,7 +100,7 @@ class GeneratorNavigator {
 	private function visitStruct(GeneratorVisitorInterface $visitor, AbstractPhpStruct $struct) {
 		// start struct - sort use statements
 		$useStatements = $struct->getUseStatements();
-		uasort($useStatements, $this->getUseSortFunc());
+		uasort($useStatements, $this->getUseStatementSortFunc());
 		$struct->setUseStatements($useStatements);
 
 		if ($struct instanceof PhpInterface) {
@@ -159,13 +159,23 @@ class GeneratorNavigator {
 		}
 	}
 
+	/**
+	 * Returns the constants sort function
+	 *
+	 * @return \Closure
+	 */
 	private function getConstantSortFunc() {
 		return $this->constantSortFunc ?  : 'strcasecmp';
 	}
 
-	private function getUseSortFunc() {
+	/**
+	 * Returns the use statements sort function
+	 *
+	 * @return \Closure
+	 */
+	private function getUseStatementSortFunc() {
 		if (null !== $this->useStatementSortFunc) {
-			return $this->useStatemenentSortFunc;
+			return $this->useStatementSortFunc;
 		}
 
 		if (empty(self::$defaultUseStatementSortFunc)) {
@@ -203,6 +213,11 @@ class GeneratorNavigator {
 		return self::$defaultUseStatementSortFunc;
 	}
 
+	/**
+	 * Returns the methods sort function
+	 *
+	 * @return \Closure
+	 */
 	private function getMethodSortFunc() {
 		if (null !== $this->methodSortFunc) {
 			return $this->methodSortFunc;
@@ -228,6 +243,11 @@ class GeneratorNavigator {
 		return self::$defaultMethodSortFunc;
 	}
 
+	/**
+	 * Returns the properties sort func
+	 *
+	 * @return \Closure
+	 */
 	private function getPropertySortFunc() {
 		if (null !== $this->propertySortFunc) {
 			return $this->propertySortFunc;

@@ -5,12 +5,19 @@ use gossi\codegen\config\CodeGeneratorConfig;
 use gossi\codegen\model\GenerateableInterface;
 use gossi\codegen\visitor\GeneratorVisitor;
 
+/**
+ * Code generator
+ *
+ * Generates code for any generateable model
+ *
+ * @author Thomas Gossmann
+ */
 class CodeGenerator {
 
 	protected $config;
 
 	/**
-	 * @var DefaultGeneratorStrategy
+	 * @var GeneratorStrategy
 	 */
 	protected $strategy;
 
@@ -37,7 +44,7 @@ class CodeGenerator {
 
 	/**
 	 * Returns the used configuration
-	 * 
+	 *
 	 * @return CodeGeneratorConfig
 	 */
 	public function getConfig() {
@@ -46,7 +53,7 @@ class CodeGenerator {
 
 	/**
 	 * Returns the used generator strategy
-	 * 
+	 *
 	 * @return DefaultGeneratorStrategy
 	 */
 	public function getGeneratorStrategy() {
@@ -55,7 +62,7 @@ class CodeGenerator {
 
 	/**
 	 * Generates code from a given model
-	 * 
+	 *
 	 * @param GenerateableInterface $model
 	 * @return string the generated code
 	 */

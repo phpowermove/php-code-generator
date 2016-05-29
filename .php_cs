@@ -18,7 +18,6 @@ return Config::create()
 	->fixers([
 		'encoding',
 		'short_tag',
-		//'braces',
 		'eof_ending',
 		'function_call_space',
 		'function_declaration',

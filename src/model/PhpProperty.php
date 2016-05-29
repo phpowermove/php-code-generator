@@ -1,5 +1,4 @@
 <?php
-
 /*
  * Copyright 2011 Johannes M. Schmitt <schmittjoh@gmail.com>
  *
@@ -17,8 +16,8 @@
  */
 namespace gossi\codegen\model;
 
-use gossi\codegen\model\parts\TypeDocblockGeneratorTrait;
-use gossi\codegen\model\parts\ValueTrait;
+use gossi\codegen\model\parts\TypeDocblockGeneratorPart;
+use gossi\codegen\model\parts\ValuePart;
 use gossi\docblock\Docblock;
 use gossi\docblock\tags\VarTag;
 
@@ -26,15 +25,16 @@ use gossi\docblock\tags\VarTag;
  * Represents a PHP property.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
+ * @author Thomas Gossmann
  */
 class PhpProperty extends AbstractPhpMember {
 
-	use ValueTrait;
-	use TypeDocblockGeneratorTrait;
+	use TypeDocblockGeneratorPart;
+	use ValuePart;
 
 	/**
 	 * Creates a new PHP property
-	 * 
+	 *
 	 * @param string $name the properties name
 	 * @return static
 	 */
@@ -44,7 +44,7 @@ class PhpProperty extends AbstractPhpMember {
 
 	/**
 	 * Creates a new PHP property from reflection
-	 * 
+	 *
 	 * @param \ReflectionProperty $ref
 	 * @return static
 	 */
@@ -66,12 +66,15 @@ class PhpProperty extends AbstractPhpMember {
 
 		$defaultProperties = $ref->getDeclaringClass()->getDefaultProperties();
 		if (isset($defaultProperties[$ref->name])) {
-			$property->setDefaultValue($defaultProperties[$ref->name]);
+			$property->setValue($defaultProperties[$ref->name]);
 		}
 
 		return $property;
 	}
 
+	/**
+	 * Generates docblock based on provided information
+	 */
 	public function generateDocblock() {
 		$docblock = $this->getDocblock();
 		$docblock->setShortDescription($this->getDescription());

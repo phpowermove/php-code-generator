@@ -7,17 +7,17 @@ use gossi\docblock\Docblock;
 
 /**
  * Code file generator.
- * 
+ *
  * Generates code for a model and puts it into a file with `<?php` statements. Can also
- * generate header comments. 
- * 
- * @author gossi
+ * generate header comments.
+ *
+ * @author Thomas Gossmann
  */
 class CodeFileGenerator extends CodeGenerator {
 
 	/**
 	 * Creates a new CodeFileGenerator
-	 * 
+	 *
 	 * @see https://php-code-generator.readthedocs.org/en/latest/generator.html
 	 * @param CodeFileGeneratorConfig|array $config
 	 */
@@ -35,7 +35,7 @@ class CodeFileGenerator extends CodeGenerator {
 
 	/**
 	 * {@inheritDoc}
-	 * 
+	 *
 	 * @return CodeFileGeneratorConfig
 	 */
 	public function getConfig() {

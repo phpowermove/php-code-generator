@@ -3,15 +3,22 @@ namespace gossi\codegen\model\parts;
 
 use gossi\codegen\model\PhpProperty;
 
-trait PropertiesTrait {
+/**
+ * Properties part
+ *
+ * For all models that can have properties
+ *
+ * @author Thomas Gossmann
+ */
+trait PropertiesPart {
 
 	/** @var PhpProperty[] */
 	private $properties = [];
 
 	/**
 	 * Sets a collection of properties
-	 * 
-	 * @param PhpProperty[] $properties        	
+	 *
+	 * @param PhpProperty[] $properties
 	 * @return $this
 	 */
 	public function setProperties(array $properties) {
@@ -30,7 +37,7 @@ trait PropertiesTrait {
 
 	/**
 	 * Adds a property
-	 * 
+	 *
 	 * @param PhpProperty $property
 	 * @return $this
 	 */
@@ -79,7 +86,7 @@ trait PropertiesTrait {
 
 	/**
 	 * Returns a property
-	 * 
+	 *
 	 * @param string $nameOrProperty property name
 	 * @throws \InvalidArgumentException If the property cannot be found
 	 * @return PhpProperty
@@ -98,7 +105,7 @@ trait PropertiesTrait {
 
 	/**
 	 * Returns a collection of properties
-	 * 
+	 *
 	 * @return PhpProperty[]
 	 */
 	public function getProperties() {
@@ -107,7 +114,7 @@ trait PropertiesTrait {
 
 	/**
 	 * Returns all property names
-	 * 
+	 *
 	 * @return string[]
 	 */
 	public function getPropertyNames() {
@@ -116,7 +123,7 @@ trait PropertiesTrait {
 
 	/**
 	 * Clears all properties
-	 * 
+	 *
 	 * @return $this
 	 */
 	public function clearProperties() {

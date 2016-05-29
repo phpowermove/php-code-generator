@@ -3,7 +3,14 @@ namespace gossi\codegen\model\parts;
 
 use gossi\codegen\model\PhpConstant;
 
-trait ConstantsTrait {
+/**
+ * Constants part
+ *
+ * For all models that can contain constants
+ *
+ * @author Thomas Gossmann
+ */
+trait ConstantsPart {
 
 	/** @var PhpConstant[] */
 	private $constants = [];
@@ -11,7 +18,7 @@ trait ConstantsTrait {
 	/**
 	 * Sets a collection of constants
 	 *
-	 * @param PhpConstant[] $constants
+	 * @param array|PhpConstant[] $constants
 	 * @return $this
 	 */
 	public function setConstants(array $constants) {
@@ -58,7 +65,7 @@ trait ConstantsTrait {
 	/**
 	 * Removes a constant
 	 *
-	 * @param string $nameOrConstant constant name
+	 * @param string|PhpConstant $nameOrConstant constant name
 	 * @throws \InvalidArgumentException If the constant cannot be found
 	 * @return $this
 	 */
@@ -119,7 +126,7 @@ trait ConstantsTrait {
 
 	/**
 	 * Returns all constant names
-	 * 
+	 *
 	 * @return string[]
 	 */
 	public function getConstantNames() {
@@ -128,7 +135,7 @@ trait ConstantsTrait {
 
 	/**
 	 * Clears all constants
-	 * 
+	 *
 	 * @return $this
 	 */
 	public function clearConstants() {

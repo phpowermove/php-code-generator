@@ -25,7 +25,6 @@ use PhpParser\Node\Stmt\Property;
 use PhpParser\Node\Stmt\Trait_;
 use PhpParser\Node\Stmt\TraitUse;
 use PhpParser\Node\Stmt\UseUse;
-use PhpParser\NodeTraverser;
 use PhpParser\NodeVisitorAbstract;
 use PhpParser\PrettyPrinter\Standard;
 
@@ -90,9 +89,6 @@ abstract class AbstractPhpStructVisitor extends NodeVisitorAbstract {
 				$this->visitMethod($node);
 				break;
 		}
-// 		echo $node->getType() . "\n";
-
-// 		return NodeTraverser::DONT_TRAVERSE_CHILDREN;
 	}
 
 	protected function visitStruct(ClassLike $node) {
@@ -184,7 +180,7 @@ abstract class AbstractPhpStructVisitor extends NodeVisitorAbstract {
 
 			$default = $param->default;
 			if ($default !== null) {
-				$p->setDefaultValue($this->getValue($default));
+				$p->setValue($this->getValue($default));
 			}
 
 			$tag = $params->find($p, function (ParamTag $t, $p) {
@@ -222,7 +218,7 @@ abstract class AbstractPhpStructVisitor extends NodeVisitorAbstract {
 
 		$default = $prop->default;
 		if ($default !== null) {
-			$p->setDefaultValue($this->getValue($default));
+			$p->setValue($this->getValue($default));
 		}
 
 		$p->setStatic($node->isStatic());
@@ -248,6 +244,12 @@ abstract class AbstractPhpStructVisitor extends NodeVisitorAbstract {
 		}
 	}
 
+	/**
+	 * Returns the value from a node
+	 *
+	 * @param Node $node
+	 * @return mixed
+	 */
 	private function getValue(Node $node) {
 		if ($node instanceof ConstFetch) {
 			$const = $node->name->parts[0];
@@ -263,6 +265,12 @@ abstract class AbstractPhpStructVisitor extends NodeVisitorAbstract {
 		}
 	}
 
+	/**
+	 * Returns the visibility from a node
+	 *
+	 * @param Node $node
+	 * @return string
+	 */
 	private function getVisibility(Node $node) {
 		if ($node->isPrivate()) {
 			return AbstractPhpMember::VISIBILITY_PRIVATE;

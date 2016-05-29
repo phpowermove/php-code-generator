@@ -1,15 +1,24 @@
 <?php
 namespace gossi\codegen\model\parts;
 
-trait TypeTrait {
+/**
+ * Type part
+ *
+ * For all models that have a type
+ *
+ * @author Thomas Gossmmann
+ */
+trait TypePart {
 
+	/** @var string */
 	private $type;
 
+	/** @var string */
 	private $typeDescription;
 
 	/**
 	 * Sets the type
-	 * 
+	 *
 	 * @param string $type
 	 * @param string $description
 	 * @return $this
@@ -25,7 +34,7 @@ trait TypeTrait {
 
 	/**
 	 * Sets the description for the type
-	 * 
+	 *
 	 * @param string $description
 	 * @return $this
 	 */
@@ -36,7 +45,7 @@ trait TypeTrait {
 
 	/**
 	 * Returns the type
-	 * 
+	 *
 	 * @return string
 	 */
 	public function getType() {
@@ -45,7 +54,7 @@ trait TypeTrait {
 
 	/**
 	 * Returns the type description
-	 * 
+	 *
 	 * @return string
 	 */
 	public function getTypeDescription() {

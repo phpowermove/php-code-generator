@@ -2,15 +2,23 @@
 namespace gossi\codegen\model\parts;
 
 use gossi\codegen\model\PhpParameter;
+use gossi\docblock\tags\ParamTag;
 
-trait ParametersTrait {
+/**
+ * Parameters Part
+ *
+ * For all models that can have parameters
+ *
+ * @author Thomas Gossmann
+ */
+trait ParametersPart {
 
 	/** @var PhpParameter[] */
 	private $parameters = [];
 
 	/**
 	 * Sets a collection of parameters
-	 * 
+	 *
 	 * @param PhpParameter[] $parameters
 	 * @return $this
 	 */
@@ -22,7 +30,7 @@ trait ParametersTrait {
 
 	/**
 	 * Adds a parameter
-	 * 
+	 *
 	 * @param PhpParameter $parameter
 	 * @return $this
 	 */
@@ -34,7 +42,7 @@ trait ParametersTrait {
 
 	/**
 	 * Checks whether a parameter exists
-	 * 
+	 *
 	 * @param string $name parameter name
 	 * @return bool `true` if a parameter exists and `false` if not
 	 */
@@ -48,8 +56,8 @@ trait ParametersTrait {
 	}
 
 	/**
-	 * A quick way to add a parameter which is created from the given parameters 
-	 * 
+	 * A quick way to add a parameter which is created from the given parameters
+	 *
 	 * @param string      $name
 	 * @param null|string $type
 	 * @param mixed       $defaultValue omit the argument to define no default value
@@ -70,7 +78,7 @@ trait ParametersTrait {
 
 	/**
 	 * A quick way to add a parameter with description which is created from the given parameters
-	 * 
+	 *
 	 * @param string      $name
 	 * @param null|string $type
 	 * @param null|string $typeDescription
@@ -93,7 +101,7 @@ trait ParametersTrait {
 
 	/**
 	 * Returns a parameter by index or name
-	 * 
+	 *
 	 * @param string|int $nameOrIndex
 	 * @return PhpParameter
 	 */
@@ -119,7 +127,7 @@ trait ParametersTrait {
 
 	/**
 	 * Replaces a parameter at a given position
-	 * 
+	 *
 	 * @param int $position
 	 * @param PhpParameter $parameter
 	 * @throws \InvalidArgumentException
@@ -136,7 +144,7 @@ trait ParametersTrait {
 
 	/**
 	 * Remove a parameter at a given position
-	 * 
+	 *
 	 * @param int $position
 	 * @return $this
 	 */
@@ -152,10 +160,44 @@ trait ParametersTrait {
 
 	/**
 	 * Returns a collection of parameters
-	 * 
+	 *
 	 * @return PhpParameter[]
 	 */
 	public function getParameters() {
 		return $this->parameters;
 	}
+
+	/**
+	 * Returns the docblock
+	 *
+	 * @return Docblock
+	 */
+	abstract protected function getDocblock();
+
+	/**
+	 * Generates docblock for params
+	 */
+	protected function generateParamDocblock() {
+		$docblock = $this->getDocblock();
+		$tags = $docblock->getTags('param');
+		foreach ($this->parameters as $param) {
+			$ptag = $param->getDocblockTag();
+
+			$tag = $tags->find($ptag, function (ParamTag $tag, ParamTag $ptag) {
+				return $tag->getVariable() == $ptag->getVariable();
+			});
+
+			// try to update existing docblock first
+			if ($tag !== null) {
+				$tag->setDescription($ptag->getDescription());
+				$tag->setType($ptag->getType());
+			}
+
+			// ... append if it doesn't exist
+			else {
+				$docblock->appendTag($ptag);
+			}
+		}
+	}
+
 }

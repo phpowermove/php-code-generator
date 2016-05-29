@@ -3,17 +3,22 @@ namespace gossi\codegen\model\parts;
 
 use gossi\docblock\Docblock;
 
-trait DocblockTrait {
+/**
+ * Docblock Part
+ *
+ * Setting and getting a docblock on a model
+ *
+ * @author Thomas Gossmann
+ */
+trait DocblockPart {
 
-	/**
-	 * @var Docblock
-	 */
+	/** @var Docblock */
 	private $docblock;
 
 	/**
 	 * Sets the docblock
-	 * 
-	 * @param Docblock|string $doc        	
+	 *
+	 * @param Docblock|string $doc
 	 * @return $this
 	 */
 	public function setDocblock($doc) {
@@ -28,7 +33,7 @@ trait DocblockTrait {
 
 	/**
 	 * Returns the docblock
-	 * 
+	 *
 	 * @return Docblock
 	 */
 	public function getDocblock() {

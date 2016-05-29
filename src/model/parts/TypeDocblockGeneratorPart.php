@@ -3,7 +3,35 @@ namespace gossi\codegen\model\parts;
 
 use gossi\docblock\tags\AbstractTag;
 
-trait TypeDocblockGeneratorTrait {
+/**
+ * Type docblock generator part
+ *
+ * For all models that have a type and need docblock tag generated from it
+ *
+ * @author Thomas Gossmann
+ */
+trait TypeDocblockGeneratorPart {
+
+	/**
+	 * Returns the docblock
+	 *
+	 * @return Docblock
+	 */
+	abstract protected function getDocblock();
+
+	/**
+	 * Returns the type
+	 *
+	 * @return string
+	 */
+	abstract public function getType();
+
+	/**
+	 * Returns the type description
+	 *
+	 * @return string
+	 */
+	abstract public function getTypeDescription();
 
 	/**
 	 * Generates a type tag (return or var) but checks if one exists and updates this one

@@ -1,5 +1,4 @@
 <?php
-
 /*
  * Copyright 2011 Johannes M. Schmitt <schmittjoh@gmail.com>
  *
@@ -17,13 +16,12 @@
  */
 namespace gossi\codegen\model;
 
-use gossi\codegen\model\parts\AbstractTrait;
-use gossi\codegen\model\parts\BodyTrait;
-use gossi\codegen\model\parts\FinalTrait;
-use gossi\codegen\model\parts\ParamDocblockGeneratorTrait;
-use gossi\codegen\model\parts\ParametersTrait;
-use gossi\codegen\model\parts\ReferenceReturnTrait;
-use gossi\codegen\model\parts\TypeDocblockGeneratorTrait;
+use gossi\codegen\model\parts\AbstractPart;
+use gossi\codegen\model\parts\BodyPart;
+use gossi\codegen\model\parts\FinalPart;
+use gossi\codegen\model\parts\ParametersPart;
+use gossi\codegen\model\parts\ReferenceReturnPart;
+use gossi\codegen\model\parts\TypeDocblockGeneratorPart;
 use gossi\codegen\utils\ReflectionUtils;
 use gossi\docblock\Docblock;
 use gossi\docblock\tags\ReturnTag;
@@ -32,21 +30,21 @@ use gossi\docblock\tags\ReturnTag;
  * Represents a PHP method.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
+ * @author Thomas Gossmann
  */
 class PhpMethod extends AbstractPhpMember {
 
-	use AbstractTrait;
-	use FinalTrait;
-	use ParametersTrait;
-	use BodyTrait;
-	use ReferenceReturnTrait;
-	use TypeDocblockGeneratorTrait;
-	use ParamDocblockGeneratorTrait;
+	use AbstractPart;
+	use BodyPart;
+	use FinalPart;
+	use ParametersPart;
+	use ReferenceReturnPart;
+	use TypeDocblockGeneratorPart;
 
 	/**
 	 * Creates a new PHP method.
-	 * 
-	 * @param string $name the method name	
+	 *
+	 * @param string $name the method name
 	 */
 	public static function create($name) {
 		return new static($name);
@@ -54,7 +52,7 @@ class PhpMethod extends AbstractPhpMember {
 
 	/**
 	 * Creates a PHP method from reflection
-	 * 
+	 *
 	 * @param \ReflectionMethod $ref
 	 * @return PhpMethod
 	 */
@@ -92,12 +90,17 @@ class PhpMethod extends AbstractPhpMember {
 	}
 
 	/**
+	 * Creates a parameter from reflection
+	 *
 	 * @return PhpParameter
 	 */
 	protected static function createParameter(\ReflectionParameter $parameter) {
 		return PhpParameter::fromReflection($parameter);
 	}
 
+	/**
+	 * Generates docblock based on provided information
+	 */
 	public function generateDocblock() {
 		$docblock = $this->getDocblock();
 		$docblock->setShortDescription($this->getDescription());

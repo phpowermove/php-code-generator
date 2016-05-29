@@ -1,5 +1,4 @@
 <?php
-
 /*
  * Copyright 2011 Johannes M. Schmitt <schmittjoh@gmail.com>
  *
@@ -17,9 +16,9 @@
  */
 namespace gossi\codegen\model;
 
-use gossi\codegen\model\parts\NameTrait;
-use gossi\codegen\model\parts\TypeTrait;
-use gossi\codegen\model\parts\ValueTrait;
+use gossi\codegen\model\parts\NamePart;
+use gossi\codegen\model\parts\TypePart;
+use gossi\codegen\model\parts\ValuePart;
 use gossi\docblock\Docblock;
 use gossi\docblock\tags\ParamTag;
 
@@ -27,20 +26,21 @@ use gossi\docblock\tags\ParamTag;
  * Represents a PHP parameter.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
+ * @author Thomas Gossmann
  */
 class PhpParameter extends AbstractModel {
 
-	use NameTrait;
-	use ValueTrait;
-	use TypeTrait;
+	use NamePart;
+	use TypePart;
+	use ValuePart;
 
 	private $passedByReference = false;
 
 	/**
 	 * Creates a new PHP parameter.
-	 * 
+	 *
 	 * @param string $name the parameter name
-	 * @return static        	
+	 * @return static
 	 */
 	public static function create($name = null) {
 		return new static($name);
@@ -48,7 +48,7 @@ class PhpParameter extends AbstractModel {
 
 	/**
 	 * Creates a PHP parameter from reflection
-	 * 
+	 *
 	 * @param \ReflectionParameter $ref
 	 * @return PhpParameter
 	 */
@@ -57,7 +57,7 @@ class PhpParameter extends AbstractModel {
 		$parameter->setName($ref->name)->setPassedByReference($ref->isPassedByReference());
 
 		if ($ref->isDefaultValueAvailable()) {
-			$parameter->setDefaultValue($ref->getDefaultValue());
+			$parameter->setValue($ref->getDefaultValue());
 		}
 
 		// find type and description in docblock
@@ -88,7 +88,7 @@ class PhpParameter extends AbstractModel {
 
 	/**
 	 * Creates a new PHP parameter
-	 * 
+	 *
 	 * @param string $name the parameter name
 	 */
 	public function __construct($name = null) {
@@ -97,9 +97,9 @@ class PhpParameter extends AbstractModel {
 
 	/**
 	 * Sets whether this parameter is passed by reference
-	 * 
+	 *
 	 * @param bool $bool `true` if passed by reference and `false` if not
-	 * @return $this        	
+	 * @return $this
 	 */
 	public function setPassedByReference($bool) {
 		$this->passedByReference = (boolean) $bool;
@@ -109,7 +109,7 @@ class PhpParameter extends AbstractModel {
 
 	/**
 	 * Returns whether this parameter is passed by reference
-	 * 
+	 *
 	 * @return bool `true` if passed by reference and `false` if not
 	 */
 	public function isPassedByReference() {
@@ -118,7 +118,7 @@ class PhpParameter extends AbstractModel {
 
 	/**
 	 * Returns a docblock tag for this parameter
-	 * 
+	 *
 	 * @return ParamTag
 	 */
 	public function getDocblockTag() {
@@ -133,7 +133,7 @@ class PhpParameter extends AbstractModel {
 	 *
 	 * @see #setDescription
 	 * @param string $description
-	 * @return $this        	
+	 * @return $this
 	 */
 	public function setTypeDescription($description) {
 		return $this->setDescription($description);

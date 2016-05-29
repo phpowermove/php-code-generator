@@ -5,9 +5,9 @@ use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Configuration for code generator
- * 
- * @author gossi
+ * Configuration for code generation
+ *
+ * @author Thomas Gossmann
  */
 class CodeGeneratorConfig {
 
@@ -15,7 +15,7 @@ class CodeGeneratorConfig {
 
 	/**
 	 * Creates a new configuration for code generator
-	 * 
+	 *
 	 * @see https://php-code-generator.readthedocs.org/en/latest/generator.html
 	 * @param array $options
 	 */
@@ -29,6 +29,11 @@ class CodeGeneratorConfig {
 		$this->options = $resolver->resolve($options);
 	}
 
+	/**
+	 * Return optional config options
+	 *
+	 * @return array
+	 */
 	protected function getOptionalOptions() {
 		return [
 			'generateDocblock',
@@ -38,6 +43,11 @@ class CodeGeneratorConfig {
 		];
 	}
 
+	/**
+	 * Return default config options
+	 *
+	 * @return array
+	 */
 	protected function getDefaultOptions() {
 		return [
 			'generateDocblock' => true,
@@ -49,6 +59,11 @@ class CodeGeneratorConfig {
 		];
 	}
 
+	/**
+	 * Return allowed option types
+	 *
+	 * @return array
+	 */
 	protected function getAllowedOptionTypes() {
 		return [
 			'generateDocblock' => 'bool',
@@ -60,7 +75,7 @@ class CodeGeneratorConfig {
 
 	/**
 	 * Returns whether docblocks should be generated
-	 * 
+	 *
 	 * @return bool `true` if they will be generated and `false` if not
 	 */
 	public function getGenerateDocblock() {
@@ -83,7 +98,7 @@ class CodeGeneratorConfig {
 
 	/**
 	 * Returns whether empty docblocks are generated
-	 * 
+	 *
 	 * @return bool `true` if they will be generated and `false` if not
 	 */
 	public function getGenerateEmptyDocblock() {
@@ -106,7 +121,7 @@ class CodeGeneratorConfig {
 
 	/**
 	 * Returns whether scalar type hints will be generated for method parameters (PHP 7)
-	 * 
+	 *
 	 * @return bool `true` if they will be generated and `false` if not
 	 */
 	public function getGenerateScalarTypeHints() {
@@ -126,7 +141,7 @@ class CodeGeneratorConfig {
 
 	/**
 	 * Returns whether return type hints will be generated for method parameters (PHP 7)
-	 * 
+	 *
 	 * @return bool `true` if they will be generated and `false` if not
 	 */
 	public function getGenerateReturnTypeHints() {

@@ -16,37 +16,35 @@
  */
 namespace gossi\codegen\model;
 
-use gossi\codegen\model\parts\DocblockTrait;
-use gossi\codegen\model\parts\LongDescriptionTrait;
-use gossi\codegen\model\parts\QualifiedNameTrait;
+use gossi\codegen\model\parts\DocblockPart;
+use gossi\codegen\model\parts\LongDescriptionPart;
+use gossi\codegen\model\parts\QualifiedNamePart;
 use gossi\docblock\Docblock;
 
 /**
  * Represents an abstract php structure (class, trait or interface).
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
+ * @author Thomas Gossmann
  */
 abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInterface, DocblockInterface {
 
-	use QualifiedNameTrait;
-	use DocblockTrait;
-	use LongDescriptionTrait;
+	use DocblockPart;
+	use LongDescriptionPart;
+	use QualifiedNamePart;
 
-	protected static $phpParser;
-
+	/** @var array */
 	private $useStatements = [];
 
+	/** @var array */
 	private $requiredFiles = [];
 
-	/**
-	 *
-	 * @var PhpMethod[]
-	 */
+	/** @var PhpMethod[] */
 	private $methods = [];
 
 	/**
 	 * Creates a new struct
-	 * 
+	 *
 	 * @param string $name the fqcn
 	 * @return static
 	 */
@@ -55,6 +53,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 	}
 
 	/**
+	 * Creates a method from reflection
 	 *
 	 * @return PhpMethod
 	 */
@@ -63,6 +62,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 	}
 
 	/**
+	 * Creates a property from reflection
 	 *
 	 * @return PhpProperty
 	 */
@@ -82,7 +82,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 
 	/**
 	 * Sets requried files
-	 * 
+	 *
 	 * @param array $files
 	 * @return $this
 	 */
@@ -94,9 +94,9 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 
 	/**
 	 * Adds a new required file
-	 * 
+	 *
 	 * @param string $file
-	 * @return $this       	
+	 * @return $this
 	 */
 	public function addRequiredFile($file) {
 		$this->requiredFiles[] = $file;
@@ -115,7 +115,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 
 	/**
 	 * Sets use statements
-	 * 
+	 *
 	 * @see #addUseStatement
 	 * @see #declareUses()
 	 * @param array $useStatements
@@ -132,7 +132,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 
 	/**
 	 * Adds a use statement with an optional alias
-	 * 
+	 *
 	 * @param string $qualifiedName
 	 * @param null|string $alias
 	 * @return $this
@@ -153,7 +153,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 
 	/**
 	 * Declares multiple use statements at once.
-	 * 
+	 *
 	 * @param ... use statements multiple qualified names
 	 * @return $this
 	 */
@@ -168,9 +168,9 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 	 * Declares a "use $fullClassName" with " as $alias" if $alias is available,
 	 * and returns its alias (or not qualified classname) to be used in your actual
 	 * php code.
-	 * 
+	 *
 	 * If the class has already been declared you get only the set alias.
-	 * 
+	 *
  	 * @param string $qualifiedName
  	 * @param null|string $alias
  	 * @return string the used alias
@@ -186,7 +186,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 	/**
 	 * Returns whether the given use statement is present
 	 *
-	 * @param string $qualifiedName        	
+	 * @param string $qualifiedName
 	 * @return bool
 	 */
 	public function hasUseStatement($qualifiedName) {
@@ -196,7 +196,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 
 	/**
 	 * Returns the usable alias for a qualified name
-	 * 
+	 *
 	 * @param string $qualifiedName
 	 * @return string the alias
 	 */
@@ -207,7 +207,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 
 	/**
 	 * Removes a use statement
-	 * 
+	 *
 	 * @param string $qualifiedName
 	 * @return $this
 	 */
@@ -230,8 +230,8 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 
 	/**
 	 * Sets a collection of methods
-	 * 
-	 * @param PhpMethod[] $methods        	
+	 *
+	 * @param PhpMethod[] $methods
 	 * @return $this
 	 */
 	public function setMethods(array $methods) {
@@ -249,7 +249,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 
 	/**
 	 * Adds a method
-	 *  
+	 *
 	 * @param PhpMethod $method
 	 * @return $this
 	 */
@@ -298,7 +298,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 
 	/**
 	 * Returns a method
-	 * 
+	 *
 	 * @param string $nameOrMethod the methods name
 	 * @throws \InvalidArgumentException if the method cannot be found
 	 * @return PhpMethod
@@ -326,7 +326,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 
 	/**
 	 * Returns all method names
-	 * 
+	 *
 	 * @return string[]
 	 */
 	public function getMethodNames() {
@@ -335,7 +335,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 
 	/**
 	 * Clears all methods
-	 * 
+	 *
 	 * @return $this
 	 */
 	public function clearMethods() {
@@ -349,7 +349,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 
 	/**
 	 * Generates a docblock from provided information
-	 * 
+	 *
 	 * @return $this
 	 */
 	public function generateDocblock() {

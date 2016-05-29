@@ -4,14 +4,25 @@ namespace gossi\codegen\config;
 use gossi\docblock\Docblock;
 use Symfony\Component\OptionsResolver\Options;
 
+/**
+ * Configuration for code file generation
+ *
+ * @author Thomas Gossmann
+ */
 class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 
+	/**
+	 * @inheritDoc
+	 */
 	protected function getOptionalOptions() {
 		return array_merge([
 				'headerComment', 'headerDocblock', 'blankLineAtEnd', 'declareStrictTypes'
 			], parent::getOptionalOptions());
 	}
 
+	/**
+	 * @inheritDoc
+	 */
 	protected function getDefaultOptions() {
 		return array_merge(
 			parent::getDefaultOptions(), [
@@ -28,6 +39,9 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 			]);
 	}
 
+	/**
+	 * @inheritDoc
+	 */
 	protected function getAllowedOptionTypes() {
 		return array_merge([
 				'headerComment' => 'string',
@@ -39,7 +53,7 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 
 	/**
 	 * Returns the file header comment
-	 * 
+	 *
 	 * @return string the header comment
 	 */
 	public function getHeaderComment() {
@@ -48,7 +62,7 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 
 	/**
 	 * Sets the file header comment
-	 * 
+	 *
 	 * @param string $comment the header comment
 	 * @return $this
 	 */
@@ -59,7 +73,7 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 
 	/**
 	 * Returns the file header docblock
-	 * 
+	 *
 	 * @return Docblock the docblock
 	 */
 	public function getHeaderDocblock() {
@@ -68,7 +82,7 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 
 	/**
 	 * Sets the file header docblock
-	 * 
+	 *
 	 * @param Docblock $docblock the docblock
 	 * @return $this
 	 */
@@ -79,7 +93,7 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 
 	/**
 	 * Returns whether a blank line should be generated at the end of the file
-	 * 
+	 *
 	 * @return bool `true` if it will be generated and `false` if not
 	 */
 	public function getBlankLineAtEnd() {
@@ -88,7 +102,7 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 
 	/**
 	 * Sets whether a blank line should be generated at the end of the file
-	 * 
+	 *
 	 * @param bool $show `true` if it will be generated and `false` if not
 	 * @return $this
 	 */
@@ -98,9 +112,9 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 	}
 
 	/**
-	 * Returns whether a `declare(strict_types=1);` statement should be printed 
+	 * Returns whether a `declare(strict_types=1);` statement should be printed
 	 * below the header comments (PHP 7)
-	 * 
+	 *
 	 * @return bool `true` if it will be printed and `false` if not
 	 */
 	public function getDeclareStrictTypes() {
@@ -108,9 +122,9 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 	}
 
 	/**
-	 * Sets whether a `declare(strict_types=1);` statement should be printed 
+	 * Sets whether a `declare(strict_types=1);` statement should be printed
 	 * below the header comments (PHP 7)
-	 * 
+	 *
 	 * @param bool $strict `true` if it will be printed and `false` if not
 	 * @return $this
 	 */

@@ -1,11 +1,16 @@
 <?php
 namespace gossi\codegen\model;
 
+/**
+ * Represents models that have a namespace
+ *
+ * @author Thomas Gossmann
+ */
 interface NamespaceInterface {
 
 	/**
 	 * Sets the namespace
-	 * 
+	 *
 	 * @param string $namespace
 	 * @return $this
 	 */
@@ -13,7 +18,7 @@ interface NamespaceInterface {
 
 	/**
 	 * Returns the namespace
-	 * 
+	 *
 	 * @return string
 	 */
 	public function getNamespace();

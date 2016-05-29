@@ -3,20 +3,46 @@ namespace gossi\codegen\model\parts;
 
 use gossi\codegen\model\PhpTrait;
 
-trait TraitsTrait {
+/**
+ * Traits part
+ *
+ * For all models that can have traits
+ *
+ * @author Thomas Gossmann
+ */
+trait TraitsPart {
 
+	/** @var array */
 	private $traits = [];
 
+	/**
+	 * Adds a use statement with an optional alias
+	 *
+	 * @param string $qualifiedName
+	 * @param null|string $alias
+	 * @return $this
+	 */
 	abstract public function addUseStatement($qualifiedName, $alias = null);
 
+	/**
+	 * Removes a use statement
+	 *
+	 * @param string $qualifiedName
+	 * @return $this
+	 */
 	abstract public function removeUseStatement($qualifiedName);
 
+	/**
+	 * Returns the namespace
+	 *
+	 * @return string
+	 */
 	abstract public function getNamespace();
 
 	/**
 	 * Adds a trait.
-	 * 
-	 * If the trait is passed as PhpTrait object, 
+	 *
+	 * If the trait is passed as PhpTrait object,
 	 * the trait is also added as use statement.
 	 *
 	 * @param PhpTrait|string $trait trait or qualified name
@@ -53,7 +79,7 @@ trait TraitsTrait {
 
 	/**
 	 * Checks whether a trait exists
-	 * 
+	 *
 	 * @param PhpTrait|string $trait
 	 * @return bool `true` if it exists and `false` if not
 	 */
@@ -66,9 +92,9 @@ trait TraitsTrait {
 	}
 
 	/**
-	 * Removes a trait. 
-	 * 
-	 * If the trait is passed as PhpTrait object, 
+	 * Removes a trait.
+	 *
+	 * If the trait is passed as PhpTrait object,
 	 * the trait is also removed from use statements.
 	 *
 	 * @param PhpTrait|string $trait trait or qualified name

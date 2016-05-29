@@ -1,14 +1,22 @@
 <?php
 namespace gossi\codegen\model\parts;
 
-trait NameTrait {
+/**
+ * Name part
+ *
+ * For all models that do have a name
+ *
+ * @author Thomas Gossmann
+ */
+trait NamePart {
 
+	/** @var string */
 	private $name;
 
 	/**
 	 * Sets the name
-	 * 
-	 * @param string $name        	
+	 *
+	 * @param string $name
 	 * @return $this
 	 */
 	public function setName($name) {
@@ -19,7 +27,7 @@ trait NameTrait {
 
 	/**
 	 * Returns the name
-	 * 
+	 *
 	 * @return string
 	 */
 	public function getName() {

@@ -56,6 +56,10 @@ class GeneratorStrategy {
 		$this->navigator->setUseStatementSortFunc($func);
 	}
 
+	/**
+	 * @param GenerateableInterface $class
+	 * @return string
+	 */
 	public function generate(GenerateableInterface $class) {
 		$this->visitor->reset();
 		$this->navigator->accept($this->visitor, $class);

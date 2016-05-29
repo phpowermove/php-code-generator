@@ -1,8 +1,8 @@
 <?php
 namespace gossi\codegen\model;
 
-use gossi\codegen\model\parts\ConstantsTrait;
-use gossi\codegen\model\parts\InterfacesTrait;
+use gossi\codegen\model\parts\ConstantsPart;
+use gossi\codegen\model\parts\InterfacesPart;
 use gossi\codegen\parser\FileParser;
 use gossi\codegen\parser\visitor\PhpInterfaceVisitor;
 use gossi\codegen\utils\ReflectionUtils;
@@ -10,17 +10,17 @@ use gossi\docblock\Docblock;
 
 /**
  * Represents a PHP interface.
- * 
- * @author gossi
+ *
+ * @author Thomas Gossmann
  */
 class PhpInterface extends AbstractPhpStruct implements GenerateableInterface, ConstantsInterface {
 
-	use InterfacesTrait;
-	use ConstantsTrait;
+	use ConstantsPart;
+	use InterfacesPart;
 
 	/**
 	 * Creates a PHP interface from reflection
-	 * 
+	 *
 	 * @param \ReflectionClass $ref
 	 * @return PhpInterface
 	 */
@@ -45,8 +45,8 @@ class PhpInterface extends AbstractPhpStruct implements GenerateableInterface, C
 	}
 
 	/**
-	 * Creates a PHP interface from file 
-	 * 
+	 * Creates a PHP interface from file
+	 *
 	 * @param string $filename
 	 * @return PhpInterface
 	 */
@@ -58,13 +58,16 @@ class PhpInterface extends AbstractPhpStruct implements GenerateableInterface, C
 
 	/**
 	 * Create a new PHP interface
-	 * 
+	 *
 	 * @param string $name qualified name
 	 */
 	public function __construct($name = null) {
 		parent::__construct($name);
 	}
 
+	/**
+	 * @inheritDoc
+	 */
 	public function generateDocblock() {
 		parent::generateDocblock();
 

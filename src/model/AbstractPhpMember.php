@@ -16,54 +16,58 @@
  */
 namespace gossi\codegen\model;
 
-use gossi\codegen\model\parts\DocblockTrait;
-use gossi\codegen\model\parts\LongDescriptionTrait;
-use gossi\codegen\model\parts\NameTrait;
-use gossi\codegen\model\parts\TypeTrait;
+use gossi\codegen\model\parts\DocblockPart;
+use gossi\codegen\model\parts\LongDescriptionPart;
+use gossi\codegen\model\parts\NamePart;
+use gossi\codegen\model\parts\TypePart;
 use gossi\docblock\Docblock;
 
 /**
  * Abstract PHP member class.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
+ * @author Thomas Gossmann
  */
 abstract class AbstractPhpMember extends AbstractModel implements DocblockInterface {
 
-	use DocblockTrait;
-	use NameTrait;
-	use LongDescriptionTrait;
-	use TypeTrait;
+	use DocblockPart;
+	use LongDescriptionPart;
+	use NamePart;
+	use TypePart;
 
 	/**
 	 * Private visibility
-	 * 
+	 *
 	 * @var string
 	 */
 	const VISIBILITY_PRIVATE = 'private';
 
 	/**
 	 * Protected visibility
-	 * 
+	 *
 	 * @var string
 	 */
 	const VISIBILITY_PROTECTED = 'protected';
 
 	/**
 	 * Public visibility
-	 * 
+	 *
 	 * @var string
 	 */
 	const VISIBILITY_PUBLIC = 'public';
 
+	/** @var bool */
 	private $static = false;
 
+	/** @var string */
 	private $visibility = self::VISIBILITY_PUBLIC;
 
+	/** @var AbstractPhpStruct */
 	private $parent;
 
 	/**
 	 * Creates a new member
-	 * 
+	 *
 	 * @param string $name the name of the member
 	 */
 	public function __construct($name) {
@@ -73,10 +77,10 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
 
 	/**
 	 * Sets the members visibility
-	 * 
-	 * @see AbstractPhpMember::VISIBILITY_PUBLIC
-	 * @see AbstractPhpMember::VISIBILITY_PROTECTED
-	 * @see AbstractPhpMember::VISIBILITY_PRIVATE
+	 *
+	 * @see self::VISIBILITY_PUBLIC
+	 * @see self::VISIBILITY_PROTECTED
+	 * @see self::VISIBILITY_PRIVATE
 	 * @param string $visibility the new visibility
 	 * @return $this
 	 */
@@ -103,9 +107,9 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
 
 	/**
 	 * Sets whether or not this member is static
-	 * 
+	 *
 	 * @param bool $bool
-	 * @return $this        	
+	 * @return $this
 	 */
 	public function setStatic($bool) {
 		$this->static = (boolean) $bool;
@@ -115,7 +119,7 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
 
 	/**
 	 * Returns whether this member is static
-	 * 
+	 *
 	 * @return bool `true` if static and `false` if not
 	 */
 	public function isStatic() {
@@ -124,9 +128,9 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
 
 	/**
 	 * Sets the parent structure to which this member belongs
-	 * 
+	 *
 	 * @internal
-	 * @param AbstractPhpStruct|null $parent        	
+	 * @param AbstractPhpStruct|null $parent
 	 * @return $this
 	 */
 	public function setParent($parent) {
@@ -136,7 +140,7 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
 
 	/**
 	 * Returns the parent structure to which this member belongs
-	 * 
+	 *
 	 * @internal
 	 * @return AbstractPhpStruct
 	 */

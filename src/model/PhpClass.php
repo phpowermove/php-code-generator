@@ -1,12 +1,12 @@
 <?php
 namespace gossi\codegen\model;
 
-use gossi\codegen\model\parts\AbstractTrait;
-use gossi\codegen\model\parts\ConstantsTrait;
-use gossi\codegen\model\parts\FinalTrait;
-use gossi\codegen\model\parts\InterfacesTrait;
-use gossi\codegen\model\parts\PropertiesTrait;
-use gossi\codegen\model\parts\TraitsTrait;
+use gossi\codegen\model\parts\AbstractPart;
+use gossi\codegen\model\parts\ConstantsPart;
+use gossi\codegen\model\parts\FinalPart;
+use gossi\codegen\model\parts\InterfacesPart;
+use gossi\codegen\model\parts\PropertiesPart;
+use gossi\codegen\model\parts\TraitsPart;
 use gossi\codegen\parser\FileParser;
 use gossi\codegen\parser\visitor\PhpClassVisitor;
 use gossi\codegen\utils\ReflectionUtils;
@@ -14,23 +14,24 @@ use gossi\docblock\Docblock;
 
 /**
  * Represents a PHP class.
- * 
- * @author gossi
+ *
+ * @author Thomas Gossmann
  */
 class PhpClass extends AbstractPhpStruct implements GenerateableInterface, TraitsInterface, ConstantsInterface {
 
-	use InterfacesTrait;
-	use AbstractTrait;
-	use FinalTrait;
-	use ConstantsTrait;
-	use PropertiesTrait;
-	use TraitsTrait;
+	use AbstractPart;
+	use ConstantsPart;
+	use FinalPart;
+	use InterfacesPart;
+	use PropertiesPart;
+	use TraitsPart;
 
+	/** @var string */
 	private $parentClassName;
 
 	/**
 	 * Creates a PHP class from reflection
-	 * 
+	 *
 	 * @param \ReflectionClass $ref
 	 * @return PhpClass
 	 */
@@ -72,7 +73,7 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 
 	/**
 	 * Creates a PHP class from file
-	 * 
+	 *
 	 * @param string $filename
 	 * @return PhpClass
 	 */
@@ -82,9 +83,9 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 		return $parser->parse($visitor, $filename);
 	}
 
-	/** 
+	/**
 	 * Creates a new PHP class
-	 * 
+	 *
 	 * @param string $name the qualified name
 	 */
 	public function __construct($name = null) {
@@ -93,7 +94,7 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 
 	/**
 	 * Returns the parent class name
-	 * 
+	 *
 	 * @return string
 	 */
 	public function getParentClassName() {
@@ -102,9 +103,9 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 
 	/**
 	 * Sets the parent class name
-	 * 
+	 *
 	 * @param string|null $name the new parent
-	 * @return $this        	
+	 * @return $this
 	 */
 	public function setParentClassName($name) {
 		$this->parentClassName = $name;

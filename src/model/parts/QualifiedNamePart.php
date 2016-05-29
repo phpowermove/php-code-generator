@@ -1,16 +1,24 @@
 <?php
 namespace gossi\codegen\model\parts;
 
-trait QualifiedNameTrait {
+/**
+ * Qualified name part
+ *
+ * For all models that have a name and namespace
+ *
+ * @author Thomas Gossmann
+ */
+trait QualifiedNamePart {
 
-	use NameTrait;
+	use NamePart;
 
+	/** @var string */
 	private $namespace;
 
 	/**
 	 * Sets the namespace
-	 * 
-	 * @param string $namespace        	
+	 *
+	 * @param string $namespace
 	 * @return $this
 	 */
 	public function setNamespace($namespace) {
@@ -23,7 +31,7 @@ trait QualifiedNameTrait {
 	 * In contrast to setName(), this method accepts the fully qualified name
 	 * including the namespace.
 	 *
-	 * @param string $name        	
+	 * @param string $name
 	 * @return $this
 	 */
 	public function setQualifiedName($name) {
@@ -42,7 +50,7 @@ trait QualifiedNameTrait {
 
 	/**
 	 * Returns the namespace
-	 * 
+	 *
 	 * @return string
 	 */
 	public function getNamespace() {
@@ -51,7 +59,7 @@ trait QualifiedNameTrait {
 
 	/**
 	 * Returns the qualified name
-	 * 
+	 *
 	 * @return string
 	 */
 	public function getQualifiedName() {
