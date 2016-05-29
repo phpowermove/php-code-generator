@@ -1,5 +1,6 @@
 .buildpath
 phpunit.xml
+composer.lock
 vendor/
 api/
 cache/
