@@ -38,7 +38,7 @@ Generates code for a given model. Additionally (and by default), it will generat
   | generateReturnTypeHints | boolean | false         | generates scalar type hints for return values (PHP 7)                       |
   +-------------------------+---------+---------------+-----------------------------------------------------------------------------+
 
-  **Note**: when ``generateDocblock`` is set to ``false`` then ``generateEmptyDocblock`` is ``false` as well.
+  **Note**: when ``generateDocblock`` is set to ``false`` then ``generateEmptyDocblock`` is ``false`` as well.
 
 * Example:
 
