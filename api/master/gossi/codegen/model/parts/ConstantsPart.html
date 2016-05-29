@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>gossi\codegen\model\parts\PropertiesTrait | PHP Code Generator API</title>
+    <title>gossi\codegen\model\parts\ConstantsPart | PHP Code Generator API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
@@ -19,15 +19,15 @@
     
     </head>
 
-    <body id="class" data-name="class:gossi_codegen_model_parts_PropertiesTrait" data-root-path="../../../../">
+    <body id="class" data-name="class:gossi_codegen_model_parts_ConstantsPart" data-root-path="../../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
                     <form action="#" method="GET">
                 <select id="version-switcher" name="version">
                                             <option value="../../../../../v0.1/index.html">v0.1</option>
-                                            <option value="../../../../../v0.2/index.html" selected>v0.2</option>
-                                            <option value="../../../../../master/index.html">master branch</option>
+                                            <option value="../../../../../v0.2/index.html">v0.2</option>
+                                            <option value="../../../../../master/index.html" selected>master branch</option>
                                     </select>
             </form>
                 <form id="search-form" action="../../../../search.html" method="GET">
@@ -75,19 +75,21 @@
                                         <li><a href="../../../../gossi/codegen/model.html">model</a></li>
                                         <li><a href="../../../../gossi/codegen/model/parts.html">parts</a></li>
     
-                <li>PropertiesTrait</li>
+                <li>ConstantsPart</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
-        <h1>PropertiesTrait</h1>
+        <h1>ConstantsPart</h1>
     </div>
 
     <p>    trait
-    <strong>PropertiesTrait</strong>
+    <strong>ConstantsPart</strong>
 </p>
 
+            <div class="description">
+            <p>Constants part</p>            <p>For all models that can contain constants</p>        </div>
     
     
     
@@ -101,9 +103,9 @@
     <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setProperties">setProperties</a>(
-    array $properties)
-                                            <p>Sets a collection of properties</p>                </div>
+                    <a href="#method_setConstants">setConstants</a>(
+    array $constants)
+                                            <p>Sets a collection of constants</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -112,31 +114,10 @@
     <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setProperty">setProperty</a>(
-    <a href="../../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a> $property)
-                                            <p>Adds a property</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-    <a href="../../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getProperty">getProperty</a>(
-    string $property)
-                                            <p>Returns a property</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_hasProperty">hasProperty</a>(
-    <a href="../../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a>|string $property)
-                                            <p>Checks whether a property exists</p>                </div>
+                    <a href="#method_setConstant">setConstant</a>(
+    string|<a href="../../../../gossi/codegen/model/PhpConstant.html"><abbr title="gossi\codegen\model\PhpConstant">PhpConstant</abbr></a> $nameOrConstant, 
+    string $value = null)
+                                            <p>Adds a constant</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -145,19 +126,61 @@
     <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_removeProperty">removeProperty</a>(
-    <a href="../../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a>|string $property)
-                                            <p>Removes a property</p>                </div>
+                    <a href="#method_removeConstant">removeConstant</a>(
+    string|<a href="../../../../gossi/codegen/model/PhpConstant.html"><abbr title="gossi\codegen\model\PhpConstant">PhpConstant</abbr></a> $nameOrConstant)
+                                            <p>Removes a constant</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    <a href="../../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a>[]
+    bool
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getProperties">getProperties</a>()
-                                            <p>Returns a collection of properties</p>                </div>
+                    <a href="#method_hasConstant">hasConstant</a>(
+    string|<a href="../../../../gossi/codegen/model/PhpConstant.html"><abbr title="gossi\codegen\model\PhpConstant">PhpConstant</abbr></a> $nameOrConstant)
+                                            <p>Checks whether a constant exists</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <a href="../../../../gossi/codegen/model/PhpConstant.html"><abbr title="gossi\codegen\model\PhpConstant">PhpConstant</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getConstant">getConstant</a>(
+    string|<a href="../../../../gossi/codegen/model/PhpConstant.html"><abbr title="gossi\codegen\model\PhpConstant">PhpConstant</abbr></a> $nameOrConstant)
+                                            <p>Returns a constant.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <a href="../../../../gossi/codegen/model/PhpConstant.html"><abbr title="gossi\codegen\model\PhpConstant">PhpConstant</abbr></a>[]
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getConstants">getConstants</a>()
+                                            <p>Returns all constants</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    string[]
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getConstantNames">getConstantNames</a>()
+                                            <p>Returns all constant names</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_clearConstants">clearConstants</a>()
+                                            <p>Clears all constants</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -167,16 +190,16 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_setProperties">
-        <div class="location">at line         line 20</div>
+                    <h3 id="method_setConstants">
+        <div class="location">at line         line 24</div>
         <code>                    
     <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
-    <strong>setProperties</strong>(
-    array $properties)</code>
+    <strong>setConstants</strong>(
+    array $constants)</code>
     </h3>
     <div class="details">
                     <div class="method-description">
-                                    <p>Sets a collection of properties</p>                                </div>
+                                    <p>Sets a collection of constants</p>                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -184,7 +207,7 @@
                     <tr>
                 <td>
     array</td>
-                <td>$properties</td>
+                <td>$constants</td>
                 <td></td>
             </tr>
             </table>
@@ -207,145 +230,32 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setProperty">
-        <div class="location">at line         line 40</div>
+                    <h3 id="method_setConstant">
+        <div class="location">at line         line 50</div>
         <code>                    
     <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
-    <strong>setProperty</strong>(
-    <a href="../../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a> $property)</code>
+    <strong>setConstant</strong>(
+    string|<a href="../../../../gossi/codegen/model/PhpConstant.html"><abbr title="gossi\codegen\model\PhpConstant">PhpConstant</abbr></a> $nameOrConstant, 
+    string $value = null)</code>
     </h3>
     <div class="details">
                     <div class="method-description">
-                                    <p>Adds a property</p>                                </div>
+                                    <p>Adds a constant</p>                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>
-    <a href="../../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a></td>
-                <td>$property</td>
-                <td></td>
+    string|<a href="../../../../gossi/codegen/model/PhpConstant.html"><abbr title="gossi\codegen\model\PhpConstant">PhpConstant</abbr></a></td>
+                <td>$nameOrConstant</td>
+                <td>constant name or instance</td>
             </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getProperty">
-        <div class="location">at line         line 53</div>
-        <code>                    
-    <a href="../../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a>
-    <strong>getProperty</strong>(
-    string $property)</code>
-    </h3>
-    <div class="details">
-                    <div class="method-description">
-                                    <p>Returns a property</p>                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
                     <tr>
                 <td>
     string</td>
-                <td>$property</td>
-                <td>property name</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    <a href="../../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_hasProperty">
-        <div class="location">at line         line 69</div>
-        <code>                    
-    boolean
-    <strong>hasProperty</strong>(
-    <a href="../../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a>|string $property)</code>
-    </h3>
-    <div class="details">
-                    <div class="method-description">
-                                    <p>Checks whether a property exists</p>                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-    <a href="../../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a>|string</td>
-                <td>$property</td>
-                <td>property name or instance</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    boolean</td>
-            <td><code>true</code> if a property exists and <code>false</code> if not</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_removeProperty">
-        <div class="location">at line         line 83</div>
-        <code>                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
-    <strong>removeProperty</strong>(
-    <a href="../../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a>|string $property)</code>
-    </h3>
-    <div class="details">
-                    <div class="method-description">
-                                    <p>Removes a property</p>                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-    <a href="../../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a>|string</td>
-                <td>$property</td>
-                <td>property name or instance</td>
+                <td>$value</td>
+                <td></td>
             </tr>
             </table>
 
@@ -367,15 +277,153 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getProperties">
-        <div class="location">at line         line 103</div>
+                    <h3 id="method_removeConstant">
+        <div class="location">at line         line 72</div>
         <code>                    
-    <a href="../../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a>[]
-    <strong>getProperties</strong>()</code>
+    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+    <strong>removeConstant</strong>(
+    string|<a href="../../../../gossi/codegen/model/PhpConstant.html"><abbr title="gossi\codegen\model\PhpConstant">PhpConstant</abbr></a> $nameOrConstant)</code>
     </h3>
     <div class="details">
                     <div class="method-description">
-                                    <p>Returns a collection of properties</p>                                </div>
+                                    <p>Removes a constant</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    string|<a href="../../../../gossi/codegen/model/PhpConstant.html"><abbr title="gossi\codegen\model\PhpConstant">PhpConstant</abbr></a></td>
+                <td>$nameOrConstant</td>
+                <td>constant name</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td>If the constant cannot be found</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasConstant">
+        <div class="location">at line         line 92</div>
+        <code>                    
+    bool
+    <strong>hasConstant</strong>(
+    string|<a href="../../../../gossi/codegen/model/PhpConstant.html"><abbr title="gossi\codegen\model\PhpConstant">PhpConstant</abbr></a> $nameOrConstant)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Checks whether a constant exists</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    string|<a href="../../../../gossi/codegen/model/PhpConstant.html"><abbr title="gossi\codegen\model\PhpConstant">PhpConstant</abbr></a></td>
+                <td>$nameOrConstant</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getConstant">
+        <div class="location">at line         line 106</div>
+        <code>                    
+    <a href="../../../../gossi/codegen/model/PhpConstant.html"><abbr title="gossi\codegen\model\PhpConstant">PhpConstant</abbr></a>
+    <strong>getConstant</strong>(
+    string|<a href="../../../../gossi/codegen/model/PhpConstant.html"><abbr title="gossi\codegen\model\PhpConstant">PhpConstant</abbr></a> $nameOrConstant)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Returns a constant.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    string|<a href="../../../../gossi/codegen/model/PhpConstant.html"><abbr title="gossi\codegen\model\PhpConstant">PhpConstant</abbr></a></td>
+                <td>$nameOrConstant</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <a href="../../../../gossi/codegen/model/PhpConstant.html"><abbr title="gossi\codegen\model\PhpConstant">PhpConstant</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td>If the constant cannot be found</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getConstants">
+        <div class="location">at line         line 123</div>
+        <code>                    
+    <a href="../../../../gossi/codegen/model/PhpConstant.html"><abbr title="gossi\codegen\model\PhpConstant">PhpConstant</abbr></a>[]
+    <strong>getConstants</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Returns all constants</p>                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -383,7 +431,63 @@
                     <table class="table table-condensed">
         <tr>
             <td>
-    <a href="../../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a>[]</td>
+    <a href="../../../../gossi/codegen/model/PhpConstant.html"><abbr title="gossi\codegen\model\PhpConstant">PhpConstant</abbr></a>[]</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getConstantNames">
+        <div class="location">at line         line 132</div>
+        <code>                    
+    string[]
+    <strong>getConstantNames</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Returns all constant names</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    string[]</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_clearConstants">
+        <div class="location">at line         line 141</div>
+        <code>                    
+    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+    <strong>clearConstants</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Clears all constants</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
             <td></td>
         </tr>
     </table>

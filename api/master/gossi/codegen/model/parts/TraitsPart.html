@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>gossi\codegen\model\parts\PropertiesTrait | PHP Code Generator API</title>
+    <title>gossi\codegen\model\parts\TraitsPart | PHP Code Generator API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
@@ -19,15 +19,15 @@
     
     </head>
 
-    <body id="class" data-name="class:gossi_codegen_model_parts_PropertiesTrait" data-root-path="../../../../">
+    <body id="class" data-name="class:gossi_codegen_model_parts_TraitsPart" data-root-path="../../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
                     <form action="#" method="GET">
                 <select id="version-switcher" name="version">
                                             <option value="../../../../../v0.1/index.html">v0.1</option>
-                                            <option value="../../../../../v0.2/index.html" selected>v0.2</option>
-                                            <option value="../../../../../master/index.html">master branch</option>
+                                            <option value="../../../../../v0.2/index.html">v0.2</option>
+                                            <option value="../../../../../master/index.html" selected>master branch</option>
                                     </select>
             </form>
                 <form id="search-form" action="../../../../search.html" method="GET">
@@ -75,19 +75,21 @@
                                         <li><a href="../../../../gossi/codegen/model.html">model</a></li>
                                         <li><a href="../../../../gossi/codegen/model/parts.html">parts</a></li>
     
-                <li>PropertiesTrait</li>
+                <li>TraitsPart</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
-        <h1>PropertiesTrait</h1>
+        <h1>TraitsPart</h1>
     </div>
 
     <p>    trait
-    <strong>PropertiesTrait</strong>
+    <strong>TraitsPart</strong>
 </p>
 
+            <div class="description">
+            <p>Traits part</p>            <p>For all models that can have traits</p>        </div>
     
     
     
@@ -101,9 +103,10 @@
     <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setProperties">setProperties</a>(
-    array $properties)
-                                            <p>Sets a collection of properties</p>                </div>
+                    <a href="#method_addUseStatement">addUseStatement</a>(
+    string $qualifiedName, 
+    null|string $alias = null)
+                                            <p>Adds a use statement with an optional alias</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -112,31 +115,19 @@
     <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setProperty">setProperty</a>(
-    <a href="../../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a> $property)
-                                            <p>Adds a property</p>                </div>
+                    <a href="#method_removeUseStatement">removeUseStatement</a>(
+    string $qualifiedName)
+                                            <p>Removes a use statement</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    <a href="../../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a>
+    string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getProperty">getProperty</a>(
-    string $property)
-                                            <p>Returns a property</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-    boolean
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_hasProperty">hasProperty</a>(
-    <a href="../../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a>|string $property)
-                                            <p>Checks whether a property exists</p>                </div>
+                    <a href="#method_getNamespace">getNamespace</a>()
+                                            <p>Returns the namespace</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -145,19 +136,52 @@
     <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_removeProperty">removeProperty</a>(
-    <a href="../../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a>|string $property)
-                                            <p>Removes a property</p>                </div>
+                    <a href="#method_addTrait">addTrait</a>(
+    <a href="../../../../gossi/codegen/model/PhpTrait.html"><abbr title="gossi\codegen\model\PhpTrait">PhpTrait</abbr></a>|string $trait)
+                                            <p>Adds a trait.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    <a href="../../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a>[]
+    string[]
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getProperties">getProperties</a>()
-                                            <p>Returns a collection of properties</p>                </div>
+                    <a href="#method_getTraits">getTraits</a>()
+                                            <p>Returns a collection of traits</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    bool
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_hasTrait">hasTrait</a>(
+    <a href="../../../../gossi/codegen/model/PhpTrait.html"><abbr title="gossi\codegen\model\PhpTrait">PhpTrait</abbr></a>|string $trait)
+                                            <p>Checks whether a trait exists</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_removeTrait">removeTrait</a>(
+    <a href="../../../../gossi/codegen/model/PhpTrait.html"><abbr title="gossi\codegen\model\PhpTrait">PhpTrait</abbr></a>|string $trait)
+                                            <p>Removes a trait.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setTraits">setTraits</a>(
+    array $traits)
+                                            <p>Sets a collection of traits</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -167,96 +191,17 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_setProperties">
-        <div class="location">at line         line 20</div>
-        <code>                    
+                    <h3 id="method_addUseStatement">
+        <div class="location">at line         line 25</div>
+        <code>    abstract                
     <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
-    <strong>setProperties</strong>(
-    array $properties)</code>
+    <strong>addUseStatement</strong>(
+    string $qualifiedName, 
+    null|string $alias = null)</code>
     </h3>
     <div class="details">
                     <div class="method-description">
-                                    <p>Sets a collection of properties</p>                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-    array</td>
-                <td>$properties</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setProperty">
-        <div class="location">at line         line 40</div>
-        <code>                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
-    <strong>setProperty</strong>(
-    <a href="../../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a> $property)</code>
-    </h3>
-    <div class="details">
-                    <div class="method-description">
-                                    <p>Adds a property</p>                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-    <a href="../../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a></td>
-                <td>$property</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getProperty">
-        <div class="location">at line         line 53</div>
-        <code>                    
-    <a href="../../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a>
-    <strong>getProperty</strong>(
-    string $property)</code>
-    </h3>
-    <div class="details">
-                    <div class="method-description">
-                                    <p>Returns a property</p>                                </div>
+                                    <p>Adds a use statement with an optional alias</p>                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -264,88 +209,14 @@
                     <tr>
                 <td>
     string</td>
-                <td>$property</td>
-                <td>property name</td>
+                <td>$qualifiedName</td>
+                <td></td>
             </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    <a href="../../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_hasProperty">
-        <div class="location">at line         line 69</div>
-        <code>                    
-    boolean
-    <strong>hasProperty</strong>(
-    <a href="../../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a>|string $property)</code>
-    </h3>
-    <div class="details">
-                    <div class="method-description">
-                                    <p>Checks whether a property exists</p>                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
                     <tr>
                 <td>
-    <a href="../../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a>|string</td>
-                <td>$property</td>
-                <td>property name or instance</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    boolean</td>
-            <td><code>true</code> if a property exists and <code>false</code> if not</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_removeProperty">
-        <div class="location">at line         line 83</div>
-        <code>                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
-    <strong>removeProperty</strong>(
-    <a href="../../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a>|string $property)</code>
-    </h3>
-    <div class="details">
-                    <div class="method-description">
-                                    <p>Removes a property</p>                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-    <a href="../../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a>|string</td>
-                <td>$property</td>
-                <td>property name or instance</td>
+    null|string</td>
+                <td>$alias</td>
+                <td></td>
             </tr>
             </table>
 
@@ -367,15 +238,55 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getProperties">
-        <div class="location">at line         line 103</div>
-        <code>                    
-    <a href="../../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a>[]
-    <strong>getProperties</strong>()</code>
+                    <h3 id="method_removeUseStatement">
+        <div class="location">at line         line 33</div>
+        <code>    abstract                
+    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+    <strong>removeUseStatement</strong>(
+    string $qualifiedName)</code>
     </h3>
     <div class="details">
                     <div class="method-description">
-                                    <p>Returns a collection of properties</p>                                </div>
+                                    <p>Removes a use statement</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    string</td>
+                <td>$qualifiedName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getNamespace">
+        <div class="location">at line         line 40</div>
+        <code>    abstract                
+    string
+    <strong>getNamespace</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Returns the namespace</p>                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -383,7 +294,197 @@
                     <table class="table table-condensed">
         <tr>
             <td>
-    <a href="../../../../gossi/codegen/model/PhpProperty.html"><abbr title="gossi\codegen\model\PhpProperty">PhpProperty</abbr></a>[]</td>
+    string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addTrait">
+        <div class="location">at line         line 51</div>
+        <code>                    
+    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+    <strong>addTrait</strong>(
+    <a href="../../../../gossi/codegen/model/PhpTrait.html"><abbr title="gossi\codegen\model\PhpTrait">PhpTrait</abbr></a>|string $trait)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Adds a trait.</p>                    <p>If the trait is passed as PhpTrait object,
+the trait is also added as use statement.</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <a href="../../../../gossi/codegen/model/PhpTrait.html"><abbr title="gossi\codegen\model\PhpTrait">PhpTrait</abbr></a>|string</td>
+                <td>$trait</td>
+                <td>trait or qualified name</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTraits">
+        <div class="location">at line         line 76</div>
+        <code>                    
+    string[]
+    <strong>getTraits</strong>()</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Returns a collection of traits</p>                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    string[]</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasTrait">
+        <div class="location">at line         line 86</div>
+        <code>                    
+    bool
+    <strong>hasTrait</strong>(
+    <a href="../../../../gossi/codegen/model/PhpTrait.html"><abbr title="gossi\codegen\model\PhpTrait">PhpTrait</abbr></a>|string $trait)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Checks whether a trait exists</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <a href="../../../../gossi/codegen/model/PhpTrait.html"><abbr title="gossi\codegen\model\PhpTrait">PhpTrait</abbr></a>|string</td>
+                <td>$trait</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    bool</td>
+            <td><code>true</code> if it exists and <code>false</code> if not</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeTrait">
+        <div class="location">at line         line 103</div>
+        <code>                    
+    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+    <strong>removeTrait</strong>(
+    <a href="../../../../gossi/codegen/model/PhpTrait.html"><abbr title="gossi\codegen\model\PhpTrait">PhpTrait</abbr></a>|string $trait)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Removes a trait.</p>                    <p>If the trait is passed as PhpTrait object,
+the trait is also removed from use statements.</p>            </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <a href="../../../../gossi/codegen/model/PhpTrait.html"><abbr title="gossi\codegen\model\PhpTrait">PhpTrait</abbr></a>|string</td>
+                <td>$trait</td>
+                <td>trait or qualified name</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setTraits">
+        <div class="location">at line         line 129</div>
+        <code>                    
+    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+    <strong>setTraits</strong>(
+    array $traits)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Sets a collection of traits</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    array</td>
+                <td>$traits</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
             <td></td>
         </tr>
     </table>

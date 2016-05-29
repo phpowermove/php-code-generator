@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>gossi\codegen\parser\visitor\PhpClassVisitor | PHP Code Generator API</title>
+    <title>gossi\codegen\model\parts\FinalPart | PHP Code Generator API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:gossi_codegen_parser_visitor_PhpClassVisitor" data-root-path="../../../../">
+    <body id="class" data-name="class:gossi_codegen_model_parts_FinalPart" data-root-path="../../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -69,25 +69,27 @@
 
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
-                <li><span class="label label-default">class</span></li>
+                <li><span class="label label-default">trait</span></li>
                                                             <li><a href="../../../../gossi.html">gossi</a></li>
                                         <li><a href="../../../../gossi/codegen.html">codegen</a></li>
-                                        <li><a href="../../../../gossi/codegen/parser.html">parser</a></li>
-                                        <li><a href="../../../../gossi/codegen/parser/visitor.html">visitor</a></li>
+                                        <li><a href="../../../../gossi/codegen/model.html">model</a></li>
+                                        <li><a href="../../../../gossi/codegen/model/parts.html">parts</a></li>
     
-                <li>PhpClassVisitor</li>
+                <li>FinalPart</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
-        <h1>PhpClassVisitor</h1>
+        <h1>FinalPart</h1>
     </div>
 
-    <p>    class
-    <strong>PhpClassVisitor</strong>        extends <a href="../../../../gossi/codegen/parser/visitor/AbstractPhpStructVisitor.html"><abbr title="gossi\codegen\parser\visitor\AbstractPhpStructVisitor">AbstractPhpStructVisitor</abbr></a>
+    <p>    trait
+    <strong>FinalPart</strong>
 </p>
 
+            <div class="description">
+            <p>Abstract Part</p>            <p>Keeps track if the model has a final modifier or not</p>        </div>
     
     
     
@@ -98,46 +100,22 @@
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    
+    bool
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>()
-                                            <p class="no-description">No description</p>
-                                    </div>
+                    <a href="#method_isFinal">isFinal</a>()
+                                            <p>Returns whether this is final</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    <a href="../../../../gossi/codegen/model/AbstractPhpStruct.html"><abbr title="gossi\codegen\model\AbstractPhpStruct">AbstractPhpStruct</abbr></a>
+    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getStruct">getStruct</a>()
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../gossi/codegen/parser/visitor/AbstractPhpStructVisitor.html#method_getStruct"><abbr title="gossi\codegen\parser\visitor\AbstractPhpStructVisitor">AbstractPhpStructVisitor</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-    
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_enterNode">enterNode</a>(
-    <abbr title="PhpParser\Node">Node</abbr> $node)
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../../gossi/codegen/parser/visitor/AbstractPhpStructVisitor.html#method_enterNode"><abbr title="gossi\codegen\parser\visitor\AbstractPhpStructVisitor">AbstractPhpStructVisitor</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-    <a href="../../../../gossi/codegen/model/PhpClass.html"><abbr title="gossi\codegen\model\PhpClass">PhpClass</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getClass">getClass</a>()
-                                            <p class="no-description">No description</p>
-                                    </div>
+                    <a href="#method_setFinal">setFinal</a>(
+    bool $bool)
+                                            <p>Sets this final</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -147,29 +125,15 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method___construct">
-        <div class="location">at line         line 9</div>
+                    <h3 id="method_isFinal">
+        <div class="location">at line         line 21</div>
         <code>                    
-    
-    <strong>__construct</strong>()</code>
+    bool
+    <strong>isFinal</strong>()</code>
     </h3>
     <div class="details">
-                <div class="tags">
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getStruct">
-        <div class="location">in <a href="../../../../gossi/codegen/parser/visitor/AbstractPhpStructVisitor.html#method_getStruct"><abbr title="gossi\codegen\parser\visitor\AbstractPhpStructVisitor">AbstractPhpStructVisitor</abbr></a> at line         line 47</div>
-        <code>                    
-    <a href="../../../../gossi/codegen/model/AbstractPhpStruct.html"><abbr title="gossi\codegen\model\AbstractPhpStruct">AbstractPhpStruct</abbr></a>
-    <strong>getStruct</strong>()</code>
-    </h3>
-    <div class="details">
+                    <div class="method-description">
+                                    <p>Returns whether this is final</p>                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -177,8 +141,8 @@
                     <table class="table table-condensed">
         <tr>
             <td>
-    <a href="../../../../gossi/codegen/model/AbstractPhpStruct.html"><abbr title="gossi\codegen\model\AbstractPhpStruct">AbstractPhpStruct</abbr></a></td>
-            <td></td>
+    bool</td>
+            <td><code>true</code> for final and <code>false</code> if not</td>
         </tr>
     </table>
 
@@ -189,49 +153,35 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_enterNode">
-        <div class="location">in <a href="../../../../gossi/codegen/parser/visitor/AbstractPhpStructVisitor.html#method_enterNode"><abbr title="gossi\codegen\parser\visitor\AbstractPhpStructVisitor">AbstractPhpStructVisitor</abbr></a> at line         line 51</div>
+                    <h3 id="method_setFinal">
+        <div class="location">at line         line 31</div>
         <code>                    
-    
-    <strong>enterNode</strong>(
-    <abbr title="PhpParser\Node">Node</abbr> $node)</code>
+    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+    <strong>setFinal</strong>(
+    bool $bool)</code>
     </h3>
     <div class="details">
+                    <div class="method-description">
+                                    <p>Sets this final</p>                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>
-    <abbr title="PhpParser\Node">Node</abbr></td>
-                <td>$node</td>
-                <td></td>
+    bool</td>
+                <td>$bool</td>
+                <td><code>true</code> for final and <code>false</code> if not</td>
             </tr>
             </table>
 
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getClass">
-        <div class="location">at line         line 16</div>
-        <code>                    
-    <a href="../../../../gossi/codegen/model/PhpClass.html"><abbr title="gossi\codegen\model\PhpClass">PhpClass</abbr></a>
-    <strong>getClass</strong>()</code>
-    </h3>
-    <div class="details">
-                <div class="tags">
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
             <td>
-    <a href="../../../../gossi/codegen/model/PhpClass.html"><abbr title="gossi\codegen\model\PhpClass">PhpClass</abbr></a></td>
+    <abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
             <td></td>
         </tr>
     </table>
