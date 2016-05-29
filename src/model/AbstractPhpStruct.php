@@ -171,17 +171,17 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 	 *
 	 * If the class has already been declared you get only the set alias.
 	 *
- 	 * @param string $qualifiedName
- 	 * @param null|string $alias
- 	 * @return string the used alias
- 	 */
- 	public function declareUse($qualifiedName, $alias = null) {
- 		$qualifiedName = trim($qualifiedName, '\\');
- 		if (!$this->hasUseStatement($qualifiedName)) {
- 			$this->addUseStatement($qualifiedName, $alias);
- 		}
+	 * @param string $qualifiedName
+	 * @param null|string $alias
+	 * @return string the used alias
+	 */
+	public function declareUse($qualifiedName, $alias = null) {
+		$qualifiedName = trim($qualifiedName, '\\');
+		if (!$this->hasUseStatement($qualifiedName)) {
+		$this->addUseStatement($qualifiedName, $alias);
+		}
 		return $this->getUseAlias($qualifiedName);
- 	}
+	}
 
 	/**
 	 * Returns whether the given use statement is present

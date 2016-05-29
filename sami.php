@@ -9,11 +9,12 @@ $dir = __DIR__ . '/src';
 $iterator = Finder::create()
 	->files()
 	->name('*.php')
-	->in($dir);
+	->in($dir)
+;
 
 $versions = GitVersionCollection::create($dir)
-    ->addFromTags('v0.*')
-    ->add('master', 'master branch')
+	->addFromTags('v0.*')
+	->add('master', 'master branch')
 ;
 
 return new Sami($iterator, [

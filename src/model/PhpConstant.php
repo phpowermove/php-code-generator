@@ -43,7 +43,6 @@ class PhpConstant extends AbstractModel implements GenerateableInterface, Docblo
 	 *
 	 * @param string $name
 	 * @param mixed $value
-	 * @return static
 	 */
 	public function __construct($name = null, $value = null) {
 		$this->setName($name);

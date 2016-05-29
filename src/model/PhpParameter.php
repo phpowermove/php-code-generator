@@ -123,7 +123,7 @@ class PhpParameter extends AbstractModel {
 	 */
 	public function getDocblockTag() {
 		return ParamTag::create()
-			->setType($this->getType() ?  : 'mixed')
+			->setType($this->getType() ?: 'mixed')
 			->setVariable($this->getName())
 			->setDescription($this->getTypeDescription());
 	}

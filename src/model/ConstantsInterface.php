@@ -51,7 +51,7 @@ interface ConstantsInterface {
 	 * @throws \InvalidArgumentException If the constant cannot be found
 	 * @return PhpConstant
 	 */
-	public function getConstant($name);
+	public function getConstant($nameOrConstant);
 
 	/**
 	 * Returns constants

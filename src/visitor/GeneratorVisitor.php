@@ -362,6 +362,9 @@ class GeneratorVisitor implements GeneratorVisitorInterface {
 		}
 	}
 
+	/**
+	 * @param string $type
+	 */
 	protected function writeFunctionReturnType($type) {
 		if ($this->config->getGenerateReturnTypeHints() && $type != null && false === strpos($type, '|')) {
 			$this->writer->write(': ')->write($type);

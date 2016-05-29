@@ -165,7 +165,7 @@ class GeneratorNavigator {
 	 * @return \Closure
 	 */
 	private function getConstantSortFunc() {
-		return $this->constantSortFunc ?  : 'strcasecmp';
+		return $this->constantSortFunc ?: 'strcasecmp';
 	}
 
 	/**
