@@ -66,7 +66,12 @@ class PhpProperty extends AbstractPhpMember {
 
 		$defaultProperties = $ref->getDeclaringClass()->getDefaultProperties();
 		if (isset($defaultProperties[$ref->name])) {
-			$property->setValue($defaultProperties[$ref->name]);
+			$default = $defaultProperties[$ref->name];
+			if (is_string($default)) {
+				$property->setValue($default);
+			} else {
+				$property->setExpression($default);
+			}
 		}
 
 		return $property;

@@ -180,7 +180,7 @@ abstract class AbstractPhpStructVisitor extends NodeVisitorAbstract {
 
 			$default = $param->default;
 			if ($default !== null) {
-				$p->setValue($this->getValue($default));
+				$this->setDefault($p, $default);
 			}
 
 			$tag = $params->find($p, function (ParamTag $t, $p) {
@@ -218,7 +218,7 @@ abstract class AbstractPhpStructVisitor extends NodeVisitorAbstract {
 
 		$default = $prop->default;
 		if ($default !== null) {
-			$p->setValue($this->getValue($default));
+			$this->setDefault($p, $default);
 		}
 
 		$p->setStatic($node->isStatic());
@@ -241,6 +241,14 @@ abstract class AbstractPhpStructVisitor extends NodeVisitorAbstract {
 				$var = $vars->get(0);
 				$member->setType($var->getType(), $var->getDescription());
 			}
+		}
+	}
+
+	private function setDefault($obj, $default) {
+		if ($default instanceof String_) {
+			$obj->setValue($this->getValue($default));
+		} else {
+			$obj->setExpression($this->getValue($default));
 		}
 	}
 

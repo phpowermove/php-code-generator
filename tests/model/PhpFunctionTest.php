@@ -16,14 +16,14 @@ class PhpFunctionTest extends \PHPUnit_Framework_TestCase {
 	public function testFromReflection() {
 		$doc = new Docblock('/**
  * Makes foo with bar
- * 
+ *
  * @param string $baz
  * @return string
  */');
 		$function = new PhpFunction('wurst');
 		$function
 			->addParameter(PhpParameter::create('baz')
-				->setDefaultValue(null)
+				->setExpression(null)
 				->setType('string')
 			)
 			->setBody('return \'wurst\';')

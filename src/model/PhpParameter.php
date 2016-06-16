@@ -57,7 +57,12 @@ class PhpParameter extends AbstractModel {
 		$parameter->setName($ref->name)->setPassedByReference($ref->isPassedByReference());
 
 		if ($ref->isDefaultValueAvailable()) {
-			$parameter->setValue($ref->getDefaultValue());
+			$default = $ref->getDefaultValue();
+			if (is_string($default)) {
+				$parameter->setValue($default);
+			} else {
+				$parameter->setExpression($default);
+			}
 		}
 
 		// find type and description in docblock

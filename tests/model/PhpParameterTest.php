@@ -43,7 +43,7 @@ class PhpParameterTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertEquals('a', $param->getName());
 		$this->assertFalse($param->isPassedByReference());
-		$this->assertEmpty($param->getDefaultValue());
+		$this->assertEmpty($param->getValue());
 		$this->assertEquals('unknown_type', $param->getType());
 	}
 
@@ -52,7 +52,7 @@ class PhpParameterTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertEquals('b', $param->getName());
 		$this->assertTrue($param->isPassedByReference());
-		$this->assertEmpty($param->getDefaultValue());
+		$this->assertEmpty($param->getValue());
 		$this->assertEquals('array', $param->getType());
 	}
 
@@ -61,7 +61,7 @@ class PhpParameterTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertEquals('c', $param->getName());
 		$this->assertFalse($param->isPassedByReference());
-		$this->assertEmpty($param->getDefaultValue());
+		$this->assertEmpty($param->getValue());
 		$this->assertEquals('\stdClass', $param->getType());
 	}
 
@@ -70,7 +70,7 @@ class PhpParameterTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertEquals('d', $param->getName());
 		$this->assertFalse($param->isPassedByReference());
-		$this->assertEquals('foo', $param->getDefaultValue());
+		$this->assertEquals('foo', $param->getValue());
 		$this->assertEquals('string', $param->getType());
 	}
 
@@ -79,7 +79,7 @@ class PhpParameterTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertEquals('e', $param->getName());
 		$this->assertFalse($param->isPassedByReference());
-		$this->assertEmpty($param->getDefaultValue());
+		$this->assertEmpty($param->getValue());
 		$this->assertEquals('callable', $param->getType());
 	}
 
@@ -101,14 +101,14 @@ class PhpParameterTest extends \PHPUnit_Framework_TestCase {
 		$this->assertFalse($function->hasParameter('param2'));
 		$param1 = $function->getParameter('param1');
 		$this->assertEquals('string', $param1->getType());
-		$this->assertFalse($param1->hasDefaultValue());
+		$this->assertFalse($param1->hasValue());
 
 		$function->addSimpleParameter('param2', 'string', null);
 
 		$this->assertTrue($function->hasParameter('param2'));
 		$param2 = $function->getParameter('param2');
 		$this->assertEquals('string', $param2->getType());
-		$this->assertNull($param2->getDefaultValue());
+		$this->assertNull($param2->getValue());
 	}
 
 	public function testSimpleDescParameter() {
@@ -118,21 +118,21 @@ class PhpParameterTest extends \PHPUnit_Framework_TestCase {
 		$this->assertFalse($function->hasParameter('param2'));
 		$param1 = $function->getParameter('param1');
 		$this->assertEquals('string', $param1->getType());
-		$this->assertFalse($param1->hasDefaultValue());
+		$this->assertFalse($param1->hasValue());
 
 		$function->addSimpleDescParameter('param2', 'string', 'desc');
 
 		$this->assertTrue($function->hasParameter('param2'));
 		$param2 = $function->getParameter('param2');
 		$this->assertEquals('string', $param2->getType());
-		$this->assertFalse($param2->hasDefaultValue());
+		$this->assertFalse($param2->hasValue());
 
 		$function->addSimpleDescParameter('param3', 'string', 'desc', null);
 
 		$this->assertTrue($function->hasParameter('param3'));
 		$param3 = $function->getParameter('param3');
 		$this->assertEquals('string', $param3->getType());
-		$this->assertNull($param3->getDefaultValue());
+		$this->assertNull($param3->getValue());
 	}
 
 }

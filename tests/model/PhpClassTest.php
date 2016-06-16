@@ -44,7 +44,7 @@ class PhpClassTest extends \PHPUnit_Framework_TestCase {
 				->setDescription($propDoc->getShortDescription()))
 			->setProperty(PhpProperty::create('enabled')
 				->setVisibility('private')
-				->setDefaultValue(false));
+				->setExpression(false));
 
 		$methodDoc = new Docblock('/**
  * Another doc comment.
@@ -69,7 +69,7 @@ class PhpClassTest extends \PHPUnit_Framework_TestCase {
 			->addParameter(PhpParameter::create()
 				->setName('d')
 				->setType('string')
-				->setDefaultValue('foo'))
+				->setValue('foo'))
 			->addParameter(PhpParameter::create()
 				->setName('e')
 				->setType('callable'))
@@ -350,6 +350,15 @@ class PhpClassTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals(file_get_contents(__DIR__ . '/../fixture/ClassWithComments.php'), $code);
 	}
 
+	public function testFromFileWithDefaultExpressions() {
+		$class = PhpClass::fromFile(__DIR__ . '/../fixture/ClassWithDefaultExpressions.php');
+		$bar = $class->getProperty('bar');
+
+		$this->assertFalse($bar->getExpression());
+		$this->assertTrue($bar->isExpression());
+		$this->assertNull($bar->getValue());
+	}
+
 	public function testFromReflectionWithComments() {
 		// TODO: https://github.com/gossi/php-code-generator/issues/19
 // 		$class = PhpClass::fromReflection(new \ReflectionClass('gossi\codegen\tests\fixture\ClassWithComments'));
@@ -382,7 +391,7 @@ class PhpClassTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals('Aaaand we go along long long', $propper->getLongDescription());
 		$this->assertEquals('Wer macht sauber?', $propper->getTypeDescription());
 		$this->assertEquals('string', $propper->getType());
-		$this->assertEquals('Meister', $propper->getDefaultValue());
+		$this->assertEquals('Meister', $propper->getValue());
 
 		$setup = $class->getMethod('setup');
 		$this->assertEquals('Short desc', $setup->getDescription());

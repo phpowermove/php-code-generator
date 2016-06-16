@@ -33,7 +33,13 @@ class PhpConstant extends AbstractModel implements GenerateableInterface, Docblo
 	 */
 	public static function create($name = null, $value = null) {
 		$constant = new static();
-		$constant->setName($name)->setValue($value);
+		$constant->setName($name);
+
+		if (is_string($value)) {
+			$constant->setValue($value);
+		} else {
+			$constant->setExpression($value);
+		}
 
 		return $constant;
 	}
@@ -46,7 +52,12 @@ class PhpConstant extends AbstractModel implements GenerateableInterface, Docblo
 	 */
 	public function __construct($name = null, $value = null) {
 		$this->setName($name);
-		$this->setValue($value);
+
+		if (is_string($value)) {
+			$this->setValue($value);
+		} else {
+			$this->setExpression($value);
+		}
 		$this->docblock = new Docblock();
 	}
 
