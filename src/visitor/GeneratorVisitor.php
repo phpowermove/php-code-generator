@@ -209,7 +209,15 @@ class GeneratorVisitor implements GeneratorVisitorInterface {
 
 	public function visitStructConstant(PhpConstant $constant) {
 		$this->visitDocblock($constant->getDocblock());
-		$this->writer->writeln('const ' . $constant->getName() . ' = ' . $this->getPhpExport($constant->getValue()) . ';');
+		$this->writer->write('const ' . $constant->getName() . ' = ');
+
+		if ($constant->isExpression()) {
+			$this->writer->write($constant->getExpression());
+		} else {
+			$this->writer->write($this->getPhpExport($constant->getValue()));
+		}
+
+		$this->writer->writeln(';');
 	}
 
 	public function endVisitingStructConstants() {

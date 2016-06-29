@@ -29,17 +29,18 @@ class PhpConstant extends AbstractModel implements GenerateableInterface, Docblo
 	 *
 	 * @param string $name
 	 * @param mixed $value
+	 * @param bool $isExpression
 	 * @return static
 	 */
-	public static function create($name = null, $value = null) {
-		$constant = new static();
-		$constant->setName($name);
+	public static function create($name = null, $value = null, $isExpression = false) {
+		$constant = new static($name, $value, $isExpression);
+// 		$constant->setName($name);
 
-		if (is_string($value)) {
-			$constant->setValue($value);
-		} else {
-			$constant->setExpression($value);
-		}
+// 		if (is_string($value)) {
+// 			$constant->setValue($value);
+// 		} else {
+// 			$constant->setExpression($value);
+// 		}
 
 		return $constant;
 	}
@@ -49,14 +50,15 @@ class PhpConstant extends AbstractModel implements GenerateableInterface, Docblo
 	 *
 	 * @param string $name
 	 * @param mixed $value
+	 * @param bool $isExpression
 	 */
-	public function __construct($name = null, $value = null) {
+	public function __construct($name = null, $value = null, $isExpression = false) {
 		$this->setName($name);
 
-		if (is_string($value)) {
-			$this->setValue($value);
-		} else {
+		if ($isExpression) {
 			$this->setExpression($value);
+		} else {
+			$this->setValue($value);
 		}
 		$this->docblock = new Docblock();
 	}

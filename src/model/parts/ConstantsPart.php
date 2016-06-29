@@ -47,14 +47,13 @@ trait ConstantsPart {
 	 * @param string $value
 	 * @return $this
 	 */
-	public function setConstant($nameOrConstant, $value = null) {
+	public function setConstant($nameOrConstant, $value = null, $isExpression = false) {
 		if ($nameOrConstant instanceof PhpConstant) {
 			$name = $nameOrConstant->getName();
 			$constant = $nameOrConstant;
 		} else {
 			$name = $nameOrConstant;
-			$constant = new PhpConstant($nameOrConstant);
-			$constant->setValue($value);
+			$constant = new PhpConstant($nameOrConstant, $value, $isExpression);
 		}
 
 		$this->constants[$name] = $constant;

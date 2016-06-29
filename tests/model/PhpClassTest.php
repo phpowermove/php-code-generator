@@ -117,6 +117,11 @@ class PhpClassTest extends \PHPUnit_Framework_TestCase {
 		$class->clearConstants();
 		$this->assertEmpty($class->getConstants());
 
+		$class->setConstant('FOO', 'bar');
+		$this->assertEquals('bar', $class->getConstant('FOO')->getValue());
+		$class->setConstant('NMBR', 300, true);
+		$this->assertEquals(300, $class->getConstant('NMBR')->getExpression());
+
 		try {
 			$this->assertEmpty($class->getConstant('constant-not-found'));
 		} catch (\InvalidArgumentException $e) {
@@ -333,6 +338,8 @@ class PhpClassTest extends \PHPUnit_Framework_TestCase {
 		$class = PhpClass::fromFile(__DIR__ . '/../fixture/ClassWithConstants.php');
 
 		$this->assertTrue($class->hasConstant('FOO'));
+		$this->assertEquals('bar', $class->getConstant('FOO')->getValue());
+
 		$this->assertTrue($class->hasConstant('NMBR'));
 		$this->assertEquals(300, $class->getConstant('NMBR')->getExpression());
 	}
