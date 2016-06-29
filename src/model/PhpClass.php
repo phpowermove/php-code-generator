@@ -66,7 +66,16 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 
 		// constants
 		// TODO: https://github.com/gossi/php-code-generator/issues/19
-		$class->setConstants($ref->getConstants());
+		foreach ($ref->getConstants() as $name => $value) {
+			$const = new PhpConstant($name);
+
+			if (is_string($value)) {
+				$const->setValue($value);
+			} else {
+				$const->setExpression($value);
+			}
+			$class->setConstant($const);
+		}
 
 		return $class;
 	}

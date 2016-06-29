@@ -85,6 +85,7 @@ class PhpClassTest extends \PHPUnit_Framework_TestCase {
 
 		$class = new PhpClass('gossi\codegen\tests\fixture\ClassWithConstants');
 		$class->setConstant('FOO', 'bar');
+		$class->setConstant(PhpConstant::create('NMBR')->setExpression(300));
 		$this->assertEquals($class, PhpClass::fromReflection(new \ReflectionClass('gossi\codegen\tests\fixture\ClassWithConstants')));
 	}
 
@@ -332,6 +333,8 @@ class PhpClassTest extends \PHPUnit_Framework_TestCase {
 		$class = PhpClass::fromFile(__DIR__ . '/../fixture/ClassWithConstants.php');
 
 		$this->assertTrue($class->hasConstant('FOO'));
+		$this->assertTrue($class->hasConstant('NMBR'));
+		$this->assertEquals(300, $class->getConstant('NMBR')->getExpression());
 	}
 
 	public function testFromFileWithTraits() {

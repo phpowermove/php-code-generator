@@ -27,6 +27,9 @@ use PhpParser\Node\Stmt\TraitUse;
 use PhpParser\Node\Stmt\UseUse;
 use PhpParser\NodeVisitorAbstract;
 use PhpParser\PrettyPrinter\Standard;
+use PhpParser\Node\Scalar\LNumber;
+use PhpParser\Node\Scalar\DNumber;
+use PhpParser\Node\Scalar\MagicConst;
 
 abstract class AbstractPhpStructVisitor extends NodeVisitorAbstract {
 
@@ -122,9 +125,8 @@ abstract class AbstractPhpStructVisitor extends NodeVisitorAbstract {
 	}
 
 	protected function visitConstant(Const_ $node, Doc $doc = null) {
-		$const = new PhpConstant($node->name, $this->getValue($node));
-		$const->setValue($this->getValue($node->value));
-
+		$const = new PhpConstant($node->name);
+		$this->setDefault($const, $node->value);
 		$this->parseMemberDocblock($const, $doc);
 
 		$this->struct->setConstant($const);
@@ -244,7 +246,7 @@ abstract class AbstractPhpStructVisitor extends NodeVisitorAbstract {
 		}
 	}
 
-	private function setDefault($obj, $default) {
+	private function setDefault($obj, Node $default) {
 		if ($default instanceof String_) {
 			$obj->setValue($this->getValue($default));
 		} else {
@@ -268,8 +270,12 @@ abstract class AbstractPhpStructVisitor extends NodeVisitorAbstract {
 			return $const;
 		}
 
-		if ($node instanceof String_) {
+		if ($node instanceof String_ || $node instanceof LNumber || $node instanceof DNumber) {
 			return $node->value;
+		}
+
+		if ($node instanceof MagicConst) {
+			return $node->getName();
 		}
 	}
 
