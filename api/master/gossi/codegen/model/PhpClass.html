@@ -666,9 +666,7 @@ php code.</p>                </div>
     <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setConstant">setConstant</a>(
-    string|<a href="../../../gossi/codegen/model/PhpConstant.html"><abbr title="gossi\codegen\model\PhpConstant">PhpConstant</abbr></a> $nameOrConstant, 
-    string $value = null)
+                    <a href="#method_setConstant">setConstant</a>($nameOrConstant, $value = null, $isExpression = false)
                                             <p>Adds a constant</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/parts/ConstantsPart.html#method_setConstant"><abbr title="gossi\codegen\model\parts\ConstantsPart">ConstantsPart</abbr></a></small></div>
             </div>
@@ -2654,9 +2652,7 @@ php code.</p>                    <p>If the class has already been declared you g
         <div class="location">in <a href="../../../gossi/codegen/model/parts/ConstantsPart.html#method_setConstant"><abbr title="gossi\codegen\model\parts\ConstantsPart">ConstantsPart</abbr></a> at line         line 50</div>
         <code>                    
     <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
-    <strong>setConstant</strong>(
-    string|<a href="../../../gossi/codegen/model/PhpConstant.html"><abbr title="gossi\codegen\model\PhpConstant">PhpConstant</abbr></a> $nameOrConstant, 
-    string $value = null)</code>
+    <strong>setConstant</strong>($nameOrConstant, $value = null, $isExpression = false)</code>
     </h3>
     <div class="details">
                     <div class="method-description">
@@ -2666,15 +2662,18 @@ php code.</p>                    <p>If the class has already been declared you g
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    string|<a href="../../../gossi/codegen/model/PhpConstant.html"><abbr title="gossi\codegen\model\PhpConstant">PhpConstant</abbr></a></td>
+                <td></td>
                 <td>$nameOrConstant</td>
-                <td>constant name or instance</td>
+                <td></td>
             </tr>
                     <tr>
-                <td>
-    string</td>
+                <td></td>
                 <td>$value</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$isExpression</td>
                 <td></td>
             </tr>
             </table>
@@ -2698,7 +2697,7 @@ php code.</p>                    <p>If the class has already been declared you g
             </div>
                     <div class="method-item">
                     <h3 id="method_removeConstant">
-        <div class="location">in <a href="../../../gossi/codegen/model/parts/ConstantsPart.html#method_removeConstant"><abbr title="gossi\codegen\model\parts\ConstantsPart">ConstantsPart</abbr></a> at line         line 72</div>
+        <div class="location">in <a href="../../../gossi/codegen/model/parts/ConstantsPart.html#method_removeConstant"><abbr title="gossi\codegen\model\parts\ConstantsPart">ConstantsPart</abbr></a> at line         line 71</div>
         <code>                    
     <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
     <strong>removeConstant</strong>(
@@ -2747,7 +2746,7 @@ php code.</p>                    <p>If the class has already been declared you g
             </div>
                     <div class="method-item">
                     <h3 id="method_hasConstant">
-        <div class="location">in <a href="../../../gossi/codegen/model/parts/ConstantsPart.html#method_hasConstant"><abbr title="gossi\codegen\model\parts\ConstantsPart">ConstantsPart</abbr></a> at line         line 92</div>
+        <div class="location">in <a href="../../../gossi/codegen/model/parts/ConstantsPart.html#method_hasConstant"><abbr title="gossi\codegen\model\parts\ConstantsPart">ConstantsPart</abbr></a> at line         line 91</div>
         <code>                    
     bool
     <strong>hasConstant</strong>(
@@ -2787,7 +2786,7 @@ php code.</p>                    <p>If the class has already been declared you g
             </div>
                     <div class="method-item">
                     <h3 id="method_getConstant">
-        <div class="location">in <a href="../../../gossi/codegen/model/parts/ConstantsPart.html#method_getConstant"><abbr title="gossi\codegen\model\parts\ConstantsPart">ConstantsPart</abbr></a> at line         line 106</div>
+        <div class="location">in <a href="../../../gossi/codegen/model/parts/ConstantsPart.html#method_getConstant"><abbr title="gossi\codegen\model\parts\ConstantsPart">ConstantsPart</abbr></a> at line         line 105</div>
         <code>                    
     <a href="../../../gossi/codegen/model/PhpConstant.html"><abbr title="gossi\codegen\model\PhpConstant">PhpConstant</abbr></a>
     <strong>getConstant</strong>(
@@ -2836,7 +2835,7 @@ php code.</p>                    <p>If the class has already been declared you g
             </div>
                     <div class="method-item">
                     <h3 id="method_getConstants">
-        <div class="location">in <a href="../../../gossi/codegen/model/parts/ConstantsPart.html#method_getConstants"><abbr title="gossi\codegen\model\parts\ConstantsPart">ConstantsPart</abbr></a> at line         line 123</div>
+        <div class="location">in <a href="../../../gossi/codegen/model/parts/ConstantsPart.html#method_getConstants"><abbr title="gossi\codegen\model\parts\ConstantsPart">ConstantsPart</abbr></a> at line         line 122</div>
         <code>                    
     <a href="../../../gossi/codegen/model/PhpConstant.html"><abbr title="gossi\codegen\model\PhpConstant">PhpConstant</abbr></a>[]
     <strong>getConstants</strong>()</code>
@@ -2864,7 +2863,7 @@ php code.</p>                    <p>If the class has already been declared you g
             </div>
                     <div class="method-item">
                     <h3 id="method_getConstantNames">
-        <div class="location">in <a href="../../../gossi/codegen/model/parts/ConstantsPart.html#method_getConstantNames"><abbr title="gossi\codegen\model\parts\ConstantsPart">ConstantsPart</abbr></a> at line         line 132</div>
+        <div class="location">in <a href="../../../gossi/codegen/model/parts/ConstantsPart.html#method_getConstantNames"><abbr title="gossi\codegen\model\parts\ConstantsPart">ConstantsPart</abbr></a> at line         line 131</div>
         <code>                    
     string[]
     <strong>getConstantNames</strong>()</code>
@@ -2892,7 +2891,7 @@ php code.</p>                    <p>If the class has already been declared you g
             </div>
                     <div class="method-item">
                     <h3 id="method_clearConstants">
-        <div class="location">in <a href="../../../gossi/codegen/model/parts/ConstantsPart.html#method_clearConstants"><abbr title="gossi\codegen\model\parts\ConstantsPart">ConstantsPart</abbr></a> at line         line 141</div>
+        <div class="location">in <a href="../../../gossi/codegen/model/parts/ConstantsPart.html#method_clearConstants"><abbr title="gossi\codegen\model\parts\ConstantsPart">ConstantsPart</abbr></a> at line         line 140</div>
         <code>                    
     <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
     <strong>clearConstants</strong>()</code>

@@ -28,8 +28,8 @@
                                             <option value="../../../../v0.1/index.html">v0.1</option>
                                             <option value="../../../../v0.2/index.html">v0.2</option>
                                             <option value="../../../../v0.3/index.html">v0.3</option>
-                                            <option value="../../../../v0.3.1/index.html" selected>v0.3.1</option>
-                                            <option value="../../../../master/index.html">master branch</option>
+                                            <option value="../../../../v0.3.1/index.html">v0.3.1</option>
+                                            <option value="../../../../master/index.html" selected>master branch</option>
                                     </select>
             </form>
                 <form id="search-form" action="../../../search.html" method="GET">
@@ -492,7 +492,8 @@
                 <div class="col-md-8 type">
                     <a href="#method_create">create</a>(
     string $name = null, 
-    mixed $value = null)
+    mixed $value = null, 
+    bool $isExpression = false)
                                             <p>Creates a new PHP constant</p>                </div>
                 <div class="col-md-2"></div>
             </div>
@@ -504,7 +505,8 @@
                 <div class="col-md-8 type">
                     <a href="#method___construct">__construct</a>(
     string $name = null, 
-    mixed $value = null)
+    mixed $value = null, 
+    bool $isExpression = false)
                                             <p>Creates a new PHP constant</p>                </div>
                 <div class="col-md-2"></div>
             </div>
@@ -1597,12 +1599,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_create">
-        <div class="location">at line         line 34</div>
+        <div class="location">at line         line 35</div>
         <code>        static            
     <a href="../../../gossi/codegen/model/PhpConstant.html"><abbr title="gossi\codegen\model\PhpConstant">PhpConstant</abbr></a>
     <strong>create</strong>(
     string $name = null, 
-    mixed $value = null)</code>
+    mixed $value = null, 
+    bool $isExpression = false)</code>
     </h3>
     <div class="details">
                     <div class="method-description">
@@ -1621,6 +1624,12 @@
                 <td>
     mixed</td>
                 <td>$value</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>
+    bool</td>
+                <td>$isExpression</td>
                 <td></td>
             </tr>
             </table>
@@ -1644,12 +1653,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at line         line 53</div>
+        <div class="location">at line         line 55</div>
         <code>                    
     
     <strong>__construct</strong>(
     string $name = null, 
-    mixed $value = null)</code>
+    mixed $value = null, 
+    bool $isExpression = false)</code>
     </h3>
     <div class="details">
                     <div class="method-description">
@@ -1670,6 +1680,12 @@
                 <td>$value</td>
                 <td></td>
             </tr>
+                    <tr>
+                <td>
+    bool</td>
+                <td>$isExpression</td>
+                <td></td>
+            </tr>
             </table>
 
             
@@ -1681,7 +1697,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_generateDocblock">
-        <div class="location">at line         line 67</div>
+        <div class="location">at line         line 69</div>
         <code>                    
     
     <strong>generateDocblock</strong>()</code>
