@@ -89,9 +89,10 @@ class Writer {
 					$this->content .= "\n";
 				}
 			}
+		} elseif(is_null($content)) {
+			$this->content .= 'null';
 		}
-
-
+		
 		return $this;
 	}
 
