@@ -42,6 +42,34 @@ class PhpProperty extends AbstractPhpMember {
 		return new static($name);
 	}
 
+
+	/**
+	 * Export array as php 5.4
+	 *
+	 * @param $var
+	 * @param string $indent
+	 * @return string
+	 */
+	static public function export($var, $indent="") {
+		switch (gettype($var)) {
+			case "string":
+				return '"' . addcslashes($var, "\\\$\"\r\n\t\v\f") . '"';
+			case "array":
+				$indexed = array_keys($var) === range(0, count($var) - 1);
+				$r = [];
+				foreach ($var as $key => $value) {
+					$r[] = "$indent    "
+						. ($indexed ? "" : static::export($key) . " => ")
+						. static::export($value, "$indent    ");
+				}
+				return "[\n" . implode(",\n", $r) . "\n" . $indent . "]";
+			case "boolean":
+				return $var ? "TRUE" : "FALSE";
+			default:
+				return var_export($var, TRUE);
+		}
+	}
+
 	/**
 	 * Creates a new PHP property from reflection
 	 *
@@ -65,10 +93,14 @@ class PhpProperty extends AbstractPhpMember {
 		}
 
 		$defaultProperties = $ref->getDeclaringClass()->getDefaultProperties();
+
 		if (isset($defaultProperties[$ref->name])) {
 			$default = $defaultProperties[$ref->name];
 			if (is_string($default)) {
 				$property->setValue($default);
+			} elseif(is_array($default)) {
+				$property->setValue(static::export($default));
+			} elseif(is_object($default)) {
 			} else {
 				$property->setExpression($default);
 			}
