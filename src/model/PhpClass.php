@@ -69,6 +69,16 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 
 		// traits
 		foreach ($ref->getTraits() as $trait) {
+
+			// remove Property from traits to avoid error
+			foreach ($trait->getProperties() as $property) {
+				/**@var \ReflectionProperty $property */
+				$name = $property->getName();
+				if ($class->hasProperty($name)) {
+					$class->removeProperty($name);
+				}
+			}
+			
 			$class->addTrait(PhpTrait::fromReflection($trait));
 		}
 
