@@ -55,7 +55,7 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 
 		// methods
 		foreach ($ref->getMethods() as $method) {
-			if ($method->class == $ref->name) {
+			if ($method->getFileName() == $ref->getFileName()) {
 				$class->setMethod(static::createMethod($method));
 			}
 		}
@@ -69,9 +69,7 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 
 		// traits
 		foreach ($ref->getTraits() as $trait) {
-			if ($trait->class == $ref->name) {
-				$class->addTrait(PhpTrait::fromReflection($trait));
-			}
+			$class->addTrait(PhpTrait::fromReflection($trait));
 		}
 
 		// constants
