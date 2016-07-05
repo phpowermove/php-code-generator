@@ -73,21 +73,27 @@ class Writer {
 	 * @param string $content        	
 	 */
 	public function write($content) {
-		$lines = explode("\n", $content);
-		for ($i = 0, $c = count($lines); $i < $c; $i++) {
-			if ($this->indentationLevel > 0
+
+		if (is_string($content)) {
+			$lines = explode("\n", $content);
+			for ($i = 0, $c = count($lines); $i < $c; $i++) {
+				if ($this->indentationLevel > 0
 					&& !empty($lines[$i])
 					&& (empty($this->content) || "\n" === substr($this->content, -1))) {
-				$this->content .= str_repeat($this->indentation, $this->indentationLevel);
-			}
+					$this->content .= str_repeat($this->indentation, $this->indentationLevel);
+				}
 
-			$this->content .= $lines[$i];
+				$this->content .= $lines[$i];
 
-			if ($i + 1 < $c) {
-				$this->content .= "\n";
+				if ($i + 1 < $c) {
+					$this->content .= "\n";
+				}
 			}
+		} elseif(is_null($content)) {
+			$this->content .= 'null';
+		} elseif(is_bool($content)){
+			$this->content .= $content ? 'true' : 'false';
 		}
-
 		return $this;
 	}
 

@@ -36,10 +36,14 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 	 * @return PhpClass
 	 */
 	public static function fromReflection(\ReflectionClass $ref) {
+
+		/**@var PhpClass $class */
 		$class = new static();
+
 		$class->setQualifiedName($ref->name)
 			->setAbstract($ref->isAbstract())
 			->setFinal($ref->isFinal())
+			->setParentClassName($ref->getParentClass()->name)
 			->setUseStatements(ReflectionUtils::getUseStatements($ref));
 
 		if ($ref->getDocComment()) {
@@ -51,16 +55,30 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 
 		// methods
 		foreach ($ref->getMethods() as $method) {
-			$class->setMethod(static::createMethod($method));
+			if ($method->getFileName() == $ref->getFileName()) {
+				$class->setMethod(static::createMethod($method));
+			}
 		}
 
 		// properties
 		foreach ($ref->getProperties() as $property) {
-			$class->setProperty(static::createProperty($property));
+			if ($property->class == $ref->name) {
+				$class->setProperty(static::createProperty($property));
+			}
 		}
 
 		// traits
 		foreach ($ref->getTraits() as $trait) {
+
+			// remove Property from traits to avoid error
+			foreach ($trait->getProperties() as $property) {
+				/**@var \ReflectionProperty $property */
+				$name = $property->getName();
+				if ($class->hasProperty($name)) {
+					$class->removeProperty($name);
+				}
+			}
+			
 			$class->addTrait(PhpTrait::fromReflection($trait));
 		}
 
