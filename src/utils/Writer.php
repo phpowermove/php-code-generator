@@ -91,8 +91,9 @@ class Writer {
 			}
 		} elseif(is_null($content)) {
 			$this->content .= 'null';
+		} elseif(is_bool($content)){
+			$this->content .= $content ? 'true' : 'false';
 		}
-		
 		return $this;
 	}
 
