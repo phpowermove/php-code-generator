@@ -58,7 +58,7 @@ class PhpParameter extends AbstractModel {
 
 		if ($ref->isDefaultValueAvailable()) {
 			$default = $ref->getDefaultValue();
-			if (is_string($default)) {
+			if (is_string($default) || is_null($default)) {
 				$parameter->setValue($default);
 			} else {
 				$parameter->setExpression($default);
