@@ -29,6 +29,7 @@
                                             <option value="../../../../v0.2/index.html">v0.2</option>
                                             <option value="../../../../v0.3/index.html" selected>v0.3</option>
                                             <option value="../../../../v0.3.1/index.html">v0.3.1</option>
+                                            <option value="../../../../v0.3.2/index.html">v0.3.2</option>
                                             <option value="../../../../master/index.html">master branch</option>
                                     </select>
             </form>
@@ -82,12 +83,18 @@
                 <div id="page-content">
                 
     <div class="page-header">
-        <h1>AbstractModel</h1>
+        <h1>
+            AbstractModel
+                
+        </h1>
     </div>
 
     <p>    class
     <strong>AbstractModel</strong>
 </p>
+
+        
+    
 
             <div class="description">
             <p>Parent of all models</p>                    </div>
@@ -100,100 +107,91 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    <abbr title="gossi\codegen\model\$this">$this</abbr>
+                    <abbr title="gossi\codegen\model\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setAttribute">setAttribute</a>(
-    string $key, 
-    mixed $value)
+                    <a href="#method_setAttribute">setAttribute</a>(string $key, mixed $value)
+        <small><sup><span class="label label-danger">deprecated</span></sup></small>
                                             <p>Sets a custom user attribute</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    mixed
+                    mixed
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_removeAttribute">removeAttribute</a>(
-    string $key)
+                    <a href="#method_removeAttribute">removeAttribute</a>(string $key)
+        <small><sup><span class="label label-danger">deprecated</span></sup></small>
                                             <p>Removes and returns a custom user attribute</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    mixed
+                    mixed
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getAttribute">getAttribute</a>(
-    string $key)
+                    <a href="#method_getAttribute">getAttribute</a>(string $key)
+        <small><sup><span class="label label-danger">deprecated</span></sup></small>
                                             <p>Returns a custom user attribute</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    mixed
+                    mixed
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getAttributeOrElse">getAttributeOrElse</a>(
-    string $key, 
-    mixed $default)
+                    <a href="#method_getAttributeOrElse">getAttributeOrElse</a>(string $key, mixed $default)
+        <small><sup><span class="label label-danger">deprecated</span></sup></small>
                                             <p>Returns a custom user attribute or the default value if the attribute doesn't exist</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    bool
+                    bool
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_hasAttribute">hasAttribute</a>(
-    string $key)
+                    <a href="#method_hasAttribute">hasAttribute</a>(string $key)
+        <small><sup><span class="label label-danger">deprecated</span></sup></small>
                                             <p>Checks whether an attribute exists</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    <abbr title="gossi\codegen\model\$this">$this</abbr>
+                    <abbr title="gossi\codegen\model\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setAttributes">setAttributes</a>(
-    array $attrs)
+                    <a href="#method_setAttributes">setAttributes</a>(array $attrs)
+        <small><sup><span class="label label-danger">deprecated</span></sup></small>
                                             <p>Sets custom user attributes</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    array
+                    array
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getAttributes">getAttributes</a>()
+        <small><sup><span class="label label-danger">deprecated</span></sup></small>
                                             <p>Returns all custom user attributes</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    string
+                    string
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getDescription">getDescription</a>()
+        
                                             <p>Returns this description</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    <abbr title="gossi\codegen\model\$this">$this</abbr>
+                    <abbr title="gossi\codegen\model\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setDescription">setDescription</a>(
-    string|array $description)
+                    <a href="#method_setDescription">setDescription</a>(string|array $description)
+        
                                             <p>Sets the description, which will also be used when generating a docblock</p>                </div>
                 <div class="col-md-2"></div>
             </div>
@@ -206,13 +204,21 @@
                     <div class="method-item">
                     <h3 id="method_setAttribute">
         <div class="location">at line         line 25</div>
-        <code>                    
-    <abbr title="gossi\codegen\model\$this">$this</abbr>
-    <strong>setAttribute</strong>(
-    string $key, 
-    mixed $value)</code>
+        <code>                    <abbr title="gossi\codegen\model\$this">$this</abbr>
+    <strong>setAttribute</strong>(string $key, mixed $value)
+        <small><sup><span class="label label-danger">deprecated</span></sup></small></code>
     </h3>
     <div class="details">
+            
+            <p>
+                <small><sup><span class="label label-danger">deprecated</span></sup></small>
+                            <tr>
+                    <td>See:</td>
+                    <td>https://github.com/gossi/php-code-generator/issues/29</td>
+                </tr>
+                    </p>
+    
+
                     <div class="method-description">
                                     <p>Sets a custom user attribute</p>                                </div>
                 <div class="tags">
@@ -220,14 +226,12 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    string</td>
+                <td>string</td>
                 <td>$key</td>
                 <td></td>
             </tr>
                     <tr>
-                <td>
-    mixed</td>
+                <td>mixed</td>
                 <td>$value</td>
                 <td></td>
             </tr>
@@ -238,8 +242,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <abbr title="gossi\codegen\model\$this">$this</abbr></td>
+            <td><abbr title="gossi\codegen\model\$this">$this</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -253,12 +256,21 @@
                     <div class="method-item">
                     <h3 id="method_removeAttribute">
         <div class="location">at line         line 38</div>
-        <code>                    
-    mixed
-    <strong>removeAttribute</strong>(
-    string $key)</code>
+        <code>                    mixed
+    <strong>removeAttribute</strong>(string $key)
+        <small><sup><span class="label label-danger">deprecated</span></sup></small></code>
     </h3>
     <div class="details">
+            
+            <p>
+                <small><sup><span class="label label-danger">deprecated</span></sup></small>
+                            <tr>
+                    <td>See:</td>
+                    <td>https://github.com/gossi/php-code-generator/issues/29</td>
+                </tr>
+                    </p>
+    
+
                     <div class="method-description">
                                     <p>Removes and returns a custom user attribute</p>                                </div>
                 <div class="tags">
@@ -266,8 +278,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    string</td>
+                <td>string</td>
                 <td>$key</td>
                 <td></td>
             </tr>
@@ -278,8 +289,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    mixed</td>
+            <td>mixed</td>
             <td></td>
         </tr>
     </table>
@@ -293,12 +303,21 @@
                     <div class="method-item">
                     <h3 id="method_getAttribute">
         <div class="location">at line         line 52</div>
-        <code>                    
-    mixed
-    <strong>getAttribute</strong>(
-    string $key)</code>
+        <code>                    mixed
+    <strong>getAttribute</strong>(string $key)
+        <small><sup><span class="label label-danger">deprecated</span></sup></small></code>
     </h3>
     <div class="details">
+            
+            <p>
+                <small><sup><span class="label label-danger">deprecated</span></sup></small>
+                            <tr>
+                    <td>See:</td>
+                    <td>https://github.com/gossi/php-code-generator/issues/29</td>
+                </tr>
+                    </p>
+    
+
                     <div class="method-description">
                                     <p>Returns a custom user attribute</p>                                </div>
                 <div class="tags">
@@ -306,8 +325,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    string</td>
+                <td>string</td>
                 <td>$key</td>
                 <td></td>
             </tr>
@@ -318,8 +336,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    mixed</td>
+            <td>mixed</td>
             <td></td>
         </tr>
     </table>
@@ -342,13 +359,21 @@
                     <div class="method-item">
                     <h3 id="method_getAttributeOrElse">
         <div class="location">at line         line 68</div>
-        <code>                    
-    mixed
-    <strong>getAttributeOrElse</strong>(
-    string $key, 
-    mixed $default)</code>
+        <code>                    mixed
+    <strong>getAttributeOrElse</strong>(string $key, mixed $default)
+        <small><sup><span class="label label-danger">deprecated</span></sup></small></code>
     </h3>
     <div class="details">
+            
+            <p>
+                <small><sup><span class="label label-danger">deprecated</span></sup></small>
+                            <tr>
+                    <td>See:</td>
+                    <td>https://github.com/gossi/php-code-generator/issues/29</td>
+                </tr>
+                    </p>
+    
+
                     <div class="method-description">
                                     <p>Returns a custom user attribute or the default value if the attribute doesn't exist</p>                                </div>
                 <div class="tags">
@@ -356,14 +381,12 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    string</td>
+                <td>string</td>
                 <td>$key</td>
                 <td></td>
             </tr>
                     <tr>
-                <td>
-    mixed</td>
+                <td>mixed</td>
                 <td>$default</td>
                 <td></td>
             </tr>
@@ -374,8 +397,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    mixed</td>
+            <td>mixed</td>
             <td></td>
         </tr>
     </table>
@@ -389,12 +411,21 @@
                     <div class="method-item">
                     <h3 id="method_hasAttribute">
         <div class="location">at line         line 83</div>
-        <code>                    
-    bool
-    <strong>hasAttribute</strong>(
-    string $key)</code>
+        <code>                    bool
+    <strong>hasAttribute</strong>(string $key)
+        <small><sup><span class="label label-danger">deprecated</span></sup></small></code>
     </h3>
     <div class="details">
+            
+            <p>
+                <small><sup><span class="label label-danger">deprecated</span></sup></small>
+                            <tr>
+                    <td>See:</td>
+                    <td>https://github.com/gossi/php-code-generator/issues/29</td>
+                </tr>
+                    </p>
+    
+
                     <div class="method-description">
                                     <p>Checks whether an attribute exists</p>                                </div>
                 <div class="tags">
@@ -402,8 +433,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    string</td>
+                <td>string</td>
                 <td>$key</td>
                 <td></td>
             </tr>
@@ -414,8 +444,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    bool</td>
+            <td>bool</td>
             <td></td>
         </tr>
     </table>
@@ -429,12 +458,21 @@
                     <div class="method-item">
                     <h3 id="method_setAttributes">
         <div class="location">at line         line 94</div>
-        <code>                    
-    <abbr title="gossi\codegen\model\$this">$this</abbr>
-    <strong>setAttributes</strong>(
-    array $attrs)</code>
+        <code>                    <abbr title="gossi\codegen\model\$this">$this</abbr>
+    <strong>setAttributes</strong>(array $attrs)
+        <small><sup><span class="label label-danger">deprecated</span></sup></small></code>
     </h3>
     <div class="details">
+            
+            <p>
+                <small><sup><span class="label label-danger">deprecated</span></sup></small>
+                            <tr>
+                    <td>See:</td>
+                    <td>https://github.com/gossi/php-code-generator/issues/29</td>
+                </tr>
+                    </p>
+    
+
                     <div class="method-description">
                                     <p>Sets custom user attributes</p>                                </div>
                 <div class="tags">
@@ -442,8 +480,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    array</td>
+                <td>array</td>
                 <td>$attrs</td>
                 <td></td>
             </tr>
@@ -454,8 +491,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <abbr title="gossi\codegen\model\$this">$this</abbr></td>
+            <td><abbr title="gossi\codegen\model\$this">$this</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -469,11 +505,21 @@
                     <div class="method-item">
                     <h3 id="method_getAttributes">
         <div class="location">at line         line 106</div>
-        <code>                    
-    array
-    <strong>getAttributes</strong>()</code>
+        <code>                    array
+    <strong>getAttributes</strong>()
+        <small><sup><span class="label label-danger">deprecated</span></sup></small></code>
     </h3>
     <div class="details">
+            
+            <p>
+                <small><sup><span class="label label-danger">deprecated</span></sup></small>
+                            <tr>
+                    <td>See:</td>
+                    <td>https://github.com/gossi/php-code-generator/issues/29</td>
+                </tr>
+                    </p>
+    
+
                     <div class="method-description">
                                     <p>Returns all custom user attributes</p>                                </div>
                 <div class="tags">
@@ -482,8 +528,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    array</td>
+            <td>array</td>
             <td></td>
         </tr>
     </table>
@@ -497,11 +542,14 @@
                     <div class="method-item">
                     <h3 id="method_getDescription">
         <div class="location">at line         line 115</div>
-        <code>                    
-    string
-    <strong>getDescription</strong>()</code>
+        <code>                    string
+    <strong>getDescription</strong>()
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Returns this description</p>                                </div>
                 <div class="tags">
@@ -510,8 +558,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    string</td>
+            <td>string</td>
             <td></td>
         </tr>
     </table>
@@ -525,12 +572,14 @@
                     <div class="method-item">
                     <h3 id="method_setDescription">
         <div class="location">at line         line 125</div>
-        <code>                    
-    <abbr title="gossi\codegen\model\$this">$this</abbr>
-    <strong>setDescription</strong>(
-    string|array $description)</code>
+        <code>                    <abbr title="gossi\codegen\model\$this">$this</abbr>
+    <strong>setDescription</strong>(string|array $description)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Sets the description, which will also be used when generating a docblock</p>                                </div>
                 <div class="tags">
@@ -538,8 +587,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    string|array</td>
+                <td>string|array</td>
                 <td>$description</td>
                 <td></td>
             </tr>
@@ -550,8 +598,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <abbr title="gossi\codegen\model\$this">$this</abbr></td>
+            <td><abbr title="gossi\codegen\model\$this">$this</abbr></td>
             <td></td>
         </tr>
     </table>

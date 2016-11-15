@@ -27,9 +27,10 @@
                 <select id="version-switcher" name="version">
                                             <option value="../../../../v0.1/index.html">v0.1</option>
                                             <option value="../../../../v0.2/index.html">v0.2</option>
-                                            <option value="../../../../v0.3/index.html" selected>v0.3</option>
+                                            <option value="../../../../v0.3/index.html">v0.3</option>
                                             <option value="../../../../v0.3.1/index.html">v0.3.1</option>
-                                            <option value="../../../../master/index.html">master branch</option>
+                                            <option value="../../../../v0.3.2/index.html">v0.3.2</option>
+                                            <option value="../../../../master/index.html" selected>master branch</option>
                                     </select>
             </form>
                 <form id="search-form" action="../../../search.html" method="GET">
@@ -82,12 +83,19 @@
                 <div id="page-content">
                 
     <div class="page-header">
-        <h1>PhpMethod</h1>
+        <h1>
+            PhpMethod
+                
+        </h1>
     </div>
 
     <p>    class
-    <strong>PhpMethod</strong>        extends <a href="../../../gossi/codegen/model/AbstractPhpMember.html"><abbr title="gossi\codegen\model\AbstractPhpMember">AbstractPhpMember</abbr></a>
+    <strong>PhpMethod</strong>        extends <a href="../../../gossi/codegen/model/AbstractPhpMember.html"><abbr title="gossi\codegen\model\AbstractPhpMember">AbstractPhpMember</abbr></a>        implements
+        <a href="../../../gossi/codegen/model/RoutineInterface.html"><abbr title="gossi\codegen\model\RoutineInterface">RoutineInterface</abbr></a>
 </p>
+
+        
+    
 
             <div class="description">
             <p>Represents a PHP method.</p>                    </div>
@@ -99,7 +107,8 @@
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="../../../gossi/codegen/model/parts/AbstractPart.html"><abbr title="gossi\codegen\model\parts\AbstractPart">AbstractPart</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
                     Abstract Part
                 </div>
@@ -107,7 +116,8 @@
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="../../../gossi/codegen/model/parts/BodyPart.html"><abbr title="gossi\codegen\model\parts\BodyPart">BodyPart</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
                     Body Part
                 </div>
@@ -115,7 +125,8 @@
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="../../../gossi/codegen/model/parts/FinalPart.html"><abbr title="gossi\codegen\model\parts\FinalPart">FinalPart</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
                     Abstract Part
                 </div>
@@ -123,7 +134,8 @@
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="../../../gossi/codegen/model/parts/ParametersPart.html"><abbr title="gossi\codegen\model\parts\ParametersPart">ParametersPart</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
                     Parameters Part
                 </div>
@@ -131,7 +143,8 @@
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="../../../gossi/codegen/model/parts/ReferenceReturnPart.html"><abbr title="gossi\codegen\model\parts\ReferenceReturnPart">ReferenceReturnPart</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
                     Reference return part
                 </div>
@@ -139,7 +152,8 @@
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="../../../gossi/codegen/model/parts/TypeDocblockGeneratorPart.html"><abbr title="gossi\codegen\model\parts\TypeDocblockGeneratorPart">TypeDocblockGeneratorPart</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
                     Type docblock generator part
                 </div>
@@ -147,7 +161,8 @@
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="../../../gossi/codegen/model/parts/DocblockPart.html"><abbr title="gossi\codegen\model\parts\DocblockPart">DocblockPart</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
                     Docblock Part
                 </div>
@@ -155,7 +170,8 @@
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="../../../gossi/codegen/model/parts/LongDescriptionPart.html"><abbr title="gossi\codegen\model\parts\LongDescriptionPart">LongDescriptionPart</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
                     Long description part
                 </div>
@@ -163,7 +179,8 @@
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="../../../gossi/codegen/model/parts/NamePart.html"><abbr title="gossi\codegen\model\parts\NamePart">NamePart</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
                     Name part
                 </div>
@@ -171,7 +188,8 @@
                     <div class="row">
                 <div class="col-md-6">
                                             <a href="../../../gossi/codegen/model/parts/TypePart.html"><abbr title="gossi\codegen\model\parts\TypePart">TypePart</abbr></a>
-                                    </div>
+                                            
+                </div>
                 <div class="col-md-6">
                     Type part
                 </div>
@@ -211,500 +229,381 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    <abbr title="gossi\codegen\model\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setAttribute">setAttribute</a>(
-    string $key, 
-    mixed $value)
-                                            <p>Sets a custom user attribute</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/AbstractModel.html#method_setAttribute"><abbr title="gossi\codegen\model\AbstractModel">AbstractModel</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-    mixed
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_removeAttribute">removeAttribute</a>(
-    string $key)
-                                            <p>Removes and returns a custom user attribute</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/AbstractModel.html#method_removeAttribute"><abbr title="gossi\codegen\model\AbstractModel">AbstractModel</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-    mixed
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getAttribute">getAttribute</a>(
-    string $key)
-                                            <p>Returns a custom user attribute</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/AbstractModel.html#method_getAttribute"><abbr title="gossi\codegen\model\AbstractModel">AbstractModel</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-    mixed
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getAttributeOrElse">getAttributeOrElse</a>(
-    string $key, 
-    mixed $default)
-                                            <p>Returns a custom user attribute or the default value if the attribute doesn't exist</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/AbstractModel.html#method_getAttributeOrElse"><abbr title="gossi\codegen\model\AbstractModel">AbstractModel</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-    bool
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_hasAttribute">hasAttribute</a>(
-    string $key)
-                                            <p>Checks whether an attribute exists</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/AbstractModel.html#method_hasAttribute"><abbr title="gossi\codegen\model\AbstractModel">AbstractModel</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-    <abbr title="gossi\codegen\model\$this">$this</abbr>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_setAttributes">setAttributes</a>(
-    array $attrs)
-                                            <p>Sets custom user attributes</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/AbstractModel.html#method_setAttributes"><abbr title="gossi\codegen\model\AbstractModel">AbstractModel</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-    array
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getAttributes">getAttributes</a>()
-                                            <p>Returns all custom user attributes</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/AbstractModel.html#method_getAttributes"><abbr title="gossi\codegen\model\AbstractModel">AbstractModel</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-    string
+                    string
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getDescription">getDescription</a>()
+        
                                             <p>Returns this description</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/AbstractModel.html#method_getDescription"><abbr title="gossi\codegen\model\AbstractModel">AbstractModel</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    <abbr title="gossi\codegen\model\$this">$this</abbr>
+                    <abbr title="gossi\codegen\model\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setDescription">setDescription</a>(
-    string|array $description)
+                    <a href="#method_setDescription">setDescription</a>(string|array $description)
+        
                                             <p>Sets the description, which will also be used when generating a docblock</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/AbstractModel.html#method_setDescription"><abbr title="gossi\codegen\model\AbstractModel">AbstractModel</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+                    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setDocblock">setDocblock</a>(
-    <abbr title="gossi\docblock\Docblock">Docblock</abbr>|string $doc)
+                    <a href="#method_setDocblock">setDocblock</a>(<abbr title="gossi\docblock\Docblock">Docblock</abbr>|string $doc)
+        
                                             <p>Sets the docblock</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/parts/DocblockPart.html#method_setDocblock"><abbr title="gossi\codegen\model\parts\DocblockPart">DocblockPart</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    <abbr title="gossi\docblock\Docblock">Docblock</abbr>
+                    <abbr title="gossi\docblock\Docblock">Docblock</abbr>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getDocblock">getDocblock</a>()
+        
                                             <p>Returns the docblock</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/parts/DocblockPart.html#method_getDocblock"><abbr title="gossi\codegen\model\parts\DocblockPart">DocblockPart</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    string
+                    string
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getLongDescription">getLongDescription</a>()
+        
                                             <p>Returns the long description</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/parts/LongDescriptionPart.html#method_getLongDescription"><abbr title="gossi\codegen\model\parts\LongDescriptionPart">LongDescriptionPart</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+                    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setLongDescription">setLongDescription</a>(
-    string $longDescription)
+                    <a href="#method_setLongDescription">setLongDescription</a>(string $longDescription)
+        
                                             <p>Sets the long description</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/parts/LongDescriptionPart.html#method_setLongDescription"><abbr title="gossi\codegen\model\parts\LongDescriptionPart">LongDescriptionPart</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+                    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setName">setName</a>(
-    string $name)
+                    <a href="#method_setName">setName</a>(string $name)
+        
                                             <p>Sets the name</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/parts/NamePart.html#method_setName"><abbr title="gossi\codegen\model\parts\NamePart">NamePart</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    string
+                    string
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getName">getName</a>()
+        
                                             <p>Returns the name</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/parts/NamePart.html#method_getName"><abbr title="gossi\codegen\model\parts\NamePart">NamePart</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+                    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setType">setType</a>(
-    string $type, 
-    string $description = null)
+                    <a href="#method_setType">setType</a>(string $type, string $description = null)
+        
                                             <p>Sets the type</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/parts/TypePart.html#method_setType"><abbr title="gossi\codegen\model\parts\TypePart">TypePart</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+                    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setTypeDescription">setTypeDescription</a>(
-    string $description)
+                    <a href="#method_setTypeDescription">setTypeDescription</a>(string $description)
+        
                                             <p>Sets the description for the type</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/parts/TypePart.html#method_setTypeDescription"><abbr title="gossi\codegen\model\parts\TypePart">TypePart</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    string
+                    string
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getType">getType</a>()
+        
                                             <p>Returns the type</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/parts/TypePart.html#method_getType"><abbr title="gossi\codegen\model\parts\TypePart">TypePart</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    string
+                    string
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getTypeDescription">getTypeDescription</a>()
+        
                                             <p>Returns the type description</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/parts/TypePart.html#method_getTypeDescription"><abbr title="gossi\codegen\model\parts\TypePart">TypePart</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(
-    string $name)
+                    <a href="#method___construct">__construct</a>(string $name)
+        
                                             <p>Creates a new member</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/AbstractPhpMember.html#method___construct"><abbr title="gossi\codegen\model\AbstractPhpMember">AbstractPhpMember</abbr></a></small></div>
+                <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    <abbr title="gossi\codegen\model\$this">$this</abbr>
+                    <abbr title="gossi\codegen\model\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setVisibility">setVisibility</a>(
-    string $visibility)
+                    <a href="#method_setVisibility">setVisibility</a>(string $visibility)
+        
                                             <p>Sets the members visibility</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/AbstractPhpMember.html#method_setVisibility"><abbr title="gossi\codegen\model\AbstractPhpMember">AbstractPhpMember</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    string
+                    string
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getVisibility">getVisibility</a>()
+        
                                             <p>Returns the visibility state of this member</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/AbstractPhpMember.html#method_getVisibility"><abbr title="gossi\codegen\model\AbstractPhpMember">AbstractPhpMember</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    <abbr title="gossi\codegen\model\$this">$this</abbr>
+                    <abbr title="gossi\codegen\model\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setStatic">setStatic</a>(
-    bool $bool)
+                    <a href="#method_setStatic">setStatic</a>(bool $bool)
+        
                                             <p>Sets whether or not this member is static</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/AbstractPhpMember.html#method_setStatic"><abbr title="gossi\codegen\model\AbstractPhpMember">AbstractPhpMember</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    bool
+                    bool
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_isStatic">isStatic</a>()
+        
                                             <p>Returns whether this member is static</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/AbstractPhpMember.html#method_isStatic"><abbr title="gossi\codegen\model\AbstractPhpMember">AbstractPhpMember</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    <abbr title="gossi\codegen\model\$this">$this</abbr>
+                    <abbr title="gossi\codegen\model\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setParent">setParent</a>(
-    <a href="../../../gossi/codegen/model/AbstractPhpStruct.html"><abbr title="gossi\codegen\model\AbstractPhpStruct">AbstractPhpStruct</abbr></a>|null $parent)
+                    <a href="#method_setParent">setParent</a>(<a href="../../../gossi/codegen/model/AbstractPhpStruct.html"><abbr title="gossi\codegen\model\AbstractPhpStruct">AbstractPhpStruct</abbr></a>|null $parent)
+        
                                             <p>Sets the parent structure to which this member belongs</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/AbstractPhpMember.html#method_setParent"><abbr title="gossi\codegen\model\AbstractPhpMember">AbstractPhpMember</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    <a href="../../../gossi/codegen/model/AbstractPhpStruct.html"><abbr title="gossi\codegen\model\AbstractPhpStruct">AbstractPhpStruct</abbr></a>
+                    <a href="../../../gossi/codegen/model/AbstractPhpStruct.html"><abbr title="gossi\codegen\model\AbstractPhpStruct">AbstractPhpStruct</abbr></a>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getParent">getParent</a>()
+        
                                             <p>Returns the parent structure to which this member belongs</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/AbstractPhpMember.html#method_getParent"><abbr title="gossi\codegen\model\AbstractPhpMember">AbstractPhpMember</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    bool
+                    bool
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_isAbstract">isAbstract</a>()
+        
                                             <p>Returns whether this is abstract</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/parts/AbstractPart.html#method_isAbstract"><abbr title="gossi\codegen\model\parts\AbstractPart">AbstractPart</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+                    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setAbstract">setAbstract</a>(
-    bool $bool)
+                    <a href="#method_setAbstract">setAbstract</a>(bool $bool)
+        
                                             <p>Sets this to abstract</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/parts/AbstractPart.html#method_setAbstract"><abbr title="gossi\codegen\model\parts\AbstractPart">AbstractPart</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+                    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setBody">setBody</a>(
-    string $body)
+                    <a href="#method_setBody">setBody</a>(string $body)
+        
                                             <p>Sets the body for this</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/parts/BodyPart.html#method_setBody"><abbr title="gossi\codegen\model\parts\BodyPart">BodyPart</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    string
+                    string
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getBody">getBody</a>()
+        
                                             <p>Returns the body</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/parts/BodyPart.html#method_getBody"><abbr title="gossi\codegen\model\parts\BodyPart">BodyPart</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    bool
+                    bool
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_isFinal">isFinal</a>()
+        
                                             <p>Returns whether this is final</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/parts/FinalPart.html#method_isFinal"><abbr title="gossi\codegen\model\parts\FinalPart">FinalPart</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+                    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setFinal">setFinal</a>(
-    bool $bool)
+                    <a href="#method_setFinal">setFinal</a>(bool $bool)
+        
                                             <p>Sets this final</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/parts/FinalPart.html#method_setFinal"><abbr title="gossi\codegen\model\parts\FinalPart">FinalPart</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+                    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setParameters">setParameters</a>(
-    array $parameters)
+                    <a href="#method_setParameters">setParameters</a>(array $parameters)
+        
                                             <p>Sets a collection of parameters</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/parts/ParametersPart.html#method_setParameters"><abbr title="gossi\codegen\model\parts\ParametersPart">ParametersPart</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+                    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_addParameter">addParameter</a>(
-    <a href="../../../gossi/codegen/model/PhpParameter.html"><abbr title="gossi\codegen\model\PhpParameter">PhpParameter</abbr></a> $parameter)
+                    <a href="#method_addParameter">addParameter</a>(<a href="../../../gossi/codegen/model/PhpParameter.html"><abbr title="gossi\codegen\model\PhpParameter">PhpParameter</abbr></a> $parameter)
+        
                                             <p>Adds a parameter</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/parts/ParametersPart.html#method_addParameter"><abbr title="gossi\codegen\model\parts\ParametersPart">ParametersPart</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    bool
+                    bool
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_hasParameter">hasParameter</a>(
-    string $name)
+                    <a href="#method_hasParameter">hasParameter</a>(string $name)
+        
                                             <p>Checks whether a parameter exists</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/parts/ParametersPart.html#method_hasParameter"><abbr title="gossi\codegen\model\parts\ParametersPart">ParametersPart</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+                    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_addSimpleParameter">addSimpleParameter</a>(
-    string $name, 
-    null|string $type = null, 
-    mixed $defaultValue = null)
+                    <a href="#method_addSimpleParameter">addSimpleParameter</a>(string $name, null|string $type = null, mixed $defaultValue = null)
+        
                                             <p>A quick way to add a parameter which is created from the given parameters</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/parts/ParametersPart.html#method_addSimpleParameter"><abbr title="gossi\codegen\model\parts\ParametersPart">ParametersPart</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+                    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_addSimpleDescParameter">addSimpleDescParameter</a>(
-    string $name, 
-    null|string $type = null, 
-    null|string $typeDescription = null, 
-    mixed $defaultValue = null)
+                    <a href="#method_addSimpleDescParameter">addSimpleDescParameter</a>(string $name, null|string $type = null, null|string $typeDescription = null, mixed $defaultValue = null)
+        
                                             <p>A quick way to add a parameter with description which is created from the given parameters</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/parts/ParametersPart.html#method_addSimpleDescParameter"><abbr title="gossi\codegen\model\parts\ParametersPart">ParametersPart</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    <a href="../../../gossi/codegen/model/PhpParameter.html"><abbr title="gossi\codegen\model\PhpParameter">PhpParameter</abbr></a>
+                    <a href="../../../gossi/codegen/model/PhpParameter.html"><abbr title="gossi\codegen\model\PhpParameter">PhpParameter</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getParameter">getParameter</a>(
-    string|int $nameOrIndex)
+                    <a href="#method_getParameter">getParameter</a>(string|int $nameOrIndex)
+        
                                             <p>Returns a parameter by index or name</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/parts/ParametersPart.html#method_getParameter"><abbr title="gossi\codegen\model\parts\ParametersPart">ParametersPart</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+                    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_replaceParameter">replaceParameter</a>(
-    int $position, 
-    <a href="../../../gossi/codegen/model/PhpParameter.html"><abbr title="gossi\codegen\model\PhpParameter">PhpParameter</abbr></a> $parameter)
+                    <a href="#method_replaceParameter">replaceParameter</a>(int $position, <a href="../../../gossi/codegen/model/PhpParameter.html"><abbr title="gossi\codegen\model\PhpParameter">PhpParameter</abbr></a> $parameter)
+        
                                             <p>Replaces a parameter at a given position</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/parts/ParametersPart.html#method_replaceParameter"><abbr title="gossi\codegen\model\parts\ParametersPart">ParametersPart</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+                    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_removeParameter">removeParameter</a>(
-    int $position)
+                    <a href="#method_removeParameter">removeParameter</a>($param)
+        
                                             <p>Remove a parameter at a given position</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/parts/ParametersPart.html#method_removeParameter"><abbr title="gossi\codegen\model\parts\ParametersPart">ParametersPart</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    <a href="../../../gossi/codegen/model/PhpParameter.html"><abbr title="gossi\codegen\model\PhpParameter">PhpParameter</abbr></a>[]
+                    array
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getParameters">getParameters</a>()
+        
                                             <p>Returns a collection of parameters</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/parts/ParametersPart.html#method_getParameters"><abbr title="gossi\codegen\model\parts\ParametersPart">ParametersPart</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+                    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setReferenceReturned">setReferenceReturned</a>(
-    bool $bool)
+                    <a href="#method_setReferenceReturned">setReferenceReturned</a>(bool $bool)
+        
                                             <p>Set true if a reference is returned of false if not</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/parts/ReferenceReturnPart.html#method_setReferenceReturned"><abbr title="gossi\codegen\model\parts\ReferenceReturnPart">ReferenceReturnPart</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
-    bool
+                    bool
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_isReferenceReturned">isReferenceReturned</a>()
+        
                                             <p>Returns whether a reference is returned</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../gossi/codegen/model/parts/ReferenceReturnPart.html#method_isReferenceReturned"><abbr title="gossi\codegen\model\parts\ReferenceReturnPart">ReferenceReturnPart</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     static&nbsp;
-    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_create">create</a>(
-    string $name)
+                    <a href="#method_create">create</a>(string $name)
+        
                                             <p>Creates a new PHP method.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;
-    <a href="../../../gossi/codegen/model/PhpMethod.html"><abbr title="gossi\codegen\model\PhpMethod">PhpMethod</abbr></a>
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_fromReflection">fromReflection</a>(
-    <a target="_blank" href="http://php.net/ReflectionMethod">ReflectionMethod</a> $ref)
-                                            <p>Creates a PHP method from reflection</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-    
+                    <abbr title="gossi\codegen\model\$this">$this</abbr>
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_generateDocblock">generateDocblock</a>()
+        
                                             <p>Generates docblock based on provided information</p>                </div>
                 <div class="col-md-2"></div>
             </div>
@@ -715,304 +614,16 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_setAttribute">
-        <div class="location">in <a href="../../../gossi/codegen/model/AbstractModel.html#method_setAttribute"><abbr title="gossi\codegen\model\AbstractModel">AbstractModel</abbr></a> at line         line 25</div>
-        <code>                    
-    <abbr title="gossi\codegen\model\$this">$this</abbr>
-    <strong>setAttribute</strong>(
-    string $key, 
-    mixed $value)</code>
-    </h3>
-    <div class="details">
-                    <div class="method-description">
-                                    <p>Sets a custom user attribute</p>                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-    string</td>
-                <td>$key</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>
-    mixed</td>
-                <td>$value</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    <abbr title="gossi\codegen\model\$this">$this</abbr></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_removeAttribute">
-        <div class="location">in <a href="../../../gossi/codegen/model/AbstractModel.html#method_removeAttribute"><abbr title="gossi\codegen\model\AbstractModel">AbstractModel</abbr></a> at line         line 38</div>
-        <code>                    
-    mixed
-    <strong>removeAttribute</strong>(
-    string $key)</code>
-    </h3>
-    <div class="details">
-                    <div class="method-description">
-                                    <p>Removes and returns a custom user attribute</p>                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-    string</td>
-                <td>$key</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    mixed</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getAttribute">
-        <div class="location">in <a href="../../../gossi/codegen/model/AbstractModel.html#method_getAttribute"><abbr title="gossi\codegen\model\AbstractModel">AbstractModel</abbr></a> at line         line 52</div>
-        <code>                    
-    mixed
-    <strong>getAttribute</strong>(
-    string $key)</code>
-    </h3>
-    <div class="details">
-                    <div class="method-description">
-                                    <p>Returns a custom user attribute</p>                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-    string</td>
-                <td>$key</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    mixed</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a target="_blank" href="http://php.net/InvalidArgumentException">InvalidArgumentException</a></td>
-                <td>if the key cannot be found</td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getAttributeOrElse">
-        <div class="location">in <a href="../../../gossi/codegen/model/AbstractModel.html#method_getAttributeOrElse"><abbr title="gossi\codegen\model\AbstractModel">AbstractModel</abbr></a> at line         line 68</div>
-        <code>                    
-    mixed
-    <strong>getAttributeOrElse</strong>(
-    string $key, 
-    mixed $default)</code>
-    </h3>
-    <div class="details">
-                    <div class="method-description">
-                                    <p>Returns a custom user attribute or the default value if the attribute doesn't exist</p>                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-    string</td>
-                <td>$key</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>
-    mixed</td>
-                <td>$default</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    mixed</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_hasAttribute">
-        <div class="location">in <a href="../../../gossi/codegen/model/AbstractModel.html#method_hasAttribute"><abbr title="gossi\codegen\model\AbstractModel">AbstractModel</abbr></a> at line         line 83</div>
-        <code>                    
-    bool
-    <strong>hasAttribute</strong>(
-    string $key)</code>
-    </h3>
-    <div class="details">
-                    <div class="method-description">
-                                    <p>Checks whether an attribute exists</p>                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-    string</td>
-                <td>$key</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    bool</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setAttributes">
-        <div class="location">in <a href="../../../gossi/codegen/model/AbstractModel.html#method_setAttributes"><abbr title="gossi\codegen\model\AbstractModel">AbstractModel</abbr></a> at line         line 94</div>
-        <code>                    
-    <abbr title="gossi\codegen\model\$this">$this</abbr>
-    <strong>setAttributes</strong>(
-    array $attrs)</code>
-    </h3>
-    <div class="details">
-                    <div class="method-description">
-                                    <p>Sets custom user attributes</p>                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-    array</td>
-                <td>$attrs</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    <abbr title="gossi\codegen\model\$this">$this</abbr></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getAttributes">
-        <div class="location">in <a href="../../../gossi/codegen/model/AbstractModel.html#method_getAttributes"><abbr title="gossi\codegen\model\AbstractModel">AbstractModel</abbr></a> at line         line 106</div>
-        <code>                    
-    array
-    <strong>getAttributes</strong>()</code>
-    </h3>
-    <div class="details">
-                    <div class="method-description">
-                                    <p>Returns all custom user attributes</p>                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    array</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_getDescription">
-        <div class="location">in <a href="../../../gossi/codegen/model/AbstractModel.html#method_getDescription"><abbr title="gossi\codegen\model\AbstractModel">AbstractModel</abbr></a> at line         line 115</div>
-        <code>                    
-    string
-    <strong>getDescription</strong>()</code>
+        <div class="location">in <a href="../../../gossi/codegen/model/AbstractModel.html#method_getDescription"><abbr title="gossi\codegen\model\AbstractModel">AbstractModel</abbr></a> at line         line 19</div>
+        <code>                    string
+    <strong>getDescription</strong>()
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Returns this description</p>                                </div>
                 <div class="tags">
@@ -1021,8 +632,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    string</td>
+            <td>string</td>
             <td></td>
         </tr>
     </table>
@@ -1035,13 +645,15 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setDescription">
-        <div class="location">in <a href="../../../gossi/codegen/model/AbstractModel.html#method_setDescription"><abbr title="gossi\codegen\model\AbstractModel">AbstractModel</abbr></a> at line         line 125</div>
-        <code>                    
-    <abbr title="gossi\codegen\model\$this">$this</abbr>
-    <strong>setDescription</strong>(
-    string|array $description)</code>
+        <div class="location">in <a href="../../../gossi/codegen/model/AbstractModel.html#method_setDescription"><abbr title="gossi\codegen\model\AbstractModel">AbstractModel</abbr></a> at line         line 29</div>
+        <code>                    <abbr title="gossi\codegen\model\$this">$this</abbr>
+    <strong>setDescription</strong>(string|array $description)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Sets the description, which will also be used when generating a docblock</p>                                </div>
                 <div class="tags">
@@ -1049,8 +661,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    string|array</td>
+                <td>string|array</td>
                 <td>$description</td>
                 <td></td>
             </tr>
@@ -1061,8 +672,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <abbr title="gossi\codegen\model\$this">$this</abbr></td>
+            <td><abbr title="gossi\codegen\model\$this">$this</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -1076,12 +686,14 @@
                     <div class="method-item">
                     <h3 id="method_setDocblock">
         <div class="location">in <a href="../../../gossi/codegen/model/parts/DocblockPart.html#method_setDocblock"><abbr title="gossi\codegen\model\parts\DocblockPart">DocblockPart</abbr></a> at line         line 24</div>
-        <code>                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
-    <strong>setDocblock</strong>(
-    <abbr title="gossi\docblock\Docblock">Docblock</abbr>|string $doc)</code>
+        <code>                    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+    <strong>setDocblock</strong>(<abbr title="gossi\docblock\Docblock">Docblock</abbr>|string $doc)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Sets the docblock</p>                                </div>
                 <div class="tags">
@@ -1089,8 +701,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    <abbr title="gossi\docblock\Docblock">Docblock</abbr>|string</td>
+                <td><abbr title="gossi\docblock\Docblock">Docblock</abbr>|string</td>
                 <td>$doc</td>
                 <td></td>
             </tr>
@@ -1101,8 +712,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
+            <td><abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -1116,11 +726,14 @@
                     <div class="method-item">
                     <h3 id="method_getDocblock">
         <div class="location">in <a href="../../../gossi/codegen/model/parts/DocblockPart.html#method_getDocblock"><abbr title="gossi\codegen\model\parts\DocblockPart">DocblockPart</abbr></a> at line         line 39</div>
-        <code>                    
-    <abbr title="gossi\docblock\Docblock">Docblock</abbr>
-    <strong>getDocblock</strong>()</code>
+        <code>                    <abbr title="gossi\docblock\Docblock">Docblock</abbr>
+    <strong>getDocblock</strong>()
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Returns the docblock</p>                                </div>
                 <div class="tags">
@@ -1129,8 +742,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <abbr title="gossi\docblock\Docblock">Docblock</abbr></td>
+            <td><abbr title="gossi\docblock\Docblock">Docblock</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -1144,11 +756,14 @@
                     <div class="method-item">
                     <h3 id="method_getLongDescription">
         <div class="location">in <a href="../../../gossi/codegen/model/parts/LongDescriptionPart.html#method_getLongDescription"><abbr title="gossi\codegen\model\parts\LongDescriptionPart">LongDescriptionPart</abbr></a> at line         line 21</div>
-        <code>                    
-    string
-    <strong>getLongDescription</strong>()</code>
+        <code>                    string
+    <strong>getLongDescription</strong>()
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Returns the long description</p>                                </div>
                 <div class="tags">
@@ -1157,8 +772,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    string</td>
+            <td>string</td>
             <td></td>
         </tr>
     </table>
@@ -1172,12 +786,14 @@
                     <div class="method-item">
                     <h3 id="method_setLongDescription">
         <div class="location">in <a href="../../../gossi/codegen/model/parts/LongDescriptionPart.html#method_setLongDescription"><abbr title="gossi\codegen\model\parts\LongDescriptionPart">LongDescriptionPart</abbr></a> at line         line 31</div>
-        <code>                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
-    <strong>setLongDescription</strong>(
-    string $longDescription)</code>
+        <code>                    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+    <strong>setLongDescription</strong>(string $longDescription)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Sets the long description</p>                                </div>
                 <div class="tags">
@@ -1185,8 +801,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    string</td>
+                <td>string</td>
                 <td>$longDescription</td>
                 <td></td>
             </tr>
@@ -1197,8 +812,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
+            <td><abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -1212,12 +826,14 @@
                     <div class="method-item">
                     <h3 id="method_setName">
         <div class="location">in <a href="../../../gossi/codegen/model/parts/NamePart.html#method_setName"><abbr title="gossi\codegen\model\parts\NamePart">NamePart</abbr></a> at line         line 22</div>
-        <code>                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
-    <strong>setName</strong>(
-    string $name)</code>
+        <code>                    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+    <strong>setName</strong>(string $name)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Sets the name</p>                                </div>
                 <div class="tags">
@@ -1225,8 +841,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    string</td>
+                <td>string</td>
                 <td>$name</td>
                 <td></td>
             </tr>
@@ -1237,8 +852,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
+            <td><abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -1252,11 +866,14 @@
                     <div class="method-item">
                     <h3 id="method_getName">
         <div class="location">in <a href="../../../gossi/codegen/model/parts/NamePart.html#method_getName"><abbr title="gossi\codegen\model\parts\NamePart">NamePart</abbr></a> at line         line 33</div>
-        <code>                    
-    string
-    <strong>getName</strong>()</code>
+        <code>                    string
+    <strong>getName</strong>()
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Returns the name</p>                                </div>
                 <div class="tags">
@@ -1265,8 +882,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    string</td>
+            <td>string</td>
             <td></td>
         </tr>
     </table>
@@ -1280,13 +896,14 @@
                     <div class="method-item">
                     <h3 id="method_setType">
         <div class="location">in <a href="../../../gossi/codegen/model/parts/TypePart.html#method_setType"><abbr title="gossi\codegen\model\parts\TypePart">TypePart</abbr></a> at line         line 26</div>
-        <code>                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
-    <strong>setType</strong>(
-    string $type, 
-    string $description = null)</code>
+        <code>                    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+    <strong>setType</strong>(string $type, string $description = null)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Sets the type</p>                                </div>
                 <div class="tags">
@@ -1294,14 +911,12 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    string</td>
+                <td>string</td>
                 <td>$type</td>
                 <td></td>
             </tr>
                     <tr>
-                <td>
-    string</td>
+                <td>string</td>
                 <td>$description</td>
                 <td></td>
             </tr>
@@ -1312,8 +927,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
+            <td><abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -1327,12 +941,14 @@
                     <div class="method-item">
                     <h3 id="method_setTypeDescription">
         <div class="location">in <a href="../../../gossi/codegen/model/parts/TypePart.html#method_setTypeDescription"><abbr title="gossi\codegen\model\parts\TypePart">TypePart</abbr></a> at line         line 41</div>
-        <code>                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
-    <strong>setTypeDescription</strong>(
-    string $description)</code>
+        <code>                    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+    <strong>setTypeDescription</strong>(string $description)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Sets the description for the type</p>                                </div>
                 <div class="tags">
@@ -1340,8 +956,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    string</td>
+                <td>string</td>
                 <td>$description</td>
                 <td></td>
             </tr>
@@ -1352,8 +967,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
+            <td><abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -1367,11 +981,14 @@
                     <div class="method-item">
                     <h3 id="method_getType">
         <div class="location">in <a href="../../../gossi/codegen/model/parts/TypePart.html#method_getType"><abbr title="gossi\codegen\model\parts\TypePart">TypePart</abbr></a> at line         line 51</div>
-        <code>                    
-    string
-    <strong>getType</strong>()</code>
+        <code>                    string
+    <strong>getType</strong>()
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Returns the type</p>                                </div>
                 <div class="tags">
@@ -1380,8 +997,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    string</td>
+            <td>string</td>
             <td></td>
         </tr>
     </table>
@@ -1395,11 +1011,14 @@
                     <div class="method-item">
                     <h3 id="method_getTypeDescription">
         <div class="location">in <a href="../../../gossi/codegen/model/parts/TypePart.html#method_getTypeDescription"><abbr title="gossi\codegen\model\parts\TypePart">TypePart</abbr></a> at line         line 60</div>
-        <code>                    
-    string
-    <strong>getTypeDescription</strong>()</code>
+        <code>                    string
+    <strong>getTypeDescription</strong>()
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Returns the type description</p>                                </div>
                 <div class="tags">
@@ -1408,8 +1027,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    string</td>
+            <td>string</td>
             <td></td>
         </tr>
     </table>
@@ -1422,13 +1040,15 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">in <a href="../../../gossi/codegen/model/AbstractPhpMember.html#method___construct"><abbr title="gossi\codegen\model\AbstractPhpMember">AbstractPhpMember</abbr></a> at line         line 73</div>
+        <div class="location">at line         line 52</div>
         <code>                    
-    
-    <strong>__construct</strong>(
-    string $name)</code>
+    <strong>__construct</strong>(string $name)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Creates a new member</p>                                </div>
                 <div class="tags">
@@ -1436,8 +1056,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    string</td>
+                <td>string</td>
                 <td>$name</td>
                 <td>the name of the member</td>
             </tr>
@@ -1453,12 +1072,14 @@
                     <div class="method-item">
                     <h3 id="method_setVisibility">
         <div class="location">in <a href="../../../gossi/codegen/model/AbstractPhpMember.html#method_setVisibility"><abbr title="gossi\codegen\model\AbstractPhpMember">AbstractPhpMember</abbr></a> at line         line 87</div>
-        <code>                    
-    <abbr title="gossi\codegen\model\$this">$this</abbr>
-    <strong>setVisibility</strong>(
-    string $visibility)</code>
+        <code>                    <abbr title="gossi\codegen\model\$this">$this</abbr>
+    <strong>setVisibility</strong>(string $visibility)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Sets the members visibility</p>                                </div>
                 <div class="tags">
@@ -1466,8 +1087,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    string</td>
+                <td>string</td>
                 <td>$visibility</td>
                 <td>the new visibility</td>
             </tr>
@@ -1478,8 +1098,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <abbr title="gossi\codegen\model\$this">$this</abbr></td>
+            <td><abbr title="gossi\codegen\model\$this">$this</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -1510,11 +1129,14 @@
                     <div class="method-item">
                     <h3 id="method_getVisibility">
         <div class="location">in <a href="../../../gossi/codegen/model/AbstractPhpMember.html#method_getVisibility"><abbr title="gossi\codegen\model\AbstractPhpMember">AbstractPhpMember</abbr></a> at line         line 104</div>
-        <code>                    
-    string
-    <strong>getVisibility</strong>()</code>
+        <code>                    string
+    <strong>getVisibility</strong>()
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Returns the visibility state of this member</p>                                </div>
                 <div class="tags">
@@ -1523,8 +1145,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    string</td>
+            <td>string</td>
             <td>the visibility</td>
         </tr>
     </table>
@@ -1538,12 +1159,14 @@
                     <div class="method-item">
                     <h3 id="method_setStatic">
         <div class="location">in <a href="../../../gossi/codegen/model/AbstractPhpMember.html#method_setStatic"><abbr title="gossi\codegen\model\AbstractPhpMember">AbstractPhpMember</abbr></a> at line         line 114</div>
-        <code>                    
-    <abbr title="gossi\codegen\model\$this">$this</abbr>
-    <strong>setStatic</strong>(
-    bool $bool)</code>
+        <code>                    <abbr title="gossi\codegen\model\$this">$this</abbr>
+    <strong>setStatic</strong>(bool $bool)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Sets whether or not this member is static</p>                                </div>
                 <div class="tags">
@@ -1551,8 +1174,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    bool</td>
+                <td>bool</td>
                 <td>$bool</td>
                 <td></td>
             </tr>
@@ -1563,8 +1185,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <abbr title="gossi\codegen\model\$this">$this</abbr></td>
+            <td><abbr title="gossi\codegen\model\$this">$this</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -1578,11 +1199,14 @@
                     <div class="method-item">
                     <h3 id="method_isStatic">
         <div class="location">in <a href="../../../gossi/codegen/model/AbstractPhpMember.html#method_isStatic"><abbr title="gossi\codegen\model\AbstractPhpMember">AbstractPhpMember</abbr></a> at line         line 125</div>
-        <code>                    
-    bool
-    <strong>isStatic</strong>()</code>
+        <code>                    bool
+    <strong>isStatic</strong>()
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Returns whether this member is static</p>                                </div>
                 <div class="tags">
@@ -1591,8 +1215,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    bool</td>
+            <td>bool</td>
             <td><code>true</code> if static and <code>false</code> if not</td>
         </tr>
     </table>
@@ -1606,12 +1229,14 @@
                     <div class="method-item">
                     <h3 id="method_setParent">
         <div class="location">in <a href="../../../gossi/codegen/model/AbstractPhpMember.html#method_setParent"><abbr title="gossi\codegen\model\AbstractPhpMember">AbstractPhpMember</abbr></a> at line         line 136</div>
-        <code>                    
-    <abbr title="gossi\codegen\model\$this">$this</abbr>
-    <strong>setParent</strong>(
-    <a href="../../../gossi/codegen/model/AbstractPhpStruct.html"><abbr title="gossi\codegen\model\AbstractPhpStruct">AbstractPhpStruct</abbr></a>|null $parent)</code>
+        <code>                    <abbr title="gossi\codegen\model\$this">$this</abbr>
+    <strong>setParent</strong>(<a href="../../../gossi/codegen/model/AbstractPhpStruct.html"><abbr title="gossi\codegen\model\AbstractPhpStruct">AbstractPhpStruct</abbr></a>|null $parent)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Sets the parent structure to which this member belongs</p>                                </div>
                 <div class="tags">
@@ -1619,8 +1244,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    <a href="../../../gossi/codegen/model/AbstractPhpStruct.html"><abbr title="gossi\codegen\model\AbstractPhpStruct">AbstractPhpStruct</abbr></a>|null</td>
+                <td><a href="../../../gossi/codegen/model/AbstractPhpStruct.html"><abbr title="gossi\codegen\model\AbstractPhpStruct">AbstractPhpStruct</abbr></a>|null</td>
                 <td>$parent</td>
                 <td></td>
             </tr>
@@ -1631,8 +1255,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <abbr title="gossi\codegen\model\$this">$this</abbr></td>
+            <td><abbr title="gossi\codegen\model\$this">$this</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -1646,11 +1269,14 @@
                     <div class="method-item">
                     <h3 id="method_getParent">
         <div class="location">in <a href="../../../gossi/codegen/model/AbstractPhpMember.html#method_getParent"><abbr title="gossi\codegen\model\AbstractPhpMember">AbstractPhpMember</abbr></a> at line         line 147</div>
-        <code>                    
-    <a href="../../../gossi/codegen/model/AbstractPhpStruct.html"><abbr title="gossi\codegen\model\AbstractPhpStruct">AbstractPhpStruct</abbr></a>
-    <strong>getParent</strong>()</code>
+        <code>                    <a href="../../../gossi/codegen/model/AbstractPhpStruct.html"><abbr title="gossi\codegen\model\AbstractPhpStruct">AbstractPhpStruct</abbr></a>
+    <strong>getParent</strong>()
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Returns the parent structure to which this member belongs</p>                                </div>
                 <div class="tags">
@@ -1659,8 +1285,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <a href="../../../gossi/codegen/model/AbstractPhpStruct.html"><abbr title="gossi\codegen\model\AbstractPhpStruct">AbstractPhpStruct</abbr></a></td>
+            <td><a href="../../../gossi/codegen/model/AbstractPhpStruct.html"><abbr title="gossi\codegen\model\AbstractPhpStruct">AbstractPhpStruct</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -1674,11 +1299,14 @@
                     <div class="method-item">
                     <h3 id="method_isAbstract">
         <div class="location">in <a href="../../../gossi/codegen/model/parts/AbstractPart.html#method_isAbstract"><abbr title="gossi\codegen\model\parts\AbstractPart">AbstractPart</abbr></a> at line         line 21</div>
-        <code>                    
-    bool
-    <strong>isAbstract</strong>()</code>
+        <code>                    bool
+    <strong>isAbstract</strong>()
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Returns whether this is abstract</p>                                </div>
                 <div class="tags">
@@ -1687,8 +1315,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    bool</td>
+            <td>bool</td>
             <td><code>true</code> for abstract and <code>false</code> if not</td>
         </tr>
     </table>
@@ -1702,12 +1329,14 @@
                     <div class="method-item">
                     <h3 id="method_setAbstract">
         <div class="location">in <a href="../../../gossi/codegen/model/parts/AbstractPart.html#method_setAbstract"><abbr title="gossi\codegen\model\parts\AbstractPart">AbstractPart</abbr></a> at line         line 31</div>
-        <code>                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
-    <strong>setAbstract</strong>(
-    bool $bool)</code>
+        <code>                    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+    <strong>setAbstract</strong>(bool $bool)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Sets this to abstract</p>                                </div>
                 <div class="tags">
@@ -1715,8 +1344,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    bool</td>
+                <td>bool</td>
                 <td>$bool</td>
                 <td><code>true</code> for abstract and <code>false</code> if not</td>
             </tr>
@@ -1727,8 +1355,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
+            <td><abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -1742,12 +1369,14 @@
                     <div class="method-item">
                     <h3 id="method_setBody">
         <div class="location">in <a href="../../../gossi/codegen/model/parts/BodyPart.html#method_setBody"><abbr title="gossi\codegen\model\parts\BodyPart">BodyPart</abbr></a> at line         line 22</div>
-        <code>                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
-    <strong>setBody</strong>(
-    string $body)</code>
+        <code>                    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+    <strong>setBody</strong>(string $body)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Sets the body for this</p>                                </div>
                 <div class="tags">
@@ -1755,8 +1384,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    string</td>
+                <td>string</td>
                 <td>$body</td>
                 <td></td>
             </tr>
@@ -1767,8 +1395,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
+            <td><abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -1782,11 +1409,14 @@
                     <div class="method-item">
                     <h3 id="method_getBody">
         <div class="location">in <a href="../../../gossi/codegen/model/parts/BodyPart.html#method_getBody"><abbr title="gossi\codegen\model\parts\BodyPart">BodyPart</abbr></a> at line         line 33</div>
-        <code>                    
-    string
-    <strong>getBody</strong>()</code>
+        <code>                    string
+    <strong>getBody</strong>()
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Returns the body</p>                                </div>
                 <div class="tags">
@@ -1795,8 +1425,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    string</td>
+            <td>string</td>
             <td></td>
         </tr>
     </table>
@@ -1810,11 +1439,14 @@
                     <div class="method-item">
                     <h3 id="method_isFinal">
         <div class="location">in <a href="../../../gossi/codegen/model/parts/FinalPart.html#method_isFinal"><abbr title="gossi\codegen\model\parts\FinalPart">FinalPart</abbr></a> at line         line 21</div>
-        <code>                    
-    bool
-    <strong>isFinal</strong>()</code>
+        <code>                    bool
+    <strong>isFinal</strong>()
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Returns whether this is final</p>                                </div>
                 <div class="tags">
@@ -1823,8 +1455,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    bool</td>
+            <td>bool</td>
             <td><code>true</code> for final and <code>false</code> if not</td>
         </tr>
     </table>
@@ -1838,12 +1469,14 @@
                     <div class="method-item">
                     <h3 id="method_setFinal">
         <div class="location">in <a href="../../../gossi/codegen/model/parts/FinalPart.html#method_setFinal"><abbr title="gossi\codegen\model\parts\FinalPart">FinalPart</abbr></a> at line         line 31</div>
-        <code>                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
-    <strong>setFinal</strong>(
-    bool $bool)</code>
+        <code>                    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+    <strong>setFinal</strong>(bool $bool)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Sets this final</p>                                </div>
                 <div class="tags">
@@ -1851,8 +1484,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    bool</td>
+                <td>bool</td>
                 <td>$bool</td>
                 <td><code>true</code> for final and <code>false</code> if not</td>
             </tr>
@@ -1863,8 +1495,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
+            <td><abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -1877,22 +1508,23 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setParameters">
-        <div class="location">in <a href="../../../gossi/codegen/model/parts/ParametersPart.html#method_setParameters"><abbr title="gossi\codegen\model\parts\ParametersPart">ParametersPart</abbr></a> at line         line 25</div>
-        <code>                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
-    <strong>setParameters</strong>(
-    array $parameters)</code>
+        <div class="location">in <a href="../../../gossi/codegen/model/parts/ParametersPart.html#method_setParameters"><abbr title="gossi\codegen\model\parts\ParametersPart">ParametersPart</abbr></a> at line         line 31</div>
+        <code>                    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+    <strong>setParameters</strong>(array $parameters)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
-                                    <p>Sets a collection of parameters</p>                                </div>
+                                    <p>Sets a collection of parameters</p>                    <p>Note: clears all parameters before setting the new ones</p>            </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    array</td>
+                <td>array</td>
                 <td>$parameters</td>
                 <td></td>
             </tr>
@@ -1903,8 +1535,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
+            <td><abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -1917,13 +1548,15 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_addParameter">
-        <div class="location">in <a href="../../../gossi/codegen/model/parts/ParametersPart.html#method_addParameter"><abbr title="gossi\codegen\model\parts\ParametersPart">ParametersPart</abbr></a> at line         line 37</div>
-        <code>                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
-    <strong>addParameter</strong>(
-    <a href="../../../gossi/codegen/model/PhpParameter.html"><abbr title="gossi\codegen\model\PhpParameter">PhpParameter</abbr></a> $parameter)</code>
+        <div class="location">in <a href="../../../gossi/codegen/model/parts/ParametersPart.html#method_addParameter"><abbr title="gossi\codegen\model\parts\ParametersPart">ParametersPart</abbr></a> at line         line 46</div>
+        <code>                    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+    <strong>addParameter</strong>(<a href="../../../gossi/codegen/model/PhpParameter.html"><abbr title="gossi\codegen\model\PhpParameter">PhpParameter</abbr></a> $parameter)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Adds a parameter</p>                                </div>
                 <div class="tags">
@@ -1931,8 +1564,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    <a href="../../../gossi/codegen/model/PhpParameter.html"><abbr title="gossi\codegen\model\PhpParameter">PhpParameter</abbr></a></td>
+                <td><a href="../../../gossi/codegen/model/PhpParameter.html"><abbr title="gossi\codegen\model\PhpParameter">PhpParameter</abbr></a></td>
                 <td>$parameter</td>
                 <td></td>
             </tr>
@@ -1943,8 +1575,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
+            <td><abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -1957,13 +1588,15 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_hasParameter">
-        <div class="location">in <a href="../../../gossi/codegen/model/parts/ParametersPart.html#method_hasParameter"><abbr title="gossi\codegen\model\parts\ParametersPart">ParametersPart</abbr></a> at line         line 49</div>
-        <code>                    
-    bool
-    <strong>hasParameter</strong>(
-    string $name)</code>
+        <div class="location">in <a href="../../../gossi/codegen/model/parts/ParametersPart.html#method_hasParameter"><abbr title="gossi\codegen\model\parts\ParametersPart">ParametersPart</abbr></a> at line         line 58</div>
+        <code>                    bool
+    <strong>hasParameter</strong>(string $name)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Checks whether a parameter exists</p>                                </div>
                 <div class="tags">
@@ -1971,8 +1604,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    string</td>
+                <td>string</td>
                 <td>$name</td>
                 <td>parameter name</td>
             </tr>
@@ -1983,8 +1615,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    bool</td>
+            <td>bool</td>
             <td><code>true</code> if a parameter exists and <code>false</code> if not</td>
         </tr>
     </table>
@@ -1997,15 +1628,15 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_addSimpleParameter">
-        <div class="location">in <a href="../../../gossi/codegen/model/parts/ParametersPart.html#method_addSimpleParameter"><abbr title="gossi\codegen\model\parts\ParametersPart">ParametersPart</abbr></a> at line         line 67</div>
-        <code>                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
-    <strong>addSimpleParameter</strong>(
-    string $name, 
-    null|string $type = null, 
-    mixed $defaultValue = null)</code>
+        <div class="location">in <a href="../../../gossi/codegen/model/parts/ParametersPart.html#method_addSimpleParameter"><abbr title="gossi\codegen\model\parts\ParametersPart">ParametersPart</abbr></a> at line         line 77</div>
+        <code>                    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+    <strong>addSimpleParameter</strong>(string $name, null|string $type = null, mixed $defaultValue = null)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>A quick way to add a parameter which is created from the given parameters</p>                                </div>
                 <div class="tags">
@@ -2013,20 +1644,17 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    string</td>
+                <td>string</td>
                 <td>$name</td>
                 <td></td>
             </tr>
                     <tr>
-                <td>
-    null|string</td>
+                <td>null|string</td>
                 <td>$type</td>
                 <td></td>
             </tr>
                     <tr>
-                <td>
-    mixed</td>
+                <td>mixed</td>
                 <td>$defaultValue</td>
                 <td>omit the argument to define no default value</td>
             </tr>
@@ -2037,8 +1665,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
+            <td><abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -2051,16 +1678,15 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_addSimpleDescParameter">
-        <div class="location">in <a href="../../../gossi/codegen/model/parts/ParametersPart.html#method_addSimpleDescParameter"><abbr title="gossi\codegen\model\parts\ParametersPart">ParametersPart</abbr></a> at line         line 89</div>
-        <code>                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
-    <strong>addSimpleDescParameter</strong>(
-    string $name, 
-    null|string $type = null, 
-    null|string $typeDescription = null, 
-    mixed $defaultValue = null)</code>
+        <div class="location">in <a href="../../../gossi/codegen/model/parts/ParametersPart.html#method_addSimpleDescParameter"><abbr title="gossi\codegen\model\parts\ParametersPart">ParametersPart</abbr></a> at line         line 99</div>
+        <code>                    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+    <strong>addSimpleDescParameter</strong>(string $name, null|string $type = null, null|string $typeDescription = null, mixed $defaultValue = null)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>A quick way to add a parameter with description which is created from the given parameters</p>                                </div>
                 <div class="tags">
@@ -2068,26 +1694,22 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    string</td>
+                <td>string</td>
                 <td>$name</td>
                 <td></td>
             </tr>
                     <tr>
-                <td>
-    null|string</td>
+                <td>null|string</td>
                 <td>$type</td>
                 <td></td>
             </tr>
                     <tr>
-                <td>
-    null|string</td>
+                <td>null|string</td>
                 <td>$typeDescription</td>
                 <td></td>
             </tr>
                     <tr>
-                <td>
-    mixed</td>
+                <td>mixed</td>
                 <td>$defaultValue</td>
                 <td>omit the argument to define no default value</td>
             </tr>
@@ -2098,8 +1720,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
+            <td><abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -2112,13 +1733,15 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getParameter">
-        <div class="location">in <a href="../../../gossi/codegen/model/parts/ParametersPart.html#method_getParameter"><abbr title="gossi\codegen\model\parts\ParametersPart">ParametersPart</abbr></a> at line         line 108</div>
-        <code>                    
-    <a href="../../../gossi/codegen/model/PhpParameter.html"><abbr title="gossi\codegen\model\PhpParameter">PhpParameter</abbr></a>
-    <strong>getParameter</strong>(
-    string|int $nameOrIndex)</code>
+        <div class="location">in <a href="../../../gossi/codegen/model/parts/ParametersPart.html#method_getParameter"><abbr title="gossi\codegen\model\parts\ParametersPart">ParametersPart</abbr></a> at line         line 119</div>
+        <code>                    <a href="../../../gossi/codegen/model/PhpParameter.html"><abbr title="gossi\codegen\model\PhpParameter">PhpParameter</abbr></a>
+    <strong>getParameter</strong>(string|int $nameOrIndex)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Returns a parameter by index or name</p>                                </div>
                 <div class="tags">
@@ -2126,8 +1749,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    string|int</td>
+                <td>string|int</td>
                 <td>$nameOrIndex</td>
                 <td></td>
             </tr>
@@ -2138,13 +1760,21 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <a href="../../../gossi/codegen/model/PhpParameter.html"><abbr title="gossi\codegen\model\PhpParameter">PhpParameter</abbr></a></td>
+            <td><a href="../../../gossi/codegen/model/PhpParameter.html"><abbr title="gossi\codegen\model\PhpParameter">PhpParameter</abbr></a></td>
             <td></td>
         </tr>
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" href="http://php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
                     </div>
     </div>
@@ -2152,14 +1782,15 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_replaceParameter">
-        <div class="location">in <a href="../../../gossi/codegen/model/parts/ParametersPart.html#method_replaceParameter"><abbr title="gossi\codegen\model\parts\ParametersPart">ParametersPart</abbr></a> at line         line 136</div>
-        <code>                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
-    <strong>replaceParameter</strong>(
-    int $position, 
-    <a href="../../../gossi/codegen/model/PhpParameter.html"><abbr title="gossi\codegen\model\PhpParameter">PhpParameter</abbr></a> $parameter)</code>
+        <div class="location">in <a href="../../../gossi/codegen/model/parts/ParametersPart.html#method_replaceParameter"><abbr title="gossi\codegen\model\parts\ParametersPart">ParametersPart</abbr></a> at line         line 142</div>
+        <code>                    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+    <strong>replaceParameter</strong>(int $position, <a href="../../../gossi/codegen/model/PhpParameter.html"><abbr title="gossi\codegen\model\PhpParameter">PhpParameter</abbr></a> $parameter)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Replaces a parameter at a given position</p>                                </div>
                 <div class="tags">
@@ -2167,14 +1798,12 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    int</td>
+                <td>int</td>
                 <td>$position</td>
                 <td></td>
             </tr>
                     <tr>
-                <td>
-    <a href="../../../gossi/codegen/model/PhpParameter.html"><abbr title="gossi\codegen\model\PhpParameter">PhpParameter</abbr></a></td>
+                <td><a href="../../../gossi/codegen/model/PhpParameter.html"><abbr title="gossi\codegen\model\PhpParameter">PhpParameter</abbr></a></td>
                 <td>$parameter</td>
                 <td></td>
             </tr>
@@ -2185,8 +1814,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
+            <td><abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -2208,13 +1836,15 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_removeParameter">
-        <div class="location">in <a href="../../../gossi/codegen/model/parts/ParametersPart.html#method_removeParameter"><abbr title="gossi\codegen\model\parts\ParametersPart">ParametersPart</abbr></a> at line         line 151</div>
-        <code>                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
-    <strong>removeParameter</strong>(
-    int $position)</code>
+        <div class="location">in <a href="../../../gossi/codegen/model/parts/ParametersPart.html#method_removeParameter"><abbr title="gossi\codegen\model\parts\ParametersPart">ParametersPart</abbr></a> at line         line 155</div>
+        <code>                    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+    <strong>removeParameter</strong>($param)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Remove a parameter at a given position</p>                                </div>
                 <div class="tags">
@@ -2222,9 +1852,8 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    int</td>
-                <td>$position</td>
+                <td></td>
+                <td>$param</td>
                 <td></td>
             </tr>
             </table>
@@ -2234,8 +1863,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
+            <td><abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -2248,12 +1876,15 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getParameters">
-        <div class="location">in <a href="../../../gossi/codegen/model/parts/ParametersPart.html#method_getParameters"><abbr title="gossi\codegen\model\parts\ParametersPart">ParametersPart</abbr></a> at line         line 166</div>
-        <code>                    
-    <a href="../../../gossi/codegen/model/PhpParameter.html"><abbr title="gossi\codegen\model\PhpParameter">PhpParameter</abbr></a>[]
-    <strong>getParameters</strong>()</code>
+        <div class="location">in <a href="../../../gossi/codegen/model/parts/ParametersPart.html#method_getParameters"><abbr title="gossi\codegen\model\parts\ParametersPart">ParametersPart</abbr></a> at line         line 197</div>
+        <code>                    array
+    <strong>getParameters</strong>()
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Returns a collection of parameters</p>                                </div>
                 <div class="tags">
@@ -2262,8 +1893,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <a href="../../../gossi/codegen/model/PhpParameter.html"><abbr title="gossi\codegen\model\PhpParameter">PhpParameter</abbr></a>[]</td>
+            <td>array</td>
             <td></td>
         </tr>
     </table>
@@ -2277,12 +1907,14 @@
                     <div class="method-item">
                     <h3 id="method_setReferenceReturned">
         <div class="location">in <a href="../../../gossi/codegen/model/parts/ReferenceReturnPart.html#method_setReferenceReturned"><abbr title="gossi\codegen\model\parts\ReferenceReturnPart">ReferenceReturnPart</abbr></a> at line         line 22</div>
-        <code>                    
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
-    <strong>setReferenceReturned</strong>(
-    bool $bool)</code>
+        <code>                    <abbr title="gossi\codegen\model\parts\$this">$this</abbr>
+    <strong>setReferenceReturned</strong>(bool $bool)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Set true if a reference is returned of false if not</p>                                </div>
                 <div class="tags">
@@ -2290,8 +1922,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    bool</td>
+                <td>bool</td>
                 <td>$bool</td>
                 <td></td>
             </tr>
@@ -2302,8 +1933,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
+            <td><abbr title="gossi\codegen\model\parts\$this">$this</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -2317,11 +1947,14 @@
                     <div class="method-item">
                     <h3 id="method_isReferenceReturned">
         <div class="location">in <a href="../../../gossi/codegen/model/parts/ReferenceReturnPart.html#method_isReferenceReturned"><abbr title="gossi\codegen\model\parts\ReferenceReturnPart">ReferenceReturnPart</abbr></a> at line         line 33</div>
-        <code>                    
-    bool
-    <strong>isReferenceReturned</strong>()</code>
+        <code>                    bool
+    <strong>isReferenceReturned</strong>()
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Returns whether a reference is returned</p>                                </div>
                 <div class="tags">
@@ -2330,8 +1963,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    bool</td>
+            <td>bool</td>
             <td></td>
         </tr>
     </table>
@@ -2344,13 +1976,15 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_create">
-        <div class="location">at line         line 49</div>
+        <div class="location">at line         line 48</div>
         <code>        static            
-    
-    <strong>create</strong>(
-    string $name)</code>
+    <strong>create</strong>(string $name)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
                                     <p>Creates a new PHP method.</p>                                </div>
                 <div class="tags">
@@ -2358,8 +1992,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    string</td>
+                <td>string</td>
                 <td>$name</td>
                 <td>the method name</td>
             </tr>
@@ -2373,57 +2006,29 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_fromReflection">
-        <div class="location">at line         line 59</div>
-        <code>        static            
-    <a href="../../../gossi/codegen/model/PhpMethod.html"><abbr title="gossi\codegen\model\PhpMethod">PhpMethod</abbr></a>
-    <strong>fromReflection</strong>(
-    <a target="_blank" href="http://php.net/ReflectionMethod">ReflectionMethod</a> $ref)</code>
+                    <h3 id="method_generateDocblock">
+        <div class="location">at line         line 60</div>
+        <code>                    <abbr title="gossi\codegen\model\$this">$this</abbr>
+    <strong>generateDocblock</strong>()
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                     <div class="method-description">
-                                    <p>Creates a PHP method from reflection</p>                                </div>
+                                    <p>Generates docblock based on provided information</p>                                </div>
                 <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-    <a target="_blank" href="http://php.net/ReflectionMethod">ReflectionMethod</a></td>
-                <td>$ref</td>
-                <td></td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <a href="../../../gossi/codegen/model/PhpMethod.html"><abbr title="gossi\codegen\model\PhpMethod">PhpMethod</abbr></a></td>
+            <td><abbr title="gossi\codegen\model\$this">$this</abbr></td>
             <td></td>
         </tr>
     </table>
 
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_generateDocblock">
-        <div class="location">at line         line 104</div>
-        <code>                    
-    
-    <strong>generateDocblock</strong>()</code>
-    </h3>
-    <div class="details">
-                    <div class="method-description">
-                                    <p>Generates docblock based on provided information</p>                                </div>
-                <div class="tags">
-            
             
             
                     </div>

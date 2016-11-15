@@ -27,9 +27,10 @@
                 <select id="version-switcher" name="version">
                                             <option value="../../../../v0.1/index.html">v0.1</option>
                                             <option value="../../../../v0.2/index.html">v0.2</option>
-                                            <option value="../../../../v0.3/index.html" selected>v0.3</option>
+                                            <option value="../../../../v0.3/index.html">v0.3</option>
                                             <option value="../../../../v0.3.1/index.html">v0.3.1</option>
-                                            <option value="../../../../master/index.html">master branch</option>
+                                            <option value="../../../../v0.3.2/index.html">v0.3.2</option>
+                                            <option value="../../../../master/index.html" selected>master branch</option>
                                     </select>
             </form>
                 <form id="search-form" action="../../../search.html" method="GET">
@@ -82,12 +83,18 @@
                 <div id="page-content">
                 
     <div class="page-header">
-        <h1>FileParser</h1>
+        <h1>
+            FileParser
+                
+        </h1>
     </div>
 
     <p>    class
-    <strong>FileParser</strong>
+    <strong>FileParser</strong>        extends <abbr title="PhpParser\NodeVisitorAbstract">NodeVisitorAbstract</abbr>
 </p>
+
+        
+    
 
     
     
@@ -99,12 +106,65 @@
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    <a href="../../../gossi/codegen/model/AbstractPhpStruct.html"><abbr title="gossi\codegen\model\AbstractPhpStruct">AbstractPhpStruct</abbr></a>
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_parse">parse</a>(
-    <a href="../../../gossi/codegen/parser/visitor/AbstractPhpStructVisitor.html"><abbr title="gossi\codegen\parser\visitor\AbstractPhpStructVisitor">AbstractPhpStructVisitor</abbr></a> $visitor, 
-    string $filename)
+                    <a href="#method___construct">__construct</a>($filename)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addVisitor">addVisitor</a>(<a href="../../../gossi/codegen/parser/visitor/ParserVisitorInterface.html"><abbr title="gossi\codegen\parser\visitor\ParserVisitorInterface">ParserVisitorInterface</abbr></a> $visitor)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_removeVisitor">removeVisitor</a>(<a href="../../../gossi/codegen/parser/visitor/ParserVisitorInterface.html"><abbr title="gossi\codegen\parser\visitor\ParserVisitorInterface">ParserVisitorInterface</abbr></a> $visitor)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_hasVisitor">hasVisitor</a>(<a href="../../../gossi/codegen/parser/visitor/ParserVisitorInterface.html"><abbr title="gossi\codegen\parser\visitor\ParserVisitorInterface">ParserVisitorInterface</abbr></a> $visitor)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../gossi/codegen/model/AbstractPhpStruct.html"><abbr title="gossi\codegen\model\AbstractPhpStruct">AbstractPhpStruct</abbr></a>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_parse">parse</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_enterNode">enterNode</a>(<abbr title="PhpParser\Node">Node</abbr> $node)
+        
                                             <p class="no-description">No description</p>
                                     </div>
                 <div class="col-md-2"></div>
@@ -116,40 +176,139 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_parse">
-        <div class="location">at line         line 21</div>
+                    <h3 id="method___construct">
+        <div class="location">at line         line 20</div>
         <code>                    
-    <a href="../../../gossi/codegen/model/AbstractPhpStruct.html"><abbr title="gossi\codegen\model\AbstractPhpStruct">AbstractPhpStruct</abbr></a>
-    <strong>parse</strong>(
-    <a href="../../../gossi/codegen/parser/visitor/AbstractPhpStructVisitor.html"><abbr title="gossi\codegen\parser\visitor\AbstractPhpStructVisitor">AbstractPhpStructVisitor</abbr></a> $visitor, 
-    string $filename)</code>
+    <strong>__construct</strong>($filename)
+        </code>
     </h3>
     <div class="details">
+            
+    
+
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-    <a href="../../../gossi/codegen/parser/visitor/AbstractPhpStructVisitor.html"><abbr title="gossi\codegen\parser\visitor\AbstractPhpStructVisitor">AbstractPhpStructVisitor</abbr></a></td>
-                <td>$visitor</td>
                 <td></td>
-            </tr>
-                    <tr>
-                <td>
-    string</td>
                 <td>$filename</td>
                 <td></td>
             </tr>
             </table>
 
             
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addVisitor">
+        <div class="location">at line         line 25</div>
+        <code>                    
+    <strong>addVisitor</strong>(<a href="../../../gossi/codegen/parser/visitor/ParserVisitorInterface.html"><abbr title="gossi\codegen\parser\visitor\ParserVisitorInterface">ParserVisitorInterface</abbr></a> $visitor)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../gossi/codegen/parser/visitor/ParserVisitorInterface.html"><abbr title="gossi\codegen\parser\visitor\ParserVisitorInterface">ParserVisitorInterface</abbr></a></td>
+                <td>$visitor</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeVisitor">
+        <div class="location">at line         line 30</div>
+        <code>                    
+    <strong>removeVisitor</strong>(<a href="../../../gossi/codegen/parser/visitor/ParserVisitorInterface.html"><abbr title="gossi\codegen\parser\visitor\ParserVisitorInterface">ParserVisitorInterface</abbr></a> $visitor)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../gossi/codegen/parser/visitor/ParserVisitorInterface.html"><abbr title="gossi\codegen\parser\visitor\ParserVisitorInterface">ParserVisitorInterface</abbr></a></td>
+                <td>$visitor</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasVisitor">
+        <div class="location">at line         line 35</div>
+        <code>                    
+    <strong>hasVisitor</strong>(<a href="../../../gossi/codegen/parser/visitor/ParserVisitorInterface.html"><abbr title="gossi\codegen\parser\visitor\ParserVisitorInterface">ParserVisitorInterface</abbr></a> $visitor)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../gossi/codegen/parser/visitor/ParserVisitorInterface.html"><abbr title="gossi\codegen\parser\visitor\ParserVisitorInterface">ParserVisitorInterface</abbr></a></td>
+                <td>$visitor</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parse">
+        <div class="location">at line         line 43</div>
+        <code>                    <a href="../../../gossi/codegen/model/AbstractPhpStruct.html"><abbr title="gossi\codegen\model\AbstractPhpStruct">AbstractPhpStruct</abbr></a>
+    <strong>parse</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+            
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>
-    <a href="../../../gossi/codegen/model/AbstractPhpStruct.html"><abbr title="gossi\codegen\model\AbstractPhpStruct">AbstractPhpStruct</abbr></a></td>
+            <td><a href="../../../gossi/codegen/model/AbstractPhpStruct.html"><abbr title="gossi\codegen\model\AbstractPhpStruct">AbstractPhpStruct</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -164,6 +323,35 @@
             </tr>
             </table>
 
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_enterNode">
+        <div class="location">at line         line 56</div>
+        <code>                    
+    <strong>enterNode</strong>(<abbr title="PhpParser\Node">Node</abbr> $node)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="PhpParser\Node">Node</abbr></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
             
                     </div>
     </div>
