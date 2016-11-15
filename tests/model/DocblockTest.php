@@ -14,6 +14,9 @@ use gossi\docblock\tags\AuthorTag;
 use gossi\docblock\tags\SeeTag;
 use gossi\docblock\tags\ThrowsTag;
 
+/**
+ * @group model
+ */
 class DocblockTest extends \PHPUnit_Framework_TestCase {
 
 	const METHOD = 'myMethod';
@@ -181,7 +184,7 @@ class DocblockTest extends \PHPUnit_Framework_TestCase {
  * my very long method
  * 
  * @see MyClass#myMethod see-desc
- * @param mixed $a method-param
+ * @param $a method-param
  * @throws \Exception when something goes wrong
  * @return string this method returns a string
  */';

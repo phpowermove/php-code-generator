@@ -4,6 +4,7 @@ namespace gossi\codegen\generator;
 use gossi\codegen\config\CodeFileGeneratorConfig;
 use gossi\codegen\model\GenerateableInterface;
 use gossi\docblock\Docblock;
+use phootwork\lang\Text;
 
 /**
  * Code file generator.
@@ -22,6 +23,10 @@ class CodeFileGenerator extends CodeGenerator {
 	 * @param CodeFileGeneratorConfig|array $config
 	 */
 	public function __construct($config = null) {
+		parent::__construct($config);
+	}
+	
+	protected function configure($config = null) {
 		if (is_array($config)) {
 			$this->config = new CodeFileGeneratorConfig($config);
 		} else if ($config instanceof CodeFileGeneratorConfig) {
@@ -29,8 +34,6 @@ class CodeFileGenerator extends CodeGenerator {
 		} else {
 			$this->config = new CodeFileGeneratorConfig();
 		}
-
-		$this->init();
 	}
 
 	/**
@@ -49,14 +52,13 @@ class CodeFileGenerator extends CodeGenerator {
 		$content = "<?php\n";
 
 		$comment = $this->config->getHeaderComment();
-		if (!empty($comment)) {
-			$docblock = new Docblock();
-			$docblock->setLongDescription($comment);
-			$content .= str_replace('/**', '/*', $docblock->toString()) . "\n";
+		if ($comment !== null && !$comment->isEmpty()) {
+			$content .= str_replace('/**', '/*', $comment->toString()) . "\n";
 		}
 
-		if ($this->config->getHeaderDocblock() instanceof Docblock) {
-			$content .= $this->config->getHeaderDocblock()->toString() . "\n";
+		$docblock = $this->config->getHeaderDocblock();
+		if ($docblock !== null && !$docblock->isEmpty()) {
+			$content .= $docblock->toString() . "\n";
 		}
 
 		if ($this->config->getDeclareStrictTypes()) {
@@ -65,7 +67,7 @@ class CodeFileGenerator extends CodeGenerator {
 
 		$content .= parent::generate($model);
 
-		if ($this->config->getBlankLineAtEnd()) {
+		if ($this->config->getBlankLineAtEnd() && !Text::create($content)->endsWith("\n")) {
 			$content .= "\n";
 		}
 

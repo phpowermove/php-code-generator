@@ -1,6 +1,8 @@
 <?php
 namespace gossi\codegen\config;
 
+use gossi\codegen\generator\CodeGenerator;
+use phootwork\lang\Comparator;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -21,56 +23,34 @@ class CodeGeneratorConfig {
 	 */
 	public function __construct(array $options = []) {
 		$resolver = new OptionsResolver();
-		$resolver->setDefined($this->getOptionalOptions());
-		$resolver->setDefaults($this->getDefaultOptions());
-		foreach ($this->getAllowedOptionTypes() as $option => $type) {
-			$resolver->setAllowedTypes($option, $type);
-		}
+		$this->configureOptions($resolver);
 		$this->options = $resolver->resolve($options);
 	}
-
-	/**
-	 * Return optional config options
-	 *
-	 * @return array
-	 */
-	protected function getOptionalOptions() {
-		return [
-			'generateDocblock',
-			'generateEmptyDocblock',
-			'generateScalarTypeHints',
-			'generateReturnTypeHints',
-		];
-	}
-
-	/**
-	 * Return default config options
-	 *
-	 * @return array
-	 */
-	protected function getDefaultOptions() {
-		return [
+	
+	protected function configureOptions(OptionsResolver $resolver) {
+		$resolver->setDefaults([
 			'generateDocblock' => true,
 			'generateEmptyDocblock' => function (Options $options) {
 				return $options['generateDocblock'];
 			},
 			'generateScalarTypeHints' => false,
 			'generateReturnTypeHints' => false,
-		];
-	}
-
-	/**
-	 * Return allowed option types
-	 *
-	 * @return array
-	 */
-	protected function getAllowedOptionTypes() {
-		return [
-			'generateDocblock' => 'bool',
-			'generateEmptyDocblock' => 'bool',
-			'generateScalarTypeHints' => 'bool',
-			'generateReturnTypeHints' => 'bool',
-		];
+			'enableSorting' => true,
+			'useStatementSorting' => CodeGenerator::SORT_USESTATEMENTS_DEFAULT,
+			'constantSorting' => CodeGenerator::SORT_CONSTANTS_DEFAULT,
+			'propertySorting' => CodeGenerator::SORT_PROPERTIES_DEFAULT,
+			'methodSorting' => CodeGenerator::SORT_METHODS_DEFAULT
+		]);
+		
+		$resolver->setAllowedTypes('generateDocblock', 'bool');
+		$resolver->setAllowedTypes('generateEmptyDocblock', 'bool');
+		$resolver->setAllowedTypes('generateScalarTypeHints', 'bool');
+		$resolver->setAllowedTypes('generateReturnTypeHints', 'bool');
+		$resolver->setAllowedTypes('enableSorting', 'bool');
+		$resolver->setAllowedTypes('useStatementSorting', ['bool', 'string', '\Closure', 'phootwork\lang\Comparator']);
+		$resolver->setAllowedTypes('constantSorting', ['bool', 'string', '\Closure', 'phootwork\lang\Comparator']);
+		$resolver->setAllowedTypes('propertySorting', ['bool', 'string', '\Closure', 'phootwork\lang\Comparator']);
+		$resolver->setAllowedTypes('methodSorting', ['bool', 'string', '\Closure', 'phootwork\lang\Comparator']);
 	}
 
 	/**
@@ -127,6 +107,51 @@ class CodeGeneratorConfig {
 	public function getGenerateScalarTypeHints() {
 		return $this->options['generateScalarTypeHints'];
 	}
+	
+	/**
+	 * Returns whether sorting is enabled
+	 * 
+	 * @return bool `true` if it is enabled and `false` if not
+	 */
+	public function isSortingEnabled() {
+		return $this->options['enableSorting'];
+	}
+	
+	/**
+	 * Returns the use statement sorting
+	 * 
+	 * @return string|bool|Comparator|\Closure
+	 */
+	public function getUseStatementSorting() {
+		return $this->options['useStatementSorting'];
+	}
+	
+	/**
+	 * Returns the constant sorting
+	 *
+	 * @return string|bool|Comparator|\Closure
+	 */
+	public function getConstantSorting() {
+		return $this->options['constantSorting'];
+	}
+	
+	/**
+	 * Returns the property sorting
+	 *
+	 * @return string|bool|Comparator|\Closure
+	 */
+	public function getPropertySorting() {
+		return $this->options['propertySorting'];
+	}
+	
+	/**
+	 * Returns the method sorting
+	 *
+	 * @return string|bool|Comparator|\Closure
+	 */
+	public function getMethodSorting() {
+		return $this->options['methodSorting'];
+	}
 
 	/**
 	 * Sets whether scalar type hints will be generated for method parameters (PHP 7)
@@ -156,6 +181,61 @@ class CodeGeneratorConfig {
 	 */
 	public function setGenerateReturnTypeHints($generate) {
 		$this->options['generateReturnTypeHints'] = $generate;
+		return $this;
+	}
+	
+	/**
+	 * Returns whether sorting is enabled
+	 *
+	 * @param $enabled bool `true` if it is enabled and `false` if not
+	 * @return $this
+	 */
+	public function setSortingEnabled($enabled) {
+		$this->options['enableSorting'] = $enabled;
+		return $this;
+	}
+	
+	/**
+	 * Returns the use statement sorting
+	 *
+	 * @param $sorting string|bool|Comparator|\Closure
+	 * @return $this
+	 */
+	public function setUseStatementSorting($sorting) {
+		$this->options['useStatementSorting'] = $sorting;
+		return $this;
+	}
+	
+	/**
+	 * Returns the constant sorting
+	 *
+	 * @param $sorting string|bool|Comparator|\Closure
+	 * @return $this
+	 */
+	public function setConstantSorting($sorting) {
+		$this->options['constantSorting'] = $sorting;
+		return $this;
+	}
+	
+	/**
+	 * Returns the property sorting
+	 *
+	 * @param $sorting string|bool|Comparator|\Closure
+	 * @return $this
+	 */
+	public function setPropertySorting($sorting) {
+		$this->options['propertySorting'] = $sorting;
+		return $this;
+	}
+	
+	/**
+	 * Returns the method sorting
+	 *
+	 * @param $sorting string|bool|Comparator|\Closure
+	 * @return $this
+	 */
+	public function setMethodSorting($sorting) {
+		$this->options['methodSorting'] = $sorting;
 		return $this;
 	}
 }

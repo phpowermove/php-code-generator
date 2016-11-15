@@ -4,9 +4,9 @@ namespace gossi\codegen\model;
 use gossi\codegen\model\parts\ConstantsPart;
 use gossi\codegen\model\parts\InterfacesPart;
 use gossi\codegen\parser\FileParser;
-use gossi\codegen\parser\visitor\PhpInterfaceVisitor;
-use gossi\codegen\utils\ReflectionUtils;
-use gossi\docblock\Docblock;
+use gossi\codegen\parser\visitor\ConstantParserVisitor;
+use gossi\codegen\parser\visitor\InterfaceParserVisitor;
+use gossi\codegen\parser\visitor\MethodParserVisitor;
 
 /**
  * Represents a PHP interface.
@@ -21,27 +21,12 @@ class PhpInterface extends AbstractPhpStruct implements GenerateableInterface, C
 	/**
 	 * Creates a PHP interface from reflection
 	 *
+	 * @deprecated Use fromFile() instead
 	 * @param \ReflectionClass $ref
 	 * @return PhpInterface
 	 */
 	public static function fromReflection(\ReflectionClass $ref) {
-		$interface = new static();
-		$interface->setQualifiedName($ref->name)
-			->setConstants($ref->getConstants())
-			->setUseStatements(ReflectionUtils::getUseStatements($ref));
-
-		$docblock = new Docblock($ref);
-		$interface->setDocblock($docblock);
-		$interface->setDescription($docblock->getShortDescription());
-		$interface->setLongDescription($docblock->getLongDescription());
-
-		foreach ($ref->getMethods() as $method) {
-			$method = static::createMethod($method);
-			$method->setAbstract(false);
-			$interface->setMethod($method);
-		}
-
-		return $interface;
+		return static::fromFile($ref->getFileName());
 	}
 
 	/**
@@ -51,9 +36,14 @@ class PhpInterface extends AbstractPhpStruct implements GenerateableInterface, C
 	 * @return PhpInterface
 	 */
 	public static function fromFile($filename) {
-		$visitor = new PhpInterfaceVisitor();
-		$parser = new FileParser();
-		return $parser->parse($visitor, $filename);
+		$interface = new PhpInterface();
+		$parser = new FileParser($filename);
+		$parser->addVisitor(new InterfaceParserVisitor($interface));
+		$parser->addVisitor(new MethodParserVisitor($interface));
+		$parser->addVisitor(new ConstantParserVisitor($interface));
+		$parser->parse();
+		
+		return $interface;
 	}
 
 	/**
@@ -63,6 +53,8 @@ class PhpInterface extends AbstractPhpStruct implements GenerateableInterface, C
 	 */
 	public function __construct($name = null) {
 		parent::__construct($name);
+		$this->initConstants();
+		$this->initInterfaces();
 	}
 
 	/**

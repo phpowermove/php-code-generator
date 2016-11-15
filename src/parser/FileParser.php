@@ -2,34 +2,99 @@
 namespace gossi\codegen\parser;
 
 use gossi\codegen\model\AbstractPhpStruct;
-use gossi\codegen\parser\visitor\AbstractPhpStructVisitor;
+use gossi\codegen\parser\visitor\ParserVisitorInterface;
+use phootwork\collection\Set;
 use phootwork\file\exception\FileNotFoundException;
 use phootwork\file\File;
 use PhpParser\Lexer\Emulative;
+use PhpParser\Node;
 use PhpParser\NodeTraverser;
+use PhpParser\NodeVisitorAbstract;
 use PhpParser\Parser;
 
-class FileParser {
+class FileParser extends NodeVisitorAbstract {
 
+	private $visitors;
+	private $filename;
+	
+	public function __construct($filename) {
+		$this->filename = $filename;
+		$this->visitors = new Set();
+	}
+	
+	public function addVisitor(ParserVisitorInterface $visitor) {
+		$this->visitors->add($visitor);
+		return $this;
+	}
+	
+	public function removeVisitor(ParserVisitorInterface $visitor) {
+		$this->visitors->remove($visitor);
+		return $this;
+	}
+	
+	public function hasVisitor(ParserVisitorInterface $visitor) {
+		return $this->visitors->contains($visitor);
+	}
+	
 	/**
-	 * 
-	 * @param AbstractPhpStructVisitor $visitor
-	 * @param string $filename
 	 * @throws FileNotFoundException
 	 * @return AbstractPhpStruct
 	 */
-	public function parse(AbstractPhpStructVisitor $visitor, $filename) {
-		$file = new File($filename);
+	public function parse() {
+		$file = new File($this->filename);
 
 		if (!$file->exists()) {
-			throw new FileNotFoundException(sprintf('File (%s) does not exist.', $filename));
+			throw new FileNotFoundException(sprintf('File (%s) does not exist.', $this->filename));
 		}
 
 		$parser = new Parser(new Emulative());
 		$traverser = new NodeTraverser();
-		$traverser->addVisitor($visitor);
+		$traverser->addVisitor($this);
 		$traverser->traverse($parser->parse($file->read()));
-
-		return $visitor->getStruct();
+	}
+	
+	public function enterNode(Node $node) {
+		foreach ($this->visitors as $visitor) {
+			switch ($node->getType()) {
+				case 'Stmt_Namespace':
+					$visitor->visitNamespace($node);
+					break;
+		
+				case 'Stmt_UseUse':
+					$visitor->visitUseStatement($node);
+					break;
+		
+				case 'Stmt_Class':
+					$visitor->visitStruct($node);
+					$visitor->visitClass($node);
+					break;
+		
+				case 'Stmt_Interface':
+					$visitor->visitStruct($node);
+					$visitor->visitInterface($node);
+					break;
+		
+				case 'Stmt_Trait':
+					$visitor->visitStruct($node);
+					$visitor->visitTrait($node);
+					break;
+		
+				case 'Stmt_TraitUse':
+					$visitor->visitTraitUse($node);
+					break;
+		
+				case 'Stmt_ClassConst':
+					$visitor->visitConstants($node);
+					break;
+		
+				case 'Stmt_Property':
+					$visitor->visitProperty($node);
+					break;
+		
+				case 'Stmt_ClassMethod':
+					$visitor->visitMethod($node);
+					break;
+			}
+		}
 	}
 }

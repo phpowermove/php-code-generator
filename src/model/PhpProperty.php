@@ -27,7 +27,7 @@ use gossi\docblock\tags\VarTag;
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  * @author Thomas Gossmann
  */
-class PhpProperty extends AbstractPhpMember {
+class PhpProperty extends AbstractPhpMember implements ValueInterface {
 
 	use TypeDocblockGeneratorPart;
 	use ValuePart;
@@ -40,41 +40,6 @@ class PhpProperty extends AbstractPhpMember {
 	 */
 	public static function create($name) {
 		return new static($name);
-	}
-
-	/**
-	 * Creates a new PHP property from reflection
-	 *
-	 * @param \ReflectionProperty $ref
-	 * @return static
-	 */
-	public static function fromReflection(\ReflectionProperty $ref) {
-		$property = new static($ref->name);
-		$property->setStatic($ref->isStatic())
-			->setVisibility($ref->isPublic() ? self::VISIBILITY_PUBLIC : ($ref->isProtected() ? self::VISIBILITY_PROTECTED : self::VISIBILITY_PRIVATE));
-
-		$docblock = new Docblock($ref);
-		$property->setDocblock($docblock);
-		$property->setDescription($docblock->getShortDescription());
-		$property->setLongDescription($docblock->getLongDescription());
-
-		$vars = $docblock->getTags('var');
-		if ($vars->size() > 0) {
-			$var = $vars->get(0);
-			$property->setType($var->getType(), $var->getDescription());
-		}
-
-		$defaultProperties = $ref->getDeclaringClass()->getDefaultProperties();
-		if (isset($defaultProperties[$ref->name])) {
-			$default = $defaultProperties[$ref->name];
-			if (is_string($default)) {
-				$property->setValue($default);
-			} else {
-				$property->setExpression($default);
-			}
-		}
-
-		return $property;
 	}
 
 	/**

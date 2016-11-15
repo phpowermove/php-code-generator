@@ -2,15 +2,15 @@
 namespace gossi\codegen\tests\utils;
 
 use gossi\codegen\utils\ReflectionUtils;
-use gossi\codegen\utils\Writer;
+use gossi\codegen\generator\utils\Writer;
 
 class ReflectionUtilsTest extends \PHPUnit_Framework_TestCase {
 
 	public function setUp() {
 		// they are not explicitely instantiated through new WhatEver(); and such not
 		// required through composer's autoload
-		require_once __DIR__ . '/../fixture/functions.php';
-		require_once __DIR__ . '/../fixture/OverridableReflectionTest.php';
+		require_once __DIR__ . '/../fixtures/functions.php';
+		require_once __DIR__ . '/../fixtures/OverridableReflectionTest.php';
 	}
 
 	public function testFunctionBody() {
@@ -26,7 +26,7 @@ class ReflectionUtilsTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testGetOverridableMethods() {
-		$ref = new \ReflectionClass('gossi\codegen\tests\fixture\OverridableReflectionTest');
+		$ref = new \ReflectionClass('gossi\codegen\tests\fixtures\OverridableReflectionTest');
 		$methods = ReflectionUtils::getOverrideableMethods($ref);
 
 		$this->assertEquals(4, count($methods));

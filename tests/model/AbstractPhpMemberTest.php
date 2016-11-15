@@ -1,6 +1,9 @@
 <?php
 namespace gossi\codegen\tests\model;
 
+/**
+ * @group model
+ */
 class AbstractPhpMemberTest extends \PHPUnit_Framework_TestCase {
 
 	public function testSetGetStatic() {

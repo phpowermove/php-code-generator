@@ -26,4 +26,11 @@ interface DocblockInterface {
 	 * @return Docblock
 	 */
 	public function getDocblock();
+	
+	/**
+	 * Generates a docblock from provided information
+	 *
+	 * @return $this
+	 */
+	public function generateDocblock();
 }

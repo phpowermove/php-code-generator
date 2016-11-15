@@ -13,17 +13,26 @@ use gossi\docblock\tags\ParamTag;
  */
 trait ParametersPart {
 
-	/** @var PhpParameter[] */
+	/** @var array */
 	private $parameters = [];
+	
+	private function initParameters() {
+// 		$this->parameters = new ArrayList();
+	}
 
 	/**
 	 * Sets a collection of parameters
+	 * 
+	 * Note: clears all parameters before setting the new ones
 	 *
 	 * @param PhpParameter[] $parameters
 	 * @return $this
 	 */
 	public function setParameters(array $parameters) {
-		$this->parameters = array_values($parameters);
+		$this->parameters = [];
+		foreach ($parameters as $parameter) {
+			$this->addParameter($parameter);
+		}
 
 		return $this;
 	}
@@ -35,7 +44,7 @@ trait ParametersPart {
 	 * @return $this
 	 */
 	public function addParameter(PhpParameter $parameter) {
-		$this->parameters[count($this->parameters)] = $parameter;
+		$this->parameters[] = $parameter;
 
 		return $this;
 	}
@@ -47,11 +56,12 @@ trait ParametersPart {
 	 * @return bool `true` if a parameter exists and `false` if not
 	 */
 	public function hasParameter($name) {
-		foreach ($this->parameters as $parameter) {
-			if ($parameter->getName() === $name) {
+		foreach ($this->parameters as $param) {
+			if ($param->getName() == $name) {
 				return true;
 			}
 		}
+		
 		return false;
 	}
 
@@ -103,20 +113,16 @@ trait ParametersPart {
 	 * Returns a parameter by index or name
 	 *
 	 * @param string|int $nameOrIndex
+	 * @throws \InvalidArgumentException
 	 * @return PhpParameter
 	 */
 	public function getParameter($nameOrIndex) {
 		if (is_int($nameOrIndex)) {
-			if (!isset($this->parameters[$nameOrIndex])) {
-				throw new \InvalidArgumentException(sprintf('There is no parameter at position %d.', $nameOrIndex));
-			}
-
+			$this->checkPosition($nameOrIndex);
 			return $this->parameters[$nameOrIndex];
 		}
 
 		foreach ($this->parameters as $param) {
-			assert($param instanceof PhpParameter);
-
 			if ($param->getName() === $nameOrIndex) {
 				return $param;
 			}
@@ -134,9 +140,7 @@ trait ParametersPart {
 	 * @return $this
 	 */
 	public function replaceParameter($position, PhpParameter $parameter) {
-		if ($position < 0 || $position > count($this->parameters)) {
-			throw new \InvalidArgumentException(sprintf('The position must be in the range [0, %d].', count($this->parameters)));
-		}
+		$this->checkPosition($position);
 		$this->parameters[$position] = $parameter;
 
 		return $this;
@@ -145,23 +149,50 @@ trait ParametersPart {
 	/**
 	 * Remove a parameter at a given position
 	 *
-	 * @param int $position
+	 * @param int|string|PhpParameter $position
 	 * @return $this
 	 */
-	public function removeParameter($position) {
-		if (!isset($this->parameters[$position])) {
-			throw new \InvalidArgumentException(sprintf('There is no parameter at position "%d" does not exist.', $position));
+	public function removeParameter($param) {
+		if (is_int($param)) {
+			$this->removeParameterByPosition($param);
+		} else if (is_string($param)) {
+			$this->removeParameterByName($param);
+		} else if ($param instanceof PhpParameter) {
+			$this->removeParameterByName($param->getName());
 		}
-		unset($this->parameters[$position]);
-		$this->parameters = array_values($this->parameters);
 
 		return $this;
+	}
+	
+	private function removeParameterByPosition($position) {
+		$this->checkPosition($position);
+		unset($this->parameters[$position]);
+		$this->parameters = array_values($this->parameters);
+	}
+	
+	private function removeParameterByName($name) {
+		$position = null;
+		foreach ($this->parameters as $index => $param) {
+			if ($param->getName() == $name) {
+				$position = $index;
+			}
+		}
+		
+		if ($position !== null) {
+			$this->removeParameterByPosition($position);
+		}
+	}
+	
+	private function checkPosition($position) {
+		if ($position < 0 || $position > count($this->parameters)) {
+			throw new \InvalidArgumentException(sprintf('The position must be in the range [0, %d].', count($this->parameters)));
+		}
 	}
 
 	/**
 	 * Returns a collection of parameters
 	 *
-	 * @return PhpParameter[]
+	 * @return array
 	 */
 	public function getParameters() {
 		return $this->parameters;

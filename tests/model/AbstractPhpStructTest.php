@@ -3,9 +3,24 @@ namespace gossi\codegen\tests\model;
 
 use gossi\codegen\model\PhpClass;
 use gossi\codegen\model\PhpMethod;
-use gossi\codegen\utils\ReflectionUtils;
+use gossi\codegen\model\PhpInterface;
+use gossi\codegen\model\PhpTrait;
 
+/**
+ * @group model
+ */
 class AbstractPhpStructTest extends \PHPUnit_Framework_TestCase {
+	
+	public function testCreate() {
+		$class = PhpClass::create();
+		$this->assertTrue($class instanceof PhpClass);
+		
+		$interface = PhpInterface::create();
+		$this->assertTrue($interface instanceof PhpInterface);
+		
+		$trait = PhpTrait::create();
+		$this->assertTrue($trait instanceof PhpTrait);
+	}
 
 	public function testQualifiedName() {
 		$class = new PhpClass();
@@ -30,27 +45,33 @@ class AbstractPhpStructTest extends \PHPUnit_Framework_TestCase {
 	public function testUseStatements() {
 		$class = new PhpClass();
 
-		$this->assertEquals([], $class->getUseStatements());
+		$this->assertTrue($class->getUseStatements()->isEmpty());
 		$this->assertSame($class, $class->setUseStatements([
 			'foo' => 'bar'
 		]));
 		$this->assertEquals([
 			'foo' => 'bar'
-		], $class->getUseStatements());
+		], $class->getUseStatements()->toArray());
 		$this->assertSame($class, $class->addUseStatement('Foo\Bar'));
 		$this->assertEquals([
 			'foo' => 'bar',
 			'Bar' => 'Foo\Bar'
-		], $class->getUseStatements());
+		], $class->getUseStatements()->toArray());
 		$this->assertSame($class, $class->addUseStatement('Foo\Bar', 'Baz'));
 		$this->assertEquals([
 			'foo' => 'bar',
 			'Bar' => 'Foo\Bar',
 			'Baz' => 'Foo\Bar'
-		], $class->getUseStatements());
+		], $class->getUseStatements()->toArray());
 		$this->assertTrue($class->hasUseStatement('bar'));
 		$class->removeUseStatement('bar');
 		$this->assertFalse($class->hasUseStatement('bar'));
+		
+		$class->clearUseStatements();
+		$class->addUseStatement('ArrayList');
+		$this->assertEquals([
+			'ArrayList' => 'ArrayList'
+		], $class->getUseStatements()->toArray());
 
 		// declareUse
 		$this->assertEquals('ArrayList', $class->declareUse('phootwork\collection\ArrayList'));
@@ -58,29 +79,20 @@ class AbstractPhpStructTest extends \PHPUnit_Framework_TestCase {
 		$class->declareUses('phootwork\collection\Set', 'phootwork\collection\Map');
 		$this->assertTrue($class->hasUseStatement('phootwork\collection\Set'));
 		$this->assertTrue($class->hasUseStatement('phootwork\collection\Map'));
-
-		// from reflection
-		require_once __DIR__ . '/../fixture/DummyTrait.php';
-		$statements = ReflectionUtils::getUseStatements(new \ReflectionClass('gossi\\codegen\\tests\\fixture\\DummyTrait'));
-		$this->assertEquals(['gossi\\codegen\\tests\\fixture\\VeryDummyTrait'], $statements);
-
-		require_once __DIR__ . '/../fixture/ClassWithTraits.php';
-		$statements = ReflectionUtils::getUseStatements(new \ReflectionClass('gossi\\codegen\\tests\\fixture\\ClassWithTraits'));
-		$this->assertEquals(['DT' => 'gossi\\codegen\\tests\\fixture\\DummyTrait'], $statements);
 	}
 
 	public function testMethods() {
 		$class = new PhpClass();
 
-		$this->assertEquals([], $class->getMethods());
+		$this->assertTrue($class->getMethods()->isEmpty());
 		$this->assertSame($class, $class->setMethod($method = new PhpMethod('foo')));
 		$this->assertSame([
 			'foo' => $method
-		], $class->getMethods());
+		], $class->getMethods()->toArray());
 		$this->assertTrue($class->hasMethod('foo'));
 		$this->assertSame($method, $class->getMethod('foo'));
 		$this->assertSame($class, $class->removeMethod($method));
-		$this->assertEquals([], $class->getMethods());
+		$this->assertEquals([], $class->getMethods()->toArray());
 		$class->setMethod($orphaned = new PhpMethod('orphaned'));
 		$this->assertSame($class, $orphaned->getParent());
 		$this->assertTrue($class->hasMethod($orphaned));
@@ -91,17 +103,17 @@ class AbstractPhpStructTest extends \PHPUnit_Framework_TestCase {
 		$this->assertSame([
 			'foo' => $method,
 			'bar' => $method2
-		], $class->getMethods());
-		$this->assertEquals(['foo', 'bar'], $class->getMethodNames());
+		], $class->getMethods()->toArray());
+		$this->assertEquals(['foo', 'bar'], $class->getMethodNames()->toArray());
 		$this->assertNull($orphaned->getParent());
 		$this->assertSame($method, $class->getMethod($method));
 		$this->assertTrue($class->hasMethod($method));
 		$this->assertSame($class, $class->removeMethod($method));
 		$this->assertFalse($class->hasMethod($method));
 
-		$this->assertNotEmpty($class->getMethods());
+		$this->assertFalse($class->getMethods()->isEmpty());
 		$class->clearMethods();
-		$this->assertEmpty($class->getMethods());
+		$this->assertTrue($class->getMethods()->isEmpty());
 
 		try {
 			$this->assertEmpty($class->getMethod('method-not-found'));
@@ -137,17 +149,17 @@ class AbstractPhpStructTest extends \PHPUnit_Framework_TestCase {
 	public function testRequiredFiles() {
 		$class = new PhpClass();
 
-		$this->assertEquals([], $class->getRequiredFiles());
+		$this->assertEquals([], $class->getRequiredFiles()->toArray());
 		$this->assertSame($class, $class->setRequiredFiles([
 			'foo'
 		]));
 		$this->assertEquals([
 			'foo'
-		], $class->getRequiredFiles());
+		], $class->getRequiredFiles()->toArray());
 		$this->assertSame($class, $class->addRequiredFile('bar'));
 		$this->assertEquals([
 			'foo',
 			'bar'
-		], $class->getRequiredFiles());
+		], $class->getRequiredFiles()->toArray());
 	}
 }

@@ -2,6 +2,8 @@
 namespace gossi\codegen\model\parts;
 
 use gossi\codegen\model\PhpConstant;
+use phootwork\collection\Map;
+use phootwork\collection\Set;
 
 /**
  * Constants part
@@ -12,8 +14,12 @@ use gossi\codegen\model\PhpConstant;
  */
 trait ConstantsPart {
 
-	/** @var PhpConstant[] */
-	private $constants = [];
+	/** @var Map */
+	private $constants;
+	
+	private function initConstants() {
+		$this->constants = new Map();
+	}
 
 	/**
 	 * Sets a collection of constants
@@ -35,7 +41,7 @@ trait ConstantsPart {
 			$normalizedConstants[$name] = $value;
 		}
 
-		$this->constants = $normalizedConstants;
+		$this->constants->setAll($normalizedConstants);
 
 		return $this;
 	}
@@ -56,7 +62,7 @@ trait ConstantsPart {
 			$constant = new PhpConstant($nameOrConstant, $value, $isExpression);
 		}
 
-		$this->constants[$name] = $constant;
+		$this->constants->set($name, $constant);
 
 		return $this;
 	}
@@ -73,11 +79,11 @@ trait ConstantsPart {
 			$nameOrConstant = $nameOrConstant->getName();
 		}
 
-		if (!array_key_exists($nameOrConstant, $this->constants)) {
+		if (!$this->constants->has($nameOrConstant)) {
 			throw new \InvalidArgumentException(sprintf('The constant "%s" does not exist.', $nameOrConstant));
 		}
 
-		unset($this->constants[$nameOrConstant]);
+		$this->constants->remove($nameOrConstant);
 
 		return $this;
 	}
@@ -92,7 +98,8 @@ trait ConstantsPart {
 		if ($nameOrConstant instanceof PhpConstant) {
 			$nameOrConstant = $nameOrConstant->getName();
 		}
-		return array_key_exists($nameOrConstant, $this->constants);
+
+		return $this->constants->has($nameOrConstant);
 	}
 
 	/**
@@ -107,17 +114,17 @@ trait ConstantsPart {
 			$nameOrConstant = $nameOrConstant->getName();
 		}
 
-		if (!isset($this->constants[$nameOrConstant])) {
+		if (!$this->constants->has($nameOrConstant)) {
 			throw new \InvalidArgumentException(sprintf('The constant "%s" does not exist.', $nameOrConstant));
 		}
 
-		return $this->constants[$nameOrConstant];
+		return $this->constants->get($nameOrConstant);
 	}
 
 	/**
 	 * Returns all constants
 	 *
-	 * @return PhpConstant[]
+	 * @return Map
 	 */
 	public function getConstants() {
 		return $this->constants;
@@ -126,10 +133,10 @@ trait ConstantsPart {
 	/**
 	 * Returns all constant names
 	 *
-	 * @return string[]
+	 * @return Set
 	 */
 	public function getConstantNames() {
-		return array_keys($this->constants);
+		return $this->constants->keys();
 	}
 
 	/**
@@ -138,7 +145,7 @@ trait ConstantsPart {
 	 * @return $this
 	 */
 	public function clearConstants() {
-		$this->constants = [];
+		$this->constants->clear();
 
 		return $this;
 	}

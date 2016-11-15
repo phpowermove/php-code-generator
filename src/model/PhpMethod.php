@@ -22,7 +22,6 @@ use gossi\codegen\model\parts\FinalPart;
 use gossi\codegen\model\parts\ParametersPart;
 use gossi\codegen\model\parts\ReferenceReturnPart;
 use gossi\codegen\model\parts\TypeDocblockGeneratorPart;
-use gossi\codegen\utils\ReflectionUtils;
 use gossi\docblock\Docblock;
 use gossi\docblock\tags\ReturnTag;
 
@@ -32,7 +31,7 @@ use gossi\docblock\tags\ReturnTag;
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  * @author Thomas Gossmann
  */
-class PhpMethod extends AbstractPhpMember {
+class PhpMethod extends AbstractPhpMember implements RoutineInterface {
 
 	use AbstractPart;
 	use BodyPart;
@@ -49,53 +48,10 @@ class PhpMethod extends AbstractPhpMember {
 	public static function create($name) {
 		return new static($name);
 	}
-
-	/**
-	 * Creates a PHP method from reflection
-	 *
-	 * @param \ReflectionMethod $ref
-	 * @return PhpMethod
-	 */
-	public static function fromReflection(\ReflectionMethod $ref) {
-		$method = new static($ref->name);
-		$method->setFinal($ref->isFinal())
-			->setAbstract($ref->isAbstract())
-			->setStatic($ref->isStatic())
-			->setVisibility($ref->isPublic()
-				? self::VISIBILITY_PUBLIC
-				: ($ref->isProtected()
-					? self::VISIBILITY_PROTECTED
-					: self::VISIBILITY_PRIVATE))
-			->setReferenceReturned($ref->returnsReference())
-			->setBody(ReflectionUtils::getFunctionBody($ref));
-
-		$docblock = new Docblock($ref);
-		$method->setDocblock($docblock);
-		$method->setDescription($docblock->getShortDescription());
-		$method->setLongDescription($docblock->getLongDescription());
-
-		// return type and description
-		$returns = $method->getDocblock()->getTags('return');
-		if ($returns->size() > 0) {
-			$return = $returns->get(0);
-			$method->setType($return->getType(), $return->getDescription());
-		}
-
-		// params
-		foreach ($ref->getParameters() as $param) {
-			$method->addParameter(static::createParameter($param));
-		}
-
-		return $method;
-	}
-
-	/**
-	 * Creates a parameter from reflection
-	 *
-	 * @return PhpParameter
-	 */
-	protected static function createParameter(\ReflectionParameter $parameter) {
-		return PhpParameter::fromReflection($parameter);
+	
+	public function __construct($name) {
+		parent::__construct($name);
+		$this->initParameters();
 	}
 
 	/**

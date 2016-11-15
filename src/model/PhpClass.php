@@ -8,16 +8,17 @@ use gossi\codegen\model\parts\InterfacesPart;
 use gossi\codegen\model\parts\PropertiesPart;
 use gossi\codegen\model\parts\TraitsPart;
 use gossi\codegen\parser\FileParser;
-use gossi\codegen\parser\visitor\PhpClassVisitor;
-use gossi\codegen\utils\ReflectionUtils;
-use gossi\docblock\Docblock;
+use gossi\codegen\parser\visitor\ClassParserVisitor;
+use gossi\codegen\parser\visitor\ConstantParserVisitor;
+use gossi\codegen\parser\visitor\MethodParserVisitor;
+use gossi\codegen\parser\visitor\PropertyParserVisitor;
 
 /**
  * Represents a PHP class.
  *
  * @author Thomas Gossmann
  */
-class PhpClass extends AbstractPhpStruct implements GenerateableInterface, TraitsInterface, ConstantsInterface {
+class PhpClass extends AbstractPhpStruct implements GenerateableInterface, TraitsInterface, ConstantsInterface, PropertiesInterface {
 
 	use AbstractPart;
 	use ConstantsPart;
@@ -32,52 +33,12 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 	/**
 	 * Creates a PHP class from reflection
 	 *
+	 * @deprecated Use fromFile() instead
 	 * @param \ReflectionClass $ref
 	 * @return PhpClass
 	 */
 	public static function fromReflection(\ReflectionClass $ref) {
-		$class = new static();
-		$class->setQualifiedName($ref->name)
-			->setAbstract($ref->isAbstract())
-			->setFinal($ref->isFinal())
-			->setUseStatements(ReflectionUtils::getUseStatements($ref));
-
-		if ($ref->getDocComment()) {
-			$docblock = new Docblock($ref);
-			$class->setDocblock($docblock);
-			$class->setDescription($docblock->getShortDescription());
-			$class->setLongDescription($docblock->getLongDescription());
-		}
-
-		// methods
-		foreach ($ref->getMethods() as $method) {
-			$class->setMethod(static::createMethod($method));
-		}
-
-		// properties
-		foreach ($ref->getProperties() as $property) {
-			$class->setProperty(static::createProperty($property));
-		}
-
-		// traits
-		foreach ($ref->getTraits() as $trait) {
-			$class->addTrait(PhpTrait::fromReflection($trait));
-		}
-
-		// constants
-		// TODO: https://github.com/gossi/php-code-generator/issues/19
-		foreach ($ref->getConstants() as $name => $value) {
-			$const = new PhpConstant($name);
-
-			if (is_string($value)) {
-				$const->setValue($value);
-			} else {
-				$const->setExpression($value);
-			}
-			$class->setConstant($const);
-		}
-
-		return $class;
+		return static::fromFile($ref->getFileName());
 	}
 
 	/**
@@ -87,9 +48,15 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 	 * @return PhpClass
 	 */
 	public static function fromFile($filename) {
-		$visitor = new PhpClassVisitor();
-		$parser = new FileParser();
-		return $parser->parse($visitor, $filename);
+		$class = new PhpClass();
+		$parser = new FileParser($filename);
+		$parser->addVisitor(new ClassParserVisitor($class));
+		$parser->addVisitor(new MethodParserVisitor($class));
+		$parser->addVisitor(new ConstantParserVisitor($class));
+		$parser->addVisitor(new PropertyParserVisitor($class));
+		$parser->parse();
+		
+		return $class;
 	}
 
 	/**
@@ -99,6 +66,9 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 	 */
 	public function __construct($name = null) {
 		parent::__construct($name);
+		$this->initProperties();
+		$this->initConstants();
+		$this->initInterfaces();
 	}
 
 	/**

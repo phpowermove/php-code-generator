@@ -35,7 +35,7 @@ use gossi\docblock\tags\ReturnTag;
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  * @author Thomas Gossmann
  */
-class PhpFunction extends AbstractModel implements GenerateableInterface, NamespaceInterface, DocblockInterface {
+class PhpFunction extends AbstractModel implements GenerateableInterface, NamespaceInterface, DocblockInterface, RoutineInterface {
 
 	use BodyPart;
 	use DocblockPart;
@@ -49,6 +49,7 @@ class PhpFunction extends AbstractModel implements GenerateableInterface, Namesp
 	/**
 	 * Creates a PHP function from reflection
 	 *
+	 * @deprecated will be removed in version 0.5
 	 * @param \ReflectionFunction $ref
 	 * @return PhpFunction
 	 */
@@ -90,6 +91,7 @@ class PhpFunction extends AbstractModel implements GenerateableInterface, Namesp
 	public function __construct($name = null) {
 		$this->setQualifiedName($name);
 		$this->docblock = new Docblock();
+		$this->initParameters();
 	}
 
 	/**

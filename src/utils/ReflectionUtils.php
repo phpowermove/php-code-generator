@@ -1,5 +1,4 @@
 <?php
-
 /*
  * Copyright 2011 Johannes M. Schmitt <schmittjoh@gmail.com>
  *
@@ -16,8 +15,6 @@
  * limitations under the License.
  */
 namespace gossi\codegen\utils;
-
-use phootwork\tokenizer\PhpTokenizer;
 
 class ReflectionUtils {
 
@@ -71,61 +68,6 @@ class ReflectionUtils {
 		$open = strpos($body, '{');
 		$close = strrpos($body, '}');
 		return trim(substr($body, $open + 1, (strlen($body) - $close) * -1));
-	}
-
-	public static function getUseStatements(\ReflectionClass $class) {
-		$content = '';
-		$file = file($class->getFileName());
-		for ($i = 0; $i < $class->getStartLine(); $i++) {
-			$content .= $file[$i];
-		}
-		$tokenizer = new PhpTokenizer();
-		$tokens = $tokenizer->tokenize($content);
-		$tokens = $tokens->filter(function ($token) {
-			return $token->type !== T_WHITESPACE && $token->type !== T_COMMENT && $token->type !== T_DOC_COMMENT;
-		});
-		$statements = [];
-
-		while (($token = $tokens->next())) {
-			if ($token->type === T_USE) {
-				$explicitAlias = false;
-				$alias = '';
-				$class = '';
-
-				while (($token = $tokens->next())) {
-					$isNameToken = $token->type === T_STRING || $token->type === T_NS_SEPARATOR;
-					if (!$explicitAlias && $isNameToken) {
-						$class .= $token->contents;
-					} else if ($explicitAlias && $isNameToken) {
-						$alias .= $token->contents;
-					} else if ($token->type === T_AS) {
-						$explicitAlias = true;
-						$alias = '';
-					} else if ($token->contents === ',') {
-						if ($explicitAlias) {
-							$statements[$alias] = $class;
-						} else {
-							$statements[] = $class;
-						}
-
-						$class = '';
-						$alias = '';
-						$explicitAlias = false;
-					} else if ($token->contents === ';') {
-						if ($explicitAlias) {
-							$statements[$alias] = $class;
-						} else {
-							$statements[] = $class;
-						}
-						break;
-					} else {
-						break;
-					}
-				}
-			}
-		}
-
-		return $statements;
 	}
 
 }

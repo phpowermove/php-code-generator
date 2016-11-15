@@ -28,7 +28,7 @@ use gossi\docblock\tags\ParamTag;
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  * @author Thomas Gossmann
  */
-class PhpParameter extends AbstractModel {
+class PhpParameter extends AbstractModel implements ValueInterface {
 
 	use NamePart;
 	use TypePart;
@@ -49,6 +49,7 @@ class PhpParameter extends AbstractModel {
 	/**
 	 * Creates a PHP parameter from reflection
 	 *
+	 * @deprecated will be removed in version 0.5
 	 * @param \ReflectionParameter $ref
 	 * @return PhpParameter
 	 */
@@ -57,11 +58,17 @@ class PhpParameter extends AbstractModel {
 		$parameter->setName($ref->name)->setPassedByReference($ref->isPassedByReference());
 
 		if ($ref->isDefaultValueAvailable()) {
-			$default = $ref->getDefaultValue();
-			if (is_string($default)) {
-				$parameter->setValue($default);
+			$value = $ref->getDefaultValue();
+			
+			if (is_string($value)
+					|| is_int($value)
+					|| is_float($value)
+					|| is_bool($value)
+					|| is_null($value)
+					|| ($value instanceof PhpConstant)) {
+				$parameter->setValue($value);
 			} else {
-				$parameter->setExpression($default);
+				$parameter->setExpression($value);
 			}
 		}
 
@@ -128,7 +135,7 @@ class PhpParameter extends AbstractModel {
 	 */
 	public function getDocblockTag() {
 		return ParamTag::create()
-			->setType($this->getType() ?: 'mixed')
+			->setType($this->getType())
 			->setVariable($this->getName())
 			->setDescription($this->getTypeDescription());
 	}

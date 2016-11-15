@@ -1,6 +1,8 @@
 <?php
 namespace gossi\codegen\model\parts;
 
+use gossi\codegen\model\PhpConstant;
+
 /**
  * Value part
  *
@@ -54,14 +56,33 @@ trait ValuePart {
 	public function hasDefaultValue() {
 		return $this->hasValue();
 	}
+	
+	/**
+	 * Returns whether the given value is a primitive
+	 * 
+	 * @param mixed $value
+	 * @return boolean
+	 */
+	private function isPrimitive($value) {
+		return (is_string($value)
+			|| is_int($value)
+			|| is_float($value)
+			|| is_bool($value)
+			|| is_null($value)
+			|| ($value instanceof PhpConstant));
+	}
 
 	/**
 	 * Sets the value
 	 *
-	 * @param mixed $value
+	 * @param string|integer|float|bool|null|PhpConstant $value
+	 * @throws \InvalidArgumentException if the value is not an accepted primitve
 	 * @return $this
 	 */
 	public function setValue($value) {
+		if (!$this->isPrimitive($value)) {
+			throw new \InvalidArgumentException('Use setValue() only for primitives and PhpConstant, anyway use setExpression() instead.');
+		}
 		$this->value = $value;
 		$this->hasValue = true;
 
@@ -83,7 +104,7 @@ trait ValuePart {
 	/**
 	 * Returns the value
 	 *
-	 * @return mixed
+	 * @return string|integer|float|bool|null|PhpConstant
 	 */
 	public function getValue() {
 		return $this->value;

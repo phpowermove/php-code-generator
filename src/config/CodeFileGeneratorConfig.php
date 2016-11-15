@@ -3,6 +3,7 @@ namespace gossi\codegen\config;
 
 use gossi\docblock\Docblock;
 use Symfony\Component\OptionsResolver\Options;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Configuration for code file generation
@@ -10,45 +11,43 @@ use Symfony\Component\OptionsResolver\Options;
  * @author Thomas Gossmann
  */
 class CodeFileGeneratorConfig extends CodeGeneratorConfig {
+	
+	protected function configureOptions(OptionsResolver $resolver) {
+		parent::configureOptions($resolver);
 
-	/**
-	 * @inheritDoc
-	 */
-	protected function getOptionalOptions() {
-		return array_merge([
-				'headerComment', 'headerDocblock', 'blankLineAtEnd', 'declareStrictTypes'
-			], parent::getOptionalOptions());
+		$resolver->setDefaults([
+			'headerComment' => null,
+			'headerDocblock' => null,
+			'blankLineAtEnd' => true,
+			'declareStrictTypes'  => false,
+			'generateScalarTypeHints' => function (Options $options) {
+				return $options['declareStrictTypes'];
+			},
+			'generateReturnTypeHints' => function (Options $options) {
+				return $options['declareStrictTypes'];
+			},
+		]);
+		
+		$resolver->setAllowedTypes('headerComment', ['null', 'string', 'gossi\\docblock\\Docblock']);
+		$resolver->setAllowedTypes('headerDocblock', ['null', 'string', 'gossi\\docblock\\Docblock']);
+		$resolver->setAllowedTypes('blankLineAtEnd', 'bool');
+		$resolver->setAllowedTypes('declareStrictTypes', 'bool');
+		
+		
+		$resolver->setNormalizer('headerComment', function (Options $options, $value) {
+			return $this->toDocblock($value);
+		});
+		$resolver->setNormalizer('headerDocblock', function (Options $options, $value) {
+			return $this->toDocblock($value);
+		});
 	}
-
-	/**
-	 * @inheritDoc
-	 */
-	protected function getDefaultOptions() {
-		return array_merge(
-			parent::getDefaultOptions(), [
-				'headerComment' => '',
-				'headerDocblock' => null,
-				'blankLineAtEnd' => true,
-				'declareStrictTypes'  => false,
-				'generateScalarTypeHints' => function (Options $options) {
-					return $options['declareStrictTypes'];
-				},
-				'generateReturnTypeHints' => function (Options $options) {
-					return $options['declareStrictTypes'];
-				},
-			]);
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	protected function getAllowedOptionTypes() {
-		return array_merge([
-				'headerComment' => 'string',
-				'headerDocblock' => ['null', 'gossi\\docblock\\Docblock'],
-				'blankLineAtEnd' => 'bool',
-				'declareStrictTypes' => 'bool',
-			], parent::getAllowedOptionTypes());
+	
+	private function toDocblock($value) {
+		if (is_string($value)) {
+			$value = Docblock::create()->setLongDescription($value);
+		}
+		
+		return $value;
 	}
 
 	/**

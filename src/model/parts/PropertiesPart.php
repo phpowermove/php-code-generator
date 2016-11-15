@@ -2,6 +2,7 @@
 namespace gossi\codegen\model\parts;
 
 use gossi\codegen\model\PhpProperty;
+use phootwork\collection\Map;
 
 /**
  * Properties part
@@ -12,8 +13,12 @@ use gossi\codegen\model\PhpProperty;
  */
 trait PropertiesPart {
 
-	/** @var PhpProperty[] */
-	private $properties = [];
+	/** @var Map */
+	private $properties;
+	
+	private function initProperties() {
+		$this->properties = new Map();
+	}
 
 	/**
 	 * Sets a collection of properties
@@ -26,7 +31,7 @@ trait PropertiesPart {
 			$prop->setParent(null);
 		}
 
-		$this->properties = [];
+		$this->properties->clear();
 
 		foreach ($properties as $prop) {
 			$this->setProperty($prop);
@@ -43,7 +48,7 @@ trait PropertiesPart {
 	 */
 	public function setProperty(PhpProperty $property) {
 		$property->setParent($this);
-		$this->properties[$property->getName()] = $property;
+		$this->properties->set($property->getName(), $property);
 
 		return $this;
 	}
@@ -60,12 +65,12 @@ trait PropertiesPart {
 			$nameOrProperty = $nameOrProperty->getName();
 		}
 
-		if (!array_key_exists($nameOrProperty, $this->properties)) {
+		if (!$this->properties->has($nameOrProperty)) {
 			throw new \InvalidArgumentException(sprintf('The property "%s" does not exist.', $nameOrProperty));
 		}
-		$p = $this->properties[$nameOrProperty];
+		$p = $this->properties->get($nameOrProperty);
 		$p->setParent(null);
-		unset($this->properties[$nameOrProperty]);
+		$this->properties->remove($nameOrProperty);
 
 		return $this;
 	}
@@ -81,7 +86,7 @@ trait PropertiesPart {
 			$nameOrProperty = $nameOrProperty->getName();
 		}
 
-		return isset($this->properties[$nameOrProperty]);
+		return $this->properties->has($nameOrProperty);
 	}
 
 	/**
@@ -96,17 +101,17 @@ trait PropertiesPart {
 			$nameOrProperty = $nameOrProperty->getName();
 		}
 
-		if (!array_key_exists($nameOrProperty, $this->properties)) {
+		if (!$this->properties->has($nameOrProperty)) {
 			throw new \InvalidArgumentException(sprintf('The property "%s" does not exist.', $nameOrProperty));
 		}
 
-		return $this->properties[$nameOrProperty];
+		return $this->properties->get($nameOrProperty);
 	}
 
 	/**
 	 * Returns a collection of properties
 	 *
-	 * @return PhpProperty[]
+	 * @return Map
 	 */
 	public function getProperties() {
 		return $this->properties;
@@ -115,10 +120,10 @@ trait PropertiesPart {
 	/**
 	 * Returns all property names
 	 *
-	 * @return string[]
+	 * @return Set
 	 */
 	public function getPropertyNames() {
-		return array_keys($this->properties);
+		return $this->properties->keys();
 	}
 
 	/**
@@ -130,7 +135,7 @@ trait PropertiesPart {
 		foreach ($this->properties as $property) {
 			$property->setParent(null);
 		}
-		$this->properties = [];
+		$this->properties->clear();
 
 		return $this;
 	}

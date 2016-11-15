@@ -15,7 +15,7 @@ use gossi\docblock\tags\VarTag;
  *
  * @author Thomas Gossmann
  */
-class PhpConstant extends AbstractModel implements GenerateableInterface, DocblockInterface {
+class PhpConstant extends AbstractModel implements GenerateableInterface, DocblockInterface, ValueInterface {
 
 	use DocblockPart;
 	use LongDescriptionPart;
@@ -33,16 +33,7 @@ class PhpConstant extends AbstractModel implements GenerateableInterface, Docblo
 	 * @return static
 	 */
 	public static function create($name = null, $value = null, $isExpression = false) {
-		$constant = new static($name, $value, $isExpression);
-// 		$constant->setName($name);
-
-// 		if (is_string($value)) {
-// 			$constant->setValue($value);
-// 		} else {
-// 			$constant->setExpression($value);
-// 		}
-
-		return $constant;
+		return new static($name, $value, $isExpression);
 	}
 
 	/**

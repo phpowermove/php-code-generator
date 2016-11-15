@@ -2,6 +2,7 @@
 namespace gossi\codegen\model\parts;
 
 use gossi\codegen\model\PhpInterface;
+use phootwork\collection\Set;
 
 /**
  * Interfaces part
@@ -12,8 +13,12 @@ use gossi\codegen\model\PhpInterface;
  */
 trait InterfacesPart {
 
-	/** @var array */
-	private $interfaces = [];
+	/** @var Set */
+	private $interfaces;
+	
+	private function initInterfaces() {
+		$this->interfaces = new Set();
+	}
 
 	/**
 	 * Adds a use statement with an optional alias
@@ -61,9 +66,7 @@ trait InterfacesPart {
 			$name = $interface;
 		}
 
-		if (!in_array($name, $this->interfaces)) {
-			$this->interfaces[] = $name;
-		}
+		$this->interfaces->add($name);
 
 		return $this;
 	}
@@ -71,7 +74,7 @@ trait InterfacesPart {
 	/**
 	 * Returns the interfaces
 	 *
-	 * @return PhpInterface[]
+	 * @return Set
 	 */
 	public function getInterfaces() {
 		return $this->interfaces;
@@ -83,7 +86,7 @@ trait InterfacesPart {
 	 * @return bool `true` if interfaces are available and `false` if not
 	 */
 	public function hasInterfaces() {
-		return count($this->interfaces) > 0;
+		return !$this->interfaces->isEmpty();
 	}
 
 	/**
@@ -93,11 +96,12 @@ trait InterfacesPart {
 	 * @return bool
 	 */
 	public function hasInterface($interface) {
-		if (!$interface instanceof PhpInterface) {
-			$interface = new PhpInterface($interface);
+		if ($interface instanceof PhpInterface) {
+			return $this->interfaces->contains($interface->getName()) 
+				|| $this->interfaces->contains($interface->getQualifiedName());
 		}
-		$name = $interface->getName();
-		return in_array($name, $this->interfaces);
+
+		return $this->hasInterface(new PhpInterface($interface));
 	}
 
 	/**
@@ -119,10 +123,7 @@ trait InterfacesPart {
 			$name = $interface;
 		}
 
-		$index = array_search($name, $this->interfaces);
-		if ($index) {
-			unset($this->interfaces[$name]);
-		}
+		$this->interfaces->remove($name);
 
 		return $this;
 	}

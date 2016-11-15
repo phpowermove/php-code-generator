@@ -4,16 +4,17 @@ namespace gossi\codegen\model;
 use gossi\codegen\model\parts\PropertiesPart;
 use gossi\codegen\model\parts\TraitsPart;
 use gossi\codegen\parser\FileParser;
-use gossi\codegen\parser\visitor\PhpTraitVisitor;
-use gossi\codegen\utils\ReflectionUtils;
-use gossi\docblock\Docblock;
+use gossi\codegen\parser\visitor\ConstantParserVisitor;
+use gossi\codegen\parser\visitor\MethodParserVisitor;
+use gossi\codegen\parser\visitor\PropertyParserVisitor;
+use gossi\codegen\parser\visitor\TraitParserVisitor;
 
 /**
  * Represents a PHP trait.
  *
  * @author Thomas Gossmann
  */
-class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, TraitsInterface {
+class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, TraitsInterface, PropertiesInterface {
 
 	use PropertiesPart;
 	use TraitsPart;
@@ -21,35 +22,12 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
 	/**
 	 * Creates a PHP trait from reflection
 	 *
+	 * @deprecated Use fromFile() instead
 	 * @param \ReflectionClass $ref
 	 * @return PhpTrait
 	 */
 	public static function fromReflection(\ReflectionClass $ref) {
-		$trait = new static();
-		$trait->setQualifiedName($ref->name);
-		$trait->setUseStatements(ReflectionUtils::getUseStatements($ref));
-
-		$docblock = new Docblock($ref);
-		$trait->setDocblock($docblock);
-		$trait->setDescription($docblock->getShortDescription());
-		$trait->setLongDescription($docblock->getLongDescription());
-
-		// traits
-		foreach ($ref->getTraits() as $reflectionTrait) {
-			$trait->addTrait(self::fromReflection($reflectionTrait));
-		}
-
-		// properties
-		foreach ($ref->getProperties() as $property) {
-			$trait->setProperty(static::createProperty($property));
-		}
-
-		// methods
-		foreach ($ref->getMethods() as $method) {
-			$trait->setMethod(static::createMethod($method));
-		}
-
-		return $trait;
+		return static::fromFile($ref->getFileName());
 	}
 
 	/**
@@ -59,9 +37,15 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
 	 * @return PhpTrait
 	 */
 	public static function fromFile($filename) {
-		$visitor = new PhpTraitVisitor();
-		$parser = new FileParser();
-		return $parser->parse($visitor, $filename);
+		$trait = new PhpTrait();
+		$parser = new FileParser($filename);
+		$parser->addVisitor(new TraitParserVisitor($trait));
+		$parser->addVisitor(new MethodParserVisitor($trait));
+		$parser->addVisitor(new ConstantParserVisitor($trait));
+		$parser->addVisitor(new PropertyParserVisitor($trait));
+		$parser->parse();
+		
+		return $trait;
 	}
 
 	/**
@@ -71,6 +55,7 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
 	 */
 	public function __construct($name = null) {
 		parent::__construct($name);
+		$this->initProperties();
 	}
 
 	/**

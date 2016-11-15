@@ -4,7 +4,13 @@ namespace gossi\codegen\tests\config;
 use gossi\codegen\config\CodeFileGeneratorConfig;
 use gossi\codegen\config\CodeGeneratorConfig;
 use gossi\docblock\Docblock;
+use gossi\codegen\generator\CodeGenerator;
+use phootwork\lang\ComparableComparator;
+use phootwork\lang\Comparator;
 
+/**
+ * @group config
+ */
 class ConfigTest extends \PHPUnit_Framework_TestCase {
 
 	public function testCodeGeneratorConfigDefaults() {
@@ -14,6 +20,11 @@ class ConfigTest extends \PHPUnit_Framework_TestCase {
 		$this->assertTrue($config->getGenerateEmptyDocblock());
 		$this->assertFalse($config->getGenerateScalarTypeHints());
 		$this->assertFalse($config->getGenerateReturnTypeHints());
+		$this->assertTrue($config->isSortingEnabled());
+		$this->assertEquals(CodeGenerator::SORT_USESTATEMENTS_DEFAULT, $config->getUseStatementSorting());
+		$this->assertEquals(CodeGenerator::SORT_CONSTANTS_DEFAULT, $config->getConstantSorting());
+		$this->assertEquals(CodeGenerator::SORT_PROPERTIES_DEFAULT, $config->getPropertySorting());
+		$this->assertEquals(CodeGenerator::SORT_METHODS_DEFAULT, $config->getMethodSorting());
 	}
 
 	public function testCodeGeneratorConfigDisableDocblock() {
@@ -45,12 +56,30 @@ class ConfigTest extends \PHPUnit_Framework_TestCase {
 
 		$config->setGenerateScalarTypeHints(true);
 		$this->assertTrue($config->getGenerateScalarTypeHints());
+		
+		$config->setUseStatementSorting(false);
+		$this->assertFalse($config->getUseStatementSorting());
+		
+		$config->setConstantSorting('abc');
+		$this->assertEquals('abc', $config->getConstantSorting());
+		
+		$config->setPropertySorting(new ComparableComparator());
+		$this->assertTrue($config->getPropertySorting() instanceof Comparator);
+		
+		$cmp = function($a, $b) {
+			return strcmp($a, $b);
+		};
+		$config->setMethodSorting($cmp);
+		$this->assertSame($cmp, $config->getMethodSorting());
+		
+		$config->setSortingEnabled(false);
+		$this->assertFalse($config->isSortingEnabled());
 	}
 
 	public function testCodeFileGeneratorConfigDefaults() {
 		$config = new CodeFileGeneratorConfig();
 
-		$this->assertEmpty($config->getHeaderComment());
+		$this->assertNull($config->getHeaderComment());
 		$this->assertNull($config->getHeaderDocblock());
 		$this->assertTrue($config->getBlankLineAtEnd());
 		$this->assertFalse($config->getDeclareStrictTypes());
