@@ -223,6 +223,51 @@ If you already have your class loaded, then you can use reflection to load your 
   <?php
   use gossi\codegen\model\PhpClass;
 
-  $class = PhpClass::fromReflection(new \ReflectionClass('MyClass'));
+  $reflection = new \ReflectionClass('MyClass');
+  $class = PhpClass::fromReflection($reflection->getFileName());
 
 Also reflection is nice, there is a catch to it. You must make sure ``MyClass`` is loaded. Also all the requirements (use statements, etc.) are loaded as well, anyway you will get an error when initializing the the reflection object.
+
+Understanding Values
+--------------------
+
+The models ``PhpConstant``, ``PhpParameter`` and  ``PhpProperty`` support values; all of them implement the ``ValueInterface``. Though, there is a difference between values and expressions. Values refer to language primitives (``string``, ``int``, ``float``, ``bool`` and ``null``). Additionally you can set a ``PhpConstant`` as value (the lib understands this as a library primitive ;-). If you want more complex control over the output, you can set an expression instead, which will be generated as is.
+
+Some Examples::
+
+  <?php
+  PhpProperty::create('foo')->setValue('hello world.');
+  // $foo = 'hello world.';
+
+  PhpProperty::create('foo')->setValue(300);
+  // $foo = 300;
+
+  PhpProperty::create('foo')->setValue(3.14);
+  // $foo = 3.14;
+
+  PhpProperty::create('foo')->setValue(false);
+  // $foo = false;
+
+  PhpProperty::create('foo')->setValue(null);
+  // $foo = null;
+
+  PhpProperty::create('foo')->setValue(PhpConstant::create('BAR'));
+  // $foo = BAR;
+
+  PhpProperty::create('foo')->setExpression('self::MY_CONST');
+  // $foo = self::MY_CONST;
+
+  PhpProperty::create('foo')->setExpression("['my' => 'array']");
+  // $foo = ['my' => 'array'];
+
+For retrieving values there is a ``hasValue()`` method which returns ``true`` whether there is a value or an expression present. To be sure what is present there is also an ``isExpression()`` method which you can use as a second check::
+
+  <?php
+
+  if ($prop->hasValue()) {
+      if ($prop->isExpression()) {
+          // do something with an expression
+      } else {
+          // do something with a value
+      }
+  }

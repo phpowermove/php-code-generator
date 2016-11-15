@@ -1,0 +1,6 @@
+@import 'css/theme.css';
+
+.rst-content .section li > ol,
+.rst-content li > ol.arabic {
+	margin-bottom: 0;
+}

@@ -80,7 +80,8 @@ c) From Reflection:
 	use gossi\codegen\generator\CodeGenerator;
 	use gossi\codegen\model\PhpClass;
 
-	$class = PhpClass::fromReflection(new \ReflectionClass('MyClass'));
+    $reflection = new \ReflectionClass('MyClass');
+	$class = PhpClass::fromReflection($reflection->getFileName());
 
 	$generator = new CodeGenerator();
 	$code = $generator->generate($class);

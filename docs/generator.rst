@@ -26,19 +26,38 @@ Generates code for a given model. Additionally (and by default), it will generat
 * Config: ``gossi\codegen\config\CodeGeneratorConfig``
 * Options:
 
-  +-------------------------+---------+---------------+-----------------------------------------------------------------------------+
-  | Key                     | Type    | Default Value | Description                                                                 |
-  +=========================+=========+===============+=============================================================================+
-  | generateDocblock        | boolean | true          | enables docblock generation prior to code generation                        |
-  +-------------------------+---------+---------------+-----------------------------------------------------------------------------+
-  | generateEmptyDocblock   | boolean | true          | allows generation of empty docblocks                                        |
-  +-------------------------+---------+---------------+-----------------------------------------------------------------------------+
-  | generateScalarTypeHints | boolean | false         | generates scalar type hints, e.g. in method/function parameters (PHP 7)     |
-  +-------------------------+---------+---------------+-----------------------------------------------------------------------------+
-  | generateReturnTypeHints | boolean | false         | generates scalar type hints for return values (PHP 7)                       |
-  +-------------------------+---------+---------------+-----------------------------------------------------------------------------+
+  +-------------------------+-----------------------------------+---------------+-------------------------------------------------------------------------+
+  | Key                     | Type                              | Default Value | Description                                                             |
+  +=========================+===================================+===============+=========================================================================+
+  | generateDocblock        | boolean                           | true          | enables docblock generation prior to code generation                    |
+  +-------------------------+-----------------------------------+---------------+-------------------------------------------------------------------------+
+  | generateEmptyDocblock   | boolean                           | true          | allows generation of empty docblocks                                    |
+  +-------------------------+-----------------------------------+---------------+-------------------------------------------------------------------------+
+  | generateScalarTypeHints | boolean                           | false         | generates scalar type hints, e.g. in method/function parameters (PHP 7) |
+  +-------------------------+-----------------------------------+---------------+-------------------------------------------------------------------------+
+  | generateReturnTypeHints | boolean                           | false         | generates scalar type hints for return values (PHP 7)                   |
+  +-------------------------+-----------------------------------+---------------+-------------------------------------------------------------------------+
+  | enableSorting           | boolean                           | true          | Enables sorting                                                         |
+  +-------------------------+-----------------------------------+---------------+-------------------------------------------------------------------------+
+  | useStatementSorting     | boolean|string|Closure|Comparator | default       | Sorting mechanism for use statements                                    |
+  +-------------------------+-----------------------------------+---------------+-------------------------------------------------------------------------+
+  | constantSorting         | boolean|string|Closure|Comparator | default       | Sorting mechanism for constants                                         |
+  +-------------------------+-----------------------------------+---------------+-------------------------------------------------------------------------+
+  | propertySorting         | boolean|string|Closure|Comparator | default       | Sorting mechanism for properties                                        |
+  +-------------------------+-----------------------------------+---------------+-------------------------------------------------------------------------+
+  | methodSorting           | boolean|string|Closure|Comparator | default       | Sorting mechanism for methods                                           |
+  +-------------------------+-----------------------------------+---------------+-------------------------------------------------------------------------+
 
   **Note**: when ``generateDocblock`` is set to ``false`` then ``generateEmptyDocblock`` is ``false`` as well.
+
+  **Note 2**: For sorting ...
+
+  * ... a string will used to find a comparator with that name (at the moment there is only default).
+  * ... with a boolean you can disable sorting for a particular member
+  * ... you can pass in your own ``\Closure`` for comparison
+  * ... you can pass in a Comparator_ for comparison
+
+.. _Comparator: https://phootwork.github.io/lang/comparison/
 
 * Example:
 
@@ -63,17 +82,17 @@ Generates a complete php file with the given model inside. Especially useful whe
 * Config: ``gossi\codegen\config\CodeFileGeneratorConfig``
 * Options: Same options as ``CodeGenerator`` plus:
 
-  +--------------------+-----------------+---------------+----------------------------------------------------------------------------------------+
-  | Key                | Type            | Default Value | Description                                                                            |
-  +====================+=================+===============+========================================================================================+
-  | headerComment      | string          | empty         | A comment, that will be put after the ``<?php`` statement                              |
-  +--------------------+-----------------+---------------+----------------------------------------------------------------------------------------+
-  | headerDocblock     | string|Docblock | empty         | A docblock that will be positioned after the possible header comment                   |
-  +--------------------+-----------------+---------------+----------------------------------------------------------------------------------------+
-  | blankLineAtEnd     | boolean         | true          | Places an empty line at the end of the generated file                                  |
-  +--------------------+-----------------+---------------+----------------------------------------------------------------------------------------+
-  | declareStrictTypes | boolean         | false         | Whether or not a ``declare(strict_types=1);`` is placed at the top of the file (PHP 7) |
-  +--------------------+-----------------+---------------+----------------------------------------------------------------------------------------+
+  +--------------------+----------------------+---------------+----------------------------------------------------------------------------------------+
+  | Key                | Type                 | Default Value | Description                                                                            |
+  +====================+======================+===============+========================================================================================+
+  | headerComment      | null|string|Docblock | null          | A comment, that will be put after the ``<?php`` statement                              |
+  +--------------------+----------------------+---------------+----------------------------------------------------------------------------------------+
+  | headerDocblock     | null|string|Docblock | null          | A docblock that will be positioned after the possible header comment                   |
+  +--------------------+----------------------+---------------+----------------------------------------------------------------------------------------+
+  | blankLineAtEnd     | boolean              | true          | Places an empty line at the end of the generated file                                  |
+  +--------------------+----------------------+---------------+----------------------------------------------------------------------------------------+
+  | declareStrictTypes | boolean              | false         | Whether or not a ``declare(strict_types=1);`` is placed at the top of the file (PHP 7) |
+  +--------------------+----------------------+---------------+----------------------------------------------------------------------------------------+
 
   **Note**: ``declareStrictTypes`` sets ``generateScalarTypeHints`` and ``generateReturnTypeHints`` to ``true``.
 

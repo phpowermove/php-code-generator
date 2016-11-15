@@ -11,8 +11,27 @@ It is useful to use some kind of template system to load the contents for your b
 Hack in Traits
 --------------
 
-Let's assume you generate a php class. This class will be used in your desired framework as it serves a specific purpose in there. It possible needs to fulfill an interface or some abstract methods and your generated code will also take care of this - wonderful. Now imagine the programmer wants to change the code your code generation tools created. Once you run the tools again his changes probably got overwritten, which would be bad.
-Here is the trick: First we declare the generated class as "host" class. Your code generation tools should first check if the host class exists and if not create it, or if it exists, load the existing class. For the possible required methods your host class must contain create a trait and implement the required logic at the trait. Check in the host class, if the trait is available and add it if not present. Now you only need to write the host class if there is an update (or if your code generation tools have some kind of force parameter). It also keeps programmer modified code intact and your tools can safely overwrite the trait. If you want to give the programmer more freedom offer him hook methods in the host class, that - if he wants to - can overwrite with his own logic.
+Let's assume you generate a php class. This class will be used in your desired framework as it serves a specific purpose in there. It possible needs to fulfill an interface or some abstract methods and your generated code will also take care of this - wonderful. Now imagine the programmer wants to change the code your code generation tools created. Once you run the code generation tools again his changes probably got overwritten, which would be bad.
+
+Here is the trick: First we declare the generated class as "host" class:
+
+.. image:: images/hack-in-trait.png
+	:width: 50%
+	:align: center
+
+Your generated code will target the trait, where you can savely overwrite code. However, you must make sure the trait will be used from the host class and also generate the host class, if it doesn't exist. So here are the steps following this paradigm:
+
+
+1. Create the trait
+2. Check if the host class exists
+
+   a. if it exists, load it
+   b. if not, create it
+
+3. Add the trait to the host class
+4. Generate the host class code
+
+That way, the host class will be user-land code and the developer can write his own code there. The code generation tools will keep that code intact, so it won't be destroyed when code generation tools run again. If you want to give the programmer more freedom offer him hook methods in the host class, that - if he wants to - can overwrite with his own logic.
 
 Format in Post-Processing
 -------------------------
