@@ -57,12 +57,12 @@ class SortTest extends \PHPUnit_Framework_TestCase {
 		$ordered = $list->map(function ($item) {
 			return $item->getName();
 		})->toArray();
-		
+
 		$this->assertEquals([
 			'bar',
+			'baz',
 			'BAR',
 			'BAZ',
-			'baz',
 			'FOO'
 		], $ordered);
 	}
