@@ -32,9 +32,8 @@ trait TypeBuilderPart {
 	private function getType(AbstractModel $model, $allowed) {
 		$type = $model->getType();
 		if (!empty($type) && strpos($type, '|') === false
-				&& (!in_array($type, self::$noTypeHints) || (
-						$allowed && in_array($type, self::$php7typeHints))
-					)
+				&& (!in_array($type, self::$noTypeHints) 
+					|| ($allowed && in_array($type, self::$php7typeHints)))
 				) {
 			if (isset(self::$typeHintMap[$type])) {
 				return self::$typeHintMap[$type]; 
