@@ -6,11 +6,9 @@ use gossi\codegen\parser\visitor\ParserVisitorInterface;
 use phootwork\collection\Set;
 use phootwork\file\exception\FileNotFoundException;
 use phootwork\file\File;
-use PhpParser\Lexer\Emulative;
 use PhpParser\Node;
 use PhpParser\NodeTraverser;
 use PhpParser\NodeVisitorAbstract;
-use PhpParser\Parser;
 
 class FileParser extends NodeVisitorAbstract {
 
@@ -47,10 +45,19 @@ class FileParser extends NodeVisitorAbstract {
 			throw new FileNotFoundException(sprintf('File (%s) does not exist.', $this->filename));
 		}
 
-		$parser = new Parser(new Emulative());
+		$parser = $this->getParser();
 		$traverser = new NodeTraverser();
 		$traverser->addVisitor($this);
 		$traverser->traverse($parser->parse($file->read()));
+	}
+	
+	private function getParser() {
+		if (class_exists('\\PhpParser\\ParserFactory')) {
+			$factory = new \PhpParser\ParserFactory();
+			return $factory->create(\PhpParser\ParserFactory::PREFER_PHP7);
+		} else {
+			return new \PhpParser\Parser(new \PhpParser\Lexer\Emulative());
+		}
 	}
 	
 	public function enterNode(Node $node) {
