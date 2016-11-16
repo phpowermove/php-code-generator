@@ -33,7 +33,6 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 		$resolver->setAllowedTypes('blankLineAtEnd', 'bool');
 		$resolver->setAllowedTypes('declareStrictTypes', 'bool');
 		
-		
 		$resolver->setNormalizer('headerComment', function (Options $options, $value) {
 			return $this->toDocblock($value);
 		});
@@ -42,6 +41,11 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 		});
 	}
 	
+	/**
+	 * 
+	 * @param mixed $value
+	 * @return Docblock|null
+	 */
 	private function toDocblock($value) {
 		if (is_string($value)) {
 			$value = Docblock::create()->setLongDescription($value);

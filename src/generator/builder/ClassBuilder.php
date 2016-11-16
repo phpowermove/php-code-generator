@@ -1,14 +1,18 @@
 <?php
 namespace gossi\codegen\generator\builder;
 
+use gossi\codegen\generator\builder\parts\StructBuilderPart;
 use gossi\codegen\model\AbstractModel;
 use gossi\codegen\model\PhpClass;
-use gossi\codegen\generator\builder\parts\StructBuilderPart;
 
 class ClassBuilder extends AbstractBuilder {
 	
 	use StructBuilderPart;
 
+	/**
+	 * {@inheritDoc}
+	 * @param PhpClass $model
+	 */
 	public function build(AbstractModel $model) {
 		$this->sort($model);
 		

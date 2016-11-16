@@ -25,7 +25,11 @@ abstract class AbstractBuilder {
 		$this->config = $generator->getConfig();
 	}
 	
-	public abstract function build(AbstractModel $model);
+	/**
+	 * @param AbstractModel $model
+	 * @return void
+	 */
+	public abstract function build($model);
 	
 	protected function generate(AbstractModel $model) {
 		$builder = $this->generator->getFactory()->getBuilder($model);
