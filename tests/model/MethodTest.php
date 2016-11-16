@@ -40,6 +40,10 @@ class MethodTest extends \PHPUnit_Framework_TestCase {
 		$this->assertSame($method, $method->replaceParameter(0, $param = new PhpParameter('a')));
 		$params[0] = $param;
 		$this->assertSame($params, $method->getParameters());
+		
+		$method->removeParameter($param);
+		$method->removeParameter('c');
+		$this->assertEquals([], $method->getParameters());
 	}
 
 	/**
