@@ -1,5 +1,9 @@
 # PHP Code Generator
 
+[![License](https://poser.pugx.org/gossi/php-code-generator/license)](https://packagist.org/packages/gossi/php-code-generator)
+[![Latest Stable Version](https://poser.pugx.org/gossi/php-code-generator/v/stable)](https://packagist.org/packages/gossi/php-code-generator)
+[![Total Downloads](https://poser.pugx.org/gossi/php-code-generator/downloads)](https://packagist.org/packages/gossi/php-code-generator)<br>
+[![HHVM Status](http://hhvm.h4cc.de/badge/gossi/php-code-generator.svg?style=flat)](http://hhvm.h4cc.de/package/gossi/php-code-generator)
 [![Build Status](https://travis-ci.org/gossi/php-code-generator.svg?branch=master)](https://travis-ci.org/gossi/php-code-generator)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/gossi/php-code-generator/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/gossi/php-code-generator/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/gossi/php-code-generator/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/gossi/php-code-generator/?branch=master)
