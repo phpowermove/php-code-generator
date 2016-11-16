@@ -3,6 +3,7 @@ namespace gossi\codegen\generator\builder;
 
 use gossi\codegen\generator\builder\parts\RoutineBuilderPart;
 use gossi\codegen\model\AbstractModel;
+use gossi\codegen\model\PhpInterface;
 
 class MethodBuilder extends AbstractBuilder {
 	

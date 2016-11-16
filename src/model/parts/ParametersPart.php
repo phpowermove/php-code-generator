@@ -149,7 +149,7 @@ trait ParametersPart {
 	/**
 	 * Remove a parameter at a given position
 	 *
-	 * @param int|string|PhpParameter $position
+	 * @param int|string|PhpParameter $param
 	 * @return $this
 	 */
 	public function removeParameter($param) {

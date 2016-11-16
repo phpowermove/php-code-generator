@@ -23,6 +23,9 @@ class CodeGenerator {
 
 	/** @var CodeGeneratorConfig */
 	protected $config;
+	
+	/** @var ModelGenerator */
+	protected $generator;
 
 	/**
 	 *
@@ -59,12 +62,7 @@ class CodeGenerator {
 	 * @return string the generated code
 	 */
 	public function generate(GenerateableInterface $model) {
-// 		if ($this->config->getGenerateDocblock()) {
-// 			$model->generateDocblock();
-// 		}
-
-		$generator = new ModelGenerator($this->config);
-		return $generator->generate($model);
+		return $this->generator->generate($model);
 	}
 
 }

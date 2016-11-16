@@ -8,6 +8,10 @@ Trait RoutineBuilderPart {
 	
 	use TypeBuilderPart;
 	
+	/**
+	 * @param AbstractModel $model
+	 * @return void
+	 */
 	protected abstract function generate(AbstractModel $model);
 	
 	protected function writeFunctionStatement(RoutineInterface $model) {
@@ -45,6 +49,6 @@ Trait RoutineBuilderPart {
 	protected function writeBody(RoutineInterface $model) {
 		$this->writer->writeln(' {')->indent();
 		$this->writer->writeln(trim($model->getBody()));
-		$this->writer->outdent()->rtrim()->writeln("}");
+		$this->writer->outdent()->rtrim()->writeln('}');
 	}
 }

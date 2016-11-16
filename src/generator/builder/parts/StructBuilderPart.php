@@ -1,18 +1,33 @@
 <?php
 namespace gossi\codegen\generator\builder\parts;
 
+use gossi\codegen\generator\ComparatorFactory;
 use gossi\codegen\model\AbstractModel;
 use gossi\codegen\model\AbstractPhpStruct;
 use gossi\codegen\model\ConstantsInterface;
+use gossi\codegen\model\DocblockInterface;
 use gossi\codegen\model\NamespaceInterface;
 use gossi\codegen\model\PropertiesInterface;
 use gossi\codegen\model\TraitsInterface;
-use gossi\codegen\generator\ComparatorFactory;
 
 trait StructBuilderPart {
 	
-	protected abstract function ensureBlankLine();
-	protected abstract function generate(AbstractModel $model);
+	/**
+	 * @return void
+	 */
+	abstract protected function ensureBlankLine();
+	
+	/**
+	 * @param AbstractModel $model
+	 * @return void
+	 */
+	abstract protected function generate(AbstractModel $model);
+	
+	/**
+	 * @param DocblockInterface $model
+	 * @return void
+	 */
+	abstract protected function buildDocblock(DocblockInterface $model);
 	
 	protected function buildHeader(AbstractPhpStruct $model) {
 		$this->buildNamespace($model);

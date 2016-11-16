@@ -3,6 +3,14 @@ namespace gossi\codegen\model;
 
 interface RoutineInterface {
 
+	/**
+	 * Sets a collection of parameters
+	 *
+	 * Note: clears all parameters before setting the new ones
+	 *
+	 * @param PhpParameter[] $parameters
+	 * @return $this
+	 */
 	public function setParameters(array $parameters);
 	
 	/**
@@ -66,7 +74,7 @@ interface RoutineInterface {
 	/**
 	 * Remove a parameter at a given position
 	 *
-	 * @param int|string|PhpParameter $position
+	 * @param int|string|PhpParameter $param
 	 * @return $this
 	 */
 	public function removeParameter($param);

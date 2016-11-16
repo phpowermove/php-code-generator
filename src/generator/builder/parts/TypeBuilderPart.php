@@ -23,6 +23,12 @@ trait TypeBuilderPart {
 		'double' => 'float'
 	];
 	
+	/**
+	 * 
+	 * @param AbstractModel $model
+	 * @param bool $allowed
+	 * @return string|null
+	 */
 	private function getType(AbstractModel $model, $allowed) {
 		$type = $model->getType();
 		if (!empty($type) && strpos($type, '|') === false

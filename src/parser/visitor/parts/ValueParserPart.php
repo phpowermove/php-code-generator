@@ -20,6 +20,13 @@ trait ValueParserPart {
 		'true' => true
 	];
 	
+	/**
+	 * Parses the value of a node into the model
+	 * 
+	 * @param ValueInterface $obj
+	 * @param Node $node
+	 * @return void
+	 */
 	private function parseValue(ValueInterface $obj, Node $node) {
 		$value = $node instanceof Const_ ? $node->value : $node->default;
 		if ($value !== null) {
@@ -31,6 +38,12 @@ trait ValueParserPart {
 		}
 	}
 	
+	/**
+	 * Returns whether this node is a primitive value
+	 * 
+	 * @param Node $node
+	 * @return boolean
+	 */
 	private function isPrimitive(Node $node) {
 		return $node instanceof String_
 			|| $node instanceof LNumber
@@ -39,6 +52,12 @@ trait ValueParserPart {
 			|| $this->isNull($node);
 	}
 	
+	/**
+	 * Returns the primitive value
+	 * 
+	 * @param Node $node
+	 * @return mixed
+	 */
 	private function getPrimitiveValue(Node $node) {
 		if ($this->isBool($node)) {
 			return (bool) $this->getExpression($node);
@@ -51,6 +70,12 @@ trait ValueParserPart {
 		return $node->value;
 	}
 	
+	/**
+	 * Returns whether this node is a boolean value
+	 * 
+	 * @param Node $node
+	 * @return boolean
+	 */
 	private function isBool(Node $node) {
 		if ($node instanceof ConstFetch) {
 			$const = $node->name->parts[0];
@@ -62,6 +87,12 @@ trait ValueParserPart {
 		}
 	}
 	
+	/**
+	 * Returns whether this node is a null value
+	 * 
+	 * @param Node $node
+	 * @return boolean
+	 */
 	private function isNull(Node $node) {
 		if ($node instanceof ConstFetch) {
 			$const = $node->name->parts[0];

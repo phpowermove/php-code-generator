@@ -29,19 +29,30 @@ abstract class AbstractBuilder {
 	 * @param AbstractModel $model
 	 * @return void
 	 */
-	public abstract function build($model);
+	abstract public function build(AbstractModel $model);
 	
+	/**
+	 * @param AbstractModel $model
+	 * @return void
+	 */
 	protected function generate(AbstractModel $model) {
 		$builder = $this->generator->getFactory()->getBuilder($model);
 		$builder->build($model);
 	}
 	
+	/**
+	 * @return void
+	 */
 	protected function ensureBlankLine() {
 		if (!$this->writer->endsWith("\n\n") && strlen($this->writer->rtrim()->getContent()) > 0) {
 			$this->writer->writeln();
 		} 
 	}
 	
+	/**
+	 * @param DocblockInterface $model
+	 * @return void
+	 */
 	protected function buildDocblock(DocblockInterface $model) {
 		$this->ensureBlankLine();
 		if ($this->config->getGenerateDocblock()) {
