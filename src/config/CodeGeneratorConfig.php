@@ -40,7 +40,7 @@ class CodeGeneratorConfig {
 			'constantSorting' => CodeGenerator::SORT_CONSTANTS_DEFAULT,
 			'propertySorting' => CodeGenerator::SORT_PROPERTIES_DEFAULT,
 			'methodSorting' => CodeGenerator::SORT_METHODS_DEFAULT,
-            'generatePsrCode' => false
+			'generatePsrCode' => false
 		]);
 		
 		$resolver->setAllowedTypes('generateDocblock', 'bool');
@@ -110,15 +110,15 @@ class CodeGeneratorConfig {
 		return $this->options['generateScalarTypeHints'];
 	}
 
-    /**
-     * Returns whether PSR-code compatible will be generated
-     *
-     * @return bool `true` if they will be generated and `false` if not
-     */
+	/**
+	 * Returns whether PSR-code compatible will be generated
+	 *
+	 * @return bool `true` if they will be generated and `false` if not
+	 */
 	public function getGeneratePsrCode() {
-        return $this->options['generatePsrCode'];
-    }
-	
+		return $this->options['generatePsrCode'];
+	}
+
 	/**
 	 * Returns whether sorting is enabled
 	 * 
@@ -175,12 +175,13 @@ class CodeGeneratorConfig {
 		return $this;
 	}
 
-    /**
-     * @param bool $generate `true` if they will be generated and `false` if not
-     * @return $this
-     */
-    public function setGeneratePsrCode($generate) {
+	/**
+	 * @param bool $generate `true` if they will be generated and `false` if not
+	 * @return $this
+	 */
+	public function setGeneratePsrCode($generate) {
 		$this->options['generatePsrCode'] = $generate;
+
 		return $this;
 	}
 

@@ -47,11 +47,11 @@ Trait RoutineBuilderPart {
 	}
 	
 	protected function writeBody(RoutineInterface $model) {
-        if ($this->config->getGeneratePsrCode()) {
-            $this->writer->writeln("\n{")->indent();
-        } else {
-            $this->writer->writeln(" {")->indent();
-        }
+		if ($this->config->getGeneratePsrCode()) {
+			$this->writer->writeln("\n{")->indent();
+		} else {
+			$this->writer->writeln(" {")->indent();
+		}
 
 		$this->writer->writeln(trim($model->getBody()));
 		$this->writer->outdent()->rtrim()->writeln('}');

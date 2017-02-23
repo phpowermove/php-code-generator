@@ -123,14 +123,14 @@ class ClassGeneratorTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals($this->getGeneratedContent('RequireTraitsClass.php'), $code);
 	}
 
-    public function testPsrClass() {
-        $expected = 'class MyClass' . "\n" . '{' . "\n" . '}';
+	public function testPsrClass() {
+		$expected = 'class MyClass' . "\n" . '{' . "\n" . '}';
 
-        $class = PhpClass::create('MyClass');
-        $generator = new ModelGenerator(['generatePsrCode' => true, 'generateDocblock' => false]);
-        $code = $generator->generate($class);
+		$class     = PhpClass::create('MyClass');
+		$generator = new ModelGenerator(['generatePsrCode' => true, 'generateDocblock' => false]);
+		$code      = $generator->generate($class);
 
-        $this->assertEquals($expected, $code);
-    }
+		$this->assertEquals($expected, $code);
+	}
 
 }
