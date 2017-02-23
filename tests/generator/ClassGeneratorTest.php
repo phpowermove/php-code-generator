@@ -111,7 +111,7 @@ class ClassGeneratorTest extends \PHPUnit_Framework_TestCase {
 		$code = $generator->generate($class);
 		$this->assertEquals($modelCode, $code);
 	}
-	
+
 	public function testRequireTraitsClass() {
 		$class = PhpClass::create('RequireTraitsClass')
 			->addRequiredFile('FooBar.php')
@@ -122,5 +122,15 @@ class ClassGeneratorTest extends \PHPUnit_Framework_TestCase {
 		$code = $generator->generate($class);
 		$this->assertEquals($this->getGeneratedContent('RequireTraitsClass.php'), $code);
 	}
+
+    public function testPsrClass() {
+        $expected = 'class MyClass' . "\n" . '{' . "\n" . '}';
+
+        $class = PhpClass::create('MyClass');
+        $generator = new ModelGenerator(['generatePsrCode' => true, 'generateDocblock' => false]);
+        $code = $generator->generate($class);
+
+        $this->assertEquals($expected, $code);
+    }
 
 }

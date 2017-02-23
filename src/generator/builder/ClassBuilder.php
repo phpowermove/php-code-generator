@@ -22,7 +22,12 @@ class ClassBuilder extends AbstractBuilder {
 		$this->buildSignature($model);
 		
 		// body
-		$this->writer->writeln(" {\n")->indent();
+        if ($this->config->getGeneratePsrCode()) {
+            $this->writer->writeln("\n{")->indent();
+        } else {
+            $this->writer->writeln(" {\n")->indent();
+        }
+
 		$this->buildTraits($model);
 		$this->buildConstants($model);
 		$this->buildProperties($model);

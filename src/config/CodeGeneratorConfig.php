@@ -39,13 +39,15 @@ class CodeGeneratorConfig {
 			'useStatementSorting' => CodeGenerator::SORT_USESTATEMENTS_DEFAULT,
 			'constantSorting' => CodeGenerator::SORT_CONSTANTS_DEFAULT,
 			'propertySorting' => CodeGenerator::SORT_PROPERTIES_DEFAULT,
-			'methodSorting' => CodeGenerator::SORT_METHODS_DEFAULT
+			'methodSorting' => CodeGenerator::SORT_METHODS_DEFAULT,
+            'generatePsrCode' => false
 		]);
 		
 		$resolver->setAllowedTypes('generateDocblock', 'bool');
 		$resolver->setAllowedTypes('generateEmptyDocblock', 'bool');
 		$resolver->setAllowedTypes('generateScalarTypeHints', 'bool');
 		$resolver->setAllowedTypes('generateReturnTypeHints', 'bool');
+		$resolver->setAllowedTypes('generatePsrCode', 'bool');
 		$resolver->setAllowedTypes('enableSorting', 'bool');
 		$resolver->setAllowedTypes('useStatementSorting', ['bool', 'string', '\Closure', 'phootwork\lang\Comparator']);
 		$resolver->setAllowedTypes('constantSorting', ['bool', 'string', '\Closure', 'phootwork\lang\Comparator']);
@@ -107,6 +109,15 @@ class CodeGeneratorConfig {
 	public function getGenerateScalarTypeHints() {
 		return $this->options['generateScalarTypeHints'];
 	}
+
+    /**
+     * Returns whether PSR-code compatible will be generated
+     *
+     * @return bool `true` if they will be generated and `false` if not
+     */
+	public function getGeneratePsrCode() {
+        return $this->options['generatePsrCode'];
+    }
 	
 	/**
 	 * Returns whether sorting is enabled
@@ -116,7 +127,7 @@ class CodeGeneratorConfig {
 	public function isSortingEnabled() {
 		return $this->options['enableSorting'];
 	}
-	
+
 	/**
 	 * Returns the use statement sorting
 	 * 
@@ -161,6 +172,15 @@ class CodeGeneratorConfig {
 	 */
 	public function setGenerateScalarTypeHints($generate) {
 		$this->options['generateScalarTypeHints'] = $generate;
+		return $this;
+	}
+
+    /**
+     * @param bool $generate `true` if they will be generated and `false` if not
+     * @return $this
+     */
+    public function setGeneratePsrCode($generate) {
+		$this->options['generatePsrCode'] = $generate;
 		return $this;
 	}
 
