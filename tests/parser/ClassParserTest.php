@@ -74,6 +74,13 @@ class ClassParserTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals('phootwork\collection\AbstractCollection', $class->getParentClassName());
 		$this->assertTrue($class->hasInterface('phootwork\collection\Collection'));
 	}
+
+	public function testMyCollection2() {
+		$class = PhpClass::fromFile(__DIR__ . '/../fixtures/MyCollection2.php');
+
+		$this->assertEquals('\phootwork\collection\AbstractCollection', $class->getParentClassName());
+		$this->assertTrue($class->hasInterface('\phootwork\collection\Collection'));
+	}
 	
 	public function testTypeClass() {
 		$class = PhpClass::fromFile(__DIR__ . '/../fixtures/TypeClass.php');
