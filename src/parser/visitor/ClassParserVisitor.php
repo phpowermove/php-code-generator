@@ -12,7 +12,11 @@ class ClassParserVisitor extends StructParserVisitor {
 		$struct = $this->getStruct();
 		
 		if ($node->extends !== null) {
-			$struct->setParentClassName(implode('\\', $node->extends->parts));
+			if ($node->extends->getType() === 'Name_FullyQualified') {
+				$struct->setParentClassName('\\' . implode('\\', $node->extends->parts));
+			} else {
+				$struct->setParentClassName(implode('\\', $node->extends->parts));
+			}
 		}
 
 		foreach ($node->implements as $name) {
