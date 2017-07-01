@@ -5,6 +5,7 @@ use PhpParser\Node\Stmt\ClassLike;
 use PhpParser\Node\Stmt\TraitUse;
 use PhpParser\Node\Stmt\Namespace_;
 use PhpParser\Node\Stmt\UseUse;
+use gossi\codegen\model\AbstractPhpStruct;
 
 trait StructParserPart {
 	

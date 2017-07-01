@@ -15,12 +15,6 @@ class InterfaceParserTest extends \PHPUnit_Framework_TestCase {
 		require_once __DIR__ . '/../fixtures/DummyInterface.php';
 	}
 
-	public function testFromReflection() {
-		$expected = Fixtures::createDummyInterface();
-		$actual = PhpInterface::fromReflection(new \ReflectionClass('gossi\codegen\tests\fixtures\DummyInterface'));
-		$this->assertEquals($expected, $actual);
-	}
-
 	public function testDummyInterface() {
 		$expected = Fixtures::createDummyInterface();
 		$actual = PhpInterface::fromFile(__DIR__ . '/../fixtures/DummyInterface.php');

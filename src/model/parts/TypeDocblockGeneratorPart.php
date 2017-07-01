@@ -2,6 +2,7 @@
 namespace gossi\codegen\model\parts;
 
 use gossi\docblock\tags\AbstractTag;
+use gossi\docblock\Docblock;
 
 /**
  * Type docblock generator part

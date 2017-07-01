@@ -1,6 +1,9 @@
 <?php
 namespace gossi\codegen\model;
 
+use phootwork\collection\Map;
+use phootwork\collection\Set;
+
 interface PropertiesInterface {
 
 	/**

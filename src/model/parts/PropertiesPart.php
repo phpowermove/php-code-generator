@@ -3,6 +3,7 @@ namespace gossi\codegen\model\parts;
 
 use gossi\codegen\model\PhpProperty;
 use phootwork\collection\Map;
+use phootwork\collection\Set;
 
 /**
  * Properties part

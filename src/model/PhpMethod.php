@@ -22,7 +22,6 @@ use gossi\codegen\model\parts\FinalPart;
 use gossi\codegen\model\parts\ParametersPart;
 use gossi\codegen\model\parts\ReferenceReturnPart;
 use gossi\codegen\model\parts\TypeDocblockGeneratorPart;
-use gossi\docblock\Docblock;
 use gossi\docblock\tags\ReturnTag;
 
 /**

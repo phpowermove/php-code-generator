@@ -18,7 +18,6 @@ namespace gossi\codegen\model;
 
 use gossi\codegen\model\parts\TypeDocblockGeneratorPart;
 use gossi\codegen\model\parts\ValuePart;
-use gossi\docblock\Docblock;
 use gossi\docblock\tags\VarTag;
 
 /**

@@ -31,17 +31,6 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 	private $parentClassName;
 
 	/**
-	 * Creates a PHP class from reflection
-	 *
-	 * @deprecated Use fromFile() instead
-	 * @param \ReflectionClass $ref
-	 * @return PhpClass
-	 */
-	public static function fromReflection(\ReflectionClass $ref) {
-		return static::fromFile($ref->getFileName());
-	}
-
-	/**
 	 * Creates a PHP class from file
 	 *
 	 * @param string $filename

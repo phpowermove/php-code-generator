@@ -3,6 +3,7 @@ namespace gossi\codegen\model\parts;
 
 use gossi\codegen\model\PhpParameter;
 use gossi\docblock\tags\ParamTag;
+use gossi\docblock\Docblock;
 
 /**
  * Parameters Part

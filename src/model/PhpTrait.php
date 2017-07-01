@@ -20,17 +20,6 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
 	use TraitsPart;
 
 	/**
-	 * Creates a PHP trait from reflection
-	 *
-	 * @deprecated Use fromFile() instead
-	 * @param \ReflectionClass $ref
-	 * @return PhpTrait
-	 */
-	public static function fromReflection(\ReflectionClass $ref) {
-		return static::fromFile($ref->getFileName());
-	}
-
-	/**
 	 * Creates a PHP trait from a file
 	 *
 	 * @param string $filename

@@ -3,7 +3,6 @@ namespace gossi\codegen\generator;
 
 use gossi\codegen\config\CodeFileGeneratorConfig;
 use gossi\codegen\model\GenerateableInterface;
-use gossi\docblock\Docblock;
 use phootwork\lang\Text;
 
 /**

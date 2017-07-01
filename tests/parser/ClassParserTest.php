@@ -90,9 +90,4 @@ class ClassParserTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals('Symfony\Component\OptionsResolver\OptionsResolver', $options->getType());
 	}
 	
-	public function testFromReflection() {
-		$class = Fixtures::createEntity();
-		$this->assertEquals($class, PhpClass::fromReflection(new \ReflectionClass('gossi\codegen\tests\fixtures\Entity')));
-	}
-	
 }

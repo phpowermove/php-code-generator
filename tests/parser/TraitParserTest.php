@@ -15,12 +15,6 @@ class TraitParserTest extends \PHPUnit_Framework_TestCase {
 		require_once __DIR__ . '/../fixtures/DummyTrait.php';
 	}
 
-	public function testFromReflection() {
-		$expected = Fixtures::createDummyTrait();
-		$actual = PhpTrait::fromReflection(new \ReflectionClass('gossi\\codegen\\tests\\fixtures\\DummyTrait'));
-		$this->assertEquals($expected, $actual);
-	}
-
 	public function testFromFile() {
 		$expected = Fixtures::createDummyTrait();
 		$actual = PhpTrait::fromFile(__DIR__ . '/../fixtures/DummyTrait.php');

@@ -1,11 +1,10 @@
 <?php
 namespace gossi\codegen\generator\builder;
 
+use gossi\codegen\config\CodeGeneratorConfig;
 use gossi\codegen\generator\ModelGenerator;
 use gossi\codegen\generator\utils\Writer;
 use gossi\codegen\model\AbstractModel;
-use gossi\docblock\Docblock;
-use gossi\codegen\config\CodeGeneratorConfig;
 use gossi\codegen\model\DocblockInterface;
 
 abstract class AbstractBuilder {

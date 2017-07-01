@@ -19,17 +19,6 @@ class PhpInterface extends AbstractPhpStruct implements GenerateableInterface, C
 	use InterfacesPart;
 
 	/**
-	 * Creates a PHP interface from reflection
-	 *
-	 * @deprecated Use fromFile() instead
-	 * @param \ReflectionClass $ref
-	 * @return PhpInterface
-	 */
-	public static function fromReflection(\ReflectionClass $ref) {
-		return static::fromFile($ref->getFileName());
-	}
-
-	/**
 	 * Creates a PHP interface from file
 	 *
 	 * @param string $filename
