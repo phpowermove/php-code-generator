@@ -56,7 +56,10 @@ class ConfigTest extends \PHPUnit_Framework_TestCase {
 
 		$config->setGenerateScalarTypeHints(true);
 		$this->assertTrue($config->getGenerateScalarTypeHints());
-		
+
+		$config->setGeneratePsrCode(true);
+		$this->assertTrue($config->getGeneratePsrCode());
+
 		$config->setUseStatementSorting(false);
 		$this->assertFalse($config->getUseStatementSorting());
 		

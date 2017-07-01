@@ -90,4 +90,14 @@ class MethodGeneratorTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals($expected, $generator->generate($method));
 	}
 
+	public function testPsrCode() {
+		$expected = "public function foo()\n{\n}\n";
+
+		$method    = PhpMethod::create('foo');
+		$generator = new ModelGenerator(['generatePsrCode' => true, 'generateDocblock' => false]);
+		$code      = $generator->generate($method);
+
+		$this->assertEquals($expected, $code);
+	}
+
 }
