@@ -109,7 +109,7 @@ trait TraitsPart {
 
 		$index = array_search($name, $this->traits);
 		if ($index !== false) {
-			unset($this->traits[$name]);
+			unset($this->traits[$index]);
 
 			if ($trait instanceof PhpTrait) {
 				$qname = $trait->getQualifiedName();
