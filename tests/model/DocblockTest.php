@@ -79,9 +79,9 @@ class DocblockTest extends \PHPUnit_Framework_TestCase {
 
 		$expected = '/**
  * this is my class
- * 
+ *
  * this is my very long class
- * 
+ *
  * @author gossi <iiih@mail.me>
  */';
 		$this->assertEquals($expected, $docblock->toString());
@@ -140,9 +140,9 @@ class DocblockTest extends \PHPUnit_Framework_TestCase {
 	public function testConstant() {
 		$expected = '/**
  * my constant
- * 
+ *
  * my very long contstant
- * 
+ *
  * @var boolean this constant is a boolean
  */';
 		$constant = $this->getConstant();
@@ -160,9 +160,9 @@ class DocblockTest extends \PHPUnit_Framework_TestCase {
 	public function testProperty() {
 		$expected = '/**
  * my prop
- * 
+ *
  * my very long prop
- * 
+ *
  * @var int this prop is an integer
  */';
 		$property = $this->getProperty();
@@ -180,9 +180,9 @@ class DocblockTest extends \PHPUnit_Framework_TestCase {
 	public function testMethod() {
 		$expected = '/**
  * my method
- * 
+ *
  * my very long method
- * 
+ *
  * @see MyClass#myMethod see-desc
  * @param $a method-param
  * @throws \Exception when something goes wrong

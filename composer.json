@@ -1,7 +1,7 @@
 {
 	"name" : "gossi/php-code-generator",
-	"description" : "Toolset for generating PHP code",
 	"type" : "library",
+	"description" : "Toolset for generating PHP code",
 	"license" : "Apache2",
 	"authors" : [{
 			"name" : "Thomas Gossmann",
@@ -27,17 +27,16 @@
 	"require" : {
 		"php" : ">=5.6",
 		"gossi/docblock" : "~1",
-		"symfony/options-resolver" : "^3",
+		"gossi/php-code-profiles" : "dev-master",
+		"gossi/php-code-formatter" : "dev-master",
+		"symfony/options-resolver" : "^3|^4",
 		"phootwork/file" : "~0",
 		"phootwork/tokenizer" : "~0",
-		"nikic/php-parser" : "^3|^2|^1"
+		"nikic/php-parser" : "^4|^3|^2|^1"
 	},
 	"require-dev" : {
 		"phpunit/phpunit" : "^5.7",
 		"sami/sami" : "^4|^3"
-	},
-	"suggest" : {
-		"gossi/php-code-formatter" : "Formatting your generated code"
 	},
 	"scripts" : {
 		"test" : "phpunit",

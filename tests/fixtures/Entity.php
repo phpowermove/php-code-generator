@@ -3,7 +3,7 @@ namespace gossi\codegen\tests\fixtures;
 
 /**
  * Doc Comment.
- * 
+ *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  */
 abstract class Entity {
@@ -20,7 +20,7 @@ abstract class Entity {
 
 	/**
 	 * Another doc comment.
-	 * 
+	 *
 	 * @param $a
 	 * @param array $b
 	 * @param \stdClass $c

@@ -11,10 +11,10 @@ use PhpParser\Node\Name;
 use PhpParser\Node\Stmt\ClassMethod;
 
 class MethodParserVisitor extends StructParserVisitor {
-	
+
 	use MemberParserPart;
 	use ValueParserPart;
-	
+
 	public function visitMethod(ClassMethod $node) {
 		$m = new PhpMethod($node->name);
 		$m->setAbstract($node->isAbstract());
@@ -22,7 +22,7 @@ class MethodParserVisitor extends StructParserVisitor {
 		$m->setVisibility($this->getVisibility($node));
 		$m->setStatic($node->isStatic());
 		$m->setReferenceReturned($node->returnsByRef());
-	
+
 		// docblock
 		if (($doc = $node->getDocComment()) !== null) {
 			$m->setDocblock($doc->getReformattedText());
@@ -30,24 +30,24 @@ class MethodParserVisitor extends StructParserVisitor {
 			$m->setDescription($docblock->getShortDescription());
 			$m->setLongDescription($docblock->getLongDescription());
 		}
-	
+
 		// params
 		$params = $m->getDocblock()->getTags('param');
 		foreach ($node->params as $param) {
-			/* @var $param Param */
-	
+// 			/* @var $param Param */
+
 			$p = new PhpParameter();
 			$p->setName($param->name);
 			$p->setPassedByReference($param->byRef);
-	
+
 			if (is_string($param->type)) {
 				$p->setType($param->type);
 			} else if ($param->type instanceof Name) {
 				$p->setType(implode('\\', $param->type->parts));
 			}
-	
+
 			$this->parseValue($p, $param);
-	
+
 			$tag = $params->find($p, function (ParamTag $t, $p) {
 				return $t->getVariable() == '$' . $p->getName();
 			});
