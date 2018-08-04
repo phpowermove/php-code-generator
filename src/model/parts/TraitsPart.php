@@ -108,7 +108,7 @@ trait TraitsPart {
 		}
 
 		$index = array_search($name, $this->traits);
-		if ($index) {
+		if ($index !== false) {
 			unset($this->traits[$name]);
 
 			if ($trait instanceof PhpTrait) {
