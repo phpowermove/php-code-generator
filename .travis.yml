@@ -7,7 +7,7 @@ php:
   - 7.0
   - 7.1
   - 7.2
-  - hhvm
+  # - hhvm # broken with nikic/php-parser
 
 install:
   - composer install
