@@ -10,7 +10,7 @@ use gossi\codegen\tests\parts\ValueTests;
  * @group parser
  */
 class ClassParserTest extends \PHPUnit_Framework_TestCase {
-	
+
 	use ModelAssertions;
 	use ValueTests;
 
@@ -47,7 +47,7 @@ class ClassParserTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertTrue($class->hasConstant('NMBR'));
 		$this->assertEquals(300, $class->getConstant('NMBR')->getValue());
-		
+
 		$this->assertTrue($class->hasConstant('BAR'));
 		$this->assertEquals('self::FOO', $class->getConstant('BAR')->getExpression());
 	}
@@ -67,10 +67,18 @@ class ClassParserTest extends \PHPUnit_Framework_TestCase {
 		$class = PhpClass::fromFile(__DIR__ . '/../fixtures/ClassWithValues.php');
 		$this->assertClassWithValues($class);
 	}
-	
+
+	public function testTypeClass() {
+		$class = PhpClass::fromFile(__DIR__ . '/../fixtures/TypeClass.php');
+
+		$doSomething = $class->getMethod('doSomething');
+		$options = $doSomething->getParameter('options');
+		$this->assertEquals('Symfony\Component\OptionsResolver\OptionsResolver', $options->getType());
+	}
+
 	public function testMyCollection() {
 		$class = PhpClass::fromFile(__DIR__ . '/../fixtures/MyCollection.php');
-		
+
 		$this->assertEquals('phootwork\collection\AbstractCollection', $class->getParentClassName());
 		$this->assertTrue($class->hasInterface('phootwork\collection\Collection'));
 	}
@@ -81,13 +89,5 @@ class ClassParserTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals('\phootwork\collection\AbstractCollection', $class->getParentClassName());
 		$this->assertTrue($class->hasInterface('\phootwork\collection\Collection'));
 	}
-	
-	public function testTypeClass() {
-		$class = PhpClass::fromFile(__DIR__ . '/../fixtures/TypeClass.php');
-		
-		$doSomething = $class->getMethod('doSomething');
-		$options = $doSomething->getParameter('options');
-		$this->assertEquals('Symfony\Component\OptionsResolver\OptionsResolver', $options->getType());
-	}
-	
+
 }

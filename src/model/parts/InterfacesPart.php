@@ -15,7 +15,7 @@ trait InterfacesPart {
 
 	/** @var Set */
 	private $interfaces;
-	
+
 	private function initInterfaces() {
 		$this->interfaces = new Set();
 	}
@@ -97,11 +97,11 @@ trait InterfacesPart {
 	 */
 	public function hasInterface($interface) {
 		if ($interface instanceof PhpInterface) {
-			return $this->interfaces->contains($interface->getName()) 
+			return $this->interfaces->contains($interface->getName())
 				|| $this->interfaces->contains($interface->getQualifiedName());
 		}
 
-		return $this->hasInterface(new PhpInterface($interface));
+		return $this->interfaces->contains($interface) || $this->hasInterface(new PhpInterface($interface));
 	}
 
 	/**

@@ -133,6 +133,10 @@ class ClassTest extends \PHPUnit_Framework_TestCase {
 		$this->assertTrue($class->hasUseStatement('other\name\space\Interface'));
 		$this->assertSame($class, $class->removeInterface('other\name\space\Interface'));
 		$this->assertTrue($class->hasUseStatement('other\name\space\Interface'));
+
+		$class->addInterface('\my\Interface');
+		$this->assertTrue($class->hasInterface('\my\Interface'));
+		$this->assertFalse($class->hasInterface('my\Interface'));
 	}
 
 	public function testTraits() {
