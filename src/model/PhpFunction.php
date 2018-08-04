@@ -33,6 +33,7 @@ use gossi\docblock\tags\ReturnTag;
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  * @author Thomas Gossmann
+ * @deprecated Not a structural model. Please refer to https://github.com/gossi/php-code-generator/issues/35 and join the discussion if you really need this
  */
 class PhpFunction extends AbstractModel implements GenerateableInterface, NamespaceInterface, DocblockInterface, RoutineInterface {
 
