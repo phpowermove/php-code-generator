@@ -1,6 +1,7 @@
 <?php
 namespace gossi\codegen\config;
 
+use gossi\code\profiles\Profile;
 use gossi\codegen\generator\CodeGenerator;
 use phootwork\lang\Comparator;
 use Symfony\Component\OptionsResolver\Options;
@@ -15,6 +16,9 @@ class CodeGeneratorConfig {
 
 	protected $options;
 
+	/** @var Profile */
+	protected $profile;
+
 	/**
 	 * Creates a new configuration for code generator
 	 *
@@ -25,32 +29,60 @@ class CodeGeneratorConfig {
 		$resolver = new OptionsResolver();
 		$this->configureOptions($resolver);
 		$this->options = $resolver->resolve($options);
+		$this->profile = is_string($this->options['profile']) ? new Profile($this->options['profile']) : $this->options['profile'];
 	}
-	
+
 	protected function configureOptions(OptionsResolver $resolver) {
 		$resolver->setDefaults([
+			'profile' => 'default',
 			'generateDocblock' => true,
 			'generateEmptyDocblock' => function (Options $options) {
 				return $options['generateDocblock'];
 			},
 			'generateScalarTypeHints' => false,
 			'generateReturnTypeHints' => false,
+			'enableFormatting' => false,
 			'enableSorting' => true,
 			'useStatementSorting' => CodeGenerator::SORT_USESTATEMENTS_DEFAULT,
 			'constantSorting' => CodeGenerator::SORT_CONSTANTS_DEFAULT,
 			'propertySorting' => CodeGenerator::SORT_PROPERTIES_DEFAULT,
 			'methodSorting' => CodeGenerator::SORT_METHODS_DEFAULT
 		]);
-		
+
+		$resolver->setAllowedTypes('profile', ['string', 'gossi\code\profiles\Profile']);
 		$resolver->setAllowedTypes('generateDocblock', 'bool');
 		$resolver->setAllowedTypes('generateEmptyDocblock', 'bool');
 		$resolver->setAllowedTypes('generateScalarTypeHints', 'bool');
 		$resolver->setAllowedTypes('generateReturnTypeHints', 'bool');
+		$resolver->setAllowedTypes('enableFormatting', 'bool');
 		$resolver->setAllowedTypes('enableSorting', 'bool');
 		$resolver->setAllowedTypes('useStatementSorting', ['bool', 'string', '\Closure', 'phootwork\lang\Comparator']);
 		$resolver->setAllowedTypes('constantSorting', ['bool', 'string', '\Closure', 'phootwork\lang\Comparator']);
 		$resolver->setAllowedTypes('propertySorting', ['bool', 'string', '\Closure', 'phootwork\lang\Comparator']);
 		$resolver->setAllowedTypes('methodSorting', ['bool', 'string', '\Closure', 'phootwork\lang\Comparator']);
+	}
+
+	/**
+	 * Returns the code style profile
+	 *
+	 * @return Profile
+	 */
+	public function getProfile() {
+		return $this->profile;
+	}
+
+	/**
+	 * Sets the code style profile
+	 *
+	 * @param Profile/string $profile
+	 * @return $this
+	 */
+	public function setProfile($profile) {
+		if (is_string($profile)) {
+			$profile = new Profile($profile);
+		}
+		$this->profile = $profile;
+		return $this;
 	}
 
 	/**
@@ -107,25 +139,34 @@ class CodeGeneratorConfig {
 	public function getGenerateScalarTypeHints() {
 		return $this->options['generateScalarTypeHints'];
 	}
-	
+
 	/**
 	 * Returns whether sorting is enabled
-	 * 
+	 *
 	 * @return bool `true` if it is enabled and `false` if not
 	 */
 	public function isSortingEnabled() {
 		return $this->options['enableSorting'];
 	}
-	
+
+	/**
+	 * Returns whether formatting is enalbed
+	 *
+	 * @return bool `true` if it is enabled and `false` if not
+	 */
+	public function isFormattingEnabled() {
+		return $this->options['enableFormatting'];
+	}
+
 	/**
 	 * Returns the use statement sorting
-	 * 
+	 *
 	 * @return string|bool|Comparator|\Closure
 	 */
 	public function getUseStatementSorting() {
 		return $this->options['useStatementSorting'];
 	}
-	
+
 	/**
 	 * Returns the constant sorting
 	 *
@@ -134,7 +175,7 @@ class CodeGeneratorConfig {
 	public function getConstantSorting() {
 		return $this->options['constantSorting'];
 	}
-	
+
 	/**
 	 * Returns the property sorting
 	 *
@@ -143,7 +184,7 @@ class CodeGeneratorConfig {
 	public function getPropertySorting() {
 		return $this->options['propertySorting'];
 	}
-	
+
 	/**
 	 * Returns the method sorting
 	 *
@@ -183,9 +224,9 @@ class CodeGeneratorConfig {
 		$this->options['generateReturnTypeHints'] = $generate;
 		return $this;
 	}
-	
+
 	/**
-	 * Returns whether sorting is enabled
+	 * Sets whether sorting is enabled
 	 *
 	 * @param $enabled bool `true` if it is enabled and `false` if not
 	 * @return $this
@@ -194,7 +235,18 @@ class CodeGeneratorConfig {
 		$this->options['enableSorting'] = $enabled;
 		return $this;
 	}
-	
+
+	/**
+	 * Sets whether formatting is enabled
+	 *
+	 * @param $enabled bool `true` if it is enabled and `false` if not
+	 * @return $this
+	 */
+	public function setFormattingEnabled($enabled) {
+		$this->options['enableFormatting'] = $enabled;
+		return $this;
+	}
+
 	/**
 	 * Returns the use statement sorting
 	 *
@@ -205,7 +257,7 @@ class CodeGeneratorConfig {
 		$this->options['useStatementSorting'] = $sorting;
 		return $this;
 	}
-	
+
 	/**
 	 * Returns the constant sorting
 	 *
@@ -216,7 +268,7 @@ class CodeGeneratorConfig {
 		$this->options['constantSorting'] = $sorting;
 		return $this;
 	}
-	
+
 	/**
 	 * Returns the property sorting
 	 *
@@ -227,7 +279,7 @@ class CodeGeneratorConfig {
 		$this->options['propertySorting'] = $sorting;
 		return $this;
 	}
-	
+
 	/**
 	 * Returns the method sorting
 	 *

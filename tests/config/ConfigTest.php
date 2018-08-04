@@ -7,6 +7,7 @@ use gossi\docblock\Docblock;
 use gossi\codegen\generator\CodeGenerator;
 use phootwork\lang\ComparableComparator;
 use phootwork\lang\Comparator;
+use gossi\code\profiles\Profile;
 
 /**
  * @group config
@@ -21,6 +22,8 @@ class ConfigTest extends \PHPUnit_Framework_TestCase {
 		$this->assertFalse($config->getGenerateScalarTypeHints());
 		$this->assertFalse($config->getGenerateReturnTypeHints());
 		$this->assertTrue($config->isSortingEnabled());
+		$this->assertFalse($config->isFormattingEnabled());
+		$this->assertTrue($config->getProfile() instanceof Profile);
 		$this->assertEquals(CodeGenerator::SORT_USESTATEMENTS_DEFAULT, $config->getUseStatementSorting());
 		$this->assertEquals(CodeGenerator::SORT_CONSTANTS_DEFAULT, $config->getConstantSorting());
 		$this->assertEquals(CodeGenerator::SORT_PROPERTIES_DEFAULT, $config->getPropertySorting());
@@ -39,6 +42,9 @@ class ConfigTest extends \PHPUnit_Framework_TestCase {
 	public function testCodeGeneratorConfigSetters() {
 		$config = new CodeGeneratorConfig();
 
+		$config->setProfile('psr-2');
+		$this->assertTrue($config->getProfile() instanceof Profile);
+
 		$config->setGenerateDocblock(false);
 		$this->assertFalse($config->getGenerateDocblock());
 		$this->assertFalse($config->getGenerateEmptyDocblock());
@@ -56,24 +62,27 @@ class ConfigTest extends \PHPUnit_Framework_TestCase {
 
 		$config->setGenerateScalarTypeHints(true);
 		$this->assertTrue($config->getGenerateScalarTypeHints());
-		
+
 		$config->setUseStatementSorting(false);
 		$this->assertFalse($config->getUseStatementSorting());
-		
+
 		$config->setConstantSorting('abc');
 		$this->assertEquals('abc', $config->getConstantSorting());
-		
+
 		$config->setPropertySorting(new ComparableComparator());
 		$this->assertTrue($config->getPropertySorting() instanceof Comparator);
-		
+
 		$cmp = function($a, $b) {
 			return strcmp($a, $b);
 		};
 		$config->setMethodSorting($cmp);
 		$this->assertSame($cmp, $config->getMethodSorting());
-		
+
 		$config->setSortingEnabled(false);
 		$this->assertFalse($config->isSortingEnabled());
+
+		$config->setFormattingEnabled(true);
+		$this->assertTrue($config->isFormattingEnabled());
 	}
 
 	public function testCodeFileGeneratorConfigDefaults() {
