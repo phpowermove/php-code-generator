@@ -52,8 +52,13 @@ class FileParser extends NodeVisitorAbstract {
 	}
 
 	private function getParser() {
-		$factory = new \PhpParser\ParserFactory();
-		return $factory->create(\PhpParser\ParserFactory::PREFER_PHP7);
+		if (class_exists('\\PhpParser\\ParserFactory')) {
+			$factory = new \PhpParser\ParserFactory();
+			return $factory->create(\PhpParser\ParserFactory::PREFER_PHP7);
+		} else {
+			// because sami v3 requires php-parser v1
+			return new \PhpParser\Parser(new \PhpParser\Lexer\Emulative());
+		}
 	}
 
 	public function enterNode(Node $node) {
