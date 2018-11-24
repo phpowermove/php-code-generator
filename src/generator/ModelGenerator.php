@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\generator;
 
 use gossi\codegen\config\CodeGeneratorConfig;
@@ -45,31 +47,29 @@ class ModelGenerator {
 	}
 
 	/**
-	 * @return CodeGeneratorConfig
 	 */
-	public function getConfig() {
+	public function getConfig(): CodeGeneratorConfig {
 		return $this->config;
 	}
 
 	/**
-	 * @return Writer
+	 *
 	 */
-	public function getWriter() {
+	public function getWriter(): Writer {
 		return $this->writer;
 	}
 
 	/**
-	 * @return BuilderFactory
+	 *
 	 */
-	public function getFactory() {
+	public function getFactory(): BuilderFactory {
 		return $this->factory;
 	}
 
 	/**
 	 * @param AbstractModel $model
-	 * @return string
 	 */
-	public function generate(AbstractModel $model) {
+	public function generate(AbstractModel $model): string {
 		$this->writer->reset();
 
 		$builder = $this->factory->getBuilder($model);

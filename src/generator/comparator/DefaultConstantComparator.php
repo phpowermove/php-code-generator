@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\generator\comparator;
 
 use gossi\codegen\model\PhpConstant;
@@ -10,13 +12,13 @@ use phootwork\lang\Comparator;
  * Orders them by lower cased first, then upper cased
  */
 class DefaultConstantComparator implements Comparator {
-	
+
 	private $comparator;
-	
+
 	public function __construct() {
 		$this->comparator = new DefaultUseStatementComparator();
 	}
-	
+
 	/**
 	 * @param PhpConstant $a
 	 * @param PhpConstant $b

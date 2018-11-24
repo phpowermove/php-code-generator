@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\generator;
 
 use gossi\codegen\config\CodeGeneratorConfig;
@@ -12,18 +14,18 @@ use gossi\codegen\model\GenerateableInterface;
  * @author Thomas Gossmann
  */
 class CodeGenerator {
-	
+
 	const SORT_USESTATEMENTS_DEFAULT = 'default';
-	
+
 	const SORT_CONSTANTS_DEFAULT = 'default';
-	
+
 	const SORT_PROPERTIES_DEFAULT = 'default';
-	
+
 	const SORT_METHODS_DEFAULT = 'default';
 
 	/** @var CodeGeneratorConfig */
 	protected $config;
-	
+
 	/** @var ModelGenerator */
 	protected $generator;
 
@@ -35,7 +37,7 @@ class CodeGenerator {
 		$this->configure($config);
 		$this->generator = new ModelGenerator($this->config);
 	}
-	
+
 	protected function configure($config = null) {
 		if (is_array($config)) {
 			$this->config = new CodeGeneratorConfig($config);
@@ -61,7 +63,7 @@ class CodeGenerator {
 	 * @param GenerateableInterface $model
 	 * @return string the generated code
 	 */
-	public function generate(GenerateableInterface $model) {
+	public function generate(GenerateableInterface $model): string {
 		return $this->generator->generate($model);
 	}
 

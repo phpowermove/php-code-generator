@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\generator;
 
 use gossi\codegen\generator\builder\AbstractBuilder;
@@ -24,7 +26,7 @@ class BuilderFactory {
 
 	/** @var ModelGenerator */
 	private $generator;
-	
+
 	private $classBuilder;
 	private $constantBuilder;
 	private $functionBuilder;
@@ -33,7 +35,7 @@ class BuilderFactory {
 	private $parameterBuilder;
 	private $propertyBuilder;
 	private $traitBuilder;
-	
+
 	public function __construct(ModelGenerator $generator) {
 		$this->generator = $generator;
 		$this->classBuilder = new ClassBuilder($generator);
@@ -45,47 +47,47 @@ class BuilderFactory {
 		$this->propertyBuilder = new PropertyBuilder($generator);
 		$this->traitBuilder = new TraitBuilder($generator);
 	}
-	
+
 	/**
 	 * Returns the related builder for the given model
-	 * 
+	 *
 	 * @param AbstractModel $model
 	 * @return AbstractBuilder
 	 */
-	public function getBuilder(AbstractModel $model) {
+	public function getBuilder(AbstractModel $model): ?AbstractBuilder {
 		if ($model instanceof PhpClass) {
 			return $this->classBuilder;
 		}
-		
+
 		if ($model instanceof PhpConstant) {
 			return $this->constantBuilder;
 		}
-		
+
 		if ($model instanceof PhpFunction) {
 			return $this->functionBuilder;
 		}
-		
+
 		if ($model instanceof PhpInterface) {
 			return $this->interfaceBuilder;
 		}
-		
+
 		if ($model instanceof PhpMethod) {
 			return $this->methodBuilder;
 		}
-		
+
 		if ($model instanceof PhpParameter) {
 			return $this->parameterBuilder;
 		}
-		
+
 		if ($model instanceof PhpProperty) {
 			return $this->propertyBuilder;
 		}
-		
+
 		if ($model instanceof PhpTrait) {
 			return $this->traitBuilder;
 		}
-		
+
 		return null;
 	}
-	
+
 }

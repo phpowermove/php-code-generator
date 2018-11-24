@@ -1,5 +1,4 @@
 <?php
-
 /*
  * Copyright 2011 Johannes M. Schmitt <schmittjoh@gmail.com>
  *
@@ -15,6 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+declare(strict_types=1);
+
 namespace gossi\codegen\generator\utils;
 
 /**
@@ -38,7 +39,7 @@ class Writer {
 	public function __construct($options = []) {
 		$this->options = array_merge($this->options, $options);
 
-		$this->indentation = str_repeat($this->options['indentation_character'], 
+		$this->indentation = str_repeat($this->options['indentation_character'],
 			$this->options['indentation_size']);
 	}
 
@@ -56,9 +57,9 @@ class Writer {
 
 	/**
 	 *
-	 * @param string $content        	
+	 * @param string $content
 	 */
-	public function writeln($content = '') {
+	public function writeln(string $content = '') {
 		$this->write($content . "\n");
 
 		return $this;
@@ -66,9 +67,9 @@ class Writer {
 
 	/**
 	 *
-	 * @param string $content        	
+	 * @param string $content
 	 */
-	public function write($content) {
+	public function write(string $content) {
 		$lines = explode("\n", $content);
 		for ($i = 0, $c = count($lines); $i < $c; $i++) {
 			if ($this->indentationLevel > 0
@@ -98,7 +99,7 @@ class Writer {
 		return $this;
 	}
 
-	public function endsWith($search) {
+	public function endsWith($search): bool {
 		return substr($this->content, -strlen($search)) === $search;
 	}
 
@@ -109,7 +110,7 @@ class Writer {
 		return $this;
 	}
 
-	public function getContent() {
+	public function getContent(): string {
 		return $this->content;
 	}
 }

@@ -1,11 +1,13 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\generator\comparator;
 
 use phootwork\lang\Comparator;
 
 /**
  * Default use statement comparator
- * 
+ *
  * Compares use statements case-sensitive, with lower-case beeing sorted first
  */
 class DefaultUseStatementComparator implements Comparator {
@@ -22,14 +24,14 @@ class DefaultUseStatementComparator implements Comparator {
 				break;
 			}
 		}
-		
+
 		if ($cmp1 === null && $cmp2 === null) {
 			return 0;
 		}
-		
+
 		return $this->getAscii($cmp1) - $this->getAscii($cmp2);
 	}
-	
+
 	private function getAscii($str) {
 		$ord = ord($str);
 		if ($ord >= 65 && $ord <= 90) {

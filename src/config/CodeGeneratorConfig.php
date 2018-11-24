@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\config;
 
 use gossi\code\profiles\Profile;
@@ -32,7 +34,7 @@ class CodeGeneratorConfig {
 		$this->profile = is_string($this->options['profile']) ? new Profile($this->options['profile']) : $this->options['profile'];
 	}
 
-	protected function configureOptions(OptionsResolver $resolver) {
+	protected function configureOptions(OptionsResolver $resolver): void {
 		$resolver->setDefaults([
 			'profile' => 'default',
 			'generateDocblock' => true,
@@ -67,7 +69,7 @@ class CodeGeneratorConfig {
 	 *
 	 * @return Profile
 	 */
-	public function getProfile() {
+	public function getProfile(): Profile {
 		return $this->profile;
 	}
 
@@ -90,7 +92,7 @@ class CodeGeneratorConfig {
 	 *
 	 * @return bool `true` if they will be generated and `false` if not
 	 */
-	public function getGenerateDocblock() {
+	public function getGenerateDocblock(): bool {
 		return $this->options['generateDocblock'];
 	}
 
@@ -100,7 +102,7 @@ class CodeGeneratorConfig {
 	 * @param bool $generate `true` if they will be generated and `false` if not
 	 * @return $this
 	 */
-	public function setGenerateDocblock($generate) {
+	public function setGenerateDocblock(bool $generate) {
 		$this->options['generateDocblock'] = $generate;
 		if (!$generate) {
 			$this->options['generateEmptyDocblock'] = $generate;
@@ -113,7 +115,7 @@ class CodeGeneratorConfig {
 	 *
 	 * @return bool `true` if they will be generated and `false` if not
 	 */
-	public function getGenerateEmptyDocblock() {
+	public function getGenerateEmptyDocblock(): bool {
 		return $this->options['generateEmptyDocblock'];
 	}
 
@@ -123,7 +125,7 @@ class CodeGeneratorConfig {
 	 * @param bool $generate `true` if they will be generated and `false` if not
 	 * @return $this
 	 */
-	public function setGenerateEmptyDocblock($generate) {
+	public function setGenerateEmptyDocblock(bool $generate) {
 		$this->options['generateEmptyDocblock'] = $generate;
 		if ($generate) {
 			$this->options['generateDocblock'] = $generate;
@@ -136,7 +138,7 @@ class CodeGeneratorConfig {
 	 *
 	 * @return bool `true` if they will be generated and `false` if not
 	 */
-	public function getGenerateScalarTypeHints() {
+	public function getGenerateScalarTypeHints(): bool {
 		return $this->options['generateScalarTypeHints'];
 	}
 
@@ -145,7 +147,7 @@ class CodeGeneratorConfig {
 	 *
 	 * @return bool `true` if it is enabled and `false` if not
 	 */
-	public function isSortingEnabled() {
+	public function isSortingEnabled(): bool {
 		return $this->options['enableSorting'];
 	}
 
@@ -154,7 +156,7 @@ class CodeGeneratorConfig {
 	 *
 	 * @return bool `true` if it is enabled and `false` if not
 	 */
-	public function isFormattingEnabled() {
+	public function isFormattingEnabled(): bool {
 		return $this->options['enableFormatting'];
 	}
 
@@ -200,7 +202,7 @@ class CodeGeneratorConfig {
 	 * @param bool $generate `true` if they will be generated and `false` if not
 	 * @return $this
 	 */
-	public function setGenerateScalarTypeHints($generate) {
+	public function setGenerateScalarTypeHints(bool $generate) {
 		$this->options['generateScalarTypeHints'] = $generate;
 		return $this;
 	}
@@ -210,7 +212,7 @@ class CodeGeneratorConfig {
 	 *
 	 * @return bool `true` if they will be generated and `false` if not
 	 */
-	public function getGenerateReturnTypeHints() {
+	public function getGenerateReturnTypeHints(): bool {
 		return $this->options['generateReturnTypeHints'];
 	}
 
@@ -220,7 +222,7 @@ class CodeGeneratorConfig {
 	 * @param bool $generate `true` if they will be generated and `false` if not
 	 * @return $this
 	 */
-	public function setGenerateReturnTypeHints($generate) {
+	public function setGenerateReturnTypeHints(bool $generate) {
 		$this->options['generateReturnTypeHints'] = $generate;
 		return $this;
 	}
@@ -231,7 +233,7 @@ class CodeGeneratorConfig {
 	 * @param $enabled bool `true` if it is enabled and `false` if not
 	 * @return $this
 	 */
-	public function setSortingEnabled($enabled) {
+	public function setSortingEnabled(bool $enabled) {
 		$this->options['enableSorting'] = $enabled;
 		return $this;
 	}
@@ -242,7 +244,7 @@ class CodeGeneratorConfig {
 	 * @param $enabled bool `true` if it is enabled and `false` if not
 	 * @return $this
 	 */
-	public function setFormattingEnabled($enabled) {
+	public function setFormattingEnabled(bool $enabled) {
 		$this->options['enableFormatting'] = $enabled;
 		return $this;
 	}

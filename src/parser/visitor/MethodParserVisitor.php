@@ -25,15 +25,15 @@ class MethodParserVisitor extends StructParserVisitor {
 		$m->setStatic($node->isStatic());
 		$m->setReferenceReturned($node->returnsByRef());
 
-		// docblock
-		if (($doc = $node->getDocComment()) !== null) {
-			$m->setDocblock($doc->getReformattedText());
-			$docblock = $m->getDocblock();
-			$m->setDescription($docblock->getShortDescription());
-			$m->setLongDescription($docblock->getLongDescription());
-		}
+		$this->parseMemberDocblock($m, $node->getDocComment());
+		$this->parseParams($m, $node);
+		$this->parseType($m, $node);
+		$this->parseBody($m, $node);
 
-		// params
+		$this->struct->setMethod($m);
+	}
+
+	private function parseParams(PhpMethod $m, ClassMethod $node) {
 		$params = $m->getDocblock()->getTags('param');
 		foreach ($node->params as $param) {
 			$name = $param->var ? $param->var->name : $param->name;
@@ -60,21 +60,21 @@ class MethodParserVisitor extends StructParserVisitor {
 
 			$m->addParameter($p);
 		}
+	}
 
-		// return type and description
+	private function parseType(PhpMethod &$m, ClassMethod $node) {
 		$returns = $m->getDocblock()->getTags('return');
 		if ($returns->size() > 0) {
 			$return = $returns->get(0);
 			$m->setType($return->getType(), $return->getDescription());
 		}
+	}
 
-		// body
+	private function parseBody(PhpMethod &$m, ClassMethod $node) {
 		$stmts = $node->getStmts();
 		if (is_array($stmts) && count($stmts)) {
 			$prettyPrinter = new PrettyPrinter();
 			$m->setBody($prettyPrinter->prettyPrint($stmts));
 		}
-
-		$this->struct->setMethod($m);
 	}
 }

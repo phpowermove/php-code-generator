@@ -13,7 +13,7 @@ trait MemberParserPart {
 	 * @param AbstractPhpMember|PhpConstant $member
 	 * @param Doc $doc
 	 */
-	private function parseMemberDocblock($member, Doc $doc = null) {
+	private function parseMemberDocblock(&$member, Doc $doc = null) {
 		if ($doc !== null) {
 			$member->setDocblock($doc->getReformattedText());
 			$docblock = $member->getDocblock();

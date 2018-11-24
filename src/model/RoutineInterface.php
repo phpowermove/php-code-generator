@@ -91,7 +91,7 @@ interface RoutineInterface {
 	/**
 	 * Set true if a reference is returned of false if not
 	 *
-	 * @param bool $bool
+	 * @param bool $referenceReturned
 	 * @return $this
 	 */
 	public function setReferenceReturned(bool $referenceReturned);

@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\generator;
 
 use gossi\codegen\generator\comparator\DefaultConstantComparator;
@@ -11,11 +13,11 @@ class ComparatorFactory {
 
 	/**
 	 * Creates a comparator for use statements
-	 * 
+	 *
 	 * @param string $type
 	 * @return Comparator
 	 */
-	public static function createUseStatementComparator($type) {
+	public static function createUseStatementComparator(string $type): Comparator {
 // 		switch ($type) {
 // 			case CodeGenerator::SORT_USESTATEMENTS_DEFAULT:
 // 			default:
@@ -23,14 +25,14 @@ class ComparatorFactory {
 // 		}
 		return new DefaultUseStatementComparator();
 	}
-	
+
 	/**
 	 * Creates a comparator for constants
-	 * 
+	 *
 	 * @param string $type
 	 * @return Comparator
 	 */
-	public static function createConstantComparator($type) {
+	public static function createConstantComparator(string $type): Comparator {
 // 		switch ($type) {
 // 			case CodeGenerator::SORT_CONSTANTS_DEFAULT:
 // 			default:
@@ -38,14 +40,14 @@ class ComparatorFactory {
 // 		}
 		return new DefaultConstantComparator();
 	}
-	
+
 	/**
 	 * Creates a comparator for properties
-	 * 
+	 *
 	 * @param string $type
 	 * @return Comparator
 	 */
-	public static function createPropertyComparator($type) {
+	public static function createPropertyComparator(string $type): Comparator {
 // 		switch ($type) {
 // 			case CodeGenerator::SORT_PROPERTIES_DEFAULT:
 // 			default:
@@ -53,14 +55,14 @@ class ComparatorFactory {
 // 		}
 		return new DefaultPropertyComparator();
 	}
-	
+
 	/**
 	 * Creates a comparator for methods
-	 * 
+	 *
 	 * @param string $type
 	 * @return Comparator
 	 */
-	public static function createMethodComparator($type) {
+	public static function createMethodComparator(string $type): Comparator {
 // 		switch ($type) {
 // 			case CodeGenerator::SORT_METHODS_DEFAULT:
 // 			default:

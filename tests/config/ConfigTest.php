@@ -106,8 +106,6 @@ class ConfigTest extends TestCase {
 	public function testCodeFileGeneratorConfigSetters() {
 		$config = new CodeFileGeneratorConfig();
 
-		$this->assertEquals('hello world', $config->setHeaderComment('hello world')->getHeaderComment());
-
 		$docblock = new Docblock();
 		$this->assertSame($docblock, $config->setHeaderDocblock($docblock)->getHeaderDocblock());
 

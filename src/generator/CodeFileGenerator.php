@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\generator;
 
 use gossi\codegen\config\CodeFileGeneratorConfig;
@@ -24,7 +26,7 @@ class CodeFileGenerator extends CodeGenerator {
 	public function __construct($config = null) {
 		parent::__construct($config);
 	}
-	
+
 	protected function configure($config = null) {
 		if (is_array($config)) {
 			$this->config = new CodeFileGeneratorConfig($config);
@@ -47,7 +49,7 @@ class CodeFileGenerator extends CodeGenerator {
 	/**
 	 * {@inheritDoc}
 	 */
-	public function generate(GenerateableInterface $model) {
+	public function generate(GenerateableInterface $model): string {
 		$content = "<?php\n";
 
 		$comment = $this->config->getHeaderComment();

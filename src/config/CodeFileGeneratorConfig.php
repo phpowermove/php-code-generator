@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\config;
 
 use gossi\docblock\Docblock;
@@ -11,8 +13,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  * @author Thomas Gossmann
  */
 class CodeFileGeneratorConfig extends CodeGeneratorConfig {
-	
-	protected function configureOptions(OptionsResolver $resolver) {
+
+	protected function configureOptions(OptionsResolver $resolver): void {
 		parent::configureOptions($resolver);
 
 		$resolver->setDefaults([
@@ -27,12 +29,12 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 				return $options['declareStrictTypes'];
 			},
 		]);
-		
+
 		$resolver->setAllowedTypes('headerComment', ['null', 'string', 'gossi\\docblock\\Docblock']);
 		$resolver->setAllowedTypes('headerDocblock', ['null', 'string', 'gossi\\docblock\\Docblock']);
 		$resolver->setAllowedTypes('blankLineAtEnd', 'bool');
 		$resolver->setAllowedTypes('declareStrictTypes', 'bool');
-		
+
 		$resolver->setNormalizer('headerComment', function (Options $options, $value) {
 			return $this->toDocblock($value);
 		});
@@ -40,36 +42,36 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 			return $this->toDocblock($value);
 		});
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param mixed $value
 	 * @return Docblock|null
 	 */
-	private function toDocblock($value) {
+	private function toDocblock($value): ?Docblock {
 		if (is_string($value)) {
 			$value = Docblock::create()->setLongDescription($value);
 		}
-		
+
 		return $value;
 	}
 
 	/**
 	 * Returns the file header comment
 	 *
-	 * @return string the header comment
+	 * @return Docblock the header comment
 	 */
-	public function getHeaderComment() {
+	public function getHeaderComment(): ?Docblock {
 		return $this->options['headerComment'];
 	}
 
 	/**
 	 * Sets the file header comment
 	 *
-	 * @param string $comment the header comment
+	 * @param Docblock $comment the header comment
 	 * @return $this
 	 */
-	public function setHeaderComment($comment) {
+	public function setHeaderComment(Docblock $comment) {
 		$this->options['headerComment'] = $comment;
 		return $this;
 	}
@@ -79,7 +81,7 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 	 *
 	 * @return Docblock the docblock
 	 */
-	public function getHeaderDocblock() {
+	public function getHeaderDocblock(): ?Docblock {
 		return $this->options['headerDocblock'];
 	}
 
@@ -99,7 +101,7 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 	 *
 	 * @return bool `true` if it will be generated and `false` if not
 	 */
-	public function getBlankLineAtEnd() {
+	public function getBlankLineAtEnd(): bool {
 		return $this->options['blankLineAtEnd'];
 	}
 
@@ -109,7 +111,7 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 	 * @param bool $show `true` if it will be generated and `false` if not
 	 * @return $this
 	 */
-	public function setBlankLineAtEnd($show) {
+	public function setBlankLineAtEnd(bool $show) {
 		$this->options['blankLineAtEnd'] = $show;
 		return $this;
 	}
@@ -120,7 +122,7 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 	 *
 	 * @return bool `true` if it will be printed and `false` if not
 	 */
-	public function getDeclareStrictTypes() {
+	public function getDeclareStrictTypes(): bool {
 		return $this->options['declareStrictTypes'];
 	}
 
@@ -131,7 +133,7 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 	 * @param bool $strict `true` if it will be printed and `false` if not
 	 * @return $this
 	 */
-	public function setDeclareStrictTypes($strict) {
+	public function setDeclareStrictTypes(bool $strict) {
 		$this->options['declareStrictTypes'] = $strict;
 		return $this;
 	}
