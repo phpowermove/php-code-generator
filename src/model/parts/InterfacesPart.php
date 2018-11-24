@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\model\parts;
 
 use gossi\codegen\model\PhpInterface;
@@ -27,7 +29,7 @@ trait InterfacesPart {
 	 * @param null|string $alias
 	 * @return $this
 	 */
-	abstract public function addUseStatement($qualifiedName, $alias = null);
+	abstract public function addUseStatement(string $qualifiedName, string $alias = null);
 
 	/**
 	 * Removes a use statement
@@ -35,14 +37,14 @@ trait InterfacesPart {
 	 * @param string $qualifiedName
 	 * @return $this
 	 */
-	abstract public function removeUseStatement($qualifiedName);
+	abstract public function removeUseStatement(string $qualifiedName);
 
 	/**
 	 * Returns the namespace
 	 *
 	 * @return string
 	 */
-	abstract public function getNamespace();
+	abstract public function getNamespace(): ?string;
 
 	/**
 	 * Adds an interface.
@@ -76,7 +78,7 @@ trait InterfacesPart {
 	 *
 	 * @return Set
 	 */
-	public function getInterfaces() {
+	public function getInterfaces(): Set {
 		return $this->interfaces;
 	}
 
@@ -85,7 +87,7 @@ trait InterfacesPart {
 	 *
 	 * @return bool `true` if interfaces are available and `false` if not
 	 */
-	public function hasInterfaces() {
+	public function hasInterfaces(): bool {
 		return !$this->interfaces->isEmpty();
 	}
 
@@ -95,7 +97,7 @@ trait InterfacesPart {
 	 * @param PhpInterface|string $interface interface name or instance
 	 * @return bool
 	 */
-	public function hasInterface($interface) {
+	public function hasInterface($interface): bool {
 		if ($interface instanceof PhpInterface) {
 			return $this->interfaces->contains($interface->getName())
 				|| $this->interfaces->contains($interface->getQualifiedName());

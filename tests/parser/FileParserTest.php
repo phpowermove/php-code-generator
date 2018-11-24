@@ -1,6 +1,7 @@
 <?php
 namespace gossi\codegen\tests\parser;
 
+use PHPUnit\Framework\TestCase;
 use gossi\codegen\model\PhpClass;
 use gossi\codegen\parser\FileParser;
 use gossi\codegen\parser\visitor\ClassParserVisitor;
@@ -8,7 +9,7 @@ use gossi\codegen\parser\visitor\ClassParserVisitor;
 /**
  * @group parser
  */
-class FileParserTest extends \PHPUnit_Framework_TestCase {
+class FileParserTest extends TestCase {
 
 	public function testVisitors() {
 		$struct = new PhpClass();
@@ -19,7 +20,7 @@ class FileParserTest extends \PHPUnit_Framework_TestCase {
 		$parser->removeVisitor($visitor);
 		$this->assertFalse($parser->hasVisitor($visitor));
 	}
-	
+
 	/**
 	 * @expectedException phootwork\file\exception\FileNotFoundException
 	 */

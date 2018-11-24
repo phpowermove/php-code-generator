@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\model;
 
 use gossi\codegen\model\parts\ConstantsPart;
@@ -24,14 +26,14 @@ class PhpInterface extends AbstractPhpStruct implements GenerateableInterface, C
 	 * @param string $filename
 	 * @return PhpInterface
 	 */
-	public static function fromFile($filename) {
+	public static function fromFile(string $filename): PhpInterface {
 		$interface = new PhpInterface();
 		$parser = new FileParser($filename);
 		$parser->addVisitor(new InterfaceParserVisitor($interface));
 		$parser->addVisitor(new MethodParserVisitor($interface));
 		$parser->addVisitor(new ConstantParserVisitor($interface));
 		$parser->parse();
-		
+
 		return $interface;
 	}
 

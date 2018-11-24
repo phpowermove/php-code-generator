@@ -14,6 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+declare(strict_types=1);
+
 namespace gossi\codegen\model;
 
 use gossi\codegen\model\parts\NamePart;
@@ -60,8 +62,8 @@ class PhpParameter extends AbstractModel implements ValueInterface {
 	 * @param bool $bool `true` if passed by reference and `false` if not
 	 * @return $this
 	 */
-	public function setPassedByReference($bool) {
-		$this->passedByReference = (boolean) $bool;
+	public function setPassedByReference(bool $bool) {
+		$this->passedByReference = $bool;
 
 		return $this;
 	}
@@ -71,7 +73,7 @@ class PhpParameter extends AbstractModel implements ValueInterface {
 	 *
 	 * @return bool `true` if passed by reference and `false` if not
 	 */
-	public function isPassedByReference() {
+	public function isPassedByReference(): bool {
 		return $this->passedByReference;
 	}
 
@@ -80,7 +82,7 @@ class PhpParameter extends AbstractModel implements ValueInterface {
 	 *
 	 * @return ParamTag
 	 */
-	public function getDocblockTag() {
+	public function getDocblockTag(): ParamTag {
 		return ParamTag::create()
 			->setType($this->getType())
 			->setVariable($this->getName())
@@ -94,7 +96,7 @@ class PhpParameter extends AbstractModel implements ValueInterface {
 	 * @param string $description
 	 * @return $this
 	 */
-	public function setTypeDescription($description) {
+	public function setTypeDescription(?string $description) {
 		return $this->setDescription($description);
 	}
 
@@ -104,7 +106,7 @@ class PhpParameter extends AbstractModel implements ValueInterface {
 	 * @see #getDescription
 	 * @return string
 	 */
-	public function getTypeDescription() {
+	public function getTypeDescription(): ?string {
 		return $this->getDescription();
 	}
 }

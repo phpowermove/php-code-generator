@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\model;
 
 use gossi\codegen\model\parts\AbstractPart;
@@ -36,7 +38,7 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 	 * @param string $filename
 	 * @return PhpClass
 	 */
-	public static function fromFile($filename) {
+	public static function fromFile(string $filename): PhpClass {
 		$class = new PhpClass();
 		$parser = new FileParser($filename);
 		$parser->addVisitor(new ClassParserVisitor($class));
@@ -44,7 +46,7 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 		$parser->addVisitor(new ConstantParserVisitor($class));
 		$parser->addVisitor(new PropertyParserVisitor($class));
 		$parser->parse();
-		
+
 		return $class;
 	}
 
@@ -65,7 +67,7 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 	 *
 	 * @return string
 	 */
-	public function getParentClassName() {
+	public function getParentClassName(): ?string {
 		return $this->parentClassName;
 	}
 
@@ -75,7 +77,7 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 	 * @param string|null $name the new parent
 	 * @return $this
 	 */
-	public function setParentClassName($name) {
+	public function setParentClassName(?string $name) {
 		$this->parentClassName = $name;
 
 		return $this;

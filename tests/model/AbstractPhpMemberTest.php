@@ -1,10 +1,12 @@
 <?php
 namespace gossi\codegen\tests\model;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * @group model
  */
-class AbstractPhpMemberTest extends \PHPUnit_Framework_TestCase {
+class AbstractPhpMemberTest extends TestCase {
 
 	public function testSetGetStatic() {
 		$member = $this->getMember();

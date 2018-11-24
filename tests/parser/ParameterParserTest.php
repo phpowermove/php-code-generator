@@ -1,21 +1,22 @@
 <?php
 namespace gossi\codegen\tests\parser;
 
+use PHPUnit\Framework\TestCase;
 use gossi\codegen\model\PhpClass;
 use gossi\codegen\tests\parts\ValueTests;
 
 /**
  * @group parser
  */
-class ParameterParserTest extends \PHPUnit_Framework_TestCase {
-	
+class ParameterParserTest extends TestCase {
+
 	use ValueTests;
-	
+
 	public function testValuesFromFile() {
 		$class = PhpClass::fromFile(__DIR__ . '/../fixtures/ValueClass.php');
 		$this->assertValueClass($class);
 	}
-	
+
 	protected function assertValueClass(PhpClass $class) {
 		$values = $class->getMethod('values');
 		$this->isValueString($values->getParameter('paramString'));

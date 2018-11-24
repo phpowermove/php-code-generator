@@ -1,10 +1,11 @@
 <?php
 namespace gossi\codegen\tests\utils;
 
-use gossi\codegen\utils\ReflectionUtils;
+use PHPUnit\Framework\TestCase;
 use gossi\codegen\generator\utils\Writer;
+use gossi\codegen\utils\ReflectionUtils;
 
-class ReflectionUtilsTest extends \PHPUnit_Framework_TestCase {
+class ReflectionUtilsTest extends TestCase {
 
 	public function setUp() {
 		// they are not explicitely instantiated through new WhatEver(); and such not

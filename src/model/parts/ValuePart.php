@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\model\parts;
 
 use gossi\codegen\model\PhpConstant;
@@ -53,17 +55,17 @@ trait ValuePart {
 	 * @deprecated use `hasValue()` instead
 	 * @return bool
 	 */
-	public function hasDefaultValue() {
+	public function hasDefaultValue(): bool {
 		return $this->hasValue();
 	}
-	
+
 	/**
 	 * Returns whether the given value is a primitive
-	 * 
+	 *
 	 * @param mixed $value
 	 * @return boolean
 	 */
-	private function isPrimitive($value) {
+	private function isPrimitive($value): bool {
 		return (is_string($value)
 			|| is_int($value)
 			|| is_float($value)
@@ -115,7 +117,7 @@ trait ValuePart {
 	 *
 	 * @return bool
 	 */
-	public function hasValue() {
+	public function hasValue(): bool {
 		return $this->hasValue || $this->hasExpression;
 	}
 
@@ -124,7 +126,7 @@ trait ValuePart {
 	 *
 	 * @return bool
 	 */
-	public function isExpression() {
+	public function isExpression(): bool {
 		return $this->hasExpression;
 	}
 
@@ -134,7 +136,7 @@ trait ValuePart {
 	 * @param string $expr
 	 * @return $this
 	 */
-	public function setExpression($expr) {
+	public function setExpression(string $expr) {
 		$this->expression = $expr;
 		$this->hasExpression = true;
 
@@ -146,7 +148,7 @@ trait ValuePart {
 	 *
 	 * @return string
 	 */
-	public function getExpression() {
+	public function getExpression(): ?string {
 		return $this->expression;
 	}
 

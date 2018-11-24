@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\model;
 
 /**
@@ -25,7 +27,7 @@ interface ConstantsInterface {
 	 * @param string $value
 	 * @return $this
 	 */
-	public function setConstant($nameOrConstant, $value = null);
+	public function setConstant($nameOrConstant, string $value = null, bool $isExpression = false);
 
 	/**
 	 * Removes a constant

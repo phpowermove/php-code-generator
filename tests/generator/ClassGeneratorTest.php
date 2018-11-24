@@ -1,17 +1,18 @@
 <?php
 namespace gossi\codegen\tests\generator;
 
+use PHPUnit\Framework\TestCase;
 use gossi\codegen\generator\CodeFileGenerator;
+use gossi\codegen\generator\CodeGenerator;
 use gossi\codegen\generator\ModelGenerator;
 use gossi\codegen\model\PhpClass;
 use gossi\codegen\tests\Fixtures;
 use gossi\codegen\tests\parts\TestUtils;
-use gossi\codegen\generator\CodeGenerator;
 
 /**
  * @group generator
  */
-class ClassGeneratorTest extends \PHPUnit_Framework_TestCase {
+class ClassGeneratorTest extends TestCase {
 
 	use TestUtils;
 

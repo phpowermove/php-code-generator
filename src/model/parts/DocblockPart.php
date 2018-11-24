@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\model\parts;
 
 use gossi\docblock\Docblock;
@@ -36,7 +38,7 @@ trait DocblockPart {
 	 *
 	 * @return Docblock
 	 */
-	public function getDocblock() {
+	public function getDocblock(): Docblock {
 		return $this->docblock;
 	}
 

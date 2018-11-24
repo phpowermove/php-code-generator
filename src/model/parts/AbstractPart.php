@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\model\parts;
 
 /**
@@ -18,18 +20,18 @@ trait AbstractPart {
 	 *
 	 * @return bool `true` for abstract and `false` if not
 	 */
-	public function isAbstract() {
+	public function isAbstract(): bool {
 		return $this->abstract;
 	}
 
 	/**
 	 * Sets this to abstract
 	 *
-	 * @param bool $bool `true` for abstract and `false` if not
+	 * @param bool $abstract `true` for abstract and `false` if not
 	 * @return $this
 	 */
-	public function setAbstract($bool) {
-		$this->abstract = (boolean) $bool;
+	public function setAbstract(bool $abstract) {
+		$this->abstract = $abstract;
 
 		return $this;
 	}

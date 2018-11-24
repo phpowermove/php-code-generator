@@ -1,14 +1,16 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\parser;
 
-use gossi\codegen\model\AbstractPhpStruct;
-use gossi\codegen\parser\visitor\ParserVisitorInterface;
-use phootwork\collection\Set;
-use phootwork\file\exception\FileNotFoundException;
-use phootwork\file\File;
 use PhpParser\Node;
 use PhpParser\NodeTraverser;
 use PhpParser\NodeVisitorAbstract;
+use PhpParser\Parser;
+use gossi\codegen\parser\visitor\ParserVisitorInterface;
+use phootwork\collection\Set;
+use phootwork\file\File;
+use phootwork\file\exception\FileNotFoundException;
 
 class FileParser extends NodeVisitorAbstract {
 
@@ -30,13 +32,12 @@ class FileParser extends NodeVisitorAbstract {
 		return $this;
 	}
 
-	public function hasVisitor(ParserVisitorInterface $visitor) {
+	public function hasVisitor(ParserVisitorInterface $visitor): bool {
 		return $this->visitors->contains($visitor);
 	}
 
 	/**
 	 * @throws FileNotFoundException
-	 * @return AbstractPhpStruct
 	 */
 	public function parse() {
 		$file = new File($this->filename);
@@ -51,14 +52,9 @@ class FileParser extends NodeVisitorAbstract {
 		$traverser->traverse($parser->parse($file->read()));
 	}
 
-	private function getParser() {
-		if (class_exists('\\PhpParser\\ParserFactory')) {
-			$factory = new \PhpParser\ParserFactory();
-			return $factory->create(\PhpParser\ParserFactory::PREFER_PHP7);
-		} else {
-			// because sami v3 requires php-parser v1
-			return new \PhpParser\Parser(new \PhpParser\Lexer\Emulative());
-		}
+	private function getParser(): Parser {
+		$factory = new \PhpParser\ParserFactory();
+		return $factory->create(\PhpParser\ParserFactory::PREFER_PHP7);
 	}
 
 	public function enterNode(Node $node) {

@@ -1,14 +1,15 @@
 <?php
 namespace gossi\codegen\tests\model;
 
+use PHPUnit\Framework\TestCase;
 use gossi\codegen\model\PhpProperty;
 use gossi\codegen\tests\parts\ValueTests;
 
 /**
  * @group model
  */
-class PropertyTest extends \PHPUnit_Framework_TestCase {
-	
+class PropertyTest extends TestCase {
+
 	use ValueTests;
 
 	public function testSetGetValue() {
@@ -46,15 +47,15 @@ class PropertyTest extends \PHPUnit_Framework_TestCase {
 		$this->assertTrue($prop->hasValue());
 		$this->assertTrue($prop->isExpression());
 	}
-	
-	public function testValues() {	
+
+	public function testValues() {
 		$this->isValueString(PhpProperty::create('x')->setValue('hello'));
 		$this->isValueInteger(PhpProperty::create('x')->setValue(2));
 		$this->isValueFloat(PhpProperty::create('x')->setValue(0.2));
 		$this->isValueBool(PhpProperty::create('x')->setValue(false));
 		$this->isValueNull(PhpProperty::create('x')->setValue(null));
 	}
-	
+
 	/**
 	 * @expectedException \InvalidArgumentException
 	 */

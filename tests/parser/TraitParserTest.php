@@ -1,13 +1,14 @@
 <?php
 namespace gossi\codegen\tests\parser;
 
+use PHPUnit\Framework\TestCase;
 use gossi\codegen\model\PhpTrait;
 use gossi\codegen\tests\Fixtures;
 
 /**
  * @group parser
  */
-class TraitParserTest extends \PHPUnit_Framework_TestCase {
+class TraitParserTest extends TestCase {
 
 	public function setUp() {
 		// they are not explicitely instantiated through new WhatEver(); and such not

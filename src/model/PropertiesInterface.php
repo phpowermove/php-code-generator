@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\model;
 
 use phootwork\collection\Map;
@@ -13,7 +15,7 @@ interface PropertiesInterface {
 	 * @return $this
 	 */
 	public function setProperties(array $properties);
-	
+
 	/**
 	 * Adds a property
 	 *
@@ -21,7 +23,7 @@ interface PropertiesInterface {
 	 * @return $this
 	 */
 	public function setProperty(PhpProperty $property);
-	
+
 	/**
 	 * Removes a property
 	 *
@@ -30,15 +32,15 @@ interface PropertiesInterface {
 	 * @return $this
 	 */
 	public function removeProperty($nameOrProperty);
-	
+
 	/**
 	 * Checks whether a property exists
 	 *
 	 * @param PhpProperty|string $nameOrProperty property name or instance
 	 * @return bool `true` if a property exists and `false` if not
 	 */
-	public function hasProperty($nameOrProperty);
-	
+	public function hasProperty($nameOrProperty): bool;
+
 	/**
 	 * Returns a property
 	 *
@@ -46,22 +48,22 @@ interface PropertiesInterface {
 	 * @throws \InvalidArgumentException If the property cannot be found
 	 * @return PhpProperty
 	 */
-	public function getProperty($nameOrProperty);
-	
+	public function getProperty($nameOrProperty): PhpProperty;
+
 	/**
 	 * Returns a collection of properties
 	 *
 	 * @return Map
 	 */
-	public function getProperties();
-	
+	public function getProperties(): Map;
+
 	/**
 	 * Returns all property names
 	 *
 	 * @return Set
 	 */
-	public function getPropertyNames();
-	
+	public function getPropertyNames(): Set;
+
 	/**
 	 * Clears all properties
 	 *

@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\model;
 
 use gossi\docblock\Docblock;
@@ -25,8 +27,8 @@ interface DocblockInterface {
 	 *
 	 * @return Docblock
 	 */
-	public function getDocblock();
-	
+	public function getDocblock(): Docblock;
+
 	/**
 	 * Generates a docblock from provided information
 	 *

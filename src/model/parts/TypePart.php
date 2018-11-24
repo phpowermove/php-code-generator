@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\model\parts;
 
 /**
@@ -23,7 +25,7 @@ trait TypePart {
 	 * @param string $description
 	 * @return $this
 	 */
-	public function setType($type, $description = null) {
+	public function setType(?string $type, string $description = null) {
 		$this->type = $type;
 		if (null !== $description) {
 			$this->setTypeDescription($description);
@@ -38,7 +40,7 @@ trait TypePart {
 	 * @param string $description
 	 * @return $this
 	 */
-	public function setTypeDescription($description) {
+	public function setTypeDescription(string $description) {
 		$this->typeDescription = $description;
 		return $this;
 	}
@@ -48,7 +50,7 @@ trait TypePart {
 	 *
 	 * @return string
 	 */
-	public function getType() {
+	public function getType(): ?string {
 		return $this->type;
 	}
 
@@ -57,7 +59,7 @@ trait TypePart {
 	 *
 	 * @return string
 	 */
-	public function getTypeDescription() {
+	public function getTypeDescription(): ?string {
 		return $this->typeDescription;
 	}
 }

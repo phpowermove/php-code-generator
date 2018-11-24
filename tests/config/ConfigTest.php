@@ -1,18 +1,19 @@
 <?php
 namespace gossi\codegen\tests\config;
 
+use PHPUnit\Framework\TestCase;
+use gossi\code\profiles\Profile;
 use gossi\codegen\config\CodeFileGeneratorConfig;
 use gossi\codegen\config\CodeGeneratorConfig;
-use gossi\docblock\Docblock;
 use gossi\codegen\generator\CodeGenerator;
+use gossi\docblock\Docblock;
 use phootwork\lang\ComparableComparator;
 use phootwork\lang\Comparator;
-use gossi\code\profiles\Profile;
 
 /**
  * @group config
  */
-class ConfigTest extends \PHPUnit_Framework_TestCase {
+class ConfigTest extends TestCase {
 
 	public function testCodeGeneratorConfigDefaults() {
 		$config = new CodeGeneratorConfig();

@@ -1,6 +1,7 @@
 <?php
 namespace gossi\codegen\tests\model;
 
+use PHPUnit\Framework\TestCase;
 use gossi\codegen\model\PhpFunction;
 use gossi\codegen\model\PhpParameter;
 use gossi\codegen\tests\parts\ValueTests;
@@ -8,10 +9,10 @@ use gossi\codegen\tests\parts\ValueTests;
 /**
  * @group model
  */
-class ParameterTest extends \PHPUnit_Framework_TestCase {
-	
+class ParameterTest extends TestCase {
+
 	use ValueTests;
-	
+
 	public function testByReference() {
 		$param = new PhpParameter();
 		$this->assertFalse($param->isPassedByReference());
@@ -72,7 +73,7 @@ class ParameterTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals('string', $param3->getType());
 		$this->assertNull($param3->getValue());
 	}
-	
+
 	public function testValues() {
 		$this->isValueString(PhpParameter::create()->setValue('hello'));
 		$this->isValueInteger(PhpParameter::create()->setValue(2));

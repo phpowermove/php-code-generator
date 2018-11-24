@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\model\parts;
 
 /**
@@ -18,18 +20,18 @@ trait FinalPart {
 	 *
 	 * @return bool `true` for final and `false` if not
 	 */
-	public function isFinal() {
+	public function isFinal(): bool {
 		return $this->final;
 	}
 
 	/**
 	 * Sets this final
 	 *
-	 * @param bool $bool `true` for final and `false` if not
+	 * @param bool $final `true` for final and `false` if not
 	 * @return $this
 	 */
-	public function setFinal($bool) {
-		$this->final = (boolean) $bool;
+	public function setFinal(bool $final) {
+		$this->final = $final;
 
 		return $this;
 	}

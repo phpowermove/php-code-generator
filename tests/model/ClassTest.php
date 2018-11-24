@@ -1,6 +1,7 @@
 <?php
 namespace gossi\codegen\tests\model;
 
+use PHPUnit\Framework\TestCase;
 use gossi\codegen\model\PhpClass;
 use gossi\codegen\model\PhpConstant;
 use gossi\codegen\model\PhpInterface;
@@ -12,7 +13,7 @@ use gossi\codegen\tests\parts\ValueTests;
 /**
  * @group model
  */
-class ClassTest extends \PHPUnit_Framework_TestCase {
+class ClassTest extends TestCase {
 
 	use ModelAssertions;
 	use ValueTests;

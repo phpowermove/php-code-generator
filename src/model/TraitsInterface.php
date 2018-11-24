@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\model;
 
 /**
@@ -32,7 +34,7 @@ interface TraitsInterface {
 	 * @param PhpTrait|string $trait
 	 * @return bool `true` if it exists and `false` if not
 	 */
-	public function hasTrait($trait);
+	public function hasTrait($trait): bool;
 
 	/**
 	 * Removes a trait.

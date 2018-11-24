@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\parser\visitor;
 
 use gossi\codegen\model\PhpMethod;
@@ -16,7 +18,7 @@ class MethodParserVisitor extends StructParserVisitor {
 	use ValueParserPart;
 
 	public function visitMethod(ClassMethod $node) {
-		$m = new PhpMethod($node->name);
+		$m = new PhpMethod($node->name->name);
 		$m->setAbstract($node->isAbstract());
 		$m->setFinal($node->isFinal());
 		$m->setVisibility($this->getVisibility($node));
@@ -34,10 +36,10 @@ class MethodParserVisitor extends StructParserVisitor {
 		// params
 		$params = $m->getDocblock()->getTags('param');
 		foreach ($node->params as $param) {
-// 			/* @var $param Param */
+			$name = $param->var ? $param->var->name : $param->name;
 
 			$p = new PhpParameter();
-			$p->setName($param->name);
+			$p->setName($name);
 			$p->setPassedByReference($param->byRef);
 
 			if (is_string($param->type)) {

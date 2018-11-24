@@ -1,13 +1,14 @@
 <?php
 namespace gossi\codegen\tests\parser;
 
+use PHPUnit\Framework\TestCase;
 use gossi\codegen\model\PhpInterface;
 use gossi\codegen\tests\Fixtures;
 
 /**
  * @group parser
  */
-class InterfaceParserTest extends \PHPUnit_Framework_TestCase {
+class InterfaceParserTest extends TestCase {
 
 	public function setUp() {
 		// they are not explicitely instantiated through new WhatEver(); and such not
@@ -20,10 +21,10 @@ class InterfaceParserTest extends \PHPUnit_Framework_TestCase {
 		$actual = PhpInterface::fromFile(__DIR__ . '/../fixtures/DummyInterface.php');
 		$this->assertEquals($expected, $actual);
 	}
-	
+
 	public function testMyCollectionInterface() {
 		$interface = PhpInterface::fromFile(__DIR__ . '/../fixtures/MyCollectionInterface.php');
-		$interface->hasInterface('phootwork\collection\Collection');
+		$this->assertTrue($interface->hasInterface('phootwork\collection\Collection'));
 	}
 
 }

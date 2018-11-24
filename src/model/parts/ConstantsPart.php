@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\model\parts;
 
 use gossi\codegen\model\PhpConstant;
@@ -16,7 +18,7 @@ trait ConstantsPart {
 
 	/** @var Map */
 	private $constants;
-	
+
 	private function initConstants() {
 		$this->constants = new Map();
 	}
@@ -51,9 +53,10 @@ trait ConstantsPart {
 	 *
 	 * @param string|PhpConstant $nameOrConstant constant name or instance
 	 * @param string $value
+	 * @param bool $isExpression whether the value is an expression or not
 	 * @return $this
 	 */
-	public function setConstant($nameOrConstant, $value = null, $isExpression = false) {
+	public function setConstant($nameOrConstant, string $value = null, bool $isExpression = false) {
 		if ($nameOrConstant instanceof PhpConstant) {
 			$name = $nameOrConstant->getName();
 			$constant = $nameOrConstant;
@@ -94,7 +97,7 @@ trait ConstantsPart {
 	 * @param string|PhpConstant $nameOrConstant
 	 * @return bool
 	 */
-	public function hasConstant($nameOrConstant) {
+	public function hasConstant($nameOrConstant): bool {
 		if ($nameOrConstant instanceof PhpConstant) {
 			$nameOrConstant = $nameOrConstant->getName();
 		}
@@ -109,7 +112,7 @@ trait ConstantsPart {
 	 * @throws \InvalidArgumentException If the constant cannot be found
 	 * @return PhpConstant
 	 */
-	public function getConstant($nameOrConstant) {
+	public function getConstant($nameOrConstant): PhpConstant {
 		if ($nameOrConstant instanceof PhpConstant) {
 			$nameOrConstant = $nameOrConstant->getName();
 		}
@@ -126,7 +129,7 @@ trait ConstantsPart {
 	 *
 	 * @return Map
 	 */
-	public function getConstants() {
+	public function getConstants(): Map {
 		return $this->constants;
 	}
 
@@ -135,7 +138,7 @@ trait ConstantsPart {
 	 *
 	 * @return Set
 	 */
-	public function getConstantNames() {
+	public function getConstantNames(): Set {
 		return $this->constants->keys();
 	}
 

@@ -1,23 +1,24 @@
 <?php
 namespace gossi\codegen\tests\model;
 
+use PHPUnit\Framework\TestCase;
 use gossi\codegen\model\PhpClass;
-use gossi\codegen\model\PhpMethod;
 use gossi\codegen\model\PhpInterface;
+use gossi\codegen\model\PhpMethod;
 use gossi\codegen\model\PhpTrait;
 
 /**
  * @group model
  */
-class AbstractPhpStructTest extends \PHPUnit_Framework_TestCase {
-	
+class AbstractPhpStructTest extends TestCase {
+
 	public function testCreate() {
 		$class = PhpClass::create();
 		$this->assertTrue($class instanceof PhpClass);
-		
+
 		$interface = PhpInterface::create();
 		$this->assertTrue($interface instanceof PhpInterface);
-		
+
 		$trait = PhpTrait::create();
 		$this->assertTrue($trait instanceof PhpTrait);
 	}
@@ -66,7 +67,7 @@ class AbstractPhpStructTest extends \PHPUnit_Framework_TestCase {
 		$this->assertTrue($class->hasUseStatement('bar'));
 		$class->removeUseStatement('bar');
 		$this->assertFalse($class->hasUseStatement('bar'));
-		
+
 		$class->clearUseStatements();
 		$class->addUseStatement('ArrayList');
 		$this->assertEquals([

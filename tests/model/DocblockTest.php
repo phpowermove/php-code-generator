@@ -1,6 +1,7 @@
 <?php
 namespace gossi\codegen\tests\model;
 
+use PHPUnit\Framework\TestCase;
 use gossi\codegen\model\PhpClass;
 use gossi\codegen\model\PhpConstant;
 use gossi\codegen\model\PhpFunction;
@@ -17,7 +18,7 @@ use gossi\docblock\tags\ThrowsTag;
 /**
  * @group model
  */
-class DocblockTest extends \PHPUnit_Framework_TestCase {
+class DocblockTest extends TestCase {
 
 	const METHOD = 'myMethod';
 

@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\model\parts;
 
 /**
@@ -18,7 +20,7 @@ trait LongDescriptionPart {
 	 *
 	 * @return string
 	 */
-	public function getLongDescription() {
+	public function getLongDescription(): ?string {
 		return $this->longDescription;
 	}
 
@@ -28,7 +30,7 @@ trait LongDescriptionPart {
 	 * @param string $longDescription
 	 * @return $this
 	 */
-	public function setLongDescription($longDescription) {
+	public function setLongDescription(string $longDescription) {
 		$this->longDescription = $longDescription;
 		return $this;
 	}

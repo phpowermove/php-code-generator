@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\model;
 
 /**
@@ -16,7 +18,7 @@ abstract class AbstractModel {
 	 *
 	 * @return string
 	 */
-	public function getDescription() {
+	public function getDescription(): ?string {
 		return $this->description;
 	}
 

@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\model\parts;
 
 /**
@@ -21,7 +23,7 @@ trait QualifiedNamePart {
 	 * @param string $namespace
 	 * @return $this
 	 */
-	public function setNamespace($namespace) {
+	public function setNamespace(?string $namespace) {
 		$this->namespace = $namespace;
 
 		return $this;
@@ -34,7 +36,11 @@ trait QualifiedNamePart {
 	 * @param string $name
 	 * @return $this
 	 */
-	public function setQualifiedName($name) {
+	public function setQualifiedName(?string $name) {
+		if ($name === null) {
+			return;
+		}
+
 		if (false !== $pos = strrpos($name, '\\')) {
 			$this->namespace = trim(substr($name, 0, $pos), '\\');
 			$this->name = substr($name, $pos + 1);
@@ -53,7 +59,7 @@ trait QualifiedNamePart {
 	 *
 	 * @return string
 	 */
-	public function getNamespace() {
+	public function getNamespace(): ?string {
 		return $this->namespace;
 	}
 
@@ -62,7 +68,7 @@ trait QualifiedNamePart {
 	 *
 	 * @return string
 	 */
-	public function getQualifiedName() {
+	public function getQualifiedName(): string {
 		if ($this->namespace) {
 			return $this->namespace . '\\' . $this->name;
 		}

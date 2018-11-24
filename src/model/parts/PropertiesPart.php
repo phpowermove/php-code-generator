@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\model\parts;
 
 use gossi\codegen\model\PhpProperty;
@@ -16,7 +18,7 @@ trait PropertiesPart {
 
 	/** @var Map */
 	private $properties;
-	
+
 	private function initProperties() {
 		$this->properties = new Map();
 	}
@@ -82,7 +84,7 @@ trait PropertiesPart {
 	 * @param PhpProperty|string $nameOrProperty property name or instance
 	 * @return bool `true` if a property exists and `false` if not
 	 */
-	public function hasProperty($nameOrProperty) {
+	public function hasProperty($nameOrProperty): bool {
 		if ($nameOrProperty instanceof PhpProperty) {
 			$nameOrProperty = $nameOrProperty->getName();
 		}
@@ -97,7 +99,7 @@ trait PropertiesPart {
 	 * @throws \InvalidArgumentException If the property cannot be found
 	 * @return PhpProperty
 	 */
-	public function getProperty($nameOrProperty) {
+	public function getProperty($nameOrProperty): PhpProperty {
 		if ($nameOrProperty instanceof PhpProperty) {
 			$nameOrProperty = $nameOrProperty->getName();
 		}
@@ -114,7 +116,7 @@ trait PropertiesPart {
 	 *
 	 * @return Map
 	 */
-	public function getProperties() {
+	public function getProperties(): Map {
 		return $this->properties;
 	}
 
@@ -123,7 +125,7 @@ trait PropertiesPart {
 	 *
 	 * @return Set
 	 */
-	public function getPropertyNames() {
+	public function getPropertyNames(): Set {
 		return $this->properties->keys();
 	}
 

@@ -14,6 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+declare(strict_types=1);
+
 namespace gossi\codegen\model;
 
 use gossi\codegen\model\parts\DocblockPart;
@@ -70,7 +72,7 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
 	 *
 	 * @param string $name the name of the member
 	 */
-	public function __construct($name) {
+	public function __construct(string $name) {
 		$this->setName($name);
 		$this->docblock = new Docblock();
 	}
@@ -84,7 +86,7 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
 	 * @param string $visibility the new visibility
 	 * @return $this
 	 */
-	public function setVisibility($visibility) {
+	public function setVisibility(string $visibility) {
 		if ($visibility !== self::VISIBILITY_PRIVATE
 				&& $visibility !== self::VISIBILITY_PROTECTED
 				&& $visibility !== self::VISIBILITY_PUBLIC) {
@@ -101,18 +103,18 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
 	 *
 	 * @return string the visibility
 	 */
-	public function getVisibility() {
+	public function getVisibility(): string {
 		return $this->visibility;
 	}
 
 	/**
 	 * Sets whether or not this member is static
 	 *
-	 * @param bool $bool
+	 * @param bool $static
 	 * @return $this
 	 */
-	public function setStatic($bool) {
-		$this->static = (boolean) $bool;
+	public function setStatic(bool $static) {
+		$this->static = $static;
 
 		return $this;
 	}
@@ -122,7 +124,7 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
 	 *
 	 * @return bool `true` if static and `false` if not
 	 */
-	public function isStatic() {
+	public function isStatic(): bool {
 		return $this->static;
 	}
 
@@ -133,7 +135,7 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
 	 * @param AbstractPhpStruct|null $parent
 	 * @return $this
 	 */
-	public function setParent($parent) {
+	public function setParent(?AbstractPhpStruct $parent) {
 		$this->parent = $parent;
 		return $this;
 	}
@@ -144,7 +146,7 @@ abstract class AbstractPhpMember extends AbstractModel implements DocblockInterf
 	 * @internal
 	 * @return AbstractPhpStruct
 	 */
-	public function getParent() {
+	public function getParent(): ?AbstractPhpStruct {
 		return $this->parent;
 	}
 }

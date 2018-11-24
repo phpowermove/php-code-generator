@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\model\parts;
 
 /**
@@ -19,7 +21,7 @@ trait NamePart {
 	 * @param string $name
 	 * @return $this
 	 */
-	public function setName($name) {
+	public function setName(string $name = null) {
 		$this->name = $name;
 
 		return $this;
@@ -30,7 +32,7 @@ trait NamePart {
 	 *
 	 * @return string
 	 */
-	public function getName() {
+	public function getName(): ?string {
 		return $this->name;
 	}
 }

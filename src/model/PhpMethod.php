@@ -14,6 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+declare(strict_types=1);
+
 namespace gossi\codegen\model;
 
 use gossi\codegen\model\parts\AbstractPart;
@@ -47,7 +49,7 @@ class PhpMethod extends AbstractPhpMember implements RoutineInterface {
 	public static function create($name) {
 		return new static($name);
 	}
-	
+
 	public function __construct($name) {
 		parent::__construct($name);
 		$this->initParameters();

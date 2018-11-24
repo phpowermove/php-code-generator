@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\model\parts;
 
 use gossi\codegen\model\PhpTrait;
@@ -22,7 +24,7 @@ trait TraitsPart {
 	 * @param null|string $alias
 	 * @return $this
 	 */
-	abstract public function addUseStatement($qualifiedName, $alias = null);
+	abstract public function addUseStatement(string $qualifiedName, string $alias = null);
 
 	/**
 	 * Removes a use statement
@@ -30,14 +32,14 @@ trait TraitsPart {
 	 * @param string $qualifiedName
 	 * @return $this
 	 */
-	abstract public function removeUseStatement($qualifiedName);
+	abstract public function removeUseStatement(string $qualifiedName);
 
 	/**
 	 * Returns the namespace
 	 *
 	 * @return string
 	 */
-	abstract public function getNamespace();
+	abstract public function getNamespace(): ?string;
 
 	/**
 	 * Adds a trait.
@@ -83,7 +85,7 @@ trait TraitsPart {
 	 * @param PhpTrait|string $trait
 	 * @return bool `true` if it exists and `false` if not
 	 */
-	public function hasTrait($trait) {
+	public function hasTrait($trait): bool {
 		if (!$trait instanceof PhpTrait) {
 			$trait = new PhpTrait($trait);
 		}

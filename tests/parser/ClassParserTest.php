@@ -1,6 +1,7 @@
 <?php
 namespace gossi\codegen\tests\parser;
 
+use PHPUnit\Framework\TestCase;
 use gossi\codegen\model\PhpClass;
 use gossi\codegen\tests\Fixtures;
 use gossi\codegen\tests\parts\ModelAssertions;
@@ -9,7 +10,7 @@ use gossi\codegen\tests\parts\ValueTests;
 /**
  * @group parser
  */
-class ClassParserTest extends \PHPUnit_Framework_TestCase {
+class ClassParserTest extends TestCase {
 
 	use ModelAssertions;
 	use ValueTests;

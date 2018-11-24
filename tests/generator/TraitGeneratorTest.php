@@ -1,13 +1,14 @@
 <?php
 namespace gossi\codegen\tests\generator;
 
+use PHPUnit\Framework\TestCase;
 use gossi\codegen\generator\ModelGenerator;
 use gossi\codegen\model\PhpTrait;
 
 /**
  * @group generator
  */
-class TraitGeneratorTest extends \PHPUnit_Framework_TestCase {
+class TraitGeneratorTest extends TestCase {
 
 	public function testSignature() {
 		$expected = 'trait MyTrait {' . "\n" . '}';

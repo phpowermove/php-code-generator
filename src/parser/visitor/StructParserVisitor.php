@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\parser\visitor;
 
 use PhpParser\Comment\Doc;
@@ -16,16 +18,16 @@ use PhpParser\Node\Stmt\UseUse;
 use gossi\codegen\model\AbstractPhpStruct;
 
 class StructParserVisitor implements ParserVisitorInterface {
-	
+
 	protected $struct;
-	
+
 	/**
 	 * @return AbstractPhpStruct
 	 */
-	protected function getStruct() {
+	protected function getStruct(): AbstractPhpStruct {
 		return $this->struct;
 	}
-	
+
 	public function __construct(AbstractPhpStruct $struct) {
 		$this->struct = $struct;
 	}

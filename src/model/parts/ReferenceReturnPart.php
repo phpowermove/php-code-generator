@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\model\parts;
 
 /**
@@ -16,11 +18,11 @@ trait ReferenceReturnPart {
 	/**
 	 * Set true if a reference is returned of false if not
 	 *
-	 * @param bool $bool
+	 * @param bool $referenceReturned
 	 * @return $this
 	 */
-	public function setReferenceReturned($bool) {
-		$this->referenceReturned = (boolean) $bool;
+	public function setReferenceReturned(bool $referenceReturned) {
+		$this->referenceReturned = $referenceReturned;
 
 		return $this;
 	}
@@ -30,7 +32,7 @@ trait ReferenceReturnPart {
 	 *
 	 * @return bool
 	 */
-	public function isReferenceReturned() {
+	public function isReferenceReturned(): bool {
 		return $this->referenceReturned;
 	}
 }

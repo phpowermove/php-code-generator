@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\model\parts;
 
 use gossi\codegen\model\PhpParameter;
@@ -16,14 +18,14 @@ trait ParametersPart {
 
 	/** @var array */
 	private $parameters = [];
-	
+
 	private function initParameters() {
 // 		$this->parameters = new ArrayList();
 	}
 
 	/**
 	 * Sets a collection of parameters
-	 * 
+	 *
 	 * Note: clears all parameters before setting the new ones
 	 *
 	 * @param PhpParameter[] $parameters
@@ -56,13 +58,13 @@ trait ParametersPart {
 	 * @param string $name parameter name
 	 * @return bool `true` if a parameter exists and `false` if not
 	 */
-	public function hasParameter($name) {
+	public function hasParameter(string $name): bool {
 		foreach ($this->parameters as $param) {
 			if ($param->getName() == $name) {
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
 
@@ -75,7 +77,7 @@ trait ParametersPart {
 	 *
 	 * @return $this
 	 */
-	public function addSimpleParameter($name, $type = null, $defaultValue = null) {
+	public function addSimpleParameter(string $name, string $type = null, $defaultValue = null) {
 		$parameter = new PhpParameter($name);
 		$parameter->setType($type);
 
@@ -97,7 +99,7 @@ trait ParametersPart {
 	 *
 	 * @return $this
 	 */
-	public function addSimpleDescParameter($name, $type = null, $typeDescription = null, $defaultValue = null) {
+	public function addSimpleDescParameter(string $name, string $type = null, string $typeDescription = null, $defaultValue = null) {
 		$parameter = new PhpParameter($name);
 		$parameter->setType($type);
 		$parameter->setTypeDescription($typeDescription);
@@ -117,7 +119,7 @@ trait ParametersPart {
 	 * @throws \InvalidArgumentException
 	 * @return PhpParameter
 	 */
-	public function getParameter($nameOrIndex) {
+	public function getParameter($nameOrIndex): PhpParameter {
 		if (is_int($nameOrIndex)) {
 			$this->checkPosition($nameOrIndex);
 			return $this->parameters[$nameOrIndex];
@@ -140,7 +142,7 @@ trait ParametersPart {
 	 * @throws \InvalidArgumentException
 	 * @return $this
 	 */
-	public function replaceParameter($position, PhpParameter $parameter) {
+	public function replaceParameter(int $position, PhpParameter $parameter) {
 		$this->checkPosition($position);
 		$this->parameters[$position] = $parameter;
 
@@ -164,13 +166,13 @@ trait ParametersPart {
 
 		return $this;
 	}
-	
+
 	private function removeParameterByPosition($position) {
 		$this->checkPosition($position);
 		unset($this->parameters[$position]);
 		$this->parameters = array_values($this->parameters);
 	}
-	
+
 	private function removeParameterByName($name) {
 		$position = null;
 		foreach ($this->parameters as $index => $param) {
@@ -178,12 +180,12 @@ trait ParametersPart {
 				$position = $index;
 			}
 		}
-		
+
 		if ($position !== null) {
 			$this->removeParameterByPosition($position);
 		}
 	}
-	
+
 	private function checkPosition($position) {
 		if ($position < 0 || $position > count($this->parameters)) {
 			throw new \InvalidArgumentException(sprintf('The position must be in the range [0, %d].', count($this->parameters)));
@@ -204,7 +206,7 @@ trait ParametersPart {
 	 *
 	 * @return Docblock
 	 */
-	abstract protected function getDocblock();
+	abstract protected function getDocblock(): Docblock;
 
 	/**
 	 * Generates docblock for params

@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace gossi\codegen\model;
 
 use gossi\codegen\model\parts\PropertiesPart;
@@ -25,7 +27,7 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
 	 * @param string $filename
 	 * @return PhpTrait
 	 */
-	public static function fromFile($filename) {
+	public static function fromFile(string $filename): PhpTrait {
 		$trait = new PhpTrait();
 		$parser = new FileParser($filename);
 		$parser->addVisitor(new TraitParserVisitor($trait));
@@ -33,7 +35,7 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
 		$parser->addVisitor(new ConstantParserVisitor($trait));
 		$parser->addVisitor(new PropertyParserVisitor($trait));
 		$parser->parse();
-		
+
 		return $trait;
 	}
 

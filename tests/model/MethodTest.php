@@ -1,13 +1,14 @@
 <?php
 namespace gossi\codegen\tests\model;
 
+use PHPUnit\Framework\TestCase;
 use gossi\codegen\model\PhpMethod;
 use gossi\codegen\model\PhpParameter;
 
 /**
  * @group model
  */
-class MethodTest extends \PHPUnit_Framework_TestCase {
+class MethodTest extends TestCase {
 
 	public function testParameters() {
 		$method = new PhpMethod('needsName');
@@ -26,7 +27,7 @@ class MethodTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertSame($method, $method->removeParameter(0));
 		$this->assertEquals('b', $method->getParameter(0)->getName());
-		
+
 		unset($params[0]);
 		$this->assertEquals([
 			$param
@@ -40,7 +41,7 @@ class MethodTest extends \PHPUnit_Framework_TestCase {
 		$this->assertSame($method, $method->replaceParameter(0, $param = new PhpParameter('a')));
 		$params[0] = $param;
 		$this->assertSame($params, $method->getParameters());
-		
+
 		$method->removeParameter($param);
 		$method->removeParameter('c');
 		$this->assertEquals([], $method->getParameters());
