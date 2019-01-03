@@ -11,7 +11,7 @@ cd _site
 
 git init
 git config user.name "gossi"
-git config user.email "github@gos.si"
+git config user.email "gossi@users.noreply.github.com"
 
 git remote add upstream "https://$GH_TOKEN@github.com/gossi/php-code-generator.git"
 git fetch upstream
