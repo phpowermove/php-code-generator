@@ -78,7 +78,7 @@ class CodeGeneratorConfig {
 	/**
 	 * Sets the code style profile
 	 *
-	 * @param Profile/string $profile
+	 * @param Profile|string $profile
 	 * @return $this
 	 */
 	public function setProfile($profile) {
