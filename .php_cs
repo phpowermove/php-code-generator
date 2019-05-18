@@ -1,56 +1,58 @@
 <?php
-use Symfony\CS\Config\Config;
-use Symfony\CS\Finder\DefaultFinder;
-use Symfony\CS\Fixer\Contrib\HeaderCommentFixer;
+
 use Symfony\CS\FixerInterface;
 
-$finder = DefaultFinder::create()
+$finder = PhpCsFixer\Finder::create()
 	->exclude(['fixture', 'generated'])
     ->in(__DIR__ . '/src')
     ->in(__DIR__ . '/tests')
 ;
 
-return Config::create()
-	->level(FixerInterface::NONE_LEVEL)
-	->finder($finder)
-	->setUsingLinter(true)
+return PhpCsFixer\Config::create()
+	//->level(FixerInterface::NONE_LEVEL)
+	->setFinder($finder)
+	//->setUsingLinter(true)
 	->setUsingCache(false)
-	->fixers([
-		'encoding',
-		'short_tag',
-		'eof_ending',
-		'function_call_space',
-		'function_declaration',
-		'line_after_namespace',
-		'linefeed',
-		'lowercase_constants',
-		'lowercase_keywords',
-		'method_argument_space',
-		'multiple_use',
-		'parenthesis',
-		'php_closing_tag',
-		'single_line_after_imports',
-		'trailing_spaces',
-		'visibility',
-		'array_element_no_space_before_comma',
-		'array_element_white_space_after_comma',
-		'double_arrow_multiline_whitespaces',
-		'duplicate_semicolon',
-		'extra_empty_lines',
-		'function_typehint_space',
-		'namespace_no_leading_whitespace',
-		'no_empty_lines_after_phpdocs',
-		'phpdoc_scalar',
-		'phpdoc_types',
-		'remove_leading_slash_use',
-		'remove_lines_between_uses',
-		'self_accessor',
-		'single_array_no_trailing_comma',
-		'single_quote',
-		'unused_use',
-		'whitespacy_lines',
-		'concat_with_spaces',
-		'ordered_use',
-		'short_array_syntax',
+	->setRules([
+		'array_syntax' => [
+			'syntax' => 'short'
+		],
+		'blank_line_after_namespace' => true,
+		'concat_space' => true,
+		'encoding' => true,
+		'full_opening_tag' => true,
+		'function_declaration' => [
+			'closure_function_spacing' => 'one'
+		],
+		'function_typehint_space' => true,
+		'lowercase_constants' => true,
+		'lowercase_keywords' => true,
+		'method_argument_space' => true,
+		'no_blank_lines_after_phpdoc' => true,
+		'no_closing_tag' => true,
+		'no_empty_statement' => true,
+		'no_extra_blank_lines' => [
+			'tokens' => ['use', 'extra']
+		],
+		'no_leading_import_slash' => true,
+		'no_leading_namespace_whitespace' => true,
+		'no_multiline_whitespace_around_double_arrow' => true,
+		'no_spaces_after_function_name' => true,
+		'no_spaces_inside_parenthesis' => true,
+		'no_trailing_comma_in_singleline_array' => true,
+		'no_trailing_whitespace' => true,
+		'no_unused_imports' => true,
+		'no_whitespace_before_comma_in_array' => true,
+		'no_whitespace_in_blank_line' => true,
+		'ordered_imports' => true,
+		'phpdoc_scalar' => true,
+		'phpdoc_types' => true,
+		'self_accessor' => true,
+		'single_blank_line_at_eof' => true,
+		'single_import_per_statement' => true,
+		'single_line_after_imports' => true,
+		'single_quote' => true,
+		'visibility_required' => true,
+		'whitespace_after_comma_in_array' => true,
 	])
 ;
