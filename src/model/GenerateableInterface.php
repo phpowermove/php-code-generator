@@ -12,6 +12,8 @@ interface GenerateableInterface {
 
 	/**
 	 * Generates docblock based on provided information
+	 * 
+	 * @return void
 	 */
-	public function generateDocblock();
+	public function generateDocblock(): void;
 }
