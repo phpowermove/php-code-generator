@@ -63,6 +63,9 @@ class ConfigTest extends TestCase {
 
 		$config->setGenerateScalarTypeHints(true);
 		$this->assertTrue($config->getGenerateScalarTypeHints());
+		
+		$config->setGenerateNullableTypes(true);
+		$this->assertTrue($config->getGenerateNullableTypes());
 
 		$config->setUseStatementSorting(false);
 		$this->assertFalse($config->getUseStatementSorting());

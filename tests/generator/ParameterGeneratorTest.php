@@ -95,6 +95,13 @@ class ParameterGeneratorTest extends TestCase {
 		$param = PhpParameter::create('foo')->setType('resource');
 		$this->assertEquals('$foo', $generator->generate($param));
 	}
+	
+	public function testPhp73Nullable() {
+	    $generator = new ModelGenerator(['generateScalarTypeHints' => true, 'generateNullableTypes' => true]);
+	    
+	    $param = PhpParameter::create('foo')->setType('float')->setNullable(true);
+	    $this->assertEquals('?float $foo', $generator->generate($param));
+	}
 
 	public function testValues() {
 		$generator = new ModelGenerator();

@@ -13,7 +13,7 @@ class ParameterBuilder extends AbstractBuilder {
 	use TypeBuilderPart;
 
 	public function build(AbstractModel $model): void {
-		$type = $this->getType($model, $this->config->getGenerateScalarTypeHints());
+	    $type = $this->getType($model, $this->config->getGenerateScalarTypeHints(), $this->config->getGenerateNullableTypes());
 		if ($type !== null) {
 			$this->writer->write($type . ' ');
 		}

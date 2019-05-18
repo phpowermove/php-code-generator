@@ -17,6 +17,9 @@ trait TypePart {
 
 	/** @var string */
 	private $typeDescription;
+	
+	/** @var bool */
+	private $typeNullable;
 
 	/**
 	 * Sets the type
@@ -61,5 +64,25 @@ trait TypePart {
 	 */
 	public function getTypeDescription(): ?string {
 		return $this->typeDescription;
+	}
+	
+	/**
+	 * Returns whether the type is nullable
+	 * 
+	 * @return bool
+	 */
+	public function getNullable(): bool {
+        return $this->typeNullable;
+	}
+	
+	/**
+	 * Sets the type nullable
+	 * 
+	 * @param bool $nullable
+	 * @return $this
+	 */
+	public function setNullable(bool $nullable) {
+	    $this->typeNullable = $nullable;
+	    return $this;
 	}
 }

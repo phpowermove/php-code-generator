@@ -43,6 +43,7 @@ class CodeGeneratorConfig {
 			},
 			'generateScalarTypeHints' => false,
 			'generateReturnTypeHints' => false,
+			'generateNullableTypes' => false,
 			'enableFormatting' => false,
 			'enableSorting' => true,
 			'useStatementSorting' => CodeGenerator::SORT_USESTATEMENTS_DEFAULT,
@@ -56,6 +57,7 @@ class CodeGeneratorConfig {
 		$resolver->setAllowedTypes('generateEmptyDocblock', 'bool');
 		$resolver->setAllowedTypes('generateScalarTypeHints', 'bool');
 		$resolver->setAllowedTypes('generateReturnTypeHints', 'bool');
+		$resolver->setAllowedTypes('generateNullableTypes', 'bool');
 		$resolver->setAllowedTypes('enableFormatting', 'bool');
 		$resolver->setAllowedTypes('enableSorting', 'bool');
 		$resolver->setAllowedTypes('useStatementSorting', ['bool', 'string', '\Closure', 'phootwork\lang\Comparator']);
@@ -141,6 +143,8 @@ class CodeGeneratorConfig {
 	public function getGenerateScalarTypeHints(): bool {
 		return $this->options['generateScalarTypeHints'];
 	}
+	
+	
 
 	/**
 	 * Returns whether sorting is enabled
@@ -225,6 +229,26 @@ class CodeGeneratorConfig {
 	public function setGenerateReturnTypeHints(bool $generate) {
 		$this->options['generateReturnTypeHints'] = $generate;
 		return $this;
+	}
+	
+	/**
+	 * Returns whether return nullable type hints will be generated (PHP 7.3)
+	 *
+	 * @return bool `true` if they will be generated and `false` if not
+	 */
+	public function getGenerateNullableTypes(): bool {
+	    return $this->options['generateNullableTypes'];
+	}
+	
+	/**
+	 * Sets whether return nullable type hints will be generated (PHP 7.3)
+	 *
+	 * @param bool $generate `true` if they will be generated and `false` if not
+	 * @return $this
+	 */
+	public function setGenerateNullableTypes(bool $generate) {
+	    $this->options['generateNullableTypes'] = $generate;
+	    return $this;
 	}
 
 	/**

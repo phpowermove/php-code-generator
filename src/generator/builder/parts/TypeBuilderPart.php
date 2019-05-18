@@ -31,15 +31,20 @@ trait TypeBuilderPart {
 	 * @param bool $allowed
 	 * @return string|null
 	 */
-	private function getType(AbstractModel $model, bool $allowed): ?string {
+	private function getType(AbstractModel $model, bool $allowed, bool $nullable): ?string {
 		$type = $model->getType();
 		if (!empty($type) && strpos($type, '|') === false
 				&& (!in_array($type, self::$noTypeHints)
 					|| ($allowed && in_array($type, self::$php7typeHints)))
 				) {
-			if (isset(self::$typeHintMap[$type])) {
-				return self::$typeHintMap[$type];
-			}
+
+            $type = isset(self::$typeHintMap[$type])
+                ? self::$typeHintMap[$type]
+                : $type;
+
+            if ($nullable && $model->getNullable()) {
+                $type = '?' . $type;
+            }
 
 			return $type;
 		}
