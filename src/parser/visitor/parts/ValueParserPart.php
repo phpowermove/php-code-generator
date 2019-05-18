@@ -14,12 +14,12 @@ use PhpParser\Node\Scalar\MagicConst;
 use PhpParser\Node\Scalar\String_;
 
 trait ValueParserPart {
-	
+
 	private $constMap = [
 		'false' => false,
 		'true' => true
 	];
-	
+
 	/**
 	 * Parses the value of a node into the model
 	 * 
@@ -37,12 +37,12 @@ trait ValueParserPart {
 			}
 		}
 	}
-	
+
 	/**
 	 * Returns whether this node is a primitive value
 	 * 
 	 * @param Node $node
-	 * @return boolean
+	 * @return bool
 	 */
 	private function isPrimitive(Node $node) {
 		return $node instanceof String_
@@ -51,7 +51,7 @@ trait ValueParserPart {
 			|| $this->isBool($node)
 			|| $this->isNull($node);
 	}
-	
+
 	/**
 	 * Returns the primitive value
 	 * 
@@ -62,19 +62,19 @@ trait ValueParserPart {
 		if ($this->isBool($node)) {
 			return (bool) $this->getExpression($node);
 		}
-	
+
 		if ($this->isNull($node)) {
 			return null;
 		}
-	
+
 		return $node->value;
 	}
-	
+
 	/**
 	 * Returns whether this node is a boolean value
 	 * 
 	 * @param Node $node
-	 * @return boolean
+	 * @return bool
 	 */
 	private function isBool(Node $node) {
 		if ($node instanceof ConstFetch) {
@@ -82,16 +82,16 @@ trait ValueParserPart {
 			if (isset($this->constMap[$const])) {
 				return is_bool($this->constMap[$const]);
 			}
-	
+
 			return is_bool($const);
 		}
 	}
-	
+
 	/**
 	 * Returns whether this node is a null value
 	 * 
 	 * @param Node $node
-	 * @return boolean
+	 * @return bool
 	 */
 	private function isNull(Node $node) {
 		if ($node instanceof ConstFetch) {
@@ -99,7 +99,7 @@ trait ValueParserPart {
 			return $const === 'null';
 		}
 	}
-	
+
 	/**
 	 * Returns the value from a node
 	 *
@@ -112,18 +112,18 @@ trait ValueParserPart {
 			if (isset($this->constMap[$const])) {
 				return $this->constMap[$const];
 			}
-	
+
 			return $const;
 		}
-		
+
 		if ($node instanceof ClassConstFetch) {
 			return $node->class->parts[0] . '::' . $node->name;
 		}
-	
+
 		if ($node instanceof MagicConst) {
 			return $node->getName();
 		}
-		
+
 		if ($node instanceof Array_) {
 			$prettyPrinter = new PrettyPrinter();
 			return $prettyPrinter->prettyPrintExpr($node);

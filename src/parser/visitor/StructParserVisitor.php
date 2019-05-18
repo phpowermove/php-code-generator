@@ -3,19 +3,19 @@ declare(strict_types=1);
 
 namespace gossi\codegen\parser\visitor;
 
+use gossi\codegen\model\AbstractPhpStruct;
 use PhpParser\Comment\Doc;
 use PhpParser\Node\Const_;
+use PhpParser\Node\Stmt\Class_;
 use PhpParser\Node\Stmt\ClassConst;
 use PhpParser\Node\Stmt\ClassLike;
 use PhpParser\Node\Stmt\ClassMethod;
-use PhpParser\Node\Stmt\Class_;
 use PhpParser\Node\Stmt\Interface_;
 use PhpParser\Node\Stmt\Namespace_;
 use PhpParser\Node\Stmt\Property;
-use PhpParser\Node\Stmt\TraitUse;
 use PhpParser\Node\Stmt\Trait_;
+use PhpParser\Node\Stmt\TraitUse;
 use PhpParser\Node\Stmt\UseUse;
-use gossi\codegen\model\AbstractPhpStruct;
 
 class StructParserVisitor implements ParserVisitorInterface {
 

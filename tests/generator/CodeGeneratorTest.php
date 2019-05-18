@@ -1,9 +1,9 @@
 <?php
 namespace gossi\codegen\tests\generator;
 
-use PHPUnit\Framework\TestCase;
 use gossi\codegen\config\CodeGeneratorConfig;
 use gossi\codegen\generator\CodeGenerator;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group generator

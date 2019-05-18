@@ -1,14 +1,14 @@
 <?php
 namespace gossi\codegen\parser;
 
-use PhpParser\PrettyPrinter\Standard;
-use PhpParser\Node\Expr\Array_;
-use PhpParser\Node\Stmt;
 use PhpParser\Node;
 use PhpParser\Node\Expr;
+use PhpParser\Node\Expr\Array_;
+use PhpParser\Node\Stmt;
+use PhpParser\PrettyPrinter\Standard;
 
 class PrettyPrinter extends Standard {
-	
+
  /**
      * Pretty prints an array of nodes (statements) and indents them optionally.
      *
@@ -20,7 +20,7 @@ class PrettyPrinter extends Standard {
     protected function pStmts(array $nodes, bool $indent = true): string {
         $result = '';
 		$prevNode = null;
-		
+
         foreach ($nodes as $node) {
             $comments = $node->getAttribute('comments', []);
             if ($comments) {
@@ -29,14 +29,14 @@ class PrettyPrinter extends Standard {
                     continue;
                 }
             }
-		  
+
 		  if ($prevNode && $prevNode->getLine() && $node->getLine()) {
 			  $diff = $node->getLine()- $prevNode->getLine();
 			  if ($diff > 0) {
 				  $result .= str_repeat("\n", $diff - 1);
 			  }
 		  }
-		  
+
           $result .= "\n" . $this->p($node) . ($node instanceof Expr ? ';' : '');
 		  $prevNode = $node;
         }
@@ -47,7 +47,7 @@ class PrettyPrinter extends Standard {
             return $result;
         }
     }
-    
+
 	public function pExpr_Array(Array_ $node) {
 		return '[' . $this->pCommaSeparated($node->items) . ']';
 	}

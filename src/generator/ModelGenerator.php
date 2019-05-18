@@ -23,7 +23,7 @@ class ModelGenerator {
 
 	/** @var CodeGeneratorConfig */
 	private $config;
-	
+
 	/** @var Formatter */
 	private $formatter;
 

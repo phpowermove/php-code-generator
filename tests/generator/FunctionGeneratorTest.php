@@ -1,10 +1,10 @@
 <?php
 namespace gossi\codegen\tests\generator;
 
-use PHPUnit\Framework\TestCase;
 use gossi\codegen\generator\ModelGenerator;
 use gossi\codegen\model\PhpFunction;
 use gossi\codegen\model\PhpParameter;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group generator

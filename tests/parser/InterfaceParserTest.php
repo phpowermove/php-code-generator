@@ -1,9 +1,9 @@
 <?php
 namespace gossi\codegen\tests\parser;
 
-use PHPUnit\Framework\TestCase;
 use gossi\codegen\model\PhpInterface;
 use gossi\codegen\tests\Fixtures;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group parser

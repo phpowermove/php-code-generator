@@ -34,9 +34,9 @@ class ClassWithComments {
 	 * 
 	 * Looong desc
 	 * 
-	 * @param boolean $moo makes a cow
+	 * @param bool $moo makes a cow
 	 * @param string $foo makes a fow
-	 * @return boolean true on success and false if it fails
+	 * @return bool true on success and false if it fails
 	 */
 	public function setup($moo, $foo = 'test123') {
 	}

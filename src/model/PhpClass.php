@@ -38,8 +38,8 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 	 * @param string $filename
 	 * @return PhpClass
 	 */
-	public static function fromFile(string $filename): PhpClass {
-		$class = new PhpClass();
+	public static function fromFile(string $filename): self {
+		$class = new self();
 		$parser = new FileParser($filename);
 		$parser->addVisitor(new ClassParserVisitor($class));
 		$parser->addVisitor(new MethodParserVisitor($class));
@@ -83,7 +83,7 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 		return $this;
 	}
 
-	public function generateDocblock() {
+	public function generateDocblock(): void {
 		parent::generateDocblock();
 
 		foreach ($this->constants as $constant) {

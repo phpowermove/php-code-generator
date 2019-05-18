@@ -59,7 +59,7 @@ class PhpConstant extends AbstractModel implements GenerateableInterface, Docblo
 	/**
 	 * @inheritDoc
 	 */
-	public function generateDocblock() {
+	public function generateDocblock(): void {
 		$docblock = $this->getDocblock();
 		$docblock->setShortDescription($this->getDescription());
 		$docblock->setLongDescription($this->getLongDescription());

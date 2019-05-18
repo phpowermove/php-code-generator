@@ -4,8 +4,8 @@ declare(strict_types=1);
 namespace gossi\codegen\model\parts;
 
 use gossi\codegen\model\PhpParameter;
-use gossi\docblock\tags\ParamTag;
 use gossi\docblock\Docblock;
+use gossi\docblock\tags\ParamTag;
 
 /**
  * Parameters Part

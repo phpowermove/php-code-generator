@@ -3,14 +3,14 @@ declare(strict_types=1);
 
 namespace gossi\codegen\parser;
 
+use gossi\codegen\parser\visitor\ParserVisitorInterface;
+use phootwork\collection\Set;
+use phootwork\file\exception\FileNotFoundException;
+use phootwork\file\File;
 use PhpParser\Node;
 use PhpParser\NodeTraverser;
 use PhpParser\NodeVisitorAbstract;
 use PhpParser\Parser;
-use gossi\codegen\parser\visitor\ParserVisitorInterface;
-use phootwork\collection\Set;
-use phootwork\file\File;
-use phootwork\file\exception\FileNotFoundException;
 
 class FileParser extends NodeVisitorAbstract {
 

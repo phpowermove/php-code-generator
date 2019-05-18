@@ -1,7 +1,6 @@
 <?php
 namespace gossi\codegen\tests\model;
 
-use PHPUnit\Framework\TestCase;
 use gossi\codegen\model\PhpClass;
 use gossi\codegen\model\PhpConstant;
 use gossi\codegen\model\PhpFunction;
@@ -14,6 +13,7 @@ use gossi\docblock\Docblock;
 use gossi\docblock\tags\AuthorTag;
 use gossi\docblock\tags\SeeTag;
 use gossi\docblock\tags\ThrowsTag;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group model

@@ -1,11 +1,11 @@
 <?php
 namespace gossi\codegen\tests\model;
 
-use PHPUnit\Framework\TestCase;
 use gossi\codegen\model\PhpClass;
 use gossi\codegen\model\PhpInterface;
 use gossi\codegen\model\PhpMethod;
 use gossi\codegen\model\PhpTrait;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group model

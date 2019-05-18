@@ -1,7 +1,6 @@
 <?php
 namespace gossi\codegen\tests\config;
 
-use PHPUnit\Framework\TestCase;
 use gossi\code\profiles\Profile;
 use gossi\codegen\config\CodeFileGeneratorConfig;
 use gossi\codegen\config\CodeGeneratorConfig;
@@ -9,6 +8,7 @@ use gossi\codegen\generator\CodeGenerator;
 use gossi\docblock\Docblock;
 use phootwork\lang\ComparableComparator;
 use phootwork\lang\Comparator;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group config
@@ -63,7 +63,7 @@ class ConfigTest extends TestCase {
 
 		$config->setGenerateScalarTypeHints(true);
 		$this->assertTrue($config->getGenerateScalarTypeHints());
-		
+
 		$config->setGenerateNullableTypes(true);
 		$this->assertTrue($config->getGenerateNullableTypes());
 
@@ -76,7 +76,7 @@ class ConfigTest extends TestCase {
 		$config->setPropertySorting(new ComparableComparator());
 		$this->assertTrue($config->getPropertySorting() instanceof Comparator);
 
-		$cmp = function($a, $b) {
+		$cmp = function ($a, $b) {
 			return strcmp($a, $b);
 		};
 		$config->setMethodSorting($cmp);

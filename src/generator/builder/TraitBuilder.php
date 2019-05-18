@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace gossi\codegen\generator\builder;
 
-use gossi\codegen\model\AbstractModel;
 use gossi\codegen\generator\builder\parts\StructBuilderPart;
+use gossi\codegen\model\AbstractModel;
 use gossi\codegen\model\PhpTrait;
 
 class TraitBuilder extends AbstractBuilder {

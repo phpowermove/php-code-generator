@@ -27,8 +27,8 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
 	 * @param string $filename
 	 * @return PhpTrait
 	 */
-	public static function fromFile(string $filename): PhpTrait {
-		$trait = new PhpTrait();
+	public static function fromFile(string $filename): self {
+		$trait = new self();
 		$parser = new FileParser($filename);
 		$parser->addVisitor(new TraitParserVisitor($trait));
 		$parser->addVisitor(new MethodParserVisitor($trait));
@@ -52,7 +52,7 @@ class PhpTrait extends AbstractPhpStruct implements GenerateableInterface, Trait
 	/**
 	 * @inheritDoc
 	 */
-	public function generateDocblock() {
+	public function generateDocblock(): void {
 		parent::generateDocblock();
 
 		foreach ($this->properties as $prop) {

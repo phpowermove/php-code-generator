@@ -63,7 +63,7 @@ trait ValuePart {
 	 * Returns whether the given value is a primitive
 	 *
 	 * @param mixed $value
-	 * @return boolean
+	 * @return bool
 	 */
 	private function isPrimitive($value): bool {
 		return (is_string($value)
@@ -77,7 +77,7 @@ trait ValuePart {
 	/**
 	 * Sets the value
 	 *
-	 * @param string|integer|float|bool|null|PhpConstant $value
+	 * @param string|int|float|bool|null|PhpConstant $value
 	 * @throws \InvalidArgumentException if the value is not an accepted primitve
 	 * @return $this
 	 */
@@ -106,7 +106,7 @@ trait ValuePart {
 	/**
 	 * Returns the value
 	 *
-	 * @return string|integer|float|bool|null|PhpConstant
+	 * @return string|int|float|bool|null|PhpConstant
 	 */
 	public function getValue() {
 		return $this->value;

@@ -26,8 +26,8 @@ class PhpInterface extends AbstractPhpStruct implements GenerateableInterface, C
 	 * @param string $filename
 	 * @return PhpInterface
 	 */
-	public static function fromFile(string $filename): PhpInterface {
-		$interface = new PhpInterface();
+	public static function fromFile(string $filename): self {
+		$interface = new self();
 		$parser = new FileParser($filename);
 		$parser->addVisitor(new InterfaceParserVisitor($interface));
 		$parser->addVisitor(new MethodParserVisitor($interface));
@@ -51,7 +51,7 @@ class PhpInterface extends AbstractPhpStruct implements GenerateableInterface, C
 	/**
 	 * @inheritDoc
 	 */
-	public function generateDocblock() {
+	public function generateDocblock(): void {
 		parent::generateDocblock();
 
 		foreach ($this->constants as $constant) {

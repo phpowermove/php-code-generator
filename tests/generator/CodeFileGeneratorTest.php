@@ -1,7 +1,6 @@
 <?php
 namespace gossi\codegen\tests\generator;
 
-use PHPUnit\Framework\TestCase;
 use gossi\codegen\config\CodeFileGeneratorConfig;
 use gossi\codegen\generator\CodeFileGenerator;
 use gossi\codegen\model\PhpClass;
@@ -12,6 +11,7 @@ use gossi\codegen\model\PhpParameter;
 use gossi\codegen\model\PhpProperty;
 use gossi\codegen\tests\Fixtures;
 use gossi\codegen\tests\parts\TestUtils;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group generator

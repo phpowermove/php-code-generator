@@ -1,9 +1,9 @@
 <?php
 namespace gossi\codegen\tests\utils;
 
-use PHPUnit\Framework\TestCase;
 use gossi\codegen\generator\utils\Writer;
 use gossi\codegen\utils\ReflectionUtils;
+use PHPUnit\Framework\TestCase;
 
 class ReflectionUtilsTest extends TestCase {
 

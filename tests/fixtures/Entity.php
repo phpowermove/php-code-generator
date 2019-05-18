@@ -11,7 +11,7 @@ abstract class Entity {
 	private $enabled = false;
 
 	/**
-	 * @var integer
+	 * @var int
 	 */
 	private $id;
 

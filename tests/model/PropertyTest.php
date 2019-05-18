@@ -1,9 +1,9 @@
 <?php
 namespace gossi\codegen\tests\model;
 
-use PHPUnit\Framework\TestCase;
 use gossi\codegen\model\PhpProperty;
 use gossi\codegen\tests\parts\ValueTests;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group model

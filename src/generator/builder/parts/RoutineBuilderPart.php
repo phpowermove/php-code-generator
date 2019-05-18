@@ -6,7 +6,7 @@ namespace gossi\codegen\generator\builder\parts;
 use gossi\codegen\model\AbstractModel;
 use gossi\codegen\model\RoutineInterface;
 
-Trait RoutineBuilderPart {
+trait RoutineBuilderPart {
 
 	use TypeBuilderPart;
 
@@ -14,7 +14,7 @@ Trait RoutineBuilderPart {
 	 * @param AbstractModel $model
 	 * @return void
 	 */
-	protected abstract function generate(AbstractModel $model): void;
+	abstract protected function generate(AbstractModel $model): void;
 
 	protected function writeFunctionStatement(RoutineInterface $model): void {
 		$this->writer->write('function ');

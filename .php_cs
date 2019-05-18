@@ -18,7 +18,9 @@ return PhpCsFixer\Config::create()
 			'syntax' => 'short'
 		],
 		'blank_line_after_namespace' => true,
-		'concat_space' => true,
+		'concat_space' => [
+			'spacing' => 'one'
+		],
 		'encoding' => true,
 		'full_opening_tag' => true,
 		'function_declaration' => [

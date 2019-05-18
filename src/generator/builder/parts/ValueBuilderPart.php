@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace gossi\codegen\generator\builder\parts;
 
-use gossi\codegen\model\ValueInterface;
 use gossi\codegen\model\PhpConstant;
+use gossi\codegen\model\ValueInterface;
 
 trait ValueBuilderPart {
 

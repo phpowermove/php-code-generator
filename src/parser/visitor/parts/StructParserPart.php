@@ -1,11 +1,11 @@
 <?php
 namespace gossi\codegen\parser\visitor\parts;
 
-use PhpParser\Node\Stmt\ClassLike;
-use PhpParser\Node\Stmt\TraitUse;
-use PhpParser\Node\Stmt\Namespace_;
-use PhpParser\Node\Stmt\UseUse;
 use gossi\codegen\model\AbstractPhpStruct;
+use PhpParser\Node\Stmt\ClassLike;
+use PhpParser\Node\Stmt\Namespace_;
+use PhpParser\Node\Stmt\TraitUse;
+use PhpParser\Node\Stmt\UseUse;
 
 trait StructParserPart {
 

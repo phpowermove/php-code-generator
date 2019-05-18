@@ -1,10 +1,10 @@
 <?php
 namespace gossi\codegen\parser\visitor\parts;
 
-use PhpParser\Node;
-use PhpParser\Comment\Doc;
 use gossi\codegen\model\AbstractPhpMember;
 use gossi\codegen\model\PhpConstant;
+use PhpParser\Comment\Doc;
+use PhpParser\Node;
 
 trait MemberParserPart {
 

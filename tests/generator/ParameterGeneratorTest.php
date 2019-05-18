@@ -1,10 +1,10 @@
 <?php
 namespace gossi\codegen\tests\generator;
 
-use PHPUnit\Framework\TestCase;
 use gossi\codegen\generator\ModelGenerator;
 use gossi\codegen\model\PhpConstant;
 use gossi\codegen\model\PhpParameter;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group generator
@@ -95,10 +95,10 @@ class ParameterGeneratorTest extends TestCase {
 		$param = PhpParameter::create('foo')->setType('resource');
 		$this->assertEquals('$foo', $generator->generate($param));
 	}
-	
+
 	public function testPhp73Nullable() {
 	    $generator = new ModelGenerator(['generateScalarTypeHints' => true, 'generateNullableTypes' => true]);
-	    
+
 	    $param = PhpParameter::create('foo')->setType('float')->setNullable(true);
 	    $this->assertEquals('?float $foo', $generator->generate($param));
 	}

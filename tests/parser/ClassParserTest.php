@@ -1,11 +1,11 @@
 <?php
 namespace gossi\codegen\tests\parser;
 
-use PHPUnit\Framework\TestCase;
 use gossi\codegen\model\PhpClass;
 use gossi\codegen\tests\Fixtures;
 use gossi\codegen\tests\parts\ModelAssertions;
 use gossi\codegen\tests\parts\ValueTests;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group parser

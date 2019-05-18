@@ -1,7 +1,6 @@
 <?php
 namespace gossi\codegen\tests\generator;
 
-use PHPUnit\Framework\TestCase;
 use gossi\codegen\generator\comparator\DefaultConstantComparator;
 use gossi\codegen\generator\comparator\DefaultMethodComparator;
 use gossi\codegen\generator\comparator\DefaultPropertyComparator;
@@ -10,6 +9,7 @@ use gossi\codegen\model\PhpConstant;
 use gossi\codegen\model\PhpMethod;
 use gossi\codegen\model\PhpProperty;
 use phootwork\collection\ArrayList;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group generator
@@ -83,7 +83,7 @@ class SortTest extends TestCase {
 		})->toArray();
 
 		$this->assertEquals([
-			'moop' , 'baz', 'foo', 'bar', 'arr'
+			'moop', 'baz', 'foo', 'bar', 'arr'
 		], $ordered);
 	}
 

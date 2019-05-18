@@ -1,10 +1,10 @@
 <?php
 namespace gossi\codegen\tests\parser;
 
-use PHPUnit\Framework\TestCase;
 use gossi\codegen\model\PhpClass;
 use gossi\codegen\parser\FileParser;
 use gossi\codegen\parser\visitor\ClassParserVisitor;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group parser

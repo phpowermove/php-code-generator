@@ -98,7 +98,7 @@ class PhpFunction extends AbstractModel implements GenerateableInterface, Namesp
 	/**
 	 * @inheritDoc
 	 */
-	public function generateDocblock() {
+	public function generateDocblock(): void {
 		$docblock = $this->getDocblock();
 		$docblock->setShortDescription($this->getDescription());
 		$docblock->setLongDescription($this->getLongDescription());

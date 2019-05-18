@@ -1,10 +1,10 @@
 <?php
 namespace gossi\codegen\tests\generator;
 
-use PHPUnit\Framework\TestCase;
 use gossi\codegen\generator\ModelGenerator;
 use gossi\codegen\model\PhpMethod;
 use gossi\codegen\model\PhpParameter;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group generator
@@ -90,15 +90,15 @@ class MethodGeneratorTest extends TestCase {
 		$method = PhpMethod::create('foo')->setType('int');
 		$this->assertEquals($expected, $generator->generate($method));
 	}
-	
+
 	public function testNullableReturnType() {
 	    $expected = "public function foo(): ?int {\n}\n";
 	    $generator = new ModelGenerator([
-	        'generateReturnTypeHints' => true, 
+	        'generateReturnTypeHints' => true,
 	        'generateDocblock' => false,
 	        'generateNullableTypes' => true
 	    ]);
-	    
+
 	    $method = PhpMethod::create('foo')->setType('int')->setNullable(true);
 	    $this->assertEquals($expected, $generator->generate($method));
 	}

@@ -143,8 +143,6 @@ class CodeGeneratorConfig {
 	public function getGenerateScalarTypeHints(): bool {
 		return $this->options['generateScalarTypeHints'];
 	}
-	
-	
 
 	/**
 	 * Returns whether sorting is enabled
@@ -230,7 +228,7 @@ class CodeGeneratorConfig {
 		$this->options['generateReturnTypeHints'] = $generate;
 		return $this;
 	}
-	
+
 	/**
 	 * Returns whether return nullable type hints will be generated (PHP 7.3)
 	 *
@@ -239,7 +237,7 @@ class CodeGeneratorConfig {
 	public function getGenerateNullableTypes(): bool {
 		return $this->options['generateNullableTypes'];
 	}
-	
+
 	/**
 	 * Sets whether return nullable type hints will be generated (PHP 7.3)
 	 *

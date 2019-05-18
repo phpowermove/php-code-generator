@@ -1,7 +1,6 @@
 <?php
 namespace gossi\codegen\tests\model;
 
-use PHPUnit\Framework\TestCase;
 use gossi\codegen\model\PhpClass;
 use gossi\codegen\model\PhpConstant;
 use gossi\codegen\model\PhpInterface;
@@ -9,6 +8,7 @@ use gossi\codegen\model\PhpProperty;
 use gossi\codegen\model\PhpTrait;
 use gossi\codegen\tests\parts\ModelAssertions;
 use gossi\codegen\tests\parts\ValueTests;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @group model

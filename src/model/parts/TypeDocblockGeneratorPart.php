@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace gossi\codegen\model\parts;
 
-use gossi\docblock\tags\AbstractTag;
 use gossi\docblock\Docblock;
+use gossi\docblock\tags\AbstractTag;
 
 /**
  * Type docblock generator part
