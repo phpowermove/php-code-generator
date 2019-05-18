@@ -3,6 +3,9 @@ namespace gossi\codegen\parser;
 
 use PhpParser\PrettyPrinter\Standard;
 use PhpParser\Node\Expr\Array_;
+use PhpParser\Node\Stmt;
+use PhpParser\Node;
+use PhpParser\Node\Expr;
 
 class PrettyPrinter extends Standard {
 	
@@ -14,11 +17,12 @@ class PrettyPrinter extends Standard {
      *
      * @return string Pretty printed statements
      */
-    protected function pStmts(array $nodes, $indent = true) {
+    protected function pStmts(array $nodes, bool $indent = true): string {
         $result = '';
-	   $nodeBefore = NULL;
+		$prevNode = null;
+		
         foreach ($nodes as $node) {
-            $comments = $node->getAttribute('comments', array());
+            $comments = $node->getAttribute('comments', []);
             if ($comments) {
                 $result .= "\n" . $this->pComments($comments);
                 if ($node instanceof Stmt\Nop) {
@@ -26,15 +30,15 @@ class PrettyPrinter extends Standard {
                 }
             }
 		  
-		  if ($nodeBefore && $nodeBefore->getLine() && $node->getLine()) {
-			  $diff = $node->getLine()- $nodeBefore->getLine();
+		  if ($prevNode && $prevNode->getLine() && $node->getLine()) {
+			  $diff = $node->getLine()- $prevNode->getLine();
 			  if ($diff > 0) {
 				  $result .= str_repeat("\n", $diff - 1);
 			  }
 		  }
 		  
-            $result .= "\n" . $this->p($node) . ($node instanceof Expr ? ';' : '');
-		  $nodeBefore = $node;
+          $result .= "\n" . $this->p($node) . ($node instanceof Expr ? ';' : '');
+		  $prevNode = $node;
         }
 
 	   if ($indent) {
