@@ -72,7 +72,7 @@ trait TypePart {
 	 * @return bool
 	 */
 	public function getNullable(): bool {
-        return $this->typeNullable;
+		return $this->typeNullable;
 	}
 	
 	/**
@@ -82,7 +82,7 @@ trait TypePart {
 	 * @return $this
 	 */
 	public function setNullable(bool $nullable) {
-	    $this->typeNullable = $nullable;
-	    return $this;
+		$this->typeNullable = $nullable;
+		return $this;
 	}
 }
