@@ -38,13 +38,13 @@ trait TypeBuilderPart {
 					|| ($allowed && in_array($type, self::$php7typeHints)))
 				) {
 
-            $type = isset(self::$typeHintMap[$type])
-                ? self::$typeHintMap[$type]
-                : $type;
+			$type = isset(self::$typeHintMap[$type])
+				? self::$typeHintMap[$type]
+				: $type;
 
-            if ($nullable && $model->getNullable()) {
-                $type = '?' . $type;
-            }
+			if ($nullable && $model->getNullable()) {
+				$type = '?' . $type;
+			}
 
 			return $type;
 		}

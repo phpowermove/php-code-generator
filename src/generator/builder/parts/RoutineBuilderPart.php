@@ -42,7 +42,7 @@ Trait RoutineBuilderPart {
 	}
 
 	protected function writeFunctionReturnType(RoutineInterface $model): void {
-	    $type = $this->getType($model, $this->config->getGenerateReturnTypeHints(), $this->config->getGenerateNullableTypes());
+		$type = $this->getType($model, $this->config->getGenerateReturnTypeHints(), $this->config->getGenerateNullableTypes());
 		if ($type !== null && $this->config->getGenerateReturnTypeHints()) {
 			$this->writer->write(': ')->write($type);
 		}

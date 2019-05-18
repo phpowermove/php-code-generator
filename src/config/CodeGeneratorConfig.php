@@ -237,7 +237,7 @@ class CodeGeneratorConfig {
 	 * @return bool `true` if they will be generated and `false` if not
 	 */
 	public function getGenerateNullableTypes(): bool {
-	    return $this->options['generateNullableTypes'];
+		return $this->options['generateNullableTypes'];
 	}
 	
 	/**
@@ -247,8 +247,8 @@ class CodeGeneratorConfig {
 	 * @return $this
 	 */
 	public function setGenerateNullableTypes(bool $generate) {
-	    $this->options['generateNullableTypes'] = $generate;
-	    return $this;
+		$this->options['generateNullableTypes'] = $generate;
+		return $this;
 	}
 
 	/**
