@@ -1,4 +1,5 @@
 .buildpath
+.php_cs.cache
 phpunit.xml
 composer.lock
 vendor/
