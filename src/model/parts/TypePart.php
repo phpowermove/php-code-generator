@@ -71,7 +71,7 @@ trait TypePart {
 	 * 
 	 * @return bool
 	 */
-	public function getNullable(): bool {
+	public function getNullable(): ?bool {
 		return $this->typeNullable;
 	}
 
