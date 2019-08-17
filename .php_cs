@@ -1,6 +1,6 @@
 <?php
 
-$config = new gossi\fixer\Config();
+$config = new phootwork\fixer\Config();
 $config->getFinder()
     ->exclude(['fixture', 'generated'])
     ->in(__DIR__ . '/src')
