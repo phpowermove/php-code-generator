@@ -9,7 +9,7 @@ use PhpParser\PrettyPrinter\Standard;
 
 class PrettyPrinter extends Standard {
 
- /**
+    /**
      * Pretty prints an array of nodes (statements) and indents them optionally.
      *
      * @param Node[] $nodes  Array of nodes
@@ -42,7 +42,7 @@ class PrettyPrinter extends Standard {
         }
 
 	   if ($indent) {
-            return preg_replace('~\n(?!$|' . $this->noIndentToken . ')~', "\n    ", $result);
+            return preg_replace('~\n(?!$)~', "\n    ", $result);
         } else {
             return $result;
         }
