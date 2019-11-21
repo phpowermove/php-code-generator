@@ -103,6 +103,13 @@ class ParameterGeneratorTest extends TestCase {
 	    $this->assertEquals('?float $foo', $generator->generate($param));
 	}
 
+	public function testPhp73NullableDefaultsToFalseWhenUnset() {
+	    $generator = new ModelGenerator(['generateScalarTypeHints' => true, 'generateNullableTypes' => true]);
+
+	    $param = PhpParameter::create('foo')->setType('float');
+	    $this->assertEquals('float $foo', $generator->generate($param));
+	}
+
 	public function testValues() {
 		$generator = new ModelGenerator();
 
