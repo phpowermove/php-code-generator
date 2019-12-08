@@ -33,7 +33,8 @@ class DocblockTest extends TestCase {
 		return PhpMethod::create(self::METHOD)
 			->setDescription('my method')
 			->setLongDescription('my very long method')
-			->setType('string', 'this method returns a string')
+			->addType('string')
+            ->setTypeDescription('this method returns a string')
 			->addParameter(PhpParameter::create('a')->setDescription('method-param'));
 	}
 
@@ -44,7 +45,9 @@ class DocblockTest extends TestCase {
 		return PhpProperty::create(self::PROP)
 			->setDescription('my prop')
 			->setLongDescription('my very long prop')
-			->setType('int', 'this prop is an integer');
+			->addType('int')
+            ->setTypeDescription('this prop is an integer')
+            ;
 	}
 
 	/**
@@ -54,7 +57,9 @@ class DocblockTest extends TestCase {
 		return PhpConstant::create(self::CONSTANT)
 			->setDescription('my constant')
 			->setLongDescription('my very long contstant')
-			->setType('boolean', 'this constant is a boolean');
+			->addType('boolean')
+            ->setTypeDescription('this constant is a boolean')
+            ;
 	}
 
 	public function testClass() {
@@ -62,8 +67,8 @@ class DocblockTest extends TestCase {
 		$class->setName('class-name')
 			->setDescription('this is my class')
 			->setLongDescription('this is my very long class')
-			->setProperty($this->getProperty())
-			->setMethod($this->getMethod())
+			->addProperty($this->getProperty())
+			->addMethod($this->getMethod())
 			->setConstant($this->getConstant())
 			->generateDocblock();
 
@@ -96,7 +101,7 @@ class DocblockTest extends TestCase {
 
 	public function testInterface() {
 		$interface = new PhpInterface();
-		$interface->setDescription('my interface')->setLongDescription('this is my very long description')->setConstant($this->getConstant())->setMethod($this->getMethod());
+		$interface->setDescription('my interface')->setLongDescription('this is my very long description')->setConstant($this->getConstant())->addMethod($this->getMethod());
 		$interface->generateDocblock();
 
 		$this->assertFalse($interface->getDocblock()->isEmpty());
@@ -112,7 +117,7 @@ class DocblockTest extends TestCase {
 
 	public function testTrait() {
 		$trait = new PhpTrait();
-		$trait->setDescription('my trait')->setLongDescription('this is my very long description')->setProperty($this->getProperty())->setMethod($this->getMethod());
+		$trait->setDescription('my trait')->setLongDescription('this is my very long description')->addProperty($this->getProperty())->addMethod($this->getMethod());
 		$trait->generateDocblock();
 
 		$this->assertFalse($trait->getDocblock()->isEmpty());
@@ -127,7 +132,10 @@ class DocblockTest extends TestCase {
 	}
 
 	public function testFunction() {
-		$function = PhpFunction::create(self::METHOD)->setType('string', 'this method returns a string')->addParameter(new PhpParameter('a'));
+        $function = PhpFunction::create(self::METHOD)
+                               ->addType('string')
+                               ->setTypeDescription('this method returns a string')
+                               ->addParameter(new PhpParameter('a'));
 		$function->generateDocblock();
 		$this->assertFalse($function->getDocblock()->isEmpty());
 	}
@@ -222,7 +230,10 @@ class DocblockTest extends TestCase {
  * @param mixed $a
  * @return Response this method returns a response object
  */';
-		$function = PhpFunction::create(self::METHOD)->setType('Response', 'this method returns a response object')->addParameter(PhpParameter::create('r')->setType('Request'))->addParameter(PhpParameter::create('a')->setType('mixed'));
+        $function = PhpFunction::create(self::METHOD)->addType('Response')
+                               ->setTypeDescription('this method returns a response object')
+                               ->addParameter(PhpParameter::create('r')->addType('Request'))
+                               ->addParameter(PhpParameter::create('a')->addType('mixed'));
 		$function->generateDocblock();
 		$this->assertSame($expected, $function->getDocblock()->toString());
 	}

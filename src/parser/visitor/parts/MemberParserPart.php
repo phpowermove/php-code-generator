@@ -3,6 +3,7 @@ namespace gossi\codegen\parser\visitor\parts;
 
 use gossi\codegen\model\AbstractPhpMember;
 use gossi\codegen\model\PhpConstant;
+use gossi\codegen\utils\TypeUtils;
 use PhpParser\Comment\Doc;
 use PhpParser\Node;
 
@@ -23,7 +24,12 @@ trait MemberParserPart {
 			$vars = $docblock->getTags('var');
 			if ($vars->size() > 0) {
 				$var = $vars->get(0);
-				$member->setType($var->getType(), $var->getDescription());
+                $types = TypeUtils::expressionToTypes($var->getType());
+                foreach($types as $type) {
+                    $type = TypeUtils::guessQualifiedName($this->struct, $type);
+                    $member->addType($type);
+                }
+                $member->setTypeDescription($var->getDescription());
 			}
 		}
 	}

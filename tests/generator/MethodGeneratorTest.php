@@ -87,7 +87,7 @@ class MethodGeneratorTest extends TestCase {
 		$expected = "public function foo(): int {\n}\n";
 		$generator = new ModelGenerator(['generateReturnTypeHints' => true, 'generateDocblock' => false]);
 
-		$method = PhpMethod::create('foo')->setType('int');
+		$method = PhpMethod::create('foo')->addType('int');
 		$this->assertEquals($expected, $generator->generate($method));
 	}
 
@@ -99,7 +99,7 @@ class MethodGeneratorTest extends TestCase {
 	        'generateNullableTypes' => true
 	    ]);
 
-	    $method = PhpMethod::create('foo')->setType('int')->setNullable(true);
+	    $method = PhpMethod::create('foo')->addType('int')->setNullable(true);
 	    $this->assertEquals($expected, $generator->generate($method));
 	}
 

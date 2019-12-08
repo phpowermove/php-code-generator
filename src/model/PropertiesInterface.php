@@ -22,7 +22,7 @@ interface PropertiesInterface {
 	 * @param PhpProperty $property
 	 * @return $this
 	 */
-	public function setProperty(PhpProperty $property);
+	public function addProperty(PhpProperty $property);
 
 	/**
 	 * Removes a property

@@ -15,7 +15,7 @@ use gossi\codegen\parser\visitor\MethodParserVisitor;
  *
  * @author Thomas Gossmann
  */
-class PhpInterface extends AbstractPhpStruct implements GenerateableInterface, ConstantsInterface {
+class PhpInterface extends AbstractPhpStruct implements GenerateableInterface, ConstantsInterface, PhpTypeInterface {
 
 	use ConstantsPart;
 	use InterfacesPart;

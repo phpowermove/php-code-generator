@@ -8,6 +8,7 @@ use gossi\codegen\model\PhpParameter;
 use gossi\codegen\parser\PrettyPrinter;
 use gossi\codegen\parser\visitor\parts\MemberParserPart;
 use gossi\codegen\parser\visitor\parts\ValueParserPart;
+use gossi\codegen\utils\TypeUtils;
 use gossi\docblock\tags\ParamTag;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt\ClassMethod;
@@ -30,7 +31,7 @@ class MethodParserVisitor extends StructParserVisitor {
 		$this->parseType($m, $node);
 		$this->parseBody($m, $node);
 
-		$this->struct->setMethod($m);
+		$this->struct->addMethod($m);
 	}
 
 	private function parseParams(PhpMethod $m, ClassMethod $node) {
@@ -42,20 +43,35 @@ class MethodParserVisitor extends StructParserVisitor {
 			$p->setName($name);
 			$p->setPassedByReference($param->byRef);
 
+            $type = null;
 			if (is_string($param->type)) {
-				$p->setType($param->type);
+				$type = $param->type;
 			} else if ($param->type instanceof Name) {
-				$p->setType(implode('\\', $param->type->parts));
-			}
+                $type = implode('\\', $param->type->parts);
+                $qualifiedType = TypeUtils::guessQualifiedName($this->struct, $type);
+                if ($type !== $qualifiedType) {
+                    $type = $qualifiedType;
+                } else {
+                    $type = '\\'.$type;
+                }
+            }
+
+			if ($type) {
+                $p->addType($type);
+            }
 
 			$this->parseValue($p, $param);
 
-			$tag = $params->find($p, function (ParamTag $t, $p) {
-				return $t->getVariable() == '$' . $p->getName();
+			$tag = $params->find($p, static function (ParamTag $t, $p) {
+				return $t->getVariable() === '$' . $p->getName();
 			});
 
 			if ($tag !== null) {
-				$p->setType($tag->getType(), $tag->getDescription());
+			    $types = TypeUtils::expressionToTypes($tag->getType());
+			    foreach ($types as $type) {
+                    $p->addType(TypeUtils::guessQualifiedName($this->struct, $type));
+                }
+			    $p->setTypeDescription($tag->getDescription());
 			}
 
 			$m->addParameter($p);
@@ -66,7 +82,7 @@ class MethodParserVisitor extends StructParserVisitor {
 		$returns = $m->getDocblock()->getTags('return');
 		if ($returns->size() > 0) {
 			$return = $returns->get(0);
-			$m->setType($return->getType(), $return->getDescription());
+			$m->addType($return->getType())->setTypeDescription($return->getDescription());
 		}
 	}
 

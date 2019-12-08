@@ -20,7 +20,7 @@ use gossi\codegen\parser\visitor\PropertyParserVisitor;
  *
  * @author Thomas Gossmann
  */
-class PhpClass extends AbstractPhpStruct implements GenerateableInterface, TraitsInterface, ConstantsInterface, PropertiesInterface {
+class PhpClass extends AbstractPhpStruct implements GenerateableInterface, TraitsInterface, ConstantsInterface, PropertiesInterface, PhpTypeInterface {
 
 	use AbstractPart;
 	use ConstantsPart;
@@ -71,16 +71,25 @@ class PhpClass extends AbstractPhpStruct implements GenerateableInterface, Trait
 		return $this->parentClassName;
 	}
 
+    public function getParentClass(): PhpClass {
+	    return class_exists($this->parentClassName) ?
+            self::fromName($this->parentClassName) : PhpClass::create($this->parentClassName);
+    }
+
 	/**
 	 * Sets the parent class name
 	 *
-	 * @param string|null $name the new parent
+	 * @param PhpClass|string|null $name the new parent
 	 * @return $this
 	 */
-	public function setParentClassName(?string $name) {
-		$this->parentClassName = $name;
+	public function setParentClassName($parent) {
+		if ($parent instanceof PhpClass) {
+		    $this->addUseStatement($parent->getQualifiedName());
+		    $parent = $parent->getName();
+        }
+        $this->parentClassName = $parent;
 
-		return $this;
+        return $this;
 	}
 
 	public function generateDocblock(): void {

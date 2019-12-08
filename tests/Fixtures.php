@@ -35,12 +35,12 @@ class Fixtures {
 			->setDocblock($classDoc)
 			->setDescription($classDoc->getShortDescription())
 			->setLongDescription($classDoc->getLongDescription())
-			->setProperty(PhpProperty::create('id')
+			->addProperty(PhpProperty::create('id')
 				->setVisibility('private')
 				->setDocblock($propDoc)
-				->setType('int')
+				->addType('int')
 				->setDescription($propDoc->getShortDescription()))
-			->setProperty(PhpProperty::create('enabled')
+			->addProperty(PhpProperty::create('enabled')
 				->setVisibility('private')
 				->setValue(false));
 
@@ -58,25 +58,25 @@ class Fixtures {
 			->addParameter(PhpParameter::create('a'))
 			->addParameter(PhpParameter::create()
 				->setName('b')
-				->setType('array')
+				->addType('array')
 				->setPassedByReference(true))
 			->addParameter(PhpParameter::create()
 				->setName('c')
-				->setType('\\stdClass'))
+				->addType('\\stdClass'))
 			->addParameter(PhpParameter::create()
 				->setName('d')
-				->setType('string')
+				->addType('string')
 				->setValue('foo'))
 			->addParameter(PhpParameter::create()
 				->setName('e')
-				->setType('callable'))
+				->addType('callable'))
 				->setDocblock($methodDoc)
 				->setDescription($methodDoc->getShortDescription())
 				->setLongDescription($methodDoc->getLongDescription());
 
-		$class->setMethod($method);
-		$class->setMethod(PhpMethod::create('foo')->setAbstract(true)->setVisibility('protected'));
-		$class->setMethod(PhpMethod::create('bar')->setStatic(true)->setVisibility('private'));
+		$class->addMethod($method);
+		$class->addMethod(PhpMethod::create('foo')->setAbstract(true)->setVisibility('protected'));
+		$class->addMethod(PhpMethod::create('bar')->setStatic(true)->setVisibility('private'));
 
 		return $class;
 	}
@@ -111,10 +111,10 @@ class Fixtures {
 	public static function createABClass() {
 		return PhpClass::create()
 			->setName('ABClass')
-			->setMethod(PhpMethod::create('a'))
-			->setMethod(PhpMethod::create('b'))
-			->setProperty(PhpProperty::create('a'))
-			->setProperty(PhpProperty::create('b'))
+			->addMethod(PhpMethod::create('a'))
+			->addMethod(PhpMethod::create('b'))
+			->addProperty(PhpProperty::create('a'))
+			->addProperty(PhpProperty::create('b'))
 			->setConstant('a', 'foo')
 			->setConstant('b', 'bar');
 	}
@@ -135,26 +135,26 @@ class Fixtures {
 		$class->setConstant(PhpConstant::create('FOO', 'bar')
 			->setDescription('Best const ever')
 			->setLongDescription('Aaaand we go along long')
-			->setType('string')
-			->setTypeDescription('baz')
+			->addType('string')
+			->addTypeDescription('baz')
 		);
 
-		$class->setProperty(PhpProperty::create('propper')
-			->setDescription('best prop ever')
-			->setLongDescription('Aaaand we go along long long')
-			->setType('string')
-			->setTypeDescription('Wer macht sauber?')
+		$class->addProperty(PhpProperty::create('propper')
+                                       ->setDescription('best prop ever')
+                                       ->setLongDescription('Aaaand we go along long long')
+                                       ->addType('string')
+                                       ->addTypeDescription('Wer macht sauber?')
 		);
 
-		$class->setMethod(PhpMethod::create('setup')
-			->setDescription('Short desc')
-			->setLongDescription('Looong desc')
-			->addParameter(PhpParameter::create('moo')
-				->setType('boolean')
-				->setTypeDescription('makes a cow'))
-			->addParameter(PhpParameter::create('foo')
-				->setType('foo', 'makes a fow'))
-			->setType('boolean', 'true on success and false if it fails')
+		$class->addMethod(PhpMethod::create('setup')
+                                   ->setDescription('Short desc')
+                                   ->setLongDescription('Looong desc')
+                                   ->addParameter(PhpParameter::create('moo')
+				->addType('boolean')
+				->addTypeDescription('makes a cow'))
+                                   ->addParameter(PhpParameter::create('foo')
+				->addType('foo', 'makes a fow'))
+                                   ->addType('boolean', 'true on success and false if it fails')
 		);
 
 		return $class;
@@ -169,7 +169,7 @@ class Fixtures {
 		$interface = PhpInterface::create('DummyInterface')
 			->setNamespace('gossi\codegen\tests\fixtures')
 			->setDescription('Dummy docblock')
-			->setMethod(PhpMethod::create('foo'));
+			->addMethod(PhpMethod::create('foo'));
 		$interface->generateDocblock();
 
 		return $interface;
@@ -184,8 +184,8 @@ class Fixtures {
 		$trait = PhpTrait::create('DummyTrait')
 			->setNamespace('gossi\\codegen\\tests\\fixtures')
 			->setDescription('Dummy docblock')
-			->setMethod(PhpMethod::create('foo')->setVisibility('public'))
-			->setProperty(PhpProperty::create('iAmHidden')->setVisibility('private'))
+			->addMethod(PhpMethod::create('foo')->setVisibility('public'))
+			->addProperty(PhpProperty::create('iAmHidden')->setVisibility('private'))
 			->addTrait('VeryDummyTrait');
 		$trait->generateDocblock();
 

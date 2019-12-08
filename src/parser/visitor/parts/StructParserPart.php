@@ -12,7 +12,7 @@ trait StructParserPart {
 	/**
 	 * @return AbstractPhpStruct
 	 */
-	abstract protected function getStruct();
+	abstract protected function getStruct(): AbstractPhpStruct;
 
 	public function visitStruct(ClassLike $node) {
 		$struct = $this->getStruct();

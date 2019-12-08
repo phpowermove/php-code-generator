@@ -6,6 +6,9 @@ use gossi\codegen\tests\Fixtures;
 use gossi\codegen\tests\parts\ModelAssertions;
 use gossi\codegen\tests\parts\ValueTests;
 use PHPUnit\Framework\TestCase;
+use gossi\codegen\tests\fixtures\ClassWithComments;
+use gossi\codegen\tests\fixtures\ClassWithConstants;
+use gossi\codegen\tests\fixtures\ClassWithTraits;
 
 /**
  * @group parser
@@ -74,7 +77,7 @@ class ClassParserTest extends TestCase {
 
 		$doSomething = $class->getMethod('doSomething');
 		$options = $doSomething->getParameter('options');
-		$this->assertEquals('Symfony\Component\OptionsResolver\OptionsResolver', $options->getType());
+		$this->assertEquals('\Symfony\Component\OptionsResolver\OptionsResolver', $options->getTypes()[0]);
 	}
 
 	public function testMyCollection() {
@@ -91,4 +94,18 @@ class ClassParserTest extends TestCase {
 		$this->assertTrue($class->hasInterface('\phootwork\collection\Collection'));
 	}
 
+    public function testClassWithTypes() {
+	    $class = PhpClass::fromFile(__DIR__ . '/../fixtures/ClassWithTypes.php');
+	    $totoParam = $class->getMethod('test')->getParameter('toto');
+        $this->assertEquals(
+            [
+                ClassWithComments::class,
+                ClassWithConstants::class.'[]',
+                ClassWithTraits::class,
+                'string',
+                '\StdClass'
+            ],
+            $totoParam->getTypes()
+        );
+    }
 }

@@ -126,7 +126,7 @@ We've just learned how to pass a blank method, the constructor to the class. We 
           )
           ->setBody('$this->driver = $driver');
       )
-      ->setProperty(PhpProperty::create('driver')
+      ->addProperty(PhpProperty::create('driver')
           ->setVisibility('private')
           ->setType('string')
       )

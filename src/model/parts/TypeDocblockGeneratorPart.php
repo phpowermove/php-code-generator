@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace gossi\codegen\model\parts;
 
+use gossi\codegen\model\PhpTypeInterface;
+use gossi\codegen\utils\TypeUtils;
 use gossi\docblock\Docblock;
 use gossi\docblock\tags\AbstractTag;
 
@@ -25,9 +27,9 @@ trait TypeDocblockGeneratorPart {
 	/**
 	 * Returns the type
 	 *
-	 * @return string
+	 * @return string[]|PhpTypeInterface[]
 	 */
-	abstract public function getType(): ?string;
+	abstract public function getTypes(): ?iterable;
 
 	/**
 	 * Returns the type description
@@ -43,22 +45,23 @@ trait TypeDocblockGeneratorPart {
 	 */
 	protected function generateTypeTag(AbstractTag $tag) {
 		$docblock = $this->getDocblock();
-		$type = $this->getType();
+		$types = $this->getTypes();
 
-		if (!empty($type)) {
+		if (!empty($types)) {
 
 			// try to find tag at first and update
 			$tags = $docblock->getTags($tag->getTagName());
+			$type = TypeUtils::typesToExpression($this->getTypes());
 			if ($tags->size() > 0) {
 				$ttag = $tags->get(0);
-				$ttag->setType($this->getType());
+				$ttag->setType($type);
 				$ttag->setDescription($this->getTypeDescription());
 			}
 
 			// ... anyway create and append
 			else {
 				$docblock->appendTag($tag
-					->setType($this->getType())
+					->setType($type)
 					->setDescription($this->getTypeDescription())
 				);
 			}

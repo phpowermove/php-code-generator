@@ -37,13 +37,13 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 	use LongDescriptionPart;
 	use QualifiedNamePart;
 
-	/** @var Map */
+	/** @var Map|string[] */
 	private $useStatements;
 
-	/** @var Set */
+	/** @var Set|string[] */
 	private $requiredFiles;
 
-	/** @var Map */
+	/** @var Map|PhpMethod[] */
 	private $methods;
 
 	/**
@@ -55,6 +55,13 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 	public static function create(?string $name = null) {
 		return new static($name);
 	}
+
+    public static function fromName(string $name): self
+    {
+        $ref = new \ReflectionClass($name);
+
+        return static::fromFile($ref->getFileName());
+    }
 
 	/**
 	 * Creates a new struct
@@ -122,11 +129,17 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 	/**
 	 * Adds a use statement with an optional alias
 	 *
-	 * @param string $qualifiedName
+	 * @param string|PhpTypeInterface $qualifiedName
 	 * @param null|string $alias
 	 * @return $this
 	 */
-	public function addUseStatement(string $qualifiedName, string $alias = null) {
+	public function addUseStatement($qualifiedName, string $alias = null) {
+        if ($qualifiedName instanceof PhpTypeInterface) {
+            $qualifiedName = $qualifiedName->getQualifiedName();
+        }
+	    if ($qualifiedName === $this->getNamespace()) {
+	        return $this;
+        }
 		if (!is_string($alias)) {
 			if (false === strpos($qualifiedName, '\\')) {
 				$alias = $qualifiedName;
@@ -236,7 +249,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 
 		$this->methods->clear();
 		foreach ($methods as $method) {
-			$this->setMethod($method);
+			$this->addMethod($method);
 		}
 
 		return $this;
@@ -248,11 +261,32 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 	 * @param PhpMethod $method
 	 * @return $this
 	 */
-	public function setMethod(PhpMethod $method) {
+	public function addMethod(PhpMethod $method) {
 		$method->setParent($this);
 		$this->methods->set($method->getName(), $method);
+		$types = $method->getTypes();
+        if ($types) {
+            foreach ($types as $type) {
+                if ($type instanceof PhpTypeInterface) {
+                    $this->addUseStatement($type->getQualifiedName());
+                    $method->addType($type->getName());
+                }
+            }
+        }
 
-		return $this;
+        foreach ($method->getParameters() as $parameter) {
+            $types = $parameter->getTypes();
+            if ($types) {
+                foreach ($types as $type) {
+                    if ($type instanceof PhpTypeInterface) {
+                        $this->addUseStatement($type->getQualifiedName());
+                        $parameter->addType($type->getName());
+                    }
+                }
+            }
+        }
+
+        return $this;
 	}
 
 	/**
@@ -313,7 +347,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 	/**
 	 * Returns all methods
 	 *
-	 * @return Map collection of methods
+	 * @return Map|PhpMethod[] collection of methods
 	 */
 	public function getMethods(): Map {
 		return $this->methods;
