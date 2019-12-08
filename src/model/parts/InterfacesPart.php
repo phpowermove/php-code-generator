@@ -15,7 +15,7 @@ use phootwork\collection\Set;
  */
 trait InterfacesPart {
 
-	/** @var Set */
+	/** @var Set|string[] */
 	private $interfaces;
 
 	private function initInterfaces() {
@@ -29,7 +29,7 @@ trait InterfacesPart {
 	 * @param null|string $alias
 	 * @return $this
 	 */
-	abstract public function addUseStatement(string $qualifiedName, string $alias = null);
+	abstract public function addUseStatement($qualifiedName, string $alias = null);
 
 	/**
 	 * Removes a use statement
@@ -59,11 +59,7 @@ trait InterfacesPart {
 		if ($interface instanceof PhpInterface) {
 			$name = $interface->getName();
 			$qname = $interface->getQualifiedName();
-			$namespace = $interface->getNamespace();
-
-			if ($namespace != $this->getNamespace()) {
-				$this->addUseStatement($qname);
-			}
+			$this->addUseStatement($qname);
 		} else {
 			$name = $interface;
 		}
@@ -74,13 +70,27 @@ trait InterfacesPart {
 	}
 
 	/**
-	 * Returns the interfaces
+	 * Returns the interfaces names
 	 *
-	 * @return Set
+	 * @return Set|string[]
 	 */
 	public function getInterfaces(): Set {
 		return $this->interfaces;
 	}
+
+    /**
+     * @return iterable|PhpInterface[]
+     */
+    public function getPhpInterfaces(): iterable
+    {
+        $interfaces = [];
+        foreach ($this->interfaces as $interface) {
+            $interfaces[] = interface_exists($interface) ?
+                PhpInterface::fromName($interface) : PhpInterface::create($interface);
+        }
+
+        return $interfaces;
+    }
 
 	/**
 	 * Checks whether interfaces exists

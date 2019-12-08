@@ -86,7 +86,7 @@ class AbstractPhpStructTest extends TestCase {
 		$class = new PhpClass();
 
 		$this->assertTrue($class->getMethods()->isEmpty());
-		$this->assertSame($class, $class->setMethod($method = new PhpMethod('foo')));
+		$this->assertSame($class, $class->addMethod($method = new PhpMethod('foo')));
 		$this->assertSame([
 			'foo' => $method
 		], $class->getMethods()->toArray());
@@ -94,7 +94,7 @@ class AbstractPhpStructTest extends TestCase {
 		$this->assertSame($method, $class->getMethod('foo'));
 		$this->assertSame($class, $class->removeMethod($method));
 		$this->assertEquals([], $class->getMethods()->toArray());
-		$class->setMethod($orphaned = new PhpMethod('orphaned'));
+		$class->addMethod($orphaned = new PhpMethod('orphaned'));
 		$this->assertSame($class, $orphaned->getParent());
 		$this->assertTrue($class->hasMethod($orphaned));
 		$this->assertSame($class, $class->setMethods([

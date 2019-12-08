@@ -4,14 +4,15 @@ declare(strict_types=1);
 namespace gossi\codegen\generator\builder\parts;
 
 use gossi\codegen\model\AbstractModel;
+use gossi\codegen\model\parts\TypePart;
 
 trait TypeBuilderPart {
 
-	protected static $noTypeHints = [
+	public static $noTypeHints = [
 		'string', 'int', 'integer', 'bool', 'boolean', 'float', 'double', 'object', 'mixed', 'resource'
 	];
 
-	protected static $php7typeHints = [
+    public static $php7typeHints = [
 		'string', 'int', 'integer', 'bool', 'boolean', 'float', 'double'
 	];
 
@@ -27,22 +28,21 @@ trait TypeBuilderPart {
 
 	/**
 	 *
-	 * @param AbstractModel $model
+	 * @param AbstractModel|TypePart $model
 	 * @param bool $allowed
+	 *
 	 * @return string|null
 	 */
 	private function getType(AbstractModel $model, bool $allowed, bool $nullable): ?string {
-		$type = $model->getType();
-		if (!empty($type) && strpos($type, '|') === false
-				&& (!in_array($type, self::$noTypeHints)
-					|| ($allowed && in_array($type, self::$php7typeHints)))
+		$types = $model->getTypes();
+		if ($types && count($types) === 1
+				&& (!in_array($types[0], self::$noTypeHints, true)
+					|| ($allowed && in_array($types[0], self::$php7typeHints, true)))
 				) {
 
-			$type = isset(self::$typeHintMap[$type])
-				? self::$typeHintMap[$type]
-				: $type;
+            $type = self::$typeHintMap[$types[0]] ?? $types[0];
 
-			if ($nullable && $model->getNullable()) {
+            if ($nullable && $model->getNullable()) {
 				$type = '?' . $type;
 			}
 

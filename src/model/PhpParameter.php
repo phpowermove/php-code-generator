@@ -21,6 +21,7 @@ namespace gossi\codegen\model;
 use gossi\codegen\model\parts\NamePart;
 use gossi\codegen\model\parts\TypePart;
 use gossi\codegen\model\parts\ValuePart;
+use gossi\codegen\utils\TypeUtils;
 use gossi\docblock\tags\ParamTag;
 
 /**
@@ -83,8 +84,18 @@ class PhpParameter extends AbstractModel implements ValueInterface {
 	 * @return ParamTag
 	 */
 	public function getDocblockTag(): ParamTag {
+        $type = '';
+        if ($this->getNullable()) {
+            $type = 'null';
+        }
+        if ($this->getTypes()) {
+            if ($type) {
+                $type .= '|';
+            }
+            $type .= TypeUtils::typesToExpression($this->getTypes());
+        }
 		return ParamTag::create()
-			->setType($this->getType())
+			->setType($type)
 			->setVariable($this->getName())
 			->setDescription($this->getTypeDescription());
 	}

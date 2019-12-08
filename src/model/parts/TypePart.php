@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace gossi\codegen\model\parts;
 
+use gossi\codegen\model\PhpTypeInterface;
+use gossi\codegen\utils\TypeUtils;
+
 /**
  * Type part
  *
@@ -12,27 +15,50 @@ namespace gossi\codegen\model\parts;
  */
 trait TypePart {
 
-	/** @var string */
-	private $type;
+	/** @var string[]|PhpTypeInterface[] */
+	private $types;
 
 	/** @var string */
 	private $typeDescription;
 
 	/** @var bool */
-	private $typeNullable;
+	private $typeNullable = false;
 
 	/**
 	 * Sets the type
 	 *
-	 * @param string $type
+	 * @param null|string|PhpTypeInterface[] $type
 	 * @param string $description
 	 * @return $this
 	 */
-	public function setType(?string $type, string $description = null) {
-		$this->type = $type;
-		if (null !== $description) {
-			$this->setTypeDescription($description);
-		}
+    public function setTypes(iterable $types)
+    {
+        foreach ($types as $type) {
+            $this->addType($type);
+        }
+
+        return $this;
+	}
+
+	/**
+	 * adds a type
+	 *
+	 * @param string|PhpTypeInterface $type
+	 * @param string $description
+	 * @return $this
+	 */
+	public function addType($type) {
+	    if ($type === 'null') {
+	        $this->setNullable(true);
+	        return $this;
+        }
+	    if ($type) {
+            $this->types[] = $type;
+        }
+
+	    if ($this->types) {
+            $this->types = array_unique($this->types);
+        }
 
 		return $this;
 	}
@@ -44,6 +70,9 @@ trait TypePart {
 	 * @return $this
 	 */
 	public function setTypeDescription(string $description) {
+	    if (!$description) {
+	        return $this;
+        }
 		$this->typeDescription = $description;
 		return $this;
 	}
@@ -51,10 +80,10 @@ trait TypePart {
 	/**
 	 * Returns the type
 	 *
-	 * @return string
+	 * @return string[]|PhpTypeInterface[]
 	 */
-	public function getType(): ?string {
-		return $this->type;
+	public function getTypes(): ?iterable {
+		return $this->types;
 	}
 
 	/**
@@ -68,7 +97,7 @@ trait TypePart {
 
 	/**
 	 * Returns whether the type is nullable
-	 * 
+	 *
 	 * @return bool
 	 */
 	public function getNullable(): bool {
@@ -77,7 +106,7 @@ trait TypePart {
 
 	/**
 	 * Sets the type nullable
-	 * 
+	 *
 	 * @param bool $nullable
 	 * @return $this
 	 */

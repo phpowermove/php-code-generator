@@ -37,7 +37,7 @@ class FunctionGeneratorTest extends TestCase {
 		$expected = "function foo(): int {\n}\n";
 		$generator = new ModelGenerator(['generateReturnTypeHints' => true, 'generateDocblock' => false]);
 
-		$method = PhpFunction::create('foo')->setType('int');
+		$method = PhpFunction::create('foo')->addType('int');
 		$this->assertEquals($expected, $generator->generate($method));
 	}
 

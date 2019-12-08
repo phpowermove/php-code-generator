@@ -16,7 +16,7 @@ use phootwork\collection\Set;
  */
 trait ConstantsPart {
 
-	/** @var Map */
+	/** @var Map|PhpConstant[] */
 	private $constants;
 
 	private function initConstants() {
@@ -127,7 +127,7 @@ trait ConstantsPart {
 	/**
 	 * Returns all constants
 	 *
-	 * @return Map
+	 * @return Map|PhpConstant[]
 	 */
 	public function getConstants(): Map {
 		return $this->constants;

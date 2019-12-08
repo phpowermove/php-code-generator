@@ -23,7 +23,7 @@ class PropertyParserVisitor extends StructParserVisitor {
 		$this->parseValue($p, $prop);
 		$this->parseMemberDocblock($p, $node->getDocComment());
 
-		$this->struct->setProperty($p);
+		$this->struct->addProperty($p);
 	}
 
 }

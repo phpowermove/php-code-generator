@@ -14,7 +14,7 @@ use gossi\codegen\model\PhpTrait;
  */
 trait TraitsPart {
 
-	/** @var array */
+	/** @var string[] */
 	private $traits = [];
 
 	/**
@@ -24,7 +24,7 @@ trait TraitsPart {
 	 * @param null|string $alias
 	 * @return $this
 	 */
-	abstract public function addUseStatement(string $qualifiedName, string $alias = null);
+	abstract public function addUseStatement($qualifiedName, string $alias = null);
 
 	/**
 	 * Removes a use statement
@@ -54,16 +54,12 @@ trait TraitsPart {
 		if ($trait instanceof PhpTrait) {
 			$name = $trait->getName();
 			$qname = $trait->getQualifiedName();
-			$namespace = $trait->getNamespace();
-
-			if ($namespace != $this->getNamespace()) {
-				$this->addUseStatement($qname);
-			}
+			$this->addUseStatement($qname);
 		} else {
 			$name = $trait;
 		}
 
-		if (!in_array($name, $this->traits)) {
+		if (!in_array($name, $this->traits, true)) {
 			$this->traits[] = $name;
 		}
 
@@ -75,9 +71,22 @@ trait TraitsPart {
 	 *
 	 * @return string[]
 	 */
-	public function getTraits() {
+	public function getTraits(): array {
 		return $this->traits;
 	}
+
+    /**
+     * @return iterable|PhpTrait[]
+     */
+    public function getPhpTraits(): iterable {
+        $traits = [];
+        foreach ($this->traits as $trait) {
+            $traits[] = trait_exists($trait) ?
+                PhpTrait::fromName($trait) : PhpTrait::create($trait);
+        }
+
+        return $traits;
+    }
 
 	/**
 	 * Checks whether a trait exists

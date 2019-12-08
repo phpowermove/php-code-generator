@@ -35,24 +35,24 @@ interface RoutineInterface {
 	 * A quick way to add a parameter which is created from the given parameters
 	 *
 	 * @param string      $name
-	 * @param null|string $type
+	 * @param string[]|PhpTypeInterface[] $types
 	 * @param mixed       $defaultValue omit the argument to define no default value
 	 *
 	 * @return $this
 	 */
-	public function addSimpleParameter(string $name, string $type = null, $defaultValue = null);
+	public function addSimpleParameter(string $name, $type = null, $defaultValue = null);
 
 	/**
 	 * A quick way to add a parameter with description which is created from the given parameters
 	 *
 	 * @param string      $name
-	 * @param null|string $type
+	 * @param string[]|PhpTypeInterface[] $types
 	 * @param null|string $typeDescription
 	 * @param mixed       $defaultValue omit the argument to define no default value
 	 *
 	 * @return $this
 	 */
-	public function addSimpleDescParameter(string $name, string $type = null, string $typeDescription = null, $defaultValue = null);
+	public function addSimpleDescParameter(string $name, $type = null, string $typeDescription = null, $defaultValue = null);
 
 	/**
 	 * Returns a parameter by index or name

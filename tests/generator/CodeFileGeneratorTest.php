@@ -34,11 +34,11 @@ class CodeFileGeneratorTest extends TestCase {
 		$class = new PhpClass('ClassWithExpression');
 		$class
 			->setConstant(PhpConstant::create('FOO', 'BAR'))
-			->setProperty(PhpProperty::create('bembel')
-				->setExpression("['ebbelwoi' => 'is eh besser', 'als wie' => 'bier']")
+			->addProperty(PhpProperty::create('bembel')
+                                     ->setExpression("['ebbelwoi' => 'is eh besser', 'als wie' => 'bier']")
 			)
-			->setMethod(PhpMethod::create('getValue')
-				->addParameter(PhpParameter::create('arr')
+			->addMethod(PhpMethod::create('getValue')
+                                 ->addParameter(PhpParameter::create('arr')
 					->setExpression('[self::FOO => \'baz\']')
 			));
 

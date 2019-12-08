@@ -180,18 +180,18 @@ class ClassTest extends TestCase {
 		$class = new PhpClass();
 
 		$this->assertTrue($class->getProperties()->isEmpty());
-		$this->assertSame($class, $class->setProperty($prop = new PhpProperty('foo')));
+		$this->assertSame($class, $class->addProperty($prop = new PhpProperty('foo')));
 		$this->assertSame(['foo' => $prop], $class->getProperties()->toArray());
 		$this->assertTrue($class->hasProperty('foo'));
 		$this->assertSame($class, $class->removeProperty('foo'));
 		$this->assertTrue($class->getProperties()->isEmpty());
 
 		$prop = new PhpProperty('bam');
-		$class->setProperty($prop);
+		$class->addProperty($prop);
 		$this->assertTrue($class->hasProperty($prop));
 		$this->assertSame($class, $class->removeProperty($prop));
 
-		$class->setProperty($orphaned = new PhpProperty('orphaned'));
+		$class->addProperty($orphaned = new PhpProperty('orphaned'));
 		$this->assertSame($class, $orphaned->getParent());
 		$this->assertSame($orphaned, $class->getProperty('orphaned'));
 		$this->assertSame($orphaned, $class->getProperty($orphaned));

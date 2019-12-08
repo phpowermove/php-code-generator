@@ -25,10 +25,10 @@ class ParameterTest extends TestCase {
 	public function testType() {
 		$param = new PhpParameter();
 
-		$this->assertNull($param->getType());
-		$this->assertSame($param, $param->setType('array'));
-		$this->assertEquals('array', $param->getType());
-		$this->assertSame($param, $param->setType('array', 'boo!'));
+		$this->assertNull($param->getTypes());
+		$this->assertSame($param, $param->addType('array'));
+		$this->assertEquals('array', $param->getTypes()[0]);
+		$this->assertSame($param, $param->addType('array')->setTypeDescription('boo!'));
 		$this->assertEquals('boo!', $param->getTypeDescription());
 	}
 
@@ -39,14 +39,14 @@ class ParameterTest extends TestCase {
 		$this->assertTrue($function->hasParameter('param1'));
 		$this->assertFalse($function->hasParameter('param2'));
 		$param1 = $function->getParameter('param1');
-		$this->assertEquals('string', $param1->getType());
+		$this->assertEquals('string', $param1->getTypes()[0]);
 		$this->assertFalse($param1->hasValue());
 
 		$function->addSimpleParameter('param2', 'string', null);
 
 		$this->assertTrue($function->hasParameter('param2'));
 		$param2 = $function->getParameter('param2');
-		$this->assertEquals('string', $param2->getType());
+		$this->assertEquals('string', $param2->getTypes()[0]);
 		$this->assertNull($param2->getValue());
 	}
 
@@ -56,21 +56,21 @@ class ParameterTest extends TestCase {
 
 		$this->assertFalse($function->hasParameter('param2'));
 		$param1 = $function->getParameter('param1');
-		$this->assertEquals('string', $param1->getType());
+		$this->assertEquals('string', $param1->getTypes()[0]);
 		$this->assertFalse($param1->hasValue());
 
 		$function->addSimpleDescParameter('param2', 'string', 'desc');
 
 		$this->assertTrue($function->hasParameter('param2'));
 		$param2 = $function->getParameter('param2');
-		$this->assertEquals('string', $param2->getType());
+		$this->assertEquals('string', $param2->getTypes()[0]);
 		$this->assertFalse($param2->hasValue());
 
 		$function->addSimpleDescParameter('param3', 'string', 'desc', null);
 
 		$this->assertTrue($function->hasParameter('param3'));
 		$param3 = $function->getParameter('param3');
-		$this->assertEquals('string', $param3->getType());
+		$this->assertEquals('string', $param3->getTypes()[0]);
 		$this->assertNull($param3->getValue());
 	}
 

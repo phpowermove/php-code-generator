@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace gossi\codegen\model\parts;
 
 use gossi\codegen\model\PhpProperty;
+use gossi\codegen\model\PhpTypeInterface;
 use phootwork\collection\Map;
 use phootwork\collection\Set;
 
@@ -16,7 +17,7 @@ use phootwork\collection\Set;
  */
 trait PropertiesPart {
 
-	/** @var Map */
+	/** @var Map|PhpProperty[] */
 	private $properties;
 
 	private function initProperties() {
@@ -37,7 +38,7 @@ trait PropertiesPart {
 		$this->properties->clear();
 
 		foreach ($properties as $prop) {
-			$this->setProperty($prop);
+			$this->addProperty($prop);
 		}
 
 		return $this;
@@ -49,8 +50,19 @@ trait PropertiesPart {
 	 * @param PhpProperty $property
 	 * @return $this
 	 */
-	public function setProperty(PhpProperty $property) {
+	public function addProperty(PhpProperty $property) {
 		$property->setParent($this);
+		$types = $property->getTypes();
+
+        if ($types) {
+            foreach ($types as $type) {
+                if ($type instanceof PhpTypeInterface) {
+                    $this->addUseStatement($type->getQualifiedName());
+                    $property->addType($type->getName());
+                }
+            }
+        }
+
 		$this->properties->set($property->getName(), $property);
 
 		return $this;
@@ -114,7 +126,7 @@ trait PropertiesPart {
 	/**
 	 * Returns a collection of properties
 	 *
-	 * @return Map
+	 * @return Map|PhpProperty[]
 	 */
 	public function getProperties(): Map {
 		return $this->properties;

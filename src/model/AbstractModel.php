@@ -32,7 +32,9 @@ abstract class AbstractModel {
 		if (is_array($description)) {
 			$description = implode("\n", $description);
 		}
-		$this->description = $description;
+		if ($description) {
+            $this->description = $description;
+        }
 		return $this;
 	}
 

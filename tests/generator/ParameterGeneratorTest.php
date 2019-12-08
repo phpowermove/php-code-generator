@@ -24,82 +24,82 @@ class ParameterGeneratorTest extends TestCase {
 	public function testTypeHints() {
 		$generator = new ModelGenerator();
 
-		$param = PhpParameter::create('foo')->setType('Request');
+		$param = PhpParameter::create('foo')->addType('Request');
 		$this->assertEquals('Request $foo', $generator->generate($param));
 	}
 
 	public function testPhp5TypeHints() {
 		$generator = new ModelGenerator(['generateScalarTypeHints' => false]);
 
-		$param = PhpParameter::create('foo')->setType('string');
+		$param = PhpParameter::create('foo')->addType('string');
 		$this->assertEquals('$foo', $generator->generate($param));
 
-		$param = PhpParameter::create('foo')->setType('int');
+		$param = PhpParameter::create('foo')->addType('int');
 		$this->assertEquals('$foo', $generator->generate($param));
 
-		$param = PhpParameter::create('foo')->setType('integer');
+		$param = PhpParameter::create('foo')->addType('integer');
 		$this->assertEquals('$foo', $generator->generate($param));
 
-		$param = PhpParameter::create('foo')->setType('float');
+		$param = PhpParameter::create('foo')->addType('float');
 		$this->assertEquals('$foo', $generator->generate($param));
 
-		$param = PhpParameter::create('foo')->setType('double');
+		$param = PhpParameter::create('foo')->addType('double');
 		$this->assertEquals('$foo', $generator->generate($param));
 
-		$param = PhpParameter::create('foo')->setType('bool');
+		$param = PhpParameter::create('foo')->addType('bool');
 		$this->assertEquals('$foo', $generator->generate($param));
 
-		$param = PhpParameter::create('foo')->setType('boolean');
+		$param = PhpParameter::create('foo')->addType('boolean');
 		$this->assertEquals('$foo', $generator->generate($param));
 
-		$param = PhpParameter::create('foo')->setType('mixed');
+		$param = PhpParameter::create('foo')->addType('mixed');
 		$this->assertEquals('$foo', $generator->generate($param));
 
-		$param = PhpParameter::create('foo')->setType('object');
+		$param = PhpParameter::create('foo')->addType('object');
 		$this->assertEquals('$foo', $generator->generate($param));
 
-		$param = PhpParameter::create('foo')->setType('resource');
+		$param = PhpParameter::create('foo')->addType('resource');
 		$this->assertEquals('$foo', $generator->generate($param));
 	}
 
 	public function testPhp7TypeHints() {
 		$generator = new ModelGenerator(['generateScalarTypeHints' => true]);
 
-		$param = PhpParameter::create('foo')->setType('string');
+		$param = PhpParameter::create('foo')->addType('string');
 		$this->assertEquals('string $foo', $generator->generate($param));
 
-		$param = PhpParameter::create('foo')->setType('int');
+		$param = PhpParameter::create('foo')->addType('int');
 		$this->assertEquals('int $foo', $generator->generate($param));
 
-		$param = PhpParameter::create('foo')->setType('integer');
+		$param = PhpParameter::create('foo')->addType('integer');
 		$this->assertEquals('int $foo', $generator->generate($param));
 
-		$param = PhpParameter::create('foo')->setType('float');
+		$param = PhpParameter::create('foo')->addType('float');
 		$this->assertEquals('float $foo', $generator->generate($param));
 
-		$param = PhpParameter::create('foo')->setType('double');
+		$param = PhpParameter::create('foo')->addType('double');
 		$this->assertEquals('float $foo', $generator->generate($param));
 
-		$param = PhpParameter::create('foo')->setType('bool');
+		$param = PhpParameter::create('foo')->addType('bool');
 		$this->assertEquals('bool $foo', $generator->generate($param));
 
-		$param = PhpParameter::create('foo')->setType('boolean');
+		$param = PhpParameter::create('foo')->addType('boolean');
 		$this->assertEquals('bool $foo', $generator->generate($param));
 
-		$param = PhpParameter::create('foo')->setType('mixed');
+		$param = PhpParameter::create('foo')->addType('mixed');
 		$this->assertEquals('$foo', $generator->generate($param));
 
-		$param = PhpParameter::create('foo')->setType('object');
+		$param = PhpParameter::create('foo')->addType('object');
 		$this->assertEquals('$foo', $generator->generate($param));
 
-		$param = PhpParameter::create('foo')->setType('resource');
+		$param = PhpParameter::create('foo')->addType('resource');
 		$this->assertEquals('$foo', $generator->generate($param));
 	}
 
 	public function testPhp73Nullable() {
 	    $generator = new ModelGenerator(['generateScalarTypeHints' => true, 'generateNullableTypes' => true]);
 
-	    $param = PhpParameter::create('foo')->setType('float')->setNullable(true);
+	    $param = PhpParameter::create('foo')->addType('float')->setNullable(true);
 	    $this->assertEquals('?float $foo', $generator->generate($param));
 	}
 

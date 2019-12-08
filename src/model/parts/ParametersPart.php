@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace gossi\codegen\model\parts;
 
 use gossi\codegen\model\PhpParameter;
+use gossi\codegen\model\PhpTypeInterface;
 use gossi\docblock\Docblock;
 use gossi\docblock\tags\ParamTag;
 
@@ -16,7 +17,7 @@ use gossi\docblock\tags\ParamTag;
  */
 trait ParametersPart {
 
-	/** @var array */
+	/** @var PhpParameter[] */
 	private $parameters = [];
 
 	private function initParameters() {
@@ -72,14 +73,15 @@ trait ParametersPart {
 	 * A quick way to add a parameter which is created from the given parameters
 	 *
 	 * @param string      $name
-	 * @param null|string $type
+	 * @param string[]|PhpTypeInterface[] $types
 	 * @param mixed       $defaultValue omit the argument to define no default value
 	 *
 	 * @return $this
 	 */
-	public function addSimpleParameter(string $name, string $type = null, $defaultValue = null) {
+	public function addSimpleParameter(string $name, $types = null, $defaultValue = null) {
+	    $types = (array)$types;
 		$parameter = new PhpParameter($name);
-		$parameter->setType($type);
+		$parameter->setTypes($types);
 
 		if (2 < func_num_args()) {
 			$parameter->setValue($defaultValue);
@@ -93,15 +95,16 @@ trait ParametersPart {
 	 * A quick way to add a parameter with description which is created from the given parameters
 	 *
 	 * @param string      $name
-	 * @param null|string $type
+	 * @param string[]|PhpTypeInterface[] $types
 	 * @param null|string $typeDescription
 	 * @param mixed       $defaultValue omit the argument to define no default value
 	 *
 	 * @return $this
 	 */
-	public function addSimpleDescParameter(string $name, string $type = null, string $typeDescription = null, $defaultValue = null) {
-		$parameter = new PhpParameter($name);
-		$parameter->setType($type);
+	public function addSimpleDescParameter(string $name, $types = null, string $typeDescription = null, $defaultValue = null) {
+		$types = (array)$types;
+	    $parameter = new PhpParameter($name);
+		$parameter->setTypes($types);
 		$parameter->setTypeDescription($typeDescription);
 
 		if (3 < func_num_args() == 3) {
@@ -195,7 +198,7 @@ trait ParametersPart {
 	/**
 	 * Returns a collection of parameters
 	 *
-	 * @return array
+	 * @return PhpParameter[]
 	 */
 	public function getParameters() {
 		return $this->parameters;
@@ -211,10 +214,13 @@ trait ParametersPart {
 	/**
 	 * Generates docblock for params
 	 */
-	protected function generateParamDocblock() {
+	protected function generateParamDocblock(array $noTypeHint = []) {
 		$docblock = $this->getDocblock();
 		$tags = $docblock->getTags('param');
 		foreach ($this->parameters as $param) {
+		    if (!empty($noTypeHint[$param->getName()])) {
+                continue;
+            }
 			$ptag = $param->getDocblockTag();
 
 			$tag = $tags->find($ptag, function (ParamTag $tag, ParamTag $ptag) {
