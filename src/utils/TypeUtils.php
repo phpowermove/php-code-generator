@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace gossi\codegen\utils;
 
-use gossi\codegen\generator\builder\parts\TypeBuilderPart;
 use gossi\codegen\model\AbstractPhpStruct;
 
 class TypeUtils
@@ -24,8 +23,7 @@ class TypeUtils
         'callable',
     ];
 
-    public static function expressionToTypes(?string $typeExpression): array
-    {
+    public static function expressionToTypes(?string $typeExpression): array {
         if (!$typeExpression) {
             return [];
         }
@@ -33,8 +31,7 @@ class TypeUtils
         return explode('|', $typeExpression);
     }
 
-    public static function guessQualifiedName(AbstractPhpStruct $stuct, string $type): string
-    {
+    public static function guessQualifiedName(AbstractPhpStruct $stuct, string $type): string {
         if (in_array($type, self::$phpTypes, true)) {
             return $type;
         }
@@ -61,18 +58,15 @@ class TypeUtils
         return $type . $suffix;
     }
 
-    public static function isGlobalQualifiedName(string $name): bool
-    {
+    public static function isGlobalQualifiedName(string $name): bool {
         return $name[0] === '\\' && substr_count($name, '\\') === 1;
     }
 
-    public static function isNativeType(string $type): bool
-    {
+    public static function isNativeType(string $type): bool {
         return in_array($type, self::$phpTypes, true);
     }
 
-    public static function typesToExpression(iterable $types): ?string
-    {
+    public static function typesToExpression(iterable $types): ?string {
         $typeExpr = '';
         foreach ($types as $type) {
             $typeExpr .= '|' . $type;
