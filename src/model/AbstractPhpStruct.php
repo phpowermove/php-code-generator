@@ -21,6 +21,7 @@ namespace gossi\codegen\model;
 use gossi\codegen\model\parts\DocblockPart;
 use gossi\codegen\model\parts\LongDescriptionPart;
 use gossi\codegen\model\parts\QualifiedNamePart;
+use gossi\codegen\utils\TypeUtils;
 use gossi\docblock\Docblock;
 use phootwork\collection\Map;
 use phootwork\collection\Set;
@@ -137,6 +138,11 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
         if ($qualifiedName instanceof PhpTypeInterface) {
             $qualifiedName = $qualifiedName->getQualifiedName();
         }
+
+        if (TypeUtils::isGlobalQualifiedName($qualifiedName) || TypeUtils::isNativeType($qualifiedName)) {
+            return $this;
+        }
+
 	    if ($qualifiedName === $this->getNamespace()) {
 	        return $this;
         }
@@ -267,10 +273,8 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 		$types = $method->getTypes();
         if ($types) {
             foreach ($types as $type) {
-                if ($type instanceof PhpTypeInterface) {
-                    $this->addUseStatement($type->getQualifiedName());
-                    $method->addType($type->getName());
-                }
+                $this->addUseStatement($type);
+                $method->addType($type);
             }
         }
 
@@ -278,10 +282,8 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
             $types = $parameter->getTypes();
             if ($types) {
                 foreach ($types as $type) {
-                    if ($type instanceof PhpTypeInterface) {
-                        $this->addUseStatement($type->getQualifiedName());
-                        $parameter->addType($type->getName());
-                    }
+                    $this->addUseStatement($type);
+                    $parameter->addType($type);
                 }
             }
         }

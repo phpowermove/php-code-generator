@@ -55,7 +55,8 @@ class PhpParameter extends AbstractModel implements ValueInterface {
 	 */
 	public function __construct($name = null) {
 		$this->setName($name);
-	}
+        $this->initTypes();
+    }
 
 	/**
 	 * Sets whether this parameter is passed by reference

@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace gossi\codegen\model\parts;
 
 use gossi\codegen\model\PhpProperty;
-use gossi\codegen\model\PhpTypeInterface;
 use phootwork\collection\Map;
 use phootwork\collection\Set;
 
@@ -56,10 +55,8 @@ trait PropertiesPart {
 
         if ($types) {
             foreach ($types as $type) {
-                if ($type instanceof PhpTypeInterface) {
-                    $this->addUseStatement($type->getQualifiedName());
-                    $property->addType($type->getName());
-                }
+                $this->addUseStatement($type);
+                $property->addType($type);
             }
         }
 

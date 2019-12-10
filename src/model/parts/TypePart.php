@@ -3,8 +3,10 @@ declare(strict_types=1);
 
 namespace gossi\codegen\model\parts;
 
+use gossi\codegen\model\PhpType;
 use gossi\codegen\model\PhpTypeInterface;
 use gossi\codegen\utils\TypeUtils;
+use phootwork\collection\Map;
 
 /**
  * Type part
@@ -15,14 +17,18 @@ use gossi\codegen\utils\TypeUtils;
  */
 trait TypePart {
 
-	/** @var string[]|PhpTypeInterface[] */
+	/** @var null|Map|string[]|PhpTypeInterface[] */
 	private $types;
 
-	/** @var string */
+	/** @var null|string */
 	private $typeDescription;
 
 	/** @var bool */
 	private $typeNullable = false;
+
+	public function initTypes(): void {
+	    $this->types = new Map();
+    }
 
 	/**
 	 * Sets the type
@@ -31,8 +37,8 @@ trait TypePart {
 	 * @param string $description
 	 * @return $this
 	 */
-    public function setTypes(iterable $types)
-    {
+    public function setTypes(iterable $types) {
+        $this->types->clear();
         foreach ($types as $type) {
             $this->addType($type);
         }
@@ -53,11 +59,11 @@ trait TypePart {
 	        return $this;
         }
 	    if ($type) {
-            $this->types[] = $type;
-        }
+	        if (!$type instanceof PhpTypeInterface) {
+	            $type = new PhpType($type);
+            }
 
-	    if ($this->types) {
-            $this->types = array_unique($this->types);
+            $this->types->set($type->getQualifiedName(), $type);
         }
 
 		return $this;
@@ -80,11 +86,15 @@ trait TypePart {
 	/**
 	 * Returns the type
 	 *
-	 * @return string[]|PhpTypeInterface[]
+	 * @return string[]|PhpTypeInterface[]|Map
 	 */
 	public function getTypes(): ?iterable {
 		return $this->types;
 	}
+
+	public function getTypeExpression(): ?string {
+	    return TypeUtils::typesToExpression($this->types);
+    }
 
 	/**
 	 * Returns the type description

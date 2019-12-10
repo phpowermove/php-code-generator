@@ -8,11 +8,11 @@ use gossi\codegen\model\parts\TypePart;
 
 trait TypeBuilderPart {
 
-	public static $noTypeHints = [
+	protected static $noTypeHints = [
 		'string', 'int', 'integer', 'bool', 'boolean', 'float', 'double', 'object', 'mixed', 'resource'
 	];
 
-    public static $php7typeHints = [
+    protected static $php7typeHints = [
 		'string', 'int', 'integer', 'bool', 'boolean', 'float', 'double'
 	];
 
@@ -35,12 +35,14 @@ trait TypeBuilderPart {
 	 */
 	private function getType(AbstractModel $model, bool $allowed, bool $nullable): ?string {
 		$types = $model->getTypes();
-		if ($types && count($types) === 1
-				&& (!in_array($types[0], self::$noTypeHints, true)
-					|| ($allowed && in_array($types[0], self::$php7typeHints, true)))
-				) {
+		if (!$types || $types->size() !== 1) {
+		    return null;
+        }
+		$type = (string)$types->values()->toArray()[0];
+		if (!in_array($type, self::$noTypeHints, true)
+            || ($allowed && in_array($type, self::$php7typeHints, true))) {
 
-            $type = self::$typeHintMap[$types[0]] ?? $types[0];
+            $type = self::$typeHintMap[$type] ?? $type;
 
             if ($nullable && $model->getNullable()) {
 				$type = '?' . $type;

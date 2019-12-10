@@ -7,6 +7,7 @@ use gossi\codegen\model\PhpTypeInterface;
 use gossi\codegen\utils\TypeUtils;
 use gossi\docblock\Docblock;
 use gossi\docblock\tags\AbstractTag;
+use phootwork\collection\Set;
 
 /**
  * Type docblock generator part
@@ -27,7 +28,7 @@ trait TypeDocblockGeneratorPart {
 	/**
 	 * Returns the type
 	 *
-	 * @return string[]|PhpTypeInterface[]
+	 * @return string[]|PhpTypeInterface[]|Set
 	 */
 	abstract public function getTypes(): ?iterable;
 
@@ -47,7 +48,7 @@ trait TypeDocblockGeneratorPart {
 		$docblock = $this->getDocblock();
 		$types = $this->getTypes();
 
-		if (!empty($types)) {
+		if ($types->size() > 0) {
 
 			// try to find tag at first and update
 			$tags = $docblock->getTags($tag->getTagName());

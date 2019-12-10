@@ -41,7 +41,7 @@ trait ModelAssertions {
 		$this->assertEquals('Best const ever', $FOO->getDescription());
 		$this->assertEquals('Aaaand we go along long', $FOO->getLongDescription());
 		$this->assertEquals('baz', $FOO->getTypeDescription());
-		$this->assertEquals('string', $FOO->getTypes()[0]);
+		$this->assertEquals('string', $FOO->getTypeExpression());
 		$this->assertEquals('bar', $FOO->getValue());
 
 		$propper = $class->getProperty('propper');
@@ -49,21 +49,21 @@ trait ModelAssertions {
 		$this->assertEquals('Best prop ever', $propper->getDescription());
 		$this->assertEquals('Aaaand we go along long long', $propper->getLongDescription());
 		$this->assertEquals('Wer macht sauber?', $propper->getTypeDescription());
-		$this->assertEquals('string', $propper->getTypes()[0]);
+		$this->assertEquals('string', $propper->getTypeExpression());
 		$this->assertEquals('Meister', $propper->getValue());
 
 		$setup = $class->getMethod('setup');
 		$this->assertEquals('Short desc', $setup->getDescription());
 		$this->assertEquals('Looong desc', $setup->getLongDescription());
 		$this->assertEquals('true on success and false if it fails', $setup->getTypeDescription());
-		$this->assertEquals('bool', $setup->getTypes()[0]);
+		$this->assertEquals('bool', $setup->getTypeExpression());
 
 		$moo = $setup->getParameter('moo');
 		$this->assertEquals('makes a cow', $moo->getTypeDescription());
-		$this->assertEquals('bool', $moo->getTypes()[0]);
+		$this->assertEquals('bool', $moo->getTypeExpression());
 
 		$foo = $setup->getParameter('foo');
 		$this->assertEquals('makes a fow', $foo->getTypeDescription());
-		$this->assertEquals('string', $foo->getTypes()[0]);
+		$this->assertEquals('string', $foo->getTypeExpression());
 	}
 }

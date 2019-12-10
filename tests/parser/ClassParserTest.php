@@ -77,7 +77,7 @@ class ClassParserTest extends TestCase {
 
 		$doSomething = $class->getMethod('doSomething');
 		$options = $doSomething->getParameter('options');
-		$this->assertEquals('\Symfony\Component\OptionsResolver\OptionsResolver', $options->getTypes()[0]);
+		$this->assertEquals('Symfony\Component\OptionsResolver\OptionsResolver', $options->getTypeExpression());
 	}
 
 	public function testMyCollection() {
@@ -105,7 +105,7 @@ class ClassParserTest extends TestCase {
                 'string',
                 '\StdClass'
             ],
-            $totoParam->getTypes()
+            array_values($totoParam->getTypes()->toArray())
         );
     }
 }

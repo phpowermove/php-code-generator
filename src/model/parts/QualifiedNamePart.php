@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace gossi\codegen\model\parts;
 
+use gossi\codegen\utils\TypeUtils;
+
 /**
  * Qualified name part
  *
@@ -38,10 +40,10 @@ trait QualifiedNamePart {
 	 */
 	public function setQualifiedName(?string $name) {
 		if ($name === null) {
-			return;
+			return $this;
 		}
 
-		if (false !== $pos = strrpos($name, '\\')) {
+		if (!TypeUtils::isGlobalQualifiedName($name) && false !== $pos = strrpos($name, '\\')) {
 			$this->namespace = trim(substr($name, 0, $pos), '\\');
 			$this->name = substr($name, $pos + 1);
 

@@ -93,7 +93,8 @@ class PhpFunction extends AbstractModel implements GenerateableInterface, Namesp
 		$this->setQualifiedName($name);
 		$this->docblock = new Docblock();
 		$this->initParameters();
-	}
+        $this->initTypes();
+    }
 
 	/**
 	 * @inheritDoc

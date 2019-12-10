@@ -8,6 +8,22 @@ use gossi\codegen\model\AbstractPhpStruct;
 
 class TypeUtils
 {
+    public static $phpTypes = [
+        'string',
+        'int',
+        'integer',
+        'bool',
+        'boolean',
+        'float',
+        'double',
+        'object',
+        'mixed',
+        'resource',
+        'iterable',
+        'array',
+        'callable',
+    ];
+
     public static function expressionToTypes(?string $typeExpression): array
     {
         if (!$typeExpression) {
@@ -17,14 +33,9 @@ class TypeUtils
         return explode('|', $typeExpression);
     }
 
-    public static function typesToExpression(array $types): string
-    {
-        return implode('|', $types);
-    }
-
     public static function guessQualifiedName(AbstractPhpStruct $stuct, string $type): string
     {
-        if (in_array($type, TypeBuilderPart::$noTypeHints, true)) {
+        if (in_array($type, self::$phpTypes, true)) {
             return $type;
         }
 
@@ -48,5 +59,29 @@ class TypeUtils
         }
 
         return $type . $suffix;
+    }
+
+    public static function isGlobalQualifiedName(string $name): bool
+    {
+        return $name[0] === '\\' && substr_count($name, '\\') === 1;
+    }
+
+    public static function isNativeType(string $type): bool
+    {
+        return in_array($type, self::$phpTypes, true);
+    }
+
+    public static function typesToExpression(iterable $types): ?string
+    {
+        $typeExpr = '';
+        foreach ($types as $type) {
+            $typeExpr .= '|' . $type;
+        }
+
+        if (!$typeExpr) {
+            return null;
+        }
+
+        return trim($typeExpr, '|');
     }
 }

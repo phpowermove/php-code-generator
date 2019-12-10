@@ -54,6 +54,7 @@ class PhpConstant extends AbstractModel implements GenerateableInterface, Docblo
 			$this->setValue($value);
 		}
 		$this->docblock = new Docblock();
+		$this->initTypes();
 	}
 
 	/**
