@@ -11,4 +11,6 @@ interface PhpTypeInterface extends NamespaceInterface
     public function setName(?string $name);
 
     public function setQualifiedName(?string $qualifiedName);
+
+    public function __toString(): string;
 }

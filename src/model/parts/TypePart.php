@@ -33,11 +33,15 @@ trait TypePart {
 	/**
 	 * Sets the type
 	 *
-	 * @param null|string|PhpTypeInterface[] $type
+	 * @param null|Map|string[]|PhpTypeInterface[] $types
 	 * @param string $description
+	 *
 	 * @return $this
 	 */
-    public function setTypes(iterable $types) {
+    public function setTypes(?iterable $types) {
+        if (!$types) {
+            return $this;
+        }
         $this->types->clear();
         foreach ($types as $type) {
             $this->addType($type);

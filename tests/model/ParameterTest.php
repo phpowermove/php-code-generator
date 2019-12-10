@@ -35,7 +35,7 @@ class ParameterTest extends TestCase {
 
 	public function testSimpleParameter() {
 		$function = new PhpFunction();
-		$function->addSimpleParameter('param1', 'string');
+		$function->addSimpleParameter('param1', ['string']);
 
 		$this->assertTrue($function->hasParameter('param1'));
 		$this->assertFalse($function->hasParameter('param2'));
@@ -43,7 +43,7 @@ class ParameterTest extends TestCase {
 		$this->assertEquals('string', $param1->getTypeExpression());
 		$this->assertFalse($param1->hasValue());
 
-		$function->addSimpleParameter('param2', 'string', null);
+		$function->addSimpleParameter('param2', ['string'], null);
 
 		$this->assertTrue($function->hasParameter('param2'));
 		$param2 = $function->getParameter('param2');

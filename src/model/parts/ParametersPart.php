@@ -7,6 +7,7 @@ use gossi\codegen\model\PhpParameter;
 use gossi\codegen\model\PhpTypeInterface;
 use gossi\docblock\Docblock;
 use gossi\docblock\tags\ParamTag;
+use phootwork\collection\Map;
 
 /**
  * Parameters Part
@@ -73,13 +74,12 @@ trait ParametersPart {
 	 * A quick way to add a parameter which is created from the given parameters
 	 *
 	 * @param string      $name
-	 * @param string[]|PhpTypeInterface[] $types
+	 * @param null|Map|string[]|PhpTypeInterface[] $types
 	 * @param mixed       $defaultValue omit the argument to define no default value
 	 *
 	 * @return $this
 	 */
 	public function addSimpleParameter(string $name, $types = null, $defaultValue = null) {
-	    $types = (array)$types;
 		$parameter = new PhpParameter($name);
 		$parameter->setTypes($types);
 

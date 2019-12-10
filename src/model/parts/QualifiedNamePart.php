@@ -77,4 +77,9 @@ trait QualifiedNamePart {
 
 		return $this->name;
 	}
+
+    public function __toString(): string
+    {
+        return $this->getQualifiedName();
+    }
 }

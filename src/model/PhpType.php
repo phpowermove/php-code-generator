@@ -12,9 +12,4 @@ class PhpType implements PhpTypeInterface
     {
         $this->setQualifiedName($qualifiedName);
     }
-
-    public function __toString(): string
-    {
-        return $this->getQualifiedName();
-    }
 }
