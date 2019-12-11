@@ -34,9 +34,9 @@ class AbstractPhpStructTest extends TestCase {
 		$this->assertEquals('bar', $class->getName());
 
 		$class->setQualifiedName('\full\qualified\Name');
-		$this->assertEquals('full\qualified', $class->getNamespace());
+		$this->assertEquals('\full\qualified', $class->getNamespace());
 		$this->assertEquals('Name', $class->getName());
-		$this->assertEquals('full\qualified\Name', $class->getQualifiedName());
+		$this->assertEquals('\full\qualified\Name', $class->getQualifiedName());
 
 		$class->setNamespace('a\b');
 		$this->assertEquals('a\b', $class->getNamespace());

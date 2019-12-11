@@ -90,7 +90,7 @@ trait TypePart {
 	/**
 	 * Returns the type
 	 *
-	 * @return string[]|PhpTypeInterface[]|Map
+	 * @return PhpTypeInterface[]|Map
 	 */
 	public function getTypes(): ?iterable {
 		return $this->types;

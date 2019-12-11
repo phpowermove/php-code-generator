@@ -77,8 +77,11 @@ class ClassParserTest extends TestCase {
 
 		$doSomething = $class->getMethod('doSomething');
 		$options = $doSomething->getParameter('options');
-		$this->assertEquals('Symfony\Component\OptionsResolver\OptionsResolver', $options->getTypeExpression());
-	}
+		$this->assertEquals('OptionsResolver', $options->getTypeExpression());
+		$this->assertEquals(
+            '\Symfony\Component\OptionsResolver\OptionsResolver',
+		    $class->getUseStatements()->toArray()['OptionsResolver']);
+    }
 
 	public function testMyCollection() {
 		$class = PhpClass::fromFile(__DIR__ . '/../fixtures/MyCollection.php');

@@ -44,7 +44,7 @@ trait QualifiedNamePart {
 		}
 
 		if (!TypeUtils::isGlobalQualifiedName($name) && false !== $pos = strrpos($name, '\\')) {
-			$this->namespace = trim(substr($name, 0, $pos), '\\');
+			$this->namespace = substr($name, 0, $pos);
 			$this->name = substr($name, $pos + 1);
 
 			return $this;
@@ -80,6 +80,6 @@ trait QualifiedNamePart {
 
     public function __toString(): string
     {
-        return $this->getQualifiedName();
+        return (string) $this->getName();
     }
 }
