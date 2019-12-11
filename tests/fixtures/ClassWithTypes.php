@@ -12,4 +12,13 @@ class ClassWithTypes
     {
 
     }
+
+    public function test2(?string $toto2) {
+
+    }
+
+    public function test3(int $toto3 = null)
+    {
+
+    }
 }

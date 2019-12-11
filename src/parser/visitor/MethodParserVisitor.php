@@ -10,7 +10,9 @@ use gossi\codegen\parser\visitor\parts\MemberParserPart;
 use gossi\codegen\parser\visitor\parts\ValueParserPart;
 use gossi\codegen\utils\TypeUtils;
 use gossi\docblock\tags\ParamTag;
+use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
+use PhpParser\Node\NullableType;
 use PhpParser\Node\Stmt\ClassMethod;
 
 class MethodParserVisitor extends StructParserVisitor {
@@ -44,9 +46,17 @@ class MethodParserVisitor extends StructParserVisitor {
 			$p->setPassedByReference($param->byRef);
 
             $type = null;
-			if (is_string($param->type)) {
+            if ($param->type instanceof NullableType) {
+                $param->type = $param->type->type;
+                $p->setNullable(true);
+            }
+            if ($param->type instanceof Identifier) {
+                $param->type = $param->type->name;
+            }
+            if (is_string($param->type)) {
 				$type = $param->type;
-			} else if ($param->type instanceof Name) {
+			}
+			if ($param->type instanceof Name) {
                 $type = implode('\\', $param->type->parts);
                 $qualifiedType = TypeUtils::guessQualifiedName($this->struct, $type);
                 if ($type !== $qualifiedType) {
@@ -61,6 +71,10 @@ class MethodParserVisitor extends StructParserVisitor {
             }
 
 			$this->parseValue($p, $param);
+
+			if ($p->getExpression() === 'null') {
+                $p->setNullable(true);
+            }
 
 			$tag = $params->find($p, static function (ParamTag $t, $p) {
 				return $t->getVariable() === '$' . $p->getName();

@@ -17,7 +17,7 @@ trait ModelAssertions {
 		$this->assertEquals('__LINE__', $magic->getExpression());
 
 		$null = $class->getProperty('null');
-		$this->assertFalse($null->isExpression());
+		$this->assertTrue($null->isExpression());
 		$this->assertNull($null->getValue());
 
 		$arr = $class->getProperty('arr');

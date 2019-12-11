@@ -96,7 +96,7 @@ class ClassParserTest extends TestCase {
 
     public function testClassWithTypes() {
 	    $class = PhpClass::fromFile(__DIR__ . '/../fixtures/ClassWithTypes.php');
-	    $totoParam = $class->getMethod('test')->getParameter('toto');
+	    $param = $class->getMethod('test')->getParameter('toto');
         $this->assertEquals(
             [
                 ClassWithComments::class,
@@ -105,7 +105,27 @@ class ClassParserTest extends TestCase {
                 'string',
                 '\StdClass'
             ],
-            array_values($totoParam->getTypes()->toArray())
+            array_keys($param->getTypes()->toArray())
         );
+
+        $this->assertTrue($param->getNullable());
+
+        $param = $class->getMethod('test2')->getParameter('toto2');
+        $this->assertEquals(
+            [
+                'string',
+            ],
+            array_keys($param->getTypes()->toArray())
+        );
+        $this->assertTrue($param->getNullable());
+
+        $param = $class->getMethod('test3')->getParameter('toto3');
+        $this->assertEquals(
+            [
+                'int',
+            ],
+            array_keys($param->getTypes()->toArray())
+        );
+        $this->assertTrue($param->getNullable());
     }
 }

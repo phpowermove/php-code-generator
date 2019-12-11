@@ -32,9 +32,11 @@ trait ValueParserPart {
 		if ($value !== null) {
 			if ($this->isPrimitive($value)) {
 				$obj->setValue($this->getPrimitiveValue($value));
-			} else {
-				$obj->setExpression($this->getExpression($value));
 			}
+            $expr = $this->getExpression($value);
+            if ($expr) {
+                $obj->setExpression($expr);
+            }
 		}
 	}
 
