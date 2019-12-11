@@ -5,6 +5,7 @@ namespace gossi\codegen\generator\builder\parts;
 
 use gossi\codegen\model\AbstractModel;
 use gossi\codegen\model\parts\TypePart;
+use phootwork\collection\Map;
 
 trait TypeBuilderPart {
 
@@ -35,6 +36,9 @@ trait TypeBuilderPart {
 	 */
 	private function getType(AbstractModel $model, bool $allowed, bool $nullable): ?string {
 		$types = $model->getTypes();
+		if ($types->get('iterable')) {
+		    $types = new Map(['iterable' => 'iterable']);
+        }
 		if (!$types || $types->size() !== 1) {
 		    return null;
         }

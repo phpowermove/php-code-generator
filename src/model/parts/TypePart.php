@@ -64,6 +64,9 @@ trait TypePart {
         }
 	    if ($type) {
 	        if (!$type instanceof PhpTypeInterface) {
+                if (substr($type, -2, 2) === '[]') {
+                    $this->addType('iterable');
+                }
 	            $type = new PhpType($type);
             }
 

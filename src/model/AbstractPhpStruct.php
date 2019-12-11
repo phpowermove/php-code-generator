@@ -143,9 +143,10 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
             return $this;
         }
 
-	    if ($qualifiedName === $this->getNamespace()) {
+	    if (preg_replace('#\\\\[^\\\\]+$#', '', $qualifiedName) === $this->getNamespace()) {
 	        return $this;
         }
+
 		if (!is_string($alias)) {
 			if (false === strpos($qualifiedName, '\\')) {
 				$alias = $qualifiedName;
@@ -154,6 +155,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 			}
 		}
 
+		$qualifiedName = str_replace('[]', '', $qualifiedName);
 		$this->useStatements->set($alias, $qualifiedName);
 
 		return $this;

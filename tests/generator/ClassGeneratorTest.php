@@ -142,4 +142,21 @@ class ClassGeneratorTest extends TestCase {
 		$this->assertEquals($this->getFixtureContent('MyCollection2.php'), $code);
 	}
 
+    public function testClassWithTypes()
+    {
+        $class = PhpClass::fromFile(__DIR__ . '/../fixtures/ClassWithTypes.php');
+
+        $generator = new CodeFileGenerator(
+            [
+                'profile'                 => 'psr-2',
+                'generateDocblock'        => false,
+                'generateReturnTypeHints' => true,
+                'generateNullableTypes'   => true,
+                'generateScalarTypeHints' => true,
+            ]
+        );
+        $code = $generator->generate($class);
+
+        $this->assertEquals($this->getFixtureContent('ClassWithTypes.php'), $code);
+    }
 }

@@ -3,12 +3,11 @@ namespace gossi\codegen\tests\parser;
 
 use gossi\codegen\model\PhpClass;
 use gossi\codegen\tests\Fixtures;
+use gossi\codegen\tests\fixtures\ClassWithConstants;
+use gossi\codegen\tests\fixtures\sub\SubClass;
 use gossi\codegen\tests\parts\ModelAssertions;
 use gossi\codegen\tests\parts\ValueTests;
 use PHPUnit\Framework\TestCase;
-use gossi\codegen\tests\fixtures\ClassWithComments;
-use gossi\codegen\tests\fixtures\ClassWithConstants;
-use gossi\codegen\tests\fixtures\ClassWithTraits;
 
 /**
  * @group parser
@@ -80,7 +79,7 @@ class ClassParserTest extends TestCase {
 		$this->assertEquals('OptionsResolver', $options->getTypeExpression());
 		$this->assertEquals(
             '\Symfony\Component\OptionsResolver\OptionsResolver',
-		    $class->getUseStatements()->toArray()['OptionsResolver']);
+		    $class->getUseStatements()->get('OptionsResolver'));
     }
 
 	public function testMyCollection() {
@@ -102,11 +101,11 @@ class ClassParserTest extends TestCase {
 	    $param = $class->getMethod('test')->getParameter('toto');
         $this->assertEquals(
             [
-                ClassWithComments::class,
-                ClassWithConstants::class.'[]',
-                ClassWithTraits::class,
+                'iterable',
+                ClassWithConstants::class . '[]',
+                SubClass::class,
                 'string',
-                '\StdClass'
+                '\StdClass',
             ],
             array_keys($param->getTypes()->toArray())
         );
