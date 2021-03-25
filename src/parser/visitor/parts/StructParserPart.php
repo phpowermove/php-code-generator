@@ -1,4 +1,12 @@
-<?php
+<?php declare(strict_types=1);
+/*
+ * This file is part of the php-code-generator package.
+ *  For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ *
+ *  @license Apache-2.0
+ */
+
 namespace gossi\codegen\parser\visitor\parts;
 
 use gossi\codegen\model\AbstractPhpStruct;
@@ -12,9 +20,9 @@ trait StructParserPart {
 	/**
 	 * @return AbstractPhpStruct
 	 */
-	abstract protected function getStruct();
+	abstract protected function getStruct(): AbstractPhpStruct;
 
-	public function visitStruct(ClassLike $node) {
+	public function visitStruct(ClassLike $node): void {
 		$struct = $this->getStruct();
 		$struct->setName($node->name->name);
 
@@ -26,7 +34,7 @@ trait StructParserPart {
 		}
 	}
 
-	public function visitTraitUse(TraitUse $node) {
+	public function visitTraitUse(TraitUse $node): void {
 		$struct = $this->getStruct();
 
 		foreach ($node->traits as $trait) {
@@ -34,17 +42,15 @@ trait StructParserPart {
 		}
 	}
 
-	public function visitNamespace(Namespace_ $node) {
+	public function visitNamespace(Namespace_ $node): void {
 		if ($node->name !== null) {
 			$this->getStruct()->setNamespace(implode('\\', $node->name->parts));
 		}
 	}
 
-	public function visitUseStatement(UseUse $node) {
+	public function visitUseStatement(UseUse $node): void {
 		$name = implode('\\', $node->name->parts);
-		$alias = !empty($node->alias) ? $node->alias : null;
 
-		$this->getStruct()->addUseStatement($name, $alias);
+		$this->getStruct()->addUseStatement($name, (string) $node->alias?->name);
 	}
-
 }

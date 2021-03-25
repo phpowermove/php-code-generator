@@ -1,5 +1,11 @@
-<?php
-declare(strict_types=1);
+<?php declare(strict_types=1);
+/*
+ * This file is part of the php-code-generator package.
+ *  For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ *
+ *  @license Apache-2.0
+ */
 
 namespace gossi\codegen\parser\visitor;
 
@@ -18,8 +24,7 @@ use PhpParser\Node\Stmt\TraitUse;
 use PhpParser\Node\Stmt\UseUse;
 
 class StructParserVisitor implements ParserVisitorInterface {
-
-	protected $struct;
+	protected AbstractPhpStruct $struct;
 
 	/**
 	 * @return AbstractPhpStruct
@@ -32,25 +37,36 @@ class StructParserVisitor implements ParserVisitorInterface {
 		$this->struct = $struct;
 	}
 
-	public function visitStruct(ClassLike $node) {}
+	public function visitStruct(ClassLike $node): void {
+	}
 
-	public function visitClass(Class_ $node) {}
+	public function visitClass(Class_ $node): void {
+	}
 
-	public function visitInterface(Interface_ $node) {}
+	public function visitInterface(Interface_ $node): void {
+	}
 
-	public function visitTrait(Trait_ $node) {}
+	public function visitTrait(Trait_ $node): void {
+	}
 
-	public function visitTraitUse(TraitUse $node) {}
+	public function visitTraitUse(TraitUse $node): void {
+	}
 
-	public function visitConstants(ClassConst $node) {}
+	public function visitConstants(ClassConst $node): void {
+	}
 
-	public function visitConstant(Const_ $node, Doc $doc = null) {}
+	public function visitConstant(Const_ $node, Doc $doc = null): void {
+	}
 
-	public function visitProperty(Property $node) {}
+	public function visitProperty(Property $node): void {
+	}
 
-	public function visitNamespace(Namespace_ $node) {}
+	public function visitNamespace(Namespace_ $node): void {
+	}
 
-	public function visitUseStatement(UseUse $node) {}
+	public function visitUseStatement(UseUse $node): void {
+	}
 
-	public function visitMethod(ClassMethod $node) {}
+	public function visitMethod(ClassMethod $node): void {
+	}
 }

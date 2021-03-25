@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /*
  * Copyright 2011 Johannes M. Schmitt <schmittjoh@gmail.com>
  *
@@ -14,11 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-declare(strict_types=1);
 
 namespace gossi\codegen\model;
 
 use gossi\codegen\model\parts\TypeDocblockGeneratorPart;
+use gossi\codegen\model\parts\TypePart;
 use gossi\codegen\model\parts\ValuePart;
 use gossi\docblock\tags\VarTag;
 
@@ -28,25 +28,26 @@ use gossi\docblock\tags\VarTag;
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  * @author Thomas Gossmann
  */
-class PhpProperty extends AbstractPhpMember implements ValueInterface {
-
+class PhpProperty extends AbstractPhpMember implements ValueInterface, GenerateableInterface {
 	use TypeDocblockGeneratorPart;
 	use ValuePart;
+	use TypePart;
 
 	/**
 	 * Creates a new PHP property
 	 *
 	 * @param string $name the properties name
+	 *
 	 * @return static
 	 */
-	public static function create($name) {
+	public static function create(string $name): static {
 		return new static($name);
 	}
 
 	/**
 	 * Generates docblock based on provided information
 	 */
-	public function generateDocblock() {
+	public function generateDocblock(): void {
 		$docblock = $this->getDocblock();
 		$docblock->setShortDescription($this->getDescription());
 		$docblock->setLongDescription($this->getLongDescription());
