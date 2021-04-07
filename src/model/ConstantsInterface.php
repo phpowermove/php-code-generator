@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 /*
  * This file is part of the php-code-generator package.
- *  For the full copyright and license information, please view the LICENSE
- *  file that was distributed with this source code.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  *
- *  @license Apache-2.0
+ * @license Apache-2.0
  */
 
 namespace gossi\codegen\model;
@@ -39,7 +39,7 @@ interface ConstantsInterface {
 	 *
 	 * @return $this
 	 */
-	public function setConstant(string | PhpConstant $nameOrConstant, string | int | float | bool | null $value = null, bool $isExpression = false);
+	public function setConstant(string|PhpConstant $nameOrConstant, string|int|float|bool|null $value = null, bool $isExpression = false);
 
 	/**
 	 * Removes a constant
@@ -50,7 +50,7 @@ interface ConstantsInterface {
 	 *
 	 * @return $this
 	 */
-	public function removeConstant(PhpConstant | string $nameOrConstant);
+	public function removeConstant(PhpConstant|string $nameOrConstant);
 
 	/**
 	 * Checks whether a constant exists
@@ -59,7 +59,7 @@ interface ConstantsInterface {
 	 *
 	 * @return bool
 	 */
-	public function hasConstant(PhpConstant | string $nameOrConstant): bool;
+	public function hasConstant(PhpConstant|string $nameOrConstant): bool;
 
 	/**
 	 * Returns a constant

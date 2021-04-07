@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 /*
  * This file is part of the php-code-generator package.
- *  For the full copyright and license information, please view the LICENSE
- *  file that was distributed with this source code.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  *
- *  @license Apache-2.0
+ * @license Apache-2.0
  */
 
 namespace gossi\codegen\config;
@@ -84,10 +84,10 @@ class CodeGeneratorConfig {
 		$resolver->setAllowedValues('minPhpVersion', fn (string $value): bool => in_array($value, ['7.4', '8.0']));
 
 		$resolver->setNormalizer('headerComment',
-			fn (Options $options, Docblock | string $value): Docblock => is_string($value) ? new Docblock($value) : $value
+			fn (Options $options, Docblock|string $value): Docblock => is_string($value) ? new Docblock(str_replace('/*', '/**', $value)) : $value
 		);
 		$resolver->setNormalizer('headerDocblock',
-			fn (Options $options, Docblock | string $value): Docblock => is_string($value) ? new Docblock($value) : $value
+			fn (Options $options, Docblock|string $value): Docblock => is_string($value) ? new Docblock($value) : $value
 		);
 
 		$resolver->setNormalizer('codeStyle', function (Options $options, string $value): string {
@@ -213,7 +213,7 @@ class CodeGeneratorConfig {
 	 *
 	 * @return string|bool|Comparator|\Closure
 	 */
-	public function getUseStatementSorting(): string | bool | Comparator | \Closure {
+	public function getUseStatementSorting(): string|bool|Comparator|\Closure {
 		return $this->options['useStatementSorting'];
 	}
 
@@ -222,7 +222,7 @@ class CodeGeneratorConfig {
 	 *
 	 * @return string|bool|Comparator|\Closure
 	 */
-	public function getConstantSorting(): string | bool | Comparator | \Closure {
+	public function getConstantSorting(): string|bool|Comparator|\Closure {
 		return $this->options['constantSorting'];
 	}
 
@@ -231,7 +231,7 @@ class CodeGeneratorConfig {
 	 *
 	 * @return string|bool|Comparator|\Closure
 	 */
-	public function getPropertySorting(): string | bool | Comparator | \Closure {
+	public function getPropertySorting(): string|bool|Comparator|\Closure {
 		return $this->options['propertySorting'];
 	}
 
@@ -240,7 +240,7 @@ class CodeGeneratorConfig {
 	 *
 	 * @return string|bool|Comparator|\Closure
 	 */
-	public function getMethodSorting(): string | bool | Comparator | \Closure {
+	public function getMethodSorting(): string|bool|Comparator|\Closure {
 		return $this->options['methodSorting'];
 	}
 
@@ -286,7 +286,7 @@ class CodeGeneratorConfig {
 	 *
 	 * @return $this
 	 */
-	public function setUseStatementSorting(string | bool | Comparator | \Closure $sorting): self {
+	public function setUseStatementSorting(string|bool|Comparator|\Closure $sorting): self {
 		$this->options['useStatementSorting'] = $sorting;
 
 		return $this;
@@ -299,7 +299,7 @@ class CodeGeneratorConfig {
 	 *
 	 * @return $this
 	 */
-	public function setConstantSorting(string | bool | Comparator | \Closure $sorting): self {
+	public function setConstantSorting(string|bool|Comparator|\Closure $sorting): self {
 		$this->options['constantSorting'] = $sorting;
 
 		return $this;
@@ -312,7 +312,7 @@ class CodeGeneratorConfig {
 	 *
 	 * @return $this
 	 */
-	public function setPropertySorting(string | bool | Comparator | \Closure $sorting): self {
+	public function setPropertySorting(string|bool|Comparator|\Closure $sorting): self {
 		$this->options['propertySorting'] = $sorting;
 
 		return $this;
@@ -325,7 +325,7 @@ class CodeGeneratorConfig {
 	 *
 	 * @return $this
 	 */
-	public function setMethodSorting(string | bool | Comparator | \Closure $sorting): self {
+	public function setMethodSorting(string|bool|Comparator|\Closure $sorting): self {
 		$this->options['methodSorting'] = $sorting;
 
 		return $this;
@@ -347,7 +347,7 @@ class CodeGeneratorConfig {
 	 *
 	 * @return $this
 	 */
-	public function setHeaderComment(string | Stringable | Docblock $comment): self {
+	public function setHeaderComment(string|Stringable|Docblock $comment): self {
 		$this->options['headerComment'] = $comment instanceof Docblock ? $comment :
 			new Docblock((string) $comment);
 
@@ -370,7 +370,7 @@ class CodeGeneratorConfig {
 	 *
 	 * @return $this
 	 */
-	public function setHeaderDocblock(string | Stringable | Docblock $docblock): self {
+	public function setHeaderDocblock(string|Stringable|Docblock $docblock): self {
 		$this->options['headerDocblock'] = $docblock instanceof Docblock ? $docblock :
 			new Docblock((string) $docblock);
 

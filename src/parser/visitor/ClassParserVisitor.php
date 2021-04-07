@@ -1,20 +1,18 @@
 <?php declare(strict_types=1);
 /*
  * This file is part of the php-code-generator package.
- *  For the full copyright and license information, please view the LICENSE
- *  file that was distributed with this source code.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  *
- *  @license Apache-2.0
+ * @license Apache-2.0
  */
 
 namespace gossi\codegen\parser\visitor;
 
-use gossi\codegen\parser\visitor\parts\StructParserPart;
 use gossi\codegen\parser\visitor\parts\TypeParserPart;
 use PhpParser\Node\Stmt\Class_;
 
 class ClassParserVisitor extends StructParserVisitor {
-	use StructParserPart;
 	use TypeParserPart;
 
 	public function visitClass(Class_ $node): void {

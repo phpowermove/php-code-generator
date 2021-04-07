@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 /*
  * This file is part of the php-code-generator package.
- *  For the full copyright and license information, please view the LICENSE
- *  file that was distributed with this source code.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  *
- *  @license Apache-2.0
+ * @license Apache-2.0
  */
 
 namespace gossi\codegen\model\parts;
@@ -64,7 +64,7 @@ trait ConstantsPart {
 	 *
 	 * @return $this
 	 */
-	public function setConstant(PhpConstant | string $nameOrConstant, string | int | float | bool | null $value = '', bool $isExpression = false): self {
+	public function setConstant(PhpConstant|string $nameOrConstant, string|int|float|bool|null $value = '', bool $isExpression = false): self {
 		if ($nameOrConstant instanceof PhpConstant) {
 			$name = $nameOrConstant->getName();
 			$constant = $nameOrConstant;
@@ -87,7 +87,7 @@ trait ConstantsPart {
 	 *
 	 * @return $this
 	 */
-	public function removeConstant(PhpConstant | string $nameOrConstant): self {
+	public function removeConstant(PhpConstant|string $nameOrConstant): self {
 		if (!$this->constants->has((string) $nameOrConstant)) {
 			throw new \InvalidArgumentException(sprintf('The constant "%s" does not exist.', $nameOrConstant));
 		}
@@ -104,7 +104,7 @@ trait ConstantsPart {
 	 *
 	 * @return bool
 	 */
-	public function hasConstant(PhpConstant | string $nameOrConstant): bool {
+	public function hasConstant(PhpConstant|string $nameOrConstant): bool {
 		return $this->constants->has((string) $nameOrConstant);
 	}
 

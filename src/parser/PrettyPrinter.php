@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 /*
  * This file is part of the php-code-generator package.
- *  For the full copyright and license information, please view the LICENSE
- *  file that was distributed with this source code.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  *
- *  @license Apache-2.0
+ * @license Apache-2.0
  */
 
 namespace gossi\codegen\parser;
@@ -38,8 +38,8 @@ class PrettyPrinter extends Standard {
 				}
 			}
 
-			if ($prevNode && $prevNode->getLine() && $node->getLine()) {
-				$diff = $node->getLine() - $prevNode->getLine();
+			if ($prevNode && $prevNode->getEndLine() && $node->getLine()) {
+				$diff = $node->getLine() - $prevNode->getEndLine();
 				if ($diff > 0) {
 					$result .= str_repeat("\n", $diff - 1);
 				}

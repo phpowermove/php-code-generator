@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 /*
  * This file is part of the php-code-generator package.
- *  For the full copyright and license information, please view the LICENSE
- *  file that was distributed with this source code.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  *
- *  @license Apache-2.0
+ * @license Apache-2.0
  */
 
 namespace gossi\codegen\model\parts;
@@ -19,7 +19,7 @@ use gossi\codegen\model\PhpConstant;
  * @author Thomas Gossmann
  */
 trait ValuePart {
-	private string | int | float | null | bool | PhpConstant $value = null;
+	private string|int|float|null|bool|PhpConstant $value = null;
 
 	/** @var bool */
 	private bool $hasValue = false;
@@ -39,7 +39,7 @@ trait ValuePart {
 	 *
 	 * @return $this
 	 */
-	public function setValue(string | int | float | null | bool | PhpConstant $value): self {
+	public function setValue(string|int|float|null|bool|PhpConstant $value): self {
 		$this->value = $value;
 		$this->hasValue = true;
 
@@ -63,7 +63,7 @@ trait ValuePart {
 	 *
 	 * @return string|int|float|bool|null|PhpConstant
 	 */
-	public function getValue(): string | int | float | bool | null | PhpConstant {
+	public function getValue(): string|int|float|bool|null|PhpConstant {
 		return $this->value;
 	}
 

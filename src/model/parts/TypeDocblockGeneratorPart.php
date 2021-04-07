@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 /*
  * This file is part of the php-code-generator package.
- *  For the full copyright and license information, please view the LICENSE
- *  file that was distributed with this source code.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  *
- *  @license Apache-2.0
+ * @license Apache-2.0
  */
 
 namespace gossi\codegen\model\parts;
@@ -57,14 +57,14 @@ trait TypeDocblockGeneratorPart {
 			$tags = $docblock->getTags($tag->getTagName());
 			if ($tags->size() > 0) {
 				$ttag = $tags->get(0);
-				$ttag->setType($this->getType());
+				$ttag->setType($this->getType() . ($this->getNullable() ? '|null' : ''));
 				$ttag->setDescription($this->getTypeDescription());
 			}
 
 			// ... anyway create and append
 			else {
 				$docblock->appendTag($tag
-					->setType($this->getType())
+					->setType($this->getType() . ($this->getNullable() ? '|null' : ''))
 					->setDescription($this->getTypeDescription())
 				);
 			}

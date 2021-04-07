@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 /*
  * This file is part of the php-code-generator package.
- *  For the full copyright and license information, please view the LICENSE
- *  file that was distributed with this source code.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  *
- *  @license Apache-2.0
+ * @license Apache-2.0
  */
 
 namespace gossi\codegen\model\parts;
@@ -64,7 +64,7 @@ trait TraitsPart {
 	 *
 	 * @return $this
 	 */
-	public function addTrait(PhpTrait | string $trait): self {
+	public function addTrait(PhpTrait|string $trait): self {
 		if ($trait instanceof PhpTrait) {
 			$name = $trait->getName();
 			$qname = $trait->getQualifiedName();
@@ -98,7 +98,7 @@ trait TraitsPart {
 	 *
 	 * @return bool `true` if it exists and `false` if not
 	 */
-	public function hasTrait(PhpTrait | string $trait): bool {
+	public function hasTrait(PhpTrait|string $trait): bool {
 		if ($trait instanceof PhpTrait) {
 			return $this->traits->contains($trait->getName())
 				|| $this->traits->contains($trait->getQualifiedName());
@@ -117,7 +117,7 @@ trait TraitsPart {
 	 *
 	 * @return $this
 	 */
-	public function removeTrait(PhpTrait | string $trait): self {
+	public function removeTrait(PhpTrait|string $trait): self {
 		if ($trait instanceof PhpTrait) {
 			$name = $trait->getName();
 			$qname = $trait->getQualifiedName();

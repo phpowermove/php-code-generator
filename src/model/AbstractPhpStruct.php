@@ -75,7 +75,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 	 *
 	 * @return $this
 	 */
-	public function setRequiredFiles(array | Set $files): self {
+	public function setRequiredFiles(array|Set $files): self {
 		$this->requiredFiles = is_array($files) ? new Set($files) : $files;
 
 		return $this;
@@ -283,7 +283,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 	 *
 	 * @return $this
 	 */
-	public function removeMethod(string | PhpMethod $nameOrMethod): self {
+	public function removeMethod(string|PhpMethod $nameOrMethod): self {
 		$name = (string) $nameOrMethod;
 
 		if (!$this->methods->has($name)) {
@@ -303,7 +303,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 	 *
 	 * @return bool `true` if it exists and `false` if not
 	 */
-	public function hasMethod(string | PhpMethod $nameOrMethod): bool {
+	public function hasMethod(string|PhpMethod $nameOrMethod): bool {
 		return $this->methods->has((string) $nameOrMethod);
 	}
 

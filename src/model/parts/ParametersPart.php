@@ -1,10 +1,10 @@
 <?php  declare(strict_types=1);
 /*
  * This file is part of the php-code-generator package.
- *  For the full copyright and license information, please view the LICENSE
- *  file that was distributed with this source code.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  *
- *  @license Apache-2.0
+ * @license Apache-2.0
  */
 
 namespace gossi\codegen\model\parts;
@@ -64,7 +64,7 @@ trait ParametersPart {
 	 *
 	 * @return bool `true` if a parameter exists and `false` if not
 	 */
-	public function hasParameter(PhpParameter | string $name): bool {
+	public function hasParameter(PhpParameter|string $name): bool {
 		return $this->parameters->search((string) $name,
 			fn (PhpParameter $element, string $query): bool => $element->getName() === $query)
 		;
@@ -125,7 +125,7 @@ trait ParametersPart {
 	 *
 	 * @return PhpParameter
 	 */
-	public function getParameter(int | string $nameOrIndex): PhpParameter {
+	public function getParameter(int|string $nameOrIndex): PhpParameter {
 		$param = is_int($nameOrIndex) ? $this->parameters->get($nameOrIndex) :
 			$this->parameters->find($nameOrIndex,
 				fn (PhpParameter $element, string $query): bool => $element->getName() === $query
@@ -167,7 +167,7 @@ trait ParametersPart {
 	 *
 	 * @return $this
 	 */
-	public function removeParameter(int | string | PhpParameter $param): self {
+	public function removeParameter(int|string|PhpParameter $param): self {
 		if (!is_int($param)) {
 			$param = $this->parameters->findIndex((string) $param,
 				fn (PhpParameter $element, string $query): bool => $element->getName() === $query);

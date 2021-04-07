@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 /*
  * This file is part of the php-code-generator package.
- *  For the full copyright and license information, please view the LICENSE
- *  file that was distributed with this source code.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  *
- *  @license Apache-2.0
+ * @license Apache-2.0
  */
 
 namespace gossi\codegen\model;
@@ -74,7 +74,7 @@ interface RoutineInterface {
 	 *
 	 * @return PhpParameter
 	 */
-	public function getParameter(string | int $nameOrIndex);
+	public function getParameter(string|int $nameOrIndex);
 
 	/**
 	 * Replaces a parameter at a given position
@@ -95,7 +95,7 @@ interface RoutineInterface {
 	 *
 	 * @return $this
 	 */
-	public function removeParameter(int | string | PhpParameter $param);
+	public function removeParameter(int|string|PhpParameter $param);
 
 	/**
 	 * Returns a collection of parameters

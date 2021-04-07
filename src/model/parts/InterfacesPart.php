@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 /*
  * This file is part of the php-code-generator package.
- *  For the full copyright and license information, please view the LICENSE
- *  file that was distributed with this source code.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  *
- *  @license Apache-2.0
+ * @license Apache-2.0
  */
 
 namespace gossi\codegen\model\parts;
@@ -64,7 +64,7 @@ trait InterfacesPart {
 	 *
 	 * @return $this
 	 */
-	public function addInterface(PhpInterface | string $interface) {
+	public function addInterface(PhpInterface|string $interface) {
 		if ($interface instanceof PhpInterface) {
 			$name = $interface->getName();
 			$qname = $interface->getQualifiedName();
@@ -107,7 +107,7 @@ trait InterfacesPart {
 	 *
 	 * @return bool
 	 */
-	public function hasInterface(PhpInterface | string $interface): bool {
+	public function hasInterface(PhpInterface|string $interface): bool {
 		if ($interface instanceof PhpInterface) {
 			return $this->interfaces->contains($interface->getName())
 				|| $this->interfaces->contains($interface->getQualifiedName());
@@ -126,7 +126,7 @@ trait InterfacesPart {
 	 *
 	 * @return $this
 	 */
-	public function removeInterface(PhpInterface | string $interface): self {
+	public function removeInterface(PhpInterface|string $interface): self {
 		if ($interface instanceof PhpInterface) {
 			$name = $interface->getName();
 			$qname = $interface->getQualifiedName();

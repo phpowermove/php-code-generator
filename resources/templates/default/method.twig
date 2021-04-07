@@ -7,8 +7,6 @@
 {%- endfor -%}
 ){% if config.generateReturnTypeHints and model.type != '' %}: {{ model|type }}{% endif %}
 {%- if model.isAbstract or model.parent is instanceOf('gossi\codegen\model\PhpInterface') %};{% else %} {
-{% if model.body != '' %}
-	{{ model.body|trim }}
-{% endif %}
+{% if model.body != '' %}{{ include('partials/body_partial.twig') }}{% endif %}
 	}
 {%- endif %}

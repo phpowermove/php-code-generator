@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 /*
  * This file is part of the php-code-generator package.
- *  For the full copyright and license information, please view the LICENSE
- *  file that was distributed with this source code.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  *
- *  @license Apache-2.0
+ * @license Apache-2.0
  */
 
 namespace gossi\codegen\model\parts;
@@ -70,7 +70,7 @@ trait PropertiesPart {
 	 *
 	 * @return $this
 	 */
-	public function removeProperty(PhpProperty | string $nameOrProperty): self {
+	public function removeProperty(PhpProperty|string $nameOrProperty): self {
 		$name = (string) $nameOrProperty;
 
 		if (!$this->properties->has($name)) {
@@ -90,7 +90,7 @@ trait PropertiesPart {
 	 *
 	 * @return bool `true` if a property exists and `false` if not
 	 */
-	public function hasProperty(PhpProperty | string $nameOrProperty): bool {
+	public function hasProperty(PhpProperty|string $nameOrProperty): bool {
 		return $this->properties->has((string) $nameOrProperty);
 	}
 

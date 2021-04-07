@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 /*
  * This file is part of the php-code-generator package.
- *  For the full copyright and license information, please view the LICENSE
- *  file that was distributed with this source code.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  *
- *  @license Apache-2.0
+ * @license Apache-2.0
  */
 
 namespace gossi\codegen\tests\generator;
@@ -150,5 +150,18 @@ class ClassGeneratorTest extends TestCase {
 		$code = $generator->generate($class);
 
 		$this->assertEquals($this->getFixtureContent('MyCollection2.php'), $code);
+	}
+
+	public function testCompleteClass(): void {
+		$class = PhpClass::fromFile(__DIR__ . '/../fixtures/CompleteClass.php');
+
+		$generator = new CodeFileGenerator([
+			'generateEmptyDocblock' => false,
+			'headerComment' => 'This is an header comment.',
+			'headerDocblock' => 'This is an header docblock.'
+		]);
+		$code = $generator->generate($class);
+
+		$this->assertEquals($this->getFixtureContent('CompleteClass.php'), $code);
 	}
 }
