@@ -91,21 +91,38 @@ class MethodGeneratorTest extends TestCase {
 	}
 
 	public function testReturnType(): void {
-		$expected = "\tpublic function foo(): int {\n\t}";
-		$generator = new CodeGenerator(['generateReturnTypeHints' => true, 'generateDocblock' => false]);
+		$generator = new CodeGenerator(['generateDocblock' => false]);
 
 		$method = PhpMethod::create('foo')->setType('int');
-		$this->assertEquals($expected, $generator->generate($method));
+		$this->assertEquals("\tpublic function foo(): int {\n\t}", $generator->generate($method));
+
+		$method = PhpMethod::create('foo')->setType('mixed');
+		$this->assertEquals("\tpublic function foo(): mixed {\n\t}", $generator->generate($method));
+
+		$method = PhpMethod::create('foo')->setType('Class1|Class2|string|null');
+		$this->assertEquals("\tpublic function foo(): Class1|Class2|string|null {\n\t}", $generator->generate($method));
 	}
 
 	public function testNullableReturnType(): void {
-		$expected = "\tpublic function foo(): ?int {\n\t}";
-		$generator = new CodeGenerator([
-			'generateReturnTypeHints' => true,
-			'generateDocblock' => false
-		]);
+		$generator = new CodeGenerator(['generateDocblock' => false]);
 
 		$method = PhpMethod::create('foo')->setType('int')->setNullable(true);
-		$this->assertEquals($expected, $generator->generate($method));
+		$this->assertEquals("\tpublic function foo(): ?int {\n\t}", $generator->generate($method));
+
+		$method = PhpMethod::create('foo')->setType('mixed')->setNullable(true);
+		$this->assertEquals("\tpublic function foo(): mixed {\n\t}", $generator->generate($method));
+	}
+
+	public function testPhp74ReturnType(): void {
+		$generator = new CodeGenerator(['generateDocblock' => false, 'minPhpVersion' => '7.4']);
+
+		$method = PhpMethod::create('foo')->setType('int');
+		$this->assertEquals("\tpublic function foo(): int {\n\t}", $generator->generate($method));
+
+		$method = PhpMethod::create('foo')->setType('mixed');
+		$this->assertEquals("\tpublic function foo() {\n\t}", $generator->generate($method));
+
+		$method = PhpMethod::create('foo')->setType('Class1|Class2|string|null');
+		$this->assertEquals("\tpublic function foo() {\n\t}", $generator->generate($method));
 	}
 }

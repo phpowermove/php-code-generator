@@ -36,7 +36,7 @@ class ParameterGeneratorTest extends TestCase {
 		$this->assertEquals('Request $foo', $generator->generate($param));
 	}
 
-	public function testPhp5TypeHints(): void {
+	public function testNoTypeHints(): void {
 		$generator = new CodeGenerator(['generateTypeHints' => false]);
 
 		$param = TestablePhpParameter::create('foo')->setType('string');
@@ -105,6 +105,9 @@ class ParameterGeneratorTest extends TestCase {
 
 		$param = TestablePhpParameter::create('foo')->setType('float')->setNullable(true);
 		$this->assertEquals('?float $foo', $generator->generate($param));
+
+		$param = TestablePhpParameter::create('foo')->setType('Class1|Class2|null');
+		$this->assertEquals('$foo', $generator->generate($param));
 	}
 
 	public function testPhp8TypeHints(): void {
@@ -134,6 +137,9 @@ class ParameterGeneratorTest extends TestCase {
 		$param = TestablePhpParameter::create('foo')->setType('mixed');
 		$this->assertEquals('mixed $foo', $generator->generate($param));
 
+		$param = TestablePhpParameter::create('foo')->setType('mixed')->setNullable(true);
+		$this->assertEquals('mixed $foo', $generator->generate($param));
+
 		$param = TestablePhpParameter::create('foo')->setType('object');
 		$this->assertEquals('object $foo', $generator->generate($param));
 
@@ -142,6 +148,9 @@ class ParameterGeneratorTest extends TestCase {
 
 		$param = TestablePhpParameter::create('foo')->setType('float')->setNullable(true);
 		$this->assertEquals('?float $foo', $generator->generate($param));
+
+		$param = TestablePhpParameter::create('foo')->setType('Class1|Class2|null');
+		$this->assertEquals('Class1|Class2|null $foo', $generator->generate($param));
 	}
 
 	public function testValues(): void {

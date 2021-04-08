@@ -8,6 +8,7 @@
 
 namespace gossi\codegen\tests\fixtures;
 
+use phootwork\lang\Text;
 use SplFileInfo;
 
 /**
@@ -38,5 +39,21 @@ class CompleteClass {
 		}
 
 		return null;
+	}
+
+	/**
+	 * @param mixed $name
+	 * @param string|\Stringable|Text $content
+	 * @return bool
+	 */
+	protected function putFileContent(mixed $name, string|\Stringable|Text $content): bool {
+		return file_put_contents($name, $content);
+	}
+
+	/**
+	 * @param string $name
+	 * @return string|\Stringable|Text
+	 */
+	private function getContent(string $name): string|\Stringable|Text {
 	}
 }

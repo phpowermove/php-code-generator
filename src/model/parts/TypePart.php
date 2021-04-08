@@ -110,7 +110,7 @@ trait TypePart {
 	 * @return $this
 	 */
 	public function setNullable(bool $nullable): self {
-		$this->typeNullable = $nullable;
+		$this->typeNullable = $this->type === 'mixed' ? false : $nullable;
 
 		return $this;
 	}

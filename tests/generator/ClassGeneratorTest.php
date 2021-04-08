@@ -164,4 +164,18 @@ class ClassGeneratorTest extends TestCase {
 
 		$this->assertEquals($this->getFixtureContent('CompleteClass.php'), $code);
 	}
+
+	public function testPsr12Class(): void {
+		$class = PhpClass::fromFile(__DIR__ . '/../fixtures/psr12/CompleteClass.php');
+
+		$generator = new CodeFileGenerator([
+			'generateEmptyDocblock' => false,
+			'headerComment' => 'This is an header comment.',
+			'headerDocblock' => 'This is an header docblock.',
+			'codeStyle' => 'psr-12'
+		]);
+		$code = $generator->generate($class);
+
+		$this->assertEquals($this->getFixtureContent('psr12/CompleteClass.php'), $code);
+	}
 }

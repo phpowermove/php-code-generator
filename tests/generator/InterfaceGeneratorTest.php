@@ -9,14 +9,18 @@
 
 namespace gossi\codegen\tests\generator;
 
+use gossi\codegen\generator\CodeFileGenerator;
 use gossi\codegen\generator\CodeGenerator;
 use gossi\codegen\model\PhpInterface;
+use gossi\codegen\tests\parts\TestUtils;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @group generator
  */
 class InterfaceGeneratorTest extends TestCase {
+	use TestUtils;
+
 	public function testSignature(): void {
 		$expected = "interface MyInterface {\n}\n";
 
@@ -37,5 +41,14 @@ class InterfaceGeneratorTest extends TestCase {
 		$expected = "interface MyInterface extends \Iterator, \ArrayAccess {\n}\n";
 		$interface = PhpInterface::create('MyInterface')->addInterface('\Iterator')->addInterface('\ArrayAccess');
 		$this->assertEquals($expected, $generator->generate($interface));
+	}
+
+	public function testPsr12Interface(): void {
+		$interface = PhpInterface::fromFile(__DIR__ . '/../fixtures/psr12/DummyInterface.php');
+
+		$generator = new CodeFileGenerator(['codeStyle' => 'psr-12']);
+		$code = $generator->generate($interface);
+
+		$this->assertEquals($this->getFixtureContent('psr12/DummyInterface.php'), $code);
 	}
 }

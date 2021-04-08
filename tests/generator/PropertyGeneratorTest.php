@@ -59,7 +59,7 @@ class PropertyGeneratorTest extends TestCase {
 	}
 
 	public function testValues(): void {
-		$generator = new CodeGenerator(['generateEmptyDocblock' => false]);
+		$generator = new CodeGenerator(['generateDocblock' => false]);
 
 		$prop = PhpProperty::create('foo')->setValue('string');
 		$this->assertEquals("\tpublic \$foo = 'string';", $generator->generate($prop));
@@ -84,5 +84,37 @@ class PropertyGeneratorTest extends TestCase {
 
 		$prop = PhpProperty::create('foo')->setExpression("['bar' => 'baz']");
 		$this->assertEquals("\tpublic \$foo = ['bar' => 'baz'];", $generator->generate($prop));
+	}
+
+	public function testTypes(): void {
+		$generator = new CodeGenerator(['generateDocblock' => false]);
+
+		$prop = PhpProperty::create('foo')->setType('string')->setValue('name');
+		$this->assertEquals("\tpublic string \$foo = 'name';", $generator->generate($prop));
+
+		$prop = PhpProperty::create('foo')->setType('mixed');
+		$this->assertEquals("\tpublic mixed \$foo;", $generator->generate($prop));
+
+		$prop = PhpProperty::create('foo')->setType('string|Text');
+		$this->assertEquals("\tpublic string|Text \$foo;", $generator->generate($prop));
+
+		$prop = PhpProperty::create('foo')->setType('string')->setValue(null)->setNullable(true);
+		$this->assertEquals("\tpublic ?string \$foo = null;", $generator->generate($prop));
+
+		$prop = PhpProperty::create('foo')->setType('mixed')->setNullable(true);
+		$this->assertEquals("\tpublic mixed \$foo;", $generator->generate($prop));
+	}
+
+	public function testPhp74Types(): void {
+		$generator = new CodeGenerator(['generateDocblock' => false, 'minPhpVersion' => '7.4']);
+
+		$prop = PhpProperty::create('foo')->setType('string')->setValue('string');
+		$this->assertEquals("\tpublic string \$foo = 'string';", $generator->generate($prop));
+
+		$prop = PhpProperty::create('foo')->setType('mixed');
+		$this->assertEquals("\tpublic \$foo;", $generator->generate($prop));
+
+		$prop = PhpProperty::create('foo')->setType('string|Text');
+		$this->assertEquals("\tpublic \$foo;", $generator->generate($prop));
 	}
 }
