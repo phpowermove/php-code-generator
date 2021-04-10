@@ -9,12 +9,16 @@
 
 namespace gossi\codegen\parser\visitor;
 
+use gossi\codegen\model\PhpClass;
+use gossi\codegen\model\PhpTrait;
 use PhpParser\Node\Stmt\Interface_;
 
 class InterfaceParserVisitor extends StructParserVisitor {
 	public function visitInterface(Interface_ $node): void {
+		/** @var PhpClass|PhpTrait $struct */
+		$struct = $this->struct;
 		foreach ($node->extends as $name) {
-			$this->struct->addInterface(implode('\\', $name->parts));
+			$struct->addInterface(implode('\\', $name->parts));
 		}
 	}
 }

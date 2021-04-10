@@ -10,7 +10,8 @@
 namespace gossi\codegen\model\parts;
 
 use gossi\docblock\Docblock;
-use gossi\docblock\tags\AbstractTag;
+use gossi\docblock\tags\ReturnTag;
+use gossi\docblock\tags\VarTag;
 
 /**
  * Type docblock generator part
@@ -45,9 +46,9 @@ trait TypeDocblockGeneratorPart {
 	/**
 	 * Generates a type tag (return or var) but checks if one exists and updates this one
 	 *
-	 * @param AbstractTag $tag
+	 * @param ReturnTag|VarTag $tag
 	 */
-	protected function generateTypeTag(AbstractTag $tag): void {
+	protected function generateTypeTag(ReturnTag|VarTag $tag): void {
 		$docblock = $this->getDocblock();
 		$type = $this->getType();
 

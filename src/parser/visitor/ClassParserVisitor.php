@@ -9,6 +9,7 @@
 
 namespace gossi\codegen\parser\visitor;
 
+use gossi\codegen\model\PhpClass;
 use gossi\codegen\parser\visitor\parts\TypeParserPart;
 use PhpParser\Node\Stmt\Class_;
 
@@ -16,6 +17,7 @@ class ClassParserVisitor extends StructParserVisitor {
 	use TypeParserPart;
 
 	public function visitClass(Class_ $node): void {
+		/** @var PhpClass $struct */
 		$struct = $this->getStruct();
 
 		if ($node->extends !== null) {

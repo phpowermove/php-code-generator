@@ -25,8 +25,8 @@ class DefaultConstantComparator implements Comparator {
 	}
 
 	/**
-	 * @param PhpConstant $a
-	 * @param PhpConstant $b
+	 * @param mixed $a
+	 * @param mixed $b
 	 *
 	 * @throws \TypeError
 	 *

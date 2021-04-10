@@ -10,18 +10,20 @@
 namespace gossi\codegen\parser\visitor\parts;
 
 use gossi\codegen\model\AbstractPhpMember;
-use PhpParser\Node;
+use PhpParser\Node\Stmt\ClassConst;
+use PhpParser\Node\Stmt\ClassMethod;
+use PhpParser\Node\Stmt\Property;
 
 trait MemberParserPart {
 
 	/**
 	 * Returns the visibility from a node
 	 *
-	 * @param Node $node
+	 * @param ClassMethod|ClassConst|Property $node
 	 *
 	 * @return string
 	 */
-	private function getVisibility(Node $node): string {
+	private function getVisibility(ClassMethod|ClassConst|Property $node): string {
 		return match (true) {
 			$node->isPrivate() => AbstractPhpMember::VISIBILITY_PRIVATE,
 			$node->isProtected() => AbstractPhpMember::VISIBILITY_PROTECTED,

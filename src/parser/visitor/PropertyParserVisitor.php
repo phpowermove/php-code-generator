@@ -9,7 +9,9 @@
 
 namespace gossi\codegen\parser\visitor;
 
+use gossi\codegen\model\PhpClass;
 use gossi\codegen\model\PhpProperty;
+use gossi\codegen\model\PhpTrait;
 use gossi\codegen\parser\visitor\parts\MemberParserPart;
 use gossi\codegen\parser\visitor\parts\TypeParserPart;
 use gossi\codegen\parser\visitor\parts\ValueParserPart;
@@ -23,12 +25,15 @@ class PropertyParserVisitor extends StructParserVisitor {
 	public function visitProperty(Property $node): void {
 		$prop = $node->props[0];
 
+		/** @var PhpClass|PhpTrait $struct */
+		$struct = $this->struct;
+
 		$p = new PhpProperty($prop->name->name);
 		$p->setStatic($node->isStatic());
 		$p->setVisibility($this->getVisibility($node));
 		$this->parseDocblock($p, $node->getDocComment());
 		$this->parseType($p, $node, $p->getDocblock());
 		$this->parseValue($p, $prop);
-		$this->struct->setProperty($p);
+		$struct->setProperty($p);
 	}
 }

@@ -56,6 +56,13 @@ class PrettyPrinter extends Standard {
 		}
 	}
 
+	/**
+	 * @param Array_ $node
+	 *
+	 * @return string
+	 *
+	 * @psalm-suppress InvalidArgument Internal type mismatch of nikic/php-parser library
+	 */
 	public function pExpr_Array(Array_ $node): string {
 		return '[' . $this->pCommaSeparated($node->items) . ']';
 	}

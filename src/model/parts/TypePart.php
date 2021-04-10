@@ -46,7 +46,7 @@ trait TypePart {
 
 	/**
 	 * Sets the type
-	 *
+	 * 
 	 * @param string $type
 	 * @param string $description
 	 *

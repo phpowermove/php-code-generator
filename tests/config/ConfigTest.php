@@ -145,11 +145,10 @@ class ConfigTest extends TestCase {
 		$config = new CodeGeneratorConfig();
 		$expected = [
 			sys_get_temp_dir(),
-			$_SERVER['HOME'],
 			realpath(__DIR__ . '/../../resources/templates/default')
 		];
 
-		$config->addTemplatesDirs(sys_get_temp_dir(), $_SERVER['HOME'], '/fake/dir');
+		$config->addTemplatesDirs(sys_get_temp_dir(), '/fake/dir');
 		$this->assertEquals($expected, $config->getTemplatesDirs());
 	}
 

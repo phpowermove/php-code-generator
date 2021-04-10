@@ -217,7 +217,7 @@ abstract class AbstractPhpStruct extends AbstractModel implements NamespaceInter
 	 * @return string the alias
 	 */
 	public function getUseAlias(string $qualifiedName): string {
-		return $this->useStatements->getKey($qualifiedName);
+		return $this->useStatements->getKey($qualifiedName) ?? '';
 	}
 
 	/**

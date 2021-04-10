@@ -18,7 +18,6 @@
 namespace gossi\codegen\model;
 
 use gossi\codegen\model\parts\TypeDocblockGeneratorPart;
-use gossi\codegen\model\parts\TypePart;
 use gossi\codegen\model\parts\ValuePart;
 use gossi\docblock\tags\VarTag;
 
@@ -31,7 +30,6 @@ use gossi\docblock\tags\VarTag;
 class PhpProperty extends AbstractPhpMember implements ValueInterface, GenerateableInterface {
 	use TypeDocblockGeneratorPart;
 	use ValuePart;
-	use TypePart;
 
 	/**
 	 * Creates a new PHP property

@@ -64,7 +64,7 @@ trait ValueParserPart {
 
 	/**
 	 * Returns the primitive value
-	 * 
+	 *
 	 * @param Node $node
 	 *
 	 * @return mixed
@@ -91,11 +91,10 @@ trait ValueParserPart {
 	private function isBool(Node $node): bool {
 		if ($node instanceof ConstFetch) {
 			$const = $node->name->parts[0];
+
 			if (isset($this->constMap[$const])) {
 				return is_bool($this->constMap[$const]);
 			}
-
-			return is_bool($const);
 		}
 
 		return false;
@@ -128,7 +127,7 @@ trait ValueParserPart {
 	private function getExpression(Node $node): mixed {
 		return match (true) {
 			$node instanceof ConstFetch => $this->constMap[$node->name->parts[0]] ?? $node->name->parts[0],
-			$node instanceof ClassConstFetch => $node->class->parts[0] . '::' . $node->name,
+			$node instanceof ClassConstFetch => (!$node->class instanceof Node\Name ?: $node->class->parts[0]) . '::' . $node->name,
 			$node instanceof MagicConst => $node->getName(),
 			$node instanceof Array_ => (new PrettyPrinter())->prettyPrintExpr($node)
 		};

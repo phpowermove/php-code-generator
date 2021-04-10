@@ -15,6 +15,7 @@ use gossi\codegen\parser\PrettyPrinter;
 use gossi\codegen\parser\visitor\parts\MemberParserPart;
 use gossi\codegen\parser\visitor\parts\TypeParserPart;
 use gossi\codegen\parser\visitor\parts\ValueParserPart;
+use PhpParser\Node\Expr\Variable;
 use PhpParser\Node\Stmt\ClassMethod;
 
 class MethodParserVisitor extends StructParserVisitor {
@@ -41,7 +42,7 @@ class MethodParserVisitor extends StructParserVisitor {
 
 	private function parseParams(PhpMethod $method, ClassMethod $node): void {
 		foreach ($node->params as $param) {
-			$name = $param->var ? $param->var->name : $param->name;
+			$name = $param->var instanceof Variable ? $param->var->name : '';
 
 			$p = new PhpParameter();
 			$p->setName($name);

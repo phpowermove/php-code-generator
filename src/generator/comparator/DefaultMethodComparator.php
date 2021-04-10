@@ -22,8 +22,8 @@ class DefaultMethodComparator implements Comparator {
 	use CompareVisibilityPart;
 
 	/**
-	 * @param PhpMethod $a
-	 * @param PhpMethod $b
+	 * @param mixed $a
+	 * @param mixed $b
 	 *
 	 * @return int
 	 */

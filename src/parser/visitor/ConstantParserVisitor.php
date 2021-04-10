@@ -9,7 +9,9 @@
 
 namespace gossi\codegen\parser\visitor;
 
+use gossi\codegen\model\PhpClass;
 use gossi\codegen\model\PhpConstant;
+use gossi\codegen\model\PhpInterface;
 use gossi\codegen\parser\visitor\parts\MemberParserPart;
 use gossi\codegen\parser\visitor\parts\TypeParserPart;
 use gossi\codegen\parser\visitor\parts\ValueParserPart;
@@ -30,11 +32,13 @@ class ConstantParserVisitor extends StructParserVisitor {
 	}
 
 	public function visitConstant(Const_ $node, ?Doc $doc = null): void {
+		/** @var PhpClass|PhpInterface $struct */
+		$struct = $this->struct;
 		$const = new PhpConstant($node->name->name);
 		$this->parseValue($const, $node);
 		$this->parseDocblock($const, $doc);
 		$this->setTypeFromTag($const, $const->getDocblock()->getTags('var')->get(0));
 
-		$this->struct->setConstant($const);
+		$struct->setConstant($const);
 	}
 }
