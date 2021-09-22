@@ -1,8 +1,8 @@
 <?php
-namespace gossi\codegen\tests\parser;
+namespace phpowermove\codegen\tests\parser;
 
-use gossi\codegen\model\PhpInterface;
-use gossi\codegen\tests\Fixtures;
+use phpowermove\codegen\model\PhpInterface;
+use phpowermove\codegen\tests\Fixtures;
 use PHPUnit\Framework\TestCase;
 
 /**

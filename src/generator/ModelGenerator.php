@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\generator;
+namespace phpowermove\codegen\generator;
 
-use gossi\codegen\config\CodeGeneratorConfig;
-use gossi\codegen\generator\utils\Writer;
-use gossi\codegen\model\AbstractModel;
-use gossi\formatter\Formatter;
+use phpowermove\codegen\config\CodeGeneratorConfig;
+use phpowermove\codegen\generator\utils\Writer;
+use phpowermove\codegen\model\AbstractModel;
+use phpowermove\formatter\Formatter;
 
 /**
  * Model Generator

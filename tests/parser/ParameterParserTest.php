@@ -1,8 +1,8 @@
 <?php
-namespace gossi\codegen\tests\parser;
+namespace phpowermove\codegen\tests\parser;
 
-use gossi\codegen\model\PhpClass;
-use gossi\codegen\tests\parts\ValueTests;
+use phpowermove\codegen\model\PhpClass;
+use phpowermove\codegen\tests\parts\ValueTests;
 use PHPUnit\Framework\TestCase;
 
 /**

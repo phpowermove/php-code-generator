@@ -1,7 +1,7 @@
 <?php
-namespace gossi\codegen\parser\visitor\parts;
+namespace phpowermove\codegen\parser\visitor\parts;
 
-use gossi\codegen\model\AbstractPhpStruct;
+use phpowermove\codegen\model\AbstractPhpStruct;
 use PhpParser\Node\Stmt\ClassLike;
 use PhpParser\Node\Stmt\Namespace_;
 use PhpParser\Node\Stmt\TraitUse;

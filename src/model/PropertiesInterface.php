@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\model;
+namespace phpowermove\codegen\model;
 
 use phootwork\collection\Map;
 use phootwork\collection\Set;

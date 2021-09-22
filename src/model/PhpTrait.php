@@ -1,15 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\model;
+namespace phpowermove\codegen\model;
 
-use gossi\codegen\model\parts\PropertiesPart;
-use gossi\codegen\model\parts\TraitsPart;
-use gossi\codegen\parser\FileParser;
-use gossi\codegen\parser\visitor\ConstantParserVisitor;
-use gossi\codegen\parser\visitor\MethodParserVisitor;
-use gossi\codegen\parser\visitor\PropertyParserVisitor;
-use gossi\codegen\parser\visitor\TraitParserVisitor;
+use phpowermove\codegen\model\parts\PropertiesPart;
+use phpowermove\codegen\model\parts\TraitsPart;
+use phpowermove\codegen\parser\FileParser;
+use phpowermove\codegen\parser\visitor\ConstantParserVisitor;
+use phpowermove\codegen\parser\visitor\MethodParserVisitor;
+use phpowermove\codegen\parser\visitor\PropertyParserVisitor;
+use phpowermove\codegen\parser\visitor\TraitParserVisitor;
 
 /**
  * Represents a PHP trait.

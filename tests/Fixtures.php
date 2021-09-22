@@ -1,16 +1,16 @@
 <?php
-namespace gossi\codegen\tests;
+namespace phpowermove\codegen\tests;
 
-use gossi\codegen\model\PhpClass;
-use gossi\codegen\model\PhpConstant;
-use gossi\codegen\model\PhpInterface;
-use gossi\codegen\model\PhpMethod;
-use gossi\codegen\model\PhpParameter;
-use gossi\codegen\model\PhpProperty;
-use gossi\codegen\model\PhpTrait;
-use gossi\docblock\Docblock;
-use gossi\docblock\tags\AuthorTag;
-use gossi\docblock\tags\SinceTag;
+use phpowermove\codegen\model\PhpClass;
+use phpowermove\codegen\model\PhpConstant;
+use phpowermove\codegen\model\PhpInterface;
+use phpowermove\codegen\model\PhpMethod;
+use phpowermove\codegen\model\PhpParameter;
+use phpowermove\codegen\model\PhpProperty;
+use phpowermove\codegen\model\PhpTrait;
+use phpowermove\docblock\Docblock;
+use phpowermove\docblock\tags\AuthorTag;
+use phpowermove\docblock\tags\SinceTag;
 
 class Fixtures {
 
@@ -30,7 +30,7 @@ class Fixtures {
  * @var int
  */');
 		$class = new PhpClass();
-		$class->setQualifiedName('gossi\codegen\tests\fixtures\Entity')
+		$class->setQualifiedName('phpowermove\codegen\tests\fixtures\Entity')
 			->setAbstract(true)
 			->setDocblock($classDoc)
 			->setDescription($classDoc->getShortDescription())
@@ -87,7 +87,7 @@ class Fixtures {
 	 * @return PhpClass
 	 */
 	public static function createClassWithConstants() {
-		return PhpClass::create('gossi\\codegen\\tests\\fixtures\\ClassWithConstants')
+		return PhpClass::create('phpowermove\\codegen\\tests\\fixtures\\ClassWithConstants')
 			->setConstant(PhpConstant::create('BAR')->setExpression('self::FOO'))
 			->setConstant(PhpConstant::create('FOO', 'bar'))
 			->setConstant(PhpConstant::create('NMBR', 300));
@@ -99,8 +99,8 @@ class Fixtures {
 	 * @return PhpClass
 	 */
 	public static function createClassWithTraits() {
-		return PhpClass::create('gossi\\codegen\\tests\\fixtures\\ClassWithTraits')
-			->addUseStatement('gossi\\codegen\\tests\\fixtures\\DummyTrait', 'DT')
+		return PhpClass::create('phpowermove\\codegen\\tests\\fixtures\\ClassWithTraits')
+			->addUseStatement('phpowermove\\codegen\\tests\\fixtures\\DummyTrait', 'DT')
 			->addTrait('DT');
 	}
 
@@ -125,11 +125,11 @@ class Fixtures {
 	 * @return PhpClass
 	 */
 	public static function createClassWithComments() {
-		$class = PhpClass::create('gossi\\codegen\\tests\\fixtures\\ClassWithComments');
+		$class = PhpClass::create('phpowermove\\codegen\\tests\\fixtures\\ClassWithComments');
 		$class->setDescription('A class with comments');
 		$class->setLongDescription('Here is a super dooper long-description');
 		$docblock = $class->getDocblock();
-		$docblock->appendTag(AuthorTag::create('gossi'));
+		$docblock->appendTag(AuthorTag::create('phpowermove'));
 		$docblock->appendTag(SinceTag::create('0.2'));
 
 		$class->setConstant(PhpConstant::create('FOO', 'bar')
@@ -167,7 +167,7 @@ class Fixtures {
 	 */
 	public static function createDummyInterface() {
 		$interface = PhpInterface::create('DummyInterface')
-			->setNamespace('gossi\codegen\tests\fixtures')
+			->setNamespace('phpowermove\codegen\tests\fixtures')
 			->setDescription('Dummy docblock')
 			->setMethod(PhpMethod::create('foo'));
 		$interface->generateDocblock();
@@ -182,7 +182,7 @@ class Fixtures {
 	 */
 	public static function createDummyTrait() {
 		$trait = PhpTrait::create('DummyTrait')
-			->setNamespace('gossi\\codegen\\tests\\fixtures')
+			->setNamespace('phpowermove\\codegen\\tests\\fixtures')
 			->setDescription('Dummy docblock')
 			->setMethod(PhpMethod::create('foo')->setVisibility('public'))
 			->setProperty(PhpProperty::create('iAmHidden')->setVisibility('private'))

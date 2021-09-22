@@ -1,12 +1,12 @@
 <?php
-namespace gossi\codegen\tests\generator;
+namespace phpowermove\codegen\tests\generator;
 
-use gossi\codegen\generator\CodeFileGenerator;
-use gossi\codegen\generator\CodeGenerator;
-use gossi\codegen\generator\ModelGenerator;
-use gossi\codegen\model\PhpClass;
-use gossi\codegen\tests\Fixtures;
-use gossi\codegen\tests\parts\TestUtils;
+use phpowermove\codegen\generator\CodeFileGenerator;
+use phpowermove\codegen\generator\CodeGenerator;
+use phpowermove\codegen\generator\ModelGenerator;
+use phpowermove\codegen\model\PhpClass;
+use phpowermove\codegen\tests\Fixtures;
+use phpowermove\codegen\tests\parts\TestUtils;
 use PHPUnit\Framework\TestCase;
 
 /**

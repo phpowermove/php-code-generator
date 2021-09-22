@@ -16,25 +16,25 @@
  */
 declare(strict_types=1);
 
-namespace gossi\codegen\model;
+namespace phpowermove\codegen\model;
 
-use gossi\codegen\model\parts\BodyPart;
-use gossi\codegen\model\parts\DocblockPart;
-use gossi\codegen\model\parts\LongDescriptionPart;
-use gossi\codegen\model\parts\ParametersPart;
-use gossi\codegen\model\parts\QualifiedNamePart;
-use gossi\codegen\model\parts\ReferenceReturnPart;
-use gossi\codegen\model\parts\TypeDocblockGeneratorPart;
-use gossi\codegen\model\parts\TypePart;
-use gossi\docblock\Docblock;
-use gossi\docblock\tags\ReturnTag;
+use phpowermove\codegen\model\parts\BodyPart;
+use phpowermove\codegen\model\parts\DocblockPart;
+use phpowermove\codegen\model\parts\LongDescriptionPart;
+use phpowermove\codegen\model\parts\ParametersPart;
+use phpowermove\codegen\model\parts\QualifiedNamePart;
+use phpowermove\codegen\model\parts\ReferenceReturnPart;
+use phpowermove\codegen\model\parts\TypeDocblockGeneratorPart;
+use phpowermove\codegen\model\parts\TypePart;
+use phpowermove\docblock\Docblock;
+use phpowermove\docblock\tags\ReturnTag;
 
 /**
  * Represents a PHP function.
  *
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
  * @author Thomas Gossmann
- * @deprecated Not a structural model. Please refer to https://github.com/gossi/php-code-generator/issues/35 and join the discussion if you really need this
+ * @deprecated Not a structural model. Please refer to https://github.com/phpowermove/php-code-generator/issues/35 and join the discussion if you really need this
  */
 class PhpFunction extends AbstractModel implements GenerateableInterface, NamespaceInterface, DocblockInterface, RoutineInterface {
 

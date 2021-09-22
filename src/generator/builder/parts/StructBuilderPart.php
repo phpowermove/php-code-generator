@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\generator\builder\parts;
+namespace phpowermove\codegen\generator\builder\parts;
 
-use gossi\codegen\generator\ComparatorFactory;
-use gossi\codegen\model\AbstractModel;
-use gossi\codegen\model\AbstractPhpStruct;
-use gossi\codegen\model\ConstantsInterface;
-use gossi\codegen\model\DocblockInterface;
-use gossi\codegen\model\NamespaceInterface;
-use gossi\codegen\model\PropertiesInterface;
-use gossi\codegen\model\TraitsInterface;
+use phpowermove\codegen\generator\ComparatorFactory;
+use phpowermove\codegen\model\AbstractModel;
+use phpowermove\codegen\model\AbstractPhpStruct;
+use phpowermove\codegen\model\ConstantsInterface;
+use phpowermove\codegen\model\DocblockInterface;
+use phpowermove\codegen\model\NamespaceInterface;
+use phpowermove\codegen\model\PropertiesInterface;
+use phpowermove\codegen\model\TraitsInterface;
 
 trait StructBuilderPart {
 

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\generator\comparator;
+namespace phpowermove\codegen\generator\comparator;
 
 use phootwork\lang\Comparator;
 

@@ -1,9 +1,9 @@
 <?php
-namespace gossi\codegen\tests\generator;
+namespace phpowermove\codegen\tests\generator;
 
-use gossi\codegen\generator\ModelGenerator;
-use gossi\codegen\model\PhpMethod;
-use gossi\codegen\model\PhpParameter;
+use phpowermove\codegen\generator\ModelGenerator;
+use phpowermove\codegen\model\PhpMethod;
+use phpowermove\codegen\model\PhpParameter;
 use PHPUnit\Framework\TestCase;
 
 /**

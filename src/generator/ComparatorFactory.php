@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\generator;
+namespace phpowermove\codegen\generator;
 
-use gossi\codegen\generator\comparator\DefaultConstantComparator;
-use gossi\codegen\generator\comparator\DefaultMethodComparator;
-use gossi\codegen\generator\comparator\DefaultPropertyComparator;
-use gossi\codegen\generator\comparator\DefaultUseStatementComparator;
+use phpowermove\codegen\generator\comparator\DefaultConstantComparator;
+use phpowermove\codegen\generator\comparator\DefaultMethodComparator;
+use phpowermove\codegen\generator\comparator\DefaultPropertyComparator;
+use phpowermove\codegen\generator\comparator\DefaultUseStatementComparator;
 use phootwork\lang\Comparator;
 
 class ComparatorFactory {

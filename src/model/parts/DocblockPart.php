@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\model\parts;
+namespace phpowermove\codegen\model\parts;
 
-use gossi\docblock\Docblock;
+use phpowermove\docblock\Docblock;
 
 /**
  * Docblock Part

@@ -1,7 +1,7 @@
 <?php
-namespace gossi\codegen\tests\fixtures;
+namespace phpowermove\codegen\tests\fixtures;
 
-use gossi\codegen\tests\fixtures\DummyTrait as DT;
+use phpowermove\codegen\tests\fixtures\DummyTrait as DT;
 
 class ClassWithTraits {
 

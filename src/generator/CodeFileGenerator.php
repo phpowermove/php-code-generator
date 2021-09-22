@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\generator;
+namespace phpowermove\codegen\generator;
 
-use gossi\codegen\config\CodeFileGeneratorConfig;
-use gossi\codegen\model\GenerateableInterface;
+use phpowermove\codegen\config\CodeFileGeneratorConfig;
+use phpowermove\codegen\model\GenerateableInterface;
 use phootwork\lang\Text;
 
 /**

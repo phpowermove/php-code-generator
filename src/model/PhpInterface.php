@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\model;
+namespace phpowermove\codegen\model;
 
-use gossi\codegen\model\parts\ConstantsPart;
-use gossi\codegen\model\parts\InterfacesPart;
-use gossi\codegen\parser\FileParser;
-use gossi\codegen\parser\visitor\ConstantParserVisitor;
-use gossi\codegen\parser\visitor\InterfaceParserVisitor;
-use gossi\codegen\parser\visitor\MethodParserVisitor;
+use phpowermove\codegen\model\parts\ConstantsPart;
+use phpowermove\codegen\model\parts\InterfacesPart;
+use phpowermove\codegen\parser\FileParser;
+use phpowermove\codegen\parser\visitor\ConstantParserVisitor;
+use phpowermove\codegen\parser\visitor\InterfaceParserVisitor;
+use phpowermove\codegen\parser\visitor\MethodParserVisitor;
 
 /**
  * Represents a PHP interface.

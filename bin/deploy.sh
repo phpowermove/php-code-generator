@@ -10,10 +10,10 @@ cp -R api _site/
 cd _site
 
 git init
-git config user.name "gossi"
-git config user.email "gossi@users.noreply.github.com"
+git config user.name "phpowermove"
+git config user.email "phpowermove@users.noreply.github.com"
 
-git remote add upstream "https://$GH_TOKEN@github.com/gossi/php-code-generator.git"
+git remote add upstream "https://$GH_TOKEN@github.com/phpowermove/php-code-generator.git"
 git fetch upstream
 git reset upstream/gh-pages
 

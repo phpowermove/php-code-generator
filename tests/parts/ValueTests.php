@@ -1,7 +1,7 @@
 <?php
-namespace gossi\codegen\tests\parts;
+namespace phpowermove\codegen\tests\parts;
 
-use gossi\codegen\model\ValueInterface;
+use phpowermove\codegen\model\ValueInterface;
 
 trait ValueTests {
 

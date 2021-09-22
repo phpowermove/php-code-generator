@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\model;
+namespace phpowermove\codegen\model;
 
-use gossi\docblock\Docblock;
+use phpowermove\docblock\Docblock;
 
 /**
  * Docblock interface to represent models that have a docblock

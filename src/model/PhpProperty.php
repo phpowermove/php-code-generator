@@ -16,11 +16,11 @@
  */
 declare(strict_types=1);
 
-namespace gossi\codegen\model;
+namespace phpowermove\codegen\model;
 
-use gossi\codegen\model\parts\TypeDocblockGeneratorPart;
-use gossi\codegen\model\parts\ValuePart;
-use gossi\docblock\tags\VarTag;
+use phpowermove\codegen\model\parts\TypeDocblockGeneratorPart;
+use phpowermove\codegen\model\parts\ValuePart;
+use phpowermove\docblock\tags\VarTag;
 
 /**
  * Represents a PHP property.

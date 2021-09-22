@@ -1,11 +1,11 @@
 <?php
-namespace gossi\codegen\tests\config;
+namespace phpowermove\codegen\tests\config;
 
-use gossi\code\profiles\Profile;
-use gossi\codegen\config\CodeFileGeneratorConfig;
-use gossi\codegen\config\CodeGeneratorConfig;
-use gossi\codegen\generator\CodeGenerator;
-use gossi\docblock\Docblock;
+use phpowermove\code\profiles\Profile;
+use phpowermove\codegen\config\CodeFileGeneratorConfig;
+use phpowermove\codegen\config\CodeGeneratorConfig;
+use phpowermove\codegen\generator\CodeGenerator;
+use phpowermove\docblock\Docblock;
 use phootwork\lang\ComparableComparator;
 use phootwork\lang\Comparator;
 use PHPUnit\Framework\TestCase;

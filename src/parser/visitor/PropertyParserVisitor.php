@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\parser\visitor;
+namespace phpowermove\codegen\parser\visitor;
 
-use gossi\codegen\model\PhpProperty;
-use gossi\codegen\parser\visitor\parts\MemberParserPart;
-use gossi\codegen\parser\visitor\parts\ValueParserPart;
+use phpowermove\codegen\model\PhpProperty;
+use phpowermove\codegen\parser\visitor\parts\MemberParserPart;
+use phpowermove\codegen\parser\visitor\parts\ValueParserPart;
 use PhpParser\Node\Stmt\Property;
 
 class PropertyParserVisitor extends StructParserVisitor {

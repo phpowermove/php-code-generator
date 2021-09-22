@@ -1,18 +1,18 @@
 <?php
-namespace gossi\codegen\tests\model;
+namespace phpowermove\codegen\tests\model;
 
-use gossi\codegen\model\PhpClass;
-use gossi\codegen\model\PhpConstant;
-use gossi\codegen\model\PhpFunction;
-use gossi\codegen\model\PhpInterface;
-use gossi\codegen\model\PhpMethod;
-use gossi\codegen\model\PhpParameter;
-use gossi\codegen\model\PhpProperty;
-use gossi\codegen\model\PhpTrait;
-use gossi\docblock\Docblock;
-use gossi\docblock\tags\AuthorTag;
-use gossi\docblock\tags\SeeTag;
-use gossi\docblock\tags\ThrowsTag;
+use phpowermove\codegen\model\PhpClass;
+use phpowermove\codegen\model\PhpConstant;
+use phpowermove\codegen\model\PhpFunction;
+use phpowermove\codegen\model\PhpInterface;
+use phpowermove\codegen\model\PhpMethod;
+use phpowermove\codegen\model\PhpParameter;
+use phpowermove\codegen\model\PhpProperty;
+use phpowermove\codegen\model\PhpTrait;
+use phpowermove\docblock\Docblock;
+use phpowermove\docblock\tags\AuthorTag;
+use phpowermove\docblock\tags\SeeTag;
+use phpowermove\docblock\tags\ThrowsTag;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -73,7 +73,7 @@ class DocblockTest extends TestCase {
 		$this->assertNotNull($class->getConstant(self::CONSTANT)->getDocblock());
 
 		$docblock = $class->getDocblock();
-		$author = AuthorTag::create()->setName('gossi')->setEmail('iiih@mail.me');
+		$author = AuthorTag::create()->setName('phpowermove')->setEmail('iiih@mail.me');
 		$docblock->appendTag($author);
 
 		$this->assertTrue($docblock->hasTag('author'));
@@ -83,7 +83,7 @@ class DocblockTest extends TestCase {
  *
  * this is my very long class
  *
- * @author gossi <iiih@mail.me>
+ * @author phpowermove <iiih@mail.me>
  */';
 		$this->assertEquals($expected, $docblock->toString());
 	}

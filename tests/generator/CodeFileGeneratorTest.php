@@ -1,16 +1,16 @@
 <?php
-namespace gossi\codegen\tests\generator;
+namespace phpowermove\codegen\tests\generator;
 
-use gossi\codegen\config\CodeFileGeneratorConfig;
-use gossi\codegen\generator\CodeFileGenerator;
-use gossi\codegen\model\PhpClass;
-use gossi\codegen\model\PhpConstant;
-use gossi\codegen\model\PhpFunction;
-use gossi\codegen\model\PhpMethod;
-use gossi\codegen\model\PhpParameter;
-use gossi\codegen\model\PhpProperty;
-use gossi\codegen\tests\Fixtures;
-use gossi\codegen\tests\parts\TestUtils;
+use phpowermove\codegen\config\CodeFileGeneratorConfig;
+use phpowermove\codegen\generator\CodeFileGenerator;
+use phpowermove\codegen\model\PhpClass;
+use phpowermove\codegen\model\PhpConstant;
+use phpowermove\codegen\model\PhpFunction;
+use phpowermove\codegen\model\PhpMethod;
+use phpowermove\codegen\model\PhpParameter;
+use phpowermove\codegen\model\PhpProperty;
+use phpowermove\codegen\tests\Fixtures;
+use phpowermove\codegen\tests\parts\TestUtils;
 use PHPUnit\Framework\TestCase;
 
 /**

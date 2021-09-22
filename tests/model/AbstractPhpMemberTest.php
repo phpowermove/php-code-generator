@@ -1,5 +1,5 @@
 <?php
-namespace gossi\codegen\tests\model;
+namespace phpowermove\codegen\tests\model;
 
 use PHPUnit\Framework\TestCase;
 
@@ -51,7 +51,7 @@ class AbstractPhpMemberTest extends TestCase {
 	}
 
 	private function getMember() {
-		return $this->getMockForAbstractClass('gossi\codegen\model\AbstractPhpMember', [
+		return $this->getMockForAbstractClass('phpowermove\codegen\model\AbstractPhpMember', [
 			'__not_null__'
 		]);
 	}

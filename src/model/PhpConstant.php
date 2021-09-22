@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\model;
+namespace phpowermove\codegen\model;
 
-use gossi\codegen\model\parts\DocblockPart;
-use gossi\codegen\model\parts\LongDescriptionPart;
-use gossi\codegen\model\parts\NamePart;
-use gossi\codegen\model\parts\TypeDocblockGeneratorPart;
-use gossi\codegen\model\parts\TypePart;
-use gossi\codegen\model\parts\ValuePart;
-use gossi\docblock\Docblock;
-use gossi\docblock\tags\VarTag;
+use phpowermove\codegen\model\parts\DocblockPart;
+use phpowermove\codegen\model\parts\LongDescriptionPart;
+use phpowermove\codegen\model\parts\NamePart;
+use phpowermove\codegen\model\parts\TypeDocblockGeneratorPart;
+use phpowermove\codegen\model\parts\TypePart;
+use phpowermove\codegen\model\parts\ValuePart;
+use phpowermove\docblock\Docblock;
+use phpowermove\docblock\tags\VarTag;
 
 /**
  * Represents a PHP constant.

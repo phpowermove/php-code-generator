@@ -16,12 +16,12 @@
  */
 declare(strict_types=1);
 
-namespace gossi\codegen\model;
+namespace phpowermove\codegen\model;
 
-use gossi\codegen\model\parts\NamePart;
-use gossi\codegen\model\parts\TypePart;
-use gossi\codegen\model\parts\ValuePart;
-use gossi\docblock\tags\ParamTag;
+use phpowermove\codegen\model\parts\NamePart;
+use phpowermove\codegen\model\parts\TypePart;
+use phpowermove\codegen\model\parts\ValuePart;
+use phpowermove\docblock\tags\ParamTag;
 
 /**
  * Represents a PHP parameter.

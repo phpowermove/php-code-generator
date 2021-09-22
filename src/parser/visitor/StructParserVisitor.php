@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\parser\visitor;
+namespace phpowermove\codegen\parser\visitor;
 
-use gossi\codegen\model\AbstractPhpStruct;
+use phpowermove\codegen\model\AbstractPhpStruct;
 use PhpParser\Comment\Doc;
 use PhpParser\Node\Const_;
 use PhpParser\Node\Stmt\Class_;

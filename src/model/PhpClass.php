@@ -1,19 +1,19 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\model;
+namespace phpowermove\codegen\model;
 
-use gossi\codegen\model\parts\AbstractPart;
-use gossi\codegen\model\parts\ConstantsPart;
-use gossi\codegen\model\parts\FinalPart;
-use gossi\codegen\model\parts\InterfacesPart;
-use gossi\codegen\model\parts\PropertiesPart;
-use gossi\codegen\model\parts\TraitsPart;
-use gossi\codegen\parser\FileParser;
-use gossi\codegen\parser\visitor\ClassParserVisitor;
-use gossi\codegen\parser\visitor\ConstantParserVisitor;
-use gossi\codegen\parser\visitor\MethodParserVisitor;
-use gossi\codegen\parser\visitor\PropertyParserVisitor;
+use phpowermove\codegen\model\parts\AbstractPart;
+use phpowermove\codegen\model\parts\ConstantsPart;
+use phpowermove\codegen\model\parts\FinalPart;
+use phpowermove\codegen\model\parts\InterfacesPart;
+use phpowermove\codegen\model\parts\PropertiesPart;
+use phpowermove\codegen\model\parts\TraitsPart;
+use phpowermove\codegen\parser\FileParser;
+use phpowermove\codegen\parser\visitor\ClassParserVisitor;
+use phpowermove\codegen\parser\visitor\ConstantParserVisitor;
+use phpowermove\codegen\parser\visitor\MethodParserVisitor;
+use phpowermove\codegen\parser\visitor\PropertyParserVisitor;
 
 /**
  * Represents a PHP class.

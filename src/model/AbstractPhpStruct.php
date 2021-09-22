@@ -16,12 +16,12 @@
  */
 declare(strict_types=1);
 
-namespace gossi\codegen\model;
+namespace phpowermove\codegen\model;
 
-use gossi\codegen\model\parts\DocblockPart;
-use gossi\codegen\model\parts\LongDescriptionPart;
-use gossi\codegen\model\parts\QualifiedNamePart;
-use gossi\docblock\Docblock;
+use phpowermove\codegen\model\parts\DocblockPart;
+use phpowermove\codegen\model\parts\LongDescriptionPart;
+use phpowermove\codegen\model\parts\QualifiedNamePart;
+use phpowermove\docblock\Docblock;
 use phootwork\collection\Map;
 use phootwork\collection\Set;
 

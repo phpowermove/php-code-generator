@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\config;
+namespace phpowermove\codegen\config;
 
-use gossi\code\profiles\Profile;
-use gossi\codegen\generator\CodeGenerator;
+use phpowermove\code\profiles\Profile;
+use phpowermove\codegen\generator\CodeGenerator;
 use phootwork\lang\Comparator;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -52,7 +52,7 @@ class CodeGeneratorConfig {
 			'methodSorting' => CodeGenerator::SORT_METHODS_DEFAULT
 		]);
 
-		$resolver->setAllowedTypes('profile', ['string', 'gossi\code\profiles\Profile']);
+		$resolver->setAllowedTypes('profile', ['string', 'phpowermove\code\profiles\Profile']);
 		$resolver->setAllowedTypes('generateDocblock', 'bool');
 		$resolver->setAllowedTypes('generateEmptyDocblock', 'bool');
 		$resolver->setAllowedTypes('generateScalarTypeHints', 'bool');

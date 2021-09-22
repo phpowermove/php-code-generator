@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\parser\visitor;
+namespace phpowermove\codegen\parser\visitor;
 
-use gossi\codegen\model\PhpMethod;
-use gossi\codegen\model\PhpParameter;
-use gossi\codegen\parser\PrettyPrinter;
-use gossi\codegen\parser\visitor\parts\MemberParserPart;
-use gossi\codegen\parser\visitor\parts\ValueParserPart;
-use gossi\docblock\tags\ParamTag;
+use phpowermove\codegen\model\PhpMethod;
+use phpowermove\codegen\model\PhpParameter;
+use phpowermove\codegen\parser\PrettyPrinter;
+use phpowermove\codegen\parser\visitor\parts\MemberParserPart;
+use phpowermove\codegen\parser\visitor\parts\ValueParserPart;
+use phpowermove\docblock\tags\ParamTag;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt\ClassMethod;
 

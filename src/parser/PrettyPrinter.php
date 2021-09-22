@@ -1,5 +1,5 @@
 <?php
-namespace gossi\codegen\parser;
+namespace phpowermove\codegen\parser;
 
 use PhpParser\Node;
 use PhpParser\Node\Expr;

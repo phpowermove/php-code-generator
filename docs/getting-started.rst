@@ -22,10 +22,10 @@ a) Simple:
   ::
 
 	<?php
-	use gossi\codegen\generator\CodeGenerator;
-	use gossi\codegen\model\PhpClass;
-	use gossi\codegen\model\PhpMethod;
-	use gossi\codegen\model\PhpParameter;
+	use phpowermove\codegen\generator\CodeGenerator;
+	use phpowermove\codegen\model\PhpClass;
+	use phpowermove\codegen\model\PhpMethod;
+	use phpowermove\codegen\model\PhpParameter;
 
 	$class = new PhpClass();
 	$class
@@ -63,8 +63,8 @@ b) From File:
   ::
 
 	<?php
-	use gossi\codegen\generator\CodeGenerator;
-	use gossi\codegen\model\PhpClass;
+	use phpowermove\codegen\generator\CodeGenerator;
+	use phpowermove\codegen\model\PhpClass;
 
 	$class = PhpClass::fromFile('path/to/class.php');
 
@@ -77,8 +77,8 @@ c) From Reflection:
   ::
 
 	<?php
-	use gossi\codegen\generator\CodeGenerator;
-	use gossi\codegen\model\PhpClass;
+	use phpowermove\codegen\generator\CodeGenerator;
+	use phpowermove\codegen\model\PhpClass;
 
     $reflection = new \ReflectionClass('MyClass');
 	$class = PhpClass::fromReflection($reflection->getFileName());

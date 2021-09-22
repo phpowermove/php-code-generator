@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\model\parts;
+namespace phpowermove\codegen\model\parts;
 
-use gossi\codegen\model\PhpConstant;
+use phpowermove\codegen\model\PhpConstant;
 use phootwork\collection\Map;
 use phootwork\collection\Set;
 

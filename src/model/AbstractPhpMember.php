@@ -16,13 +16,13 @@
  */
 declare(strict_types=1);
 
-namespace gossi\codegen\model;
+namespace phpowermove\codegen\model;
 
-use gossi\codegen\model\parts\DocblockPart;
-use gossi\codegen\model\parts\LongDescriptionPart;
-use gossi\codegen\model\parts\NamePart;
-use gossi\codegen\model\parts\TypePart;
-use gossi\docblock\Docblock;
+use phpowermove\codegen\model\parts\DocblockPart;
+use phpowermove\codegen\model\parts\LongDescriptionPart;
+use phpowermove\codegen\model\parts\NamePart;
+use phpowermove\codegen\model\parts\TypePart;
+use phpowermove\docblock\Docblock;
 
 /**
  * Abstract PHP member class.

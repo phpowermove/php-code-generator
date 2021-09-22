@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\generator\builder;
+namespace phpowermove\codegen\generator\builder;
 
-use gossi\codegen\generator\builder\parts\ValueBuilderPart;
-use gossi\codegen\model\AbstractModel;
+use phpowermove\codegen\generator\builder\parts\ValueBuilderPart;
+use phpowermove\codegen\model\AbstractModel;
 
 class PropertyBuilder extends AbstractBuilder {
 

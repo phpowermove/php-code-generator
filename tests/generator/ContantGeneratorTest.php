@@ -1,8 +1,8 @@
 <?php
-namespace gossi\codegen\tests\generator;
+namespace phpowermove\codegen\tests\generator;
 
-use gossi\codegen\generator\ModelGenerator;
-use gossi\codegen\model\PhpConstant;
+use phpowermove\codegen\generator\ModelGenerator;
+use phpowermove\codegen\model\PhpConstant;
 use PHPUnit\Framework\TestCase;
 
 /**

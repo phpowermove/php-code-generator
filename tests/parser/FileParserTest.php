@@ -1,9 +1,9 @@
 <?php
-namespace gossi\codegen\tests\parser;
+namespace phpowermove\codegen\tests\parser;
 
-use gossi\codegen\model\PhpClass;
-use gossi\codegen\parser\FileParser;
-use gossi\codegen\parser\visitor\ClassParserVisitor;
+use phpowermove\codegen\model\PhpClass;
+use phpowermove\codegen\parser\FileParser;
+use phpowermove\codegen\parser\visitor\ClassParserVisitor;
 use PHPUnit\Framework\TestCase;
 
 /**
