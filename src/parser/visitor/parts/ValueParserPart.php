@@ -1,8 +1,8 @@
 <?php
-namespace gossi\codegen\parser\visitor\parts;
+namespace phpowermove\codegen\parser\visitor\parts;
 
-use gossi\codegen\model\ValueInterface;
-use gossi\codegen\parser\PrettyPrinter;
+use phpowermove\codegen\model\ValueInterface;
+use phpowermove\codegen\parser\PrettyPrinter;
 use PhpParser\Node;
 use PhpParser\Node\Const_;
 use PhpParser\Node\Expr\Array_;

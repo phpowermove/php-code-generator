@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\model;
+namespace phpowermove\codegen\model;
 
 /**
  * Represents all models that can be generated with a code generator

@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\generator\builder\parts;
+namespace phpowermove\codegen\generator\builder\parts;
 
-use gossi\codegen\model\PhpConstant;
-use gossi\codegen\model\ValueInterface;
+use phpowermove\codegen\model\PhpConstant;
+use phpowermove\codegen\model\ValueInterface;
 
 trait ValueBuilderPart {
 

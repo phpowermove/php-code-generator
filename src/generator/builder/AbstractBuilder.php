@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\generator\builder;
+namespace phpowermove\codegen\generator\builder;
 
-use gossi\codegen\config\CodeGeneratorConfig;
-use gossi\codegen\generator\ModelGenerator;
-use gossi\codegen\generator\utils\Writer;
-use gossi\codegen\model\AbstractModel;
-use gossi\codegen\model\DocblockInterface;
+use phpowermove\codegen\config\CodeGeneratorConfig;
+use phpowermove\codegen\generator\ModelGenerator;
+use phpowermove\codegen\generator\utils\Writer;
+use phpowermove\codegen\model\AbstractModel;
+use phpowermove\codegen\model\DocblockInterface;
 
 abstract class AbstractBuilder {
 

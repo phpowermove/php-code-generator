@@ -1,12 +1,12 @@
 <?php
-namespace gossi\codegen\tests\fixtures;
+namespace phpowermove\codegen\tests\fixtures;
 
 /**
  * A class with comments
  * 
  * Here is a super dooper long-description
  * 
- * @author gossi
+ * @author phpowermove
  * @since 0.2
  */
 class ClassWithComments {

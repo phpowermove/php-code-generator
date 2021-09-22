@@ -1,8 +1,8 @@
 <?php
-namespace gossi\codegen\tests\utils;
+namespace phpowermove\codegen\tests\utils;
 
-use gossi\codegen\generator\utils\Writer;
-use gossi\codegen\utils\ReflectionUtils;
+use phpowermove\codegen\generator\utils\Writer;
+use phpowermove\codegen\utils\ReflectionUtils;
 use PHPUnit\Framework\TestCase;
 
 class ReflectionUtilsTest extends TestCase {
@@ -27,7 +27,7 @@ class ReflectionUtilsTest extends TestCase {
 	}
 
 	public function testGetOverridableMethods() {
-		$ref = new \ReflectionClass('gossi\codegen\tests\fixtures\OverridableReflectionTest');
+		$ref = new \ReflectionClass('phpowermove\codegen\tests\fixtures\OverridableReflectionTest');
 		$methods = ReflectionUtils::getOverrideableMethods($ref);
 
 		$this->assertEquals(4, count($methods));

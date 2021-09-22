@@ -36,6 +36,6 @@ That way, the host class will be user-land code and the developer can write his 
 Format in Post-Processing
 -------------------------
 
-After generating code is finished, it can happen that (especially) bodies are formatted ugly. Thus just run the suggested code formatter after generating the code. Can be found on github `gossi/php-code-formatter`_.
+After generating code is finished, it can happen that (especially) bodies are formatted ugly. Thus just run the suggested code formatter after generating the code. Can be found on github `phpowermove/php-code-formatter`_.
 
-.. _gossi/php-code-formatter: https://github.com/gossi/php-code-formatter
+.. _phpowermove/php-code-formatter: https://github.com/phpowermove/php-code-formatter

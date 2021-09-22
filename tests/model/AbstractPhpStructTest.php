@@ -1,10 +1,10 @@
 <?php
-namespace gossi\codegen\tests\model;
+namespace phpowermove\codegen\tests\model;
 
-use gossi\codegen\model\PhpClass;
-use gossi\codegen\model\PhpInterface;
-use gossi\codegen\model\PhpMethod;
-use gossi\codegen\model\PhpTrait;
+use phpowermove\codegen\model\PhpClass;
+use phpowermove\codegen\model\PhpInterface;
+use phpowermove\codegen\model\PhpMethod;
+use phpowermove\codegen\model\PhpTrait;
 use PHPUnit\Framework\TestCase;
 
 /**

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\model;
+namespace phpowermove\codegen\model;
 
 /**
  * Interface to all php structs that can have constants

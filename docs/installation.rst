@@ -7,7 +7,7 @@ Install via Composer:
 
   {
       "require": {
-          "gossi/php-code-generator": "~0"
+          "phpowermove/php-code-generator": "~0"
       }
   }
 
@@ -15,4 +15,4 @@ or via CLI:
 
 ::
 
-  composer require 'gossi/php-code-generator'
+  composer require 'phpowermove/php-code-generator'

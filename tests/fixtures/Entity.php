@@ -1,5 +1,5 @@
 <?php
-namespace gossi\codegen\tests\fixtures;
+namespace phpowermove\codegen\tests\fixtures;
 
 /**
  * Doc Comment.

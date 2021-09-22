@@ -56,7 +56,7 @@ Create your first Class
 Let's start with a simple example::
 
   <?php
-  use gossi\codegen\model\PhpClass;
+  use phpowermove\codegen\model\PhpClass;
 
   $class = new PhpClass();
   $class->setQualifiedName('my\\cool\\Tool');
@@ -77,9 +77,9 @@ Adding a Constructor
 It's better to have a constructor, so we add one::
 
   <?php
-  use gossi\codegen\model\PhpClass;
-  use gossi\codegen\model\PhpMethod;
-  use gossi\codegen\model\PhpParameter;
+  use phpowermove\codegen\model\PhpClass;
+  use phpowermove\codegen\model\PhpMethod;
+  use phpowermove\codegen\model\PhpParameter;
 
   $class = new PhpClass('my\\cool\\Tool');
   $class
@@ -113,11 +113,11 @@ Adding members
 We've just learned how to pass a blank method, the constructor to the class. We can also add `properties`, `constants` and of course `methods`. Let's do so::
 
   <?php
-  use gossi\codegen\model\PhpClass;
-  use gossi\codegen\model\PhpMethod;
-  use gossi\codegen\model\PhpParameter;
-  use gossi\codegen\model\PhpProperty;
-  use gossi\codegen\model\PhpConstant;
+  use phpowermove\codegen\model\PhpClass;
+  use phpowermove\codegen\model\PhpMethod;
+  use phpowermove\codegen\model\PhpParameter;
+  use phpowermove\codegen\model\PhpProperty;
+  use phpowermove\codegen\model\PhpConstant;
 
   $class = PhpClass::create('my\\cool\\Tool')
       ->setMethod(PhpMethod::create('setDriver')
@@ -165,8 +165,8 @@ Declare use statements
 When you put code inside a method there can be a reference to a class or interface, where you normally put the qualified name into a use statement. So here is how you do it::
 
   <?php
-  use gossi\codegen\model\PhpClass;
-  use gossi\codegen\model\PhpMethod;
+  use phpowermove\codegen\model\PhpClass;
+  use phpowermove\codegen\model\PhpMethod;
 
   $class = new PhpClass();
   $class
@@ -210,7 +210,7 @@ From File
 Reading from a file is the simplest way to read existing code, just like this::
 
   <?php
-  use gossi\codegen\model\PhpClass;
+  use phpowermove\codegen\model\PhpClass;
 
   $class = PhpClass::fromFile('path/to/MyClass.php');
 
@@ -221,7 +221,7 @@ Through Reflection
 If you already have your class loaded, then you can use reflection to load your code::
 
   <?php
-  use gossi\codegen\model\PhpClass;
+  use phpowermove\codegen\model\PhpClass;
 
   $reflection = new \ReflectionClass('MyClass');
   $class = PhpClass::fromReflection($reflection->getFileName());

@@ -1,13 +1,13 @@
 <?php
-namespace gossi\codegen\tests\generator;
+namespace phpowermove\codegen\tests\generator;
 
-use gossi\codegen\generator\comparator\DefaultConstantComparator;
-use gossi\codegen\generator\comparator\DefaultMethodComparator;
-use gossi\codegen\generator\comparator\DefaultPropertyComparator;
-use gossi\codegen\generator\comparator\DefaultUseStatementComparator;
-use gossi\codegen\model\PhpConstant;
-use gossi\codegen\model\PhpMethod;
-use gossi\codegen\model\PhpProperty;
+use phpowermove\codegen\generator\comparator\DefaultConstantComparator;
+use phpowermove\codegen\generator\comparator\DefaultMethodComparator;
+use phpowermove\codegen\generator\comparator\DefaultPropertyComparator;
+use phpowermove\codegen\generator\comparator\DefaultUseStatementComparator;
+use phpowermove\codegen\model\PhpConstant;
+use phpowermove\codegen\model\PhpMethod;
+use phpowermove\codegen\model\PhpProperty;
 use phootwork\collection\ArrayList;
 use PHPUnit\Framework\TestCase;
 
@@ -25,14 +25,14 @@ class SortTest extends TestCase {
 		$list->add('phootwork\collection\ArrayList');
 		$list->add('Symfony\Component\Finder\Finder');
 		$list->add('phootwork\file\Path');
-		$list->add('gossi\docblock\Docblock');
+		$list->add('phpowermove\docblock\Docblock');
 		$list->add('phootwork\lang\Text');
 		$list->add('phootwork\tokenizer\PhpTokenizer');
 		$list->add('phootwork\collection\Map');
 
 		$list->sort(new DefaultUseStatementComparator());
 		$this->assertEquals([
-			'gossi\docblock\Docblock',
+			'phpowermove\docblock\Docblock',
 			'phootwork\collection\ArrayList',
 			'phootwork\collection\Map',
 			'phootwork\file\Path',

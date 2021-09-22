@@ -1,6 +1,6 @@
 API
 ===
 
-API is available at `https://gossi.github.io/php-code-generator/api/master`_
+API is available at `https://phpowermove.github.io/php-code-generator/api/master`_
 
-.. _https://gossi.github.io/php-code-generator/api/master: https://gossi.github.io/php-code-generator/api/master
+.. _https://phpowermove.github.io/php-code-generator/api/master: https://phpowermove.github.io/php-code-generator/api/master

@@ -1,8 +1,8 @@
 <?php
-namespace gossi\codegen\tests\model;
+namespace phpowermove\codegen\tests\model;
 
-use gossi\codegen\model\PhpProperty;
-use gossi\codegen\tests\parts\ValueTests;
+use phpowermove\codegen\model\PhpProperty;
+use phpowermove\codegen\tests\parts\ValueTests;
 use PHPUnit\Framework\TestCase;
 
 /**

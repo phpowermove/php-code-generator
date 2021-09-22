@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\config;
+namespace phpowermove\codegen\config;
 
-use gossi\docblock\Docblock;
+use phpowermove\docblock\Docblock;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -30,8 +30,8 @@ class CodeFileGeneratorConfig extends CodeGeneratorConfig {
 			},
 		]);
 
-		$resolver->setAllowedTypes('headerComment', ['null', 'string', 'gossi\\docblock\\Docblock']);
-		$resolver->setAllowedTypes('headerDocblock', ['null', 'string', 'gossi\\docblock\\Docblock']);
+		$resolver->setAllowedTypes('headerComment', ['null', 'string', 'phpowermove\\docblock\\Docblock']);
+		$resolver->setAllowedTypes('headerDocblock', ['null', 'string', 'phpowermove\\docblock\\Docblock']);
 		$resolver->setAllowedTypes('blankLineAtEnd', 'bool');
 		$resolver->setAllowedTypes('declareStrictTypes', 'bool');
 

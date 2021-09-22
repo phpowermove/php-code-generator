@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\generator\builder;
+namespace phpowermove\codegen\generator\builder;
 
-use gossi\codegen\generator\builder\parts\StructBuilderPart;
-use gossi\codegen\model\AbstractModel;
-use gossi\codegen\model\PhpInterface;
+use phpowermove\codegen\generator\builder\parts\StructBuilderPart;
+use phpowermove\codegen\model\AbstractModel;
+use phpowermove\codegen\model\PhpInterface;
 
 class InterfaceBuilder extends AbstractBuilder {
 

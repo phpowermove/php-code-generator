@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\parser\visitor;
+namespace phpowermove\codegen\parser\visitor;
 
-use gossi\codegen\parser\visitor\parts\StructParserPart;
+use phpowermove\codegen\parser\visitor\parts\StructParserPart;
 use PhpParser\Node\Stmt\Interface_;
 
 class InterfaceParserVisitor extends StructParserVisitor {

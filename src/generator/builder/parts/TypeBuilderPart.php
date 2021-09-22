@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\generator\builder\parts;
+namespace phpowermove\codegen\generator\builder\parts;
 
-use gossi\codegen\model\AbstractModel;
+use phpowermove\codegen\model\AbstractModel;
 
 trait TypeBuilderPart {
 

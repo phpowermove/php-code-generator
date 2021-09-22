@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\parser;
+namespace phpowermove\codegen\parser;
 
-use gossi\codegen\parser\visitor\ParserVisitorInterface;
+use phpowermove\codegen\parser\visitor\ParserVisitorInterface;
 use phootwork\collection\Set;
 use phootwork\file\exception\FileNotFoundException;
 use phootwork\file\File;

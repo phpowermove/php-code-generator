@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\model\parts;
+namespace phpowermove\codegen\model\parts;
 
-use gossi\docblock\Docblock;
-use gossi\docblock\tags\AbstractTag;
+use phpowermove\docblock\Docblock;
+use phpowermove\docblock\tags\AbstractTag;
 
 /**
  * Type docblock generator part

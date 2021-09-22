@@ -1,9 +1,9 @@
 <?php
-namespace gossi\codegen\tests\model;
+namespace phpowermove\codegen\tests\model;
 
-use gossi\codegen\model\PhpFunction;
-use gossi\codegen\model\PhpParameter;
-use gossi\codegen\tests\parts\ValueTests;
+use phpowermove\codegen\model\PhpFunction;
+use phpowermove\codegen\model\PhpParameter;
+use phpowermove\codegen\tests\parts\ValueTests;
 use PHPUnit\Framework\TestCase;
 
 /**

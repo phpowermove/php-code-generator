@@ -1,11 +1,11 @@
 # PHP Code Generator
 
-[![License](https://img.shields.io/github/license/gossi/php-code-generator.svg?style=flat-square)](https://packagist.org/packages/gossi/php-code-generator)
-[![Latest Stable Version](https://img.shields.io/packagist/v/gossi/php-code-generator.svg?style=flat-square)](https://packagist.org/packages/gossi/php-code-generator)
-[![Total Downloads](https://img.shields.io/packagist/dt/gossi/php-code-generator.svg?style=flat-square&colorB=007ec6)](https://packagist.org/packages/gossi/php-code-generator)<br>
-[![Build Status](https://img.shields.io/scrutinizer/build/g/gossi/php-code-generator.svg?style=flat-square)](https://travis-ci.org/gossi/php-code-generator)
-[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/gossi/php-code-generator.svg?style=flat-square)](https://scrutinizer-ci.com/g/gossi/php-code-generator)
-[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/gossi/php-code-generator.svg?style=flat-square)](https://scrutinizer-ci.com/g/gossi/php-code-generator)
+[![License](https://img.shields.io/github/license/phpowermove/php-code-generator.svg?style=flat-square)](https://packagist.org/packages/phpowermove/php-code-generator)
+[![Latest Stable Version](https://img.shields.io/packagist/v/phpowermove/php-code-generator.svg?style=flat-square)](https://packagist.org/packages/phpowermove/php-code-generator)
+[![Total Downloads](https://img.shields.io/packagist/dt/phpowermove/php-code-generator.svg?style=flat-square&colorB=007ec6)](https://packagist.org/packages/phpowermove/php-code-generator)<br>
+[![Build Status](https://img.shields.io/scrutinizer/build/g/phpowermove/php-code-generator.svg?style=flat-square)](https://travis-ci.org/phpowermove/php-code-generator)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/phpowermove/php-code-generator.svg?style=flat-square)](https://scrutinizer-ci.com/g/phpowermove/php-code-generator)
+[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/phpowermove/php-code-generator.svg?style=flat-square)](https://scrutinizer-ci.com/g/phpowermove/php-code-generator)
 
 This library provides some tools that you commonly need for generating PHP code.
 
@@ -14,7 +14,7 @@ This library provides some tools that you commonly need for generating PHP code.
 Install via Composer:
 
 ```
-composer require gossi/php-code-generator
+composer require phpowermove/php-code-generator
 ```
 
 ## Documentation

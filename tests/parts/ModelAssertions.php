@@ -1,7 +1,7 @@
 <?php
-namespace gossi\codegen\tests\parts;
+namespace phpowermove\codegen\tests\parts;
 
-use gossi\codegen\model\PhpClass;
+use phpowermove\codegen\model\PhpClass;
 
 trait ModelAssertions {
 

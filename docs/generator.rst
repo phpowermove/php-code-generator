@@ -6,7 +6,7 @@ The package ships with two generators, which are configurable through an associa
 ::
 
   <?php
-  use gossi\codegen\generator\CodeGenerator;
+  use phpowermove\codegen\generator\CodeGenerator;
 
   // a) new code generator with options passed as array
   $generator = new CodeGenerator([
@@ -22,8 +22,8 @@ CodeGenerator
 
 Generates code for a given model. Additionally (and by default), it will generate docblocks for all contained classes, methods, interfaces, etc. you have prior to generating the code.
 
-* Class: ``gossi\codegen\generator\CodeGenerator``
-* Config: ``gossi\codegen\config\CodeGeneratorConfig``
+* Class: ``phpowermove\codegen\generator\CodeGenerator``
+* Config: ``phpowermove\codegen\config\CodeGeneratorConfig``
 * Options:
 
   +-------------------------+-----------------------------------+---------------+-------------------------------------------------------------------------+
@@ -64,7 +64,7 @@ Generates code for a given model. Additionally (and by default), it will generat
   ::
 
     <?php
-    use gossi\codegen\generator\CodeGenerator;
+    use phpowermove\codegen\generator\CodeGenerator;
 
     // will set every option to true, because of the defaults
     $generator = new CodeGenerator([
@@ -78,8 +78,8 @@ CodeFileGenerator
 
 Generates a complete php file with the given model inside. Especially useful when creating PSR-4 compliant code, which you are about to dump into a file. It extends the ``CodeGenerator`` and as such inherits all its benefits.
 
-* Class: ``gossi\codegen\generator\CodeFileGenerator``
-* Config: ``gossi\codegen\config\CodeFileGeneratorConfig``
+* Class: ``phpowermove\codegen\generator\CodeFileGenerator``
+* Config: ``phpowermove\codegen\config\CodeFileGeneratorConfig``
 * Options: Same options as ``CodeGenerator`` plus:
 
   +--------------------+----------------------+---------------+----------------------------------------------------------------------------------------+
@@ -101,7 +101,7 @@ Generates a complete php file with the given model inside. Especially useful whe
   ::
 
     <?php
-    use gossi\codegen\generator\CodeFileGenerator;
+    use phpowermove\codegen\generator\CodeFileGenerator;
 
     $generator = new CodeGenerator([
       'headerComment' => 'This will be placed at the top, woo',

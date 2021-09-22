@@ -1,26 +1,26 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\generator;
+namespace phpowermove\codegen\generator;
 
-use gossi\codegen\generator\builder\AbstractBuilder;
-use gossi\codegen\generator\builder\ClassBuilder;
-use gossi\codegen\generator\builder\ConstantBuilder;
-use gossi\codegen\generator\builder\FunctionBuilder;
-use gossi\codegen\generator\builder\InterfaceBuilder;
-use gossi\codegen\generator\builder\MethodBuilder;
-use gossi\codegen\generator\builder\ParameterBuilder;
-use gossi\codegen\generator\builder\PropertyBuilder;
-use gossi\codegen\generator\builder\TraitBuilder;
-use gossi\codegen\model\AbstractModel;
-use gossi\codegen\model\PhpClass;
-use gossi\codegen\model\PhpConstant;
-use gossi\codegen\model\PhpFunction;
-use gossi\codegen\model\PhpInterface;
-use gossi\codegen\model\PhpMethod;
-use gossi\codegen\model\PhpParameter;
-use gossi\codegen\model\PhpProperty;
-use gossi\codegen\model\PhpTrait;
+use phpowermove\codegen\generator\builder\AbstractBuilder;
+use phpowermove\codegen\generator\builder\ClassBuilder;
+use phpowermove\codegen\generator\builder\ConstantBuilder;
+use phpowermove\codegen\generator\builder\FunctionBuilder;
+use phpowermove\codegen\generator\builder\InterfaceBuilder;
+use phpowermove\codegen\generator\builder\MethodBuilder;
+use phpowermove\codegen\generator\builder\ParameterBuilder;
+use phpowermove\codegen\generator\builder\PropertyBuilder;
+use phpowermove\codegen\generator\builder\TraitBuilder;
+use phpowermove\codegen\model\AbstractModel;
+use phpowermove\codegen\model\PhpClass;
+use phpowermove\codegen\model\PhpConstant;
+use phpowermove\codegen\model\PhpFunction;
+use phpowermove\codegen\model\PhpInterface;
+use phpowermove\codegen\model\PhpMethod;
+use phpowermove\codegen\model\PhpParameter;
+use phpowermove\codegen\model\PhpProperty;
+use phpowermove\codegen\model\PhpTrait;
 
 class BuilderFactory {
 

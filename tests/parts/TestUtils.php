@@ -1,5 +1,5 @@
 <?php
-namespace gossi\codegen\tests\parts;
+namespace phpowermove\codegen\tests\parts;
 
 trait TestUtils {
 

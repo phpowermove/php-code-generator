@@ -1,8 +1,8 @@
 <?php
-namespace gossi\codegen\parser\visitor\parts;
+namespace phpowermove\codegen\parser\visitor\parts;
 
-use gossi\codegen\model\AbstractPhpMember;
-use gossi\codegen\model\PhpConstant;
+use phpowermove\codegen\model\AbstractPhpMember;
+use phpowermove\codegen\model\PhpConstant;
 use PhpParser\Comment\Doc;
 use PhpParser\Node;
 

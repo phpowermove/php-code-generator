@@ -1,5 +1,5 @@
 {
-	"name" : "gossi/php-code-generator",
+	"name" : "phpowermove/php-code-generator",
 	"type" : "library",
 	"description" : "Toolset for generating PHP code",
 	"license" : "Apache-2.0",
@@ -12,23 +12,23 @@
 		"code generation"
 	],
 	"support" : {
-		"issues" : "https://github.com/gossi/php-code-generator/issues"
+		"issues" : "https://github.com/phpowermove/php-code-generator/issues"
 	},
 	"autoload" : {
 		"psr-4" : {
-			"gossi\\codegen\\" : "src/"
+			"phpowermove\\codegen\\" : "src/"
 		}
 	},
 	"autoload-dev" : {
 		"psr-4" : {
-			"gossi\\codegen\\tests\\" : "tests/"
+			"phpowermove\\codegen\\tests\\" : "tests/"
 		}
 	},
 	"require" : {
 		"php" : ">=7.2",
-		"gossi/docblock" : "~1",
-		"gossi/php-code-profiles" : "dev-master",
-		"gossi/php-code-formatter" : "dev-master",
+		"phpowermove/docblock" : "~1",
+		"phpowermove/php-code-profiles" : "dev-master",
+		"phpowermove/php-code-formatter" : "dev-master",
 		"symfony/options-resolver" : "^4.1.7",
 		"phootwork/file" : "~0",
 		"phootwork/tokenizer" : "~0",

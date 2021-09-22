@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\generator\comparator;
+namespace phpowermove\codegen\generator\comparator;
 
-use gossi\codegen\model\PhpConstant;
+use phpowermove\codegen\model\PhpConstant;
 use phootwork\lang\Comparator;
 
 /**

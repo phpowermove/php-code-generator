@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace gossi\codegen\model\parts;
+namespace phpowermove\codegen\model\parts;
 
-use gossi\codegen\model\PhpParameter;
-use gossi\docblock\Docblock;
-use gossi\docblock\tags\ParamTag;
+use phpowermove\codegen\model\PhpParameter;
+use phpowermove\docblock\Docblock;
+use phpowermove\docblock\tags\ParamTag;
 
 /**
  * Parameters Part

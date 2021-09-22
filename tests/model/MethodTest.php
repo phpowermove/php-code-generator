@@ -1,8 +1,8 @@
 <?php
-namespace gossi\codegen\tests\model;
+namespace phpowermove\codegen\tests\model;
 
-use gossi\codegen\model\PhpMethod;
-use gossi\codegen\model\PhpParameter;
+use phpowermove\codegen\model\PhpMethod;
+use phpowermove\codegen\model\PhpParameter;
 use PHPUnit\Framework\TestCase;
 
 /**

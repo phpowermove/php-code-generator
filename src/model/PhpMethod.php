@@ -16,15 +16,15 @@
  */
 declare(strict_types=1);
 
-namespace gossi\codegen\model;
+namespace phpowermove\codegen\model;
 
-use gossi\codegen\model\parts\AbstractPart;
-use gossi\codegen\model\parts\BodyPart;
-use gossi\codegen\model\parts\FinalPart;
-use gossi\codegen\model\parts\ParametersPart;
-use gossi\codegen\model\parts\ReferenceReturnPart;
-use gossi\codegen\model\parts\TypeDocblockGeneratorPart;
-use gossi\docblock\tags\ReturnTag;
+use phpowermove\codegen\model\parts\AbstractPart;
+use phpowermove\codegen\model\parts\BodyPart;
+use phpowermove\codegen\model\parts\FinalPart;
+use phpowermove\codegen\model\parts\ParametersPart;
+use phpowermove\codegen\model\parts\ReferenceReturnPart;
+use phpowermove\codegen\model\parts\TypeDocblockGeneratorPart;
+use phpowermove\docblock\tags\ReturnTag;
 
 /**
  * Represents a PHP method.

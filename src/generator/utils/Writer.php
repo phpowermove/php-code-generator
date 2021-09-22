@@ -16,7 +16,7 @@
  */
 declare(strict_types=1);
 
-namespace gossi\codegen\generator\utils;
+namespace phpowermove\codegen\generator\utils;
 
 /**
  * A writer implementation.
